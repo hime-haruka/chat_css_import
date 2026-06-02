@@ -1,0 +1,568 @@
+/* 테스트 후원 미리보기 제거 */
+[data-id = "슈퍼챗"], [data-id = "치즈"], [data-id = "비트"], [data-id = "별풍선"], [data-id = "젬"], [data-id = "비트"], [data-id = "빔"] {
+    display: none;
+}
+
+@font-face {
+    font-family: 'Cafe24Surround';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff') format('woff');
+    font-weight: normal;
+    font-display: swap;
+}
+
+/* ============================================= 
+        general
+============================================= */
+html {
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+}
+
+p {
+    position: relative;
+    margin: 0 !important;
+    line-height: 1.2 !important;
+    z-index: 999;
+    color: var(--text) !important;
+    text-shadow:
+        2px 2px 0 rgba(170,120,255,.75),
+        0 3px 0 rgba(120,70,210,.85),
+        0 0 10px rgba(230,180,255,.7),
+        0 0 18px rgba(180,120,255,.65) !important;
+    font-family: 'Cafe24Surround', Courier, monospace !important;
+    font-weight: 400 !important;
+    font-size: 20px !important;
+    letter-spacing: -0.8px !important;
+}
+
+.chat_area {
+    -webkit-mask-image: -webkit-gradient( linear, left bottom, left top, from(#000), color-stop(0.9, #000), to(transparent));    
+}
+
+.chat_box {
+    margin: 0 auto;
+    margin-bottom: 20px !important;
+}
+
+.chat_box:not(.image) .nick {
+    display: none !important;
+}
+
+.chat_box.chat * {
+    box-sizing: border-box !important;
+}
+
+.chat_box .inner_box .name {
+    display: none !important;
+}
+
+.icon_chzzk {
+    display: none !important;
+}
+
+.icon_badge {
+    display: none !important;
+}
+
+.icon_beam {
+    display: none !important;
+}
+
+.donation_box .nick {
+    display: none !important;
+}
+
+
+/* ============================================= 
+        donation reset
+============================================= */
+.chat_box.image .donation_box p {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+}
+
+.chat_box.image .donation_box {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    background: transparent !important;
+}
+
+.chat_box.image .donation_box .text_box,
+.chat_box.image .donation_box .msg_box {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+}
+
+.chat_box.image:not(.subscribe) .msg_box {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background: transparent !important;
+}
+
+.chat_box.image:not(.subscribe) .msg_box .val {
+    text-align: center !important;
+    width: auto !important;
+    background: transparent !important;
+}
+
+.chat_box.subscribe.image .text_box {
+    display: flex !important;
+    flex-direction: column !important;
+    background: transparent !important;
+}
+
+.chat_box.subscribe.image .text_box .msg {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    background: transparent !important;
+}
+
+.chat_box.subscribe.image .text_box .val {
+    order: -1 !important;
+    text-align: center !important;
+    background: transparent !important;
+}
+
+.donation_box.subscribe .msg_box .msg {
+    background: transparent !important;
+}
+
+.chat_box.image:not(.subscribe) .donation_box {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.chat_box.image:not(.subscribe) .msg_box {
+    order: -1 !important;
+}
+
+.chat_box.image:not(.subscribe) .donation_box .text_box {
+    display: contents !important;
+}
+
+.chat_box.image .donation_box::before {
+    display: none !important;
+}
+
+/* ============================================= 
+        tokens
+============================================= */
+:root {
+    --text: #fef9ff;
+    --img1: url(https://lh3.googleusercontent.com/d/1HWRbGJ1HNWUXo_crNRUN6chMSoU03sC7); /* prism */
+    --img2: url(https://lh3.googleusercontent.com/d/1Xq6TMtl_ADDOF3E160RrEYUDbqhhR22Q); /* bubble-R */
+    --img3: url(https://lh3.googleusercontent.com/d/12GHHzfezi1xOQSjx2d9gjKt32YCP7zAl); /* bubble-L */
+    --img4: url(https://lh3.googleusercontent.com/d/1B6rL5XqVodA0TCVJ4eDcgQGxrtI-XWLA); /* star */
+    --img5: url(https://lh3.googleusercontent.com/d/1MOBlLE5Qy7B1wzbiSO_d3TEBW0paf1Nv); /* star */
+    --ob: url(https://lh3.googleusercontent.com/d/15VYHjPCFRhZ7IgkDV1_sCq9qPVH96atZ); /* rabbit */
+}
+
+.chat_box.chat:not(.streamer):not(.subscribe) {
+    --tail: url(https://lh3.googleusercontent.com/d/1rEiuUSnEHglBug6Ox60ERHVeU038RJUq);
+    --back: linear-gradient(
+        180deg,
+        #c36dff 0%,
+        #915cff 18%,
+        #6f46ff 52%,
+        #7e57ff 100%
+        );
+    --shadow: 
+        0 0 6px rgba(255,210,255,.95),
+        0 0 18px rgba(200,120,255,.85),
+        inset 0 3px 10px rgba(255,255,255,.45),
+        inset 0 12px 18px rgba(255,180,255,.35),
+        inset 0 -18px 22px rgba(70,20,180,.28),
+        inset 14px 0 18px rgba(255,220,255,.35),
+        inset -14px 0 18px rgba(255,220,255,.35);
+}
+
+/* ============================================= 
+        chat
+============================================= */
+.chat_box {
+    width: fit-content;
+    min-height: 70px;
+    max-width: 95%;
+    position: relative;
+}
+
+.chat_box::before {
+    content: "";
+    position: absolute;
+    width: 36px;
+    height: 31px;
+    bottom: -15px;
+    right: 40px;
+    background: var(--tail);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    z-index: 1;
+}
+
+.chat_box .inner_box {
+    position: relative;
+    padding: 23px 26px 23px 87px !important;
+    position:relative;
+    border-radius:999px;
+    border:2px solid rgba(255, 227, 255, 0.95);
+    box-shadow: var(--shadow);
+    background: 
+    var(--img5) no-repeat,
+    var(--img4) no-repeat,
+    var(--img3) no-repeat,
+    var(--img2) no-repeat,
+    var(--img1) repeat-y,
+    var(--back) repeat;
+    background-position: 
+    left 62px bottom 8px,
+    right 27px top 8px,
+    right bottom -26px,
+    left -5px center,
+    left -10px bottom -119px,
+    center;
+    background-size: 15px, 15px, 58px, 25% 100%, 480px, cover;
+    background-blend-mode: normal, normal, screen, screen, screen, normal;
+    z-index: 2;
+}
+
+.inner_box::before {
+    content: "";
+    position: absolute;
+    left: 17px;
+    top: 50%;
+    width: 46px;
+    height: 56px;
+    transform: translateY(-50%);
+    background: var(--ob);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    z-index: 3;
+}
+
+.chat_box .inner_box .text {
+    display: block !important;
+    width: 100% !important;
+    text-align: left !important;
+}
+
+/* ============================================= 
+        streamer
+============================================= */
+.chat_box.chat.streamer {
+    --tail: url(https://lh3.googleusercontent.com/d/1SWlbyTn5Tg1mLEMgmrXN95qdUdWvMHEl);
+    --back: linear-gradient(
+        180deg,
+        #f3b7ff 0%,
+        #ea8dff 14%,
+        #d96cff 38%,
+        #bc63ff 68%,
+        #c68dff 100%
+    );
+
+    --shadow:
+        0 0 8px rgba(255,235,255,.96),
+        0 0 18px rgba(255,190,255,.92),
+        inset 0 12px 20px rgba(255,255,255,.48),
+        inset 0 0 26px rgba(255,190,255,.26),
+        inset 0 -18px 28px rgba(120,40,210,.28),
+        inset 20px 0 22px rgba(255,240,255,.44),
+        inset -20px 0 22px rgba(255,240,255,.44),
+        inset 0 0 0 2px rgba(255,235,255,.78);
+}
+
+/* ============================================= 
+        chat - subscribe
+============================================= */
+.chat_box.chat.subscribe {
+    --tail: url(https://lh3.googleusercontent.com/d/1JoDReBf-brjiA3meS3-rJjCsDyVfUdAQ);
+    --back: linear-gradient(
+        180deg,
+        #e9b8ff 0%,
+        #cf8cff 16%,
+        #a75cff 42%,
+        #8452ff 72%,
+        #9d73ff 100%
+    );
+
+    --shadow:
+        0 0 8px rgba(255,220,255,.95),
+        0 0 18px rgba(235,170,255,.88),
+        inset 0 10px 18px rgba(255,255,255,.42),
+        inset 0 0 22px rgba(255,210,255,.22),
+        inset 0 -16px 26px rgba(80,30,190,.34),
+        inset 18px 0 20px rgba(255,235,255,.42),
+        inset -18px 0 20px rgba(255,235,255,.42),
+        inset 0 0 0 2px rgba(255,225,255,.72);
+}
+
+/* ============================================= 
+        donation
+============================================= */
+.chat_box.image:not(.subscribe) {
+    --tail: url(https://lh3.googleusercontent.com/d/1rEiuUSnEHglBug6Ox60ERHVeU038RJUq);
+    --back: linear-gradient(
+        180deg,
+        #c36dff 0%,
+        #915cff 18%,
+        #6f46ff 52%,
+        #7e57ff 100%
+        );
+    --shadow: 
+        0 0 6px rgba(255,210,255,.95),
+        0 0 18px rgba(200,120,255,.85),
+        inset 0 3px 10px rgba(255,255,255,.45),
+        inset 0 12px 18px rgba(255,180,255,.35),
+        inset 0 -18px 22px rgba(70,20,180,.28),
+        inset 14px 0 18px rgba(255,220,255,.35),
+        inset -14px 0 18px rgba(255,220,255,.35);
+}
+
+.chat_box.image .inner_box {
+    padding: 15px 26px 15px 87px !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .msg_box .val {
+    font-size: 18px !important;
+    color: #fef9ff !important;
+    background: #fca6ff !important;
+    border: 1px solid #f9b5ff;
+    padding: 3px 15px 1px 15px !important;
+    border-radius: 999vh;
+    text-shadow: none !important;
+    margin-left: 0 !important;
+    margin-right: auto !important;
+    margin-bottom: 10px !important;
+}
+
+/* ============================================= 
+        donation - subscribe
+============================================= */
+.chat_box.image.subscribe {
+    --tail: url(https://lh3.googleusercontent.com/d/1JoDReBf-brjiA3meS3-rJjCsDyVfUdAQ);
+    --back: linear-gradient(
+        180deg,
+        #e9b8ff 0%,
+        #cf8cff 16%,
+        #a75cff 42%,
+        #8452ff 72%,
+        #9d73ff 100%
+    );
+
+    --shadow:
+        0 0 8px rgba(255,220,255,.95),
+        0 0 18px rgba(235,170,255,.88),
+        inset 0 10px 18px rgba(255,255,255,.42),
+        inset 0 0 22px rgba(255,210,255,.22),
+        inset 0 -16px 26px rgba(80,30,190,.34),
+        inset 18px 0 20px rgba(255,235,255,.42),
+        inset -18px 0 20px rgba(255,235,255,.42),
+        inset 0 0 0 2px rgba(255,225,255,.72);
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .text_box .msg {
+    font-size: 0 !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .text_box .msg .val {
+    font-size: 18px !important;
+    color: #fef9ff !important;
+    background: #fca6ff !important;
+    border: 1px solid #f9b5ff;
+    padding: 3px 15px 1px 15px !important;
+    border-radius: 999vh;
+    text-shadow: none !important;
+    margin-left: 0 !important;
+    margin-right: auto !important;
+    margin-bottom: 10px !important;
+}
+
+/* ============================================= 
+        keyframes
+============================================= */
+.chat_box {
+    transform-origin: center bottom;
+    animation: neonPop .58s cubic-bezier(.18, 1.45, .42, 1) both !important;
+}
+
+/* ============================================= 
+        popup
+============================================= */
+
+@keyframes neonPop {
+    0% {
+        opacity: 0;
+        transform: translateY(18px) scale(.72);
+    }
+
+    48% {
+        opacity: 1;
+        transform: translateY(-4px) scale(1.06);
+    }
+
+    72% {
+        transform: translateY(2px) scale(.98);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ============================================= 
+        rabbit animations by type
+============================================= */
+.inner_box::before {
+    transform-origin: center bottom;
+    will-change: transform;
+}
+
+.chat_box.chat:not(.streamer):not(.subscribe) .inner_box::before {
+    animation: rabbitHopDefault 2.2s ease-in-out infinite !important;
+}
+
+.chat_box.chat.streamer .inner_box::before {
+    animation: rabbitSwayStreamer 2.6s ease-in-out infinite !important;
+}
+
+.chat_box.chat.subscribe .inner_box::before {
+    animation: rabbitPopSubscribe 1.8s ease-in-out infinite !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box::before {
+    animation: rabbitJumpDonationRight 1.9s ease-in-out infinite !important;
+}
+
+.chat_box.image.subscribe .inner_box::before {
+    animation: rabbitCelebrateSubscribe 2.3s ease-in-out infinite !important;
+}
+
+/* ============================================= 
+        default chat rabbit
+============================================= */
+
+@keyframes rabbitHopDefault {
+    0%, 100% {
+        transform: translateY(-50%) translateX(0) scale(1, 1) rotate(0deg);
+    }
+
+    25% {
+        transform: translateY(-55%) translateX(-1px) scale(1.04, .96) rotate(-1.5deg);
+    }
+
+    50% {
+        transform: translateY(-48%) translateX(1px) scale(.97, 1.05) rotate(1deg);
+    }
+
+    75% {
+        transform: translateY(-52%) translateX(-1px) scale(1.02, .98) rotate(-.8deg);
+    }
+}
+
+/* ============================================= 
+        streamer rabbit
+============================================= */
+
+@keyframes rabbitSwayStreamer {
+    0%, 100% {
+        transform: translateY(-50%) translateX(0) scale(1, 1) rotate(0deg);
+    }
+
+    25% {
+        transform: translateY(-51%) translateX(-2px) scale(1.02, .98) rotate(-4deg);
+    }
+
+    50% {
+        transform: translateY(-50%) translateX(1px) scale(.99, 1.01) rotate(2deg);
+    }
+
+    75% {
+        transform: translateY(-51%) translateX(-1px) scale(1.01, .99) rotate(-2deg);
+    }
+}
+
+/* ============================================= 
+        subscribe chat rabbit
+============================================= */
+
+@keyframes rabbitPopSubscribe {
+    0%, 100% {
+        transform: translateY(-50%) translateX(0) scale(1) rotate(0deg);
+    }
+
+    20% {
+        transform: translateY(-58%) translateX(-2px) scale(1.08, .92) rotate(-3deg);
+    }
+
+    40% {
+        transform: translateY(-46%) translateX(1px) scale(.94, 1.1) rotate(2deg);
+    }
+
+    62% {
+        transform: translateY(-53%) translateX(-1px) scale(1.04, .97) rotate(-1deg);
+    }
+
+    80% {
+        transform: translateY(-50%) translateX(0) scale(1) rotate(0deg);
+    }
+}
+
+/* ============================================= 
+        donation rabbit - right bounce
+============================================= */
+
+@keyframes rabbitJumpDonationRight {
+    0%, 100% {
+        transform: translateY(-50%) translateX(0) scale(1, 1) rotate(0deg);
+    }
+
+    18% {
+        transform: translateY(-62%) translateX(3px) scale(1.08, .9) rotate(4deg);
+    }
+
+    36% {
+        transform: translateY(-44%) translateX(5px) scale(.92, 1.14) rotate(-3deg);
+    }
+
+    56% {
+        transform: translateY(-55%) translateX(2px) scale(1.04, .96) rotate(2deg);
+    }
+
+    76% {
+        transform: translateY(-49%) translateX(1px) scale(.99, 1.02) rotate(-1deg);
+    }
+}
+
+/* ============================================= 
+        image subscribe rabbit
+============================================= */
+
+@keyframes rabbitCelebrateSubscribe {
+    0%, 100% {
+        transform: translateY(-50%) translateX(0) scale(1) rotate(0deg);
+    }
+
+    16% {
+        transform: translateY(-57%) translateX(-2px) scale(1.06, .94) rotate(-5deg);
+    }
+
+    32% {
+        transform: translateY(-47%) translateX(2px) scale(.96, 1.08) rotate(4deg);
+    }
+
+    52% {
+        transform: translateY(-54%) translateX(-1px) scale(1.04, .97) rotate(-2deg);
+    }
+
+    72% {
+        transform: translateY(-49%) translateX(1px) scale(.99, 1.02) rotate(1deg);
+    }
+}
