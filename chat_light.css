@@ -210,7 +210,7 @@ p {
     --inset-border: linear-gradient(0deg, #365e6c, #365e6c);
 }
 
-.chat_box.chat:not(.subscribe):not(.streamer) {
+.chat_box.chat:not(.image):nth-child(3n+1 of .chat_box.chat:not(.image)) {
     --img1: url(https://lh3.googleusercontent.com/d/1jqSsXMHmE6NQ-Z4GUkMjbs-8-HdCkJch); /* pattern */
     --img2: url(https://lh3.googleusercontent.com/d/1Q763qQhiYJ21xmMv-O_ZWOT2aPrIWXNJ); /* flag */
     --img3: url(https://lh3.googleusercontent.com/d/1BFyz8IBwB4k9Sp6rmmtBK1rk5BbbhKZD); /* corner */
@@ -289,7 +289,7 @@ p {
 /* ============================================= 
         streamer
 ============================================= */
-.chat_box.chat.streamer {
+.chat_box.chat:not(.image):nth-child(3n+2 of .chat_box.chat:not(.image)) {
     --img1: url(https://lh3.googleusercontent.com/d/12QVKzYFK42DZL5P5ZFcHbRvn8QG6bp0-); /* pattern */
     --img2: url(https://lh3.googleusercontent.com/d/1dIu646OqeqFx_Qpx7kf3QBrYOBzwe4b8); /* flag */
     --img3: url(https://lh3.googleusercontent.com/d/1D3uc5zLE8M7l0QV66_5kY_-fKw6iK0Rg); /* corner */
@@ -303,7 +303,7 @@ p {
 /* ============================================= 
         chat - subscribe
 ============================================= */
-.chat_box.chat.subscribe {
+.chat_box.chat:not(.image):nth-child(3n of .chat_box.chat:not(.image)) {
     --img1: url(https://lh3.googleusercontent.com/d/1zm-FHfV7-B8Ajn2qXO8CWHRGnjQmXYMz); /* pattern */
     --img2: url(https://lh3.googleusercontent.com/d/1j_uXm3pDTTGdvwa0HsQTHRO7tWt7EJTF); /* flag */
     --img3: url(https://lh3.googleusercontent.com/d/1peGSNmYwy-AmLtA8uuRASE2x_d5VnudA); /* corner */

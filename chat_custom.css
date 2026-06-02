@@ -161,7 +161,7 @@ p {
         0  8px 0 #1a1211 inset;
 }
 
-.chat_box.chat:not(.streamer):not(.subscribe) {
+.chat_box.chat:not(.image):nth-child(3n+1 of .chat_box.chat:not(.image)) {
     --text: #b1d2db;
     --img1: url(https://lh3.googleusercontent.com/d/11-X86AfhJcSTXkcke_7vgFagcBk_BdI7);
     --img2: url(https://lh3.googleusercontent.com/d/1T2sVycbgM-AtpLAZcJ9LH3_hVgH_q1Cw);
@@ -253,7 +253,7 @@ p {
 /* ============================================= 
         streamer
 ============================================= */
-.chat_box.chat.streamer {
+.chat_box.chat:not(.image):nth-child(3n+2 of .chat_box.chat:not(.image)) {
     --text: #281d1b;
     --img1: url(https://lh3.googleusercontent.com/d/1Am41tiE0o0epAUyOUj6F85rUX4r5aE0k);
     --img2: url(https://lh3.googleusercontent.com/d/1FakY3fyUwBKEWDa7PvaZ4xJym-HohFfF);
@@ -262,14 +262,14 @@ p {
     --back: linear-gradient(to top, #a09568, #e1d8c9);
 }
 
-.chat_box.chat.streamer .inner_box .text {
+.chat_box.chat:not(.image):nth-child(3n+2 of .chat_box.chat:not(.image)) .inner_box .text {
     text-shadow: none !important;
 }
 
 /* ============================================= 
         chat - subscribe
 ============================================= */
-.chat_box.chat.subscribe {
+.chat_box.chat:not(.image):nth-child(3n of .chat_box.chat:not(.image)) {
     --text: #c7edf7;
     --img1: url(https://lh3.googleusercontent.com/d/1Br8YVQbLj2mjWCQiO0GeHNmoicU-jUxF);
     --img2: url(https://lh3.googleusercontent.com/d/1ADNqTfupu9nJC6iezI6zUiB5kuQWxiVt);
