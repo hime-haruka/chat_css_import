@@ -37,8 +37,7 @@ p {
 }
 
 .chat_box {
-    margin-left: 10px !important;
-    margin-right: auto !important;
+    margin: 0 auto;
     margin-bottom: 60px !important;
 }
 
