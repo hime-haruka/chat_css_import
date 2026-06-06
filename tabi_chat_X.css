@@ -402,6 +402,8 @@ p {
 
     transform-origin: center bottom !important;
     will-change: transform, opacity;
+    margin: 0 auto !important;
+    margin-bottom: 60px !important;
 }
 
 @keyframes diaryPopIn {
