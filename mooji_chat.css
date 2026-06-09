@@ -41,30 +41,17 @@ p {
     margin-bottom: 25px !important;
 }
 
-.chat_box:not(.image) .nick {
-    display: none !important;
-}
-
 .chat_box.chat * {
     box-sizing: border-box !important;
-}
-
-.chat_box .inner_box .name {
-    display: none !important;
 }
 
 .icon_chzzk {
     display: none !important;
 }
 
-.icon_badge {
-    display: none !important;
-}
-
 .icon_beam {
     display: none !important;
 }
-
 
 /* ============================================= 
         donation reset
@@ -634,4 +621,53 @@ p {
         opacity: 1;
         transform: translateX(-50%) translateY(0) scale(1);
     }
+}
+
+/* =========================
+   badge before text fix
+========================= */
+
+#page_wrap .page_area.chat .chat_list .chat_box.chat .inner_box {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+}
+
+#page_wrap .page_area.chat .chat_list .chat_box.chat .inner_box > p.name {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex: 0 0 auto !important;
+    width: auto !important;
+    min-width: 18px !important;
+    height: 20px !important;
+    order: 1 !important;
+}
+
+#page_wrap .page_area.chat .chat_list .chat_box.chat .inner_box > p.text {
+    order: 2 !important;
+}
+
+#page_wrap .page_area.chat .chat_list .chat_box.chat .inner_box > p.name .icon_platform,
+#page_wrap .page_area.chat .chat_list .chat_box.chat .inner_box > p.name .nick,
+#page_wrap .page_area.chat .chat_list .chat_box.chat .inner_box > p.name .id {
+    display: none !important;
+}
+
+#page_wrap .page_area.chat .chat_list .chat_box.chat .inner_box > p.name .icon_badge {
+    display: inline-block !important;
+    width: 18px !important;
+    height: 18px !important;
+    min-width: 18px !important;
+    flex: 0 0 18px !important;
+    background-size: contain !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+
+.icon_badge.streamer,
+.icon_badge.cheese,
+.icon_badge.gold,
+.icon_badge.gift {
+    display: none !important;
 }
