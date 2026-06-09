@@ -664,10 +664,3 @@ p {
     background-position: center !important;
     background-repeat: no-repeat !important;
 }
-
-.icon_badge.streamer,
-.icon_badge.cheese,
-.icon_badge.gold,
-.icon_badge.gift {
-    display: none !important;
-}
