@@ -1,0 +1,666 @@
+/* 테스트 후원 미리보기 제거 */
+[data-id = "슈퍼챗"], [data-id = "치즈"], [data-id = "비트"], [data-id = "별풍선"], [data-id = "젬"], [data-id = "비트"], [data-id = "빔"] {
+    display: none;
+}
+
+@font-face {
+    font-family: 'Atomy';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/Atomy-Bold.woff') format('woff');
+    font-weight: normal;
+    font-display: swap;
+}
+
+/* ============================================= 
+        general
+============================================= */
+html {
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+}
+
+p {
+    position: relative;
+    margin: 0 !important;
+    line-height: 1.2 !important;
+    z-index: 999;
+    color: var(--text) !important;
+    text-shadow: none !important;
+    font-family: 'Atomy', Courier, monospace !important;
+    font-weight: 400 !important;
+    font-size: 20px !important;
+    letter-spacing: -0.8px !important;
+}
+
+.chat_area {
+    -webkit-mask-image: -webkit-gradient( linear, left bottom, left top, from(#000), color-stop(0.9, #000), to(transparent));    
+}
+
+.chat_box {
+    margin: 0 auto;
+    margin-bottom: 25px !important;
+}
+
+.chat_box.chat * {
+    box-sizing: border-box !important;
+}
+
+.icon_chzzk {
+    display: none !important;
+}
+
+.icon_beam {
+    display: none !important;
+}
+
+/* ============================================= 
+        donation reset
+============================================= */
+.chat_box.image .donation_box p {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+}
+
+.chat_box.image .donation_box {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    background: transparent !important;
+}
+
+.chat_box.image .donation_box .text_box,
+.chat_box.image .donation_box .msg_box {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+}
+
+.chat_box.image:not(.subscribe) .msg_box {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background: transparent !important;
+}
+
+.chat_box.image:not(.subscribe) .msg_box .val {
+    text-align: center !important;
+    width: auto !important;
+    background: transparent !important;
+}
+
+.chat_box.subscribe.image .text_box {
+    display: flex !important;
+    flex-direction: column !important;
+    background: transparent !important;
+}
+
+.chat_box.subscribe.image .text_box .msg {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    background: transparent !important;
+}
+
+.chat_box.subscribe.image .text_box .val {
+    order: -1 !important;
+    text-align: center !important;
+    background: transparent !important;
+}
+
+.donation_box.subscribe .msg_box .msg {
+    background: transparent !important;
+}
+
+.chat_box.image:not(.subscribe) .donation_box {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.chat_box.image:not(.subscribe) .donation_box .text_box {
+    display: contents !important;
+}
+
+/* nick */
+.chat_box.image:not(.subscribe) .donation_box .text_box .nick {
+    display: block !important;
+    order: 1 !important;
+    text-align: center !important;
+}
+
+/* val */
+.chat_box.image:not(.subscribe) .donation_box .msg_box {
+    order: 2 !important;
+    display: flex !important;
+    justify-content: center !important;
+}
+
+.chat_box.image:not(.subscribe) .donation_box .msg_box .val {
+    display: block !important;
+    text-align: center !important;
+}
+
+/* text */
+.chat_box.image:not(.subscribe) .donation_box .text_box .msg {
+    display: block !important;
+    order: 3 !important;
+    text-align: center !important;
+}
+
+.chat_box.image .inner_box .donation_box.subscribe::before {
+    display: none !important;
+}
+
+/* ============================================= 
+        tokens
+============================================= */
+.chat_box.chat:not(.streamer):not(.subscribe) {
+    --back: linear-gradient(0deg, #ffffff, #ffffff);
+    --outline: 2px solid #d0a253;
+    --border: 4px solid #ffecab;
+    --pattern: url(https://lh3.googleusercontent.com/d/19OMkjh-PcERYeLW0myxItZg__6mQoZUg);
+    --dash: url(https://lh3.googleusercontent.com/d/1PFdV2IpoeA-YRbdTcay1FxU-g0t-ADgn);
+    --ear: url(https://lh3.googleusercontent.com/d/1M77erpVXOHekcG2BUwcZ_5xLe_cREjMZ);
+    --pin1: url(https://lh3.googleusercontent.com/d/15kvbC2Oz0y9BLDSMmTnBuBi3JAPjKkKw);
+    --pin2: url(https://lh3.googleusercontent.com/d/1Nzf72AH3ORUI3Ba66g59b8Tc3OiO0C0i);
+    --ribbon: url(https://lh3.googleusercontent.com/d/1HBE2pD3sZu4V7LhUjNI4GKB7cw1JCTx-);
+    --text: #5c3b20;
+}
+
+/* ============================================= 
+        chat
+============================================= */
+.chat_box {
+    width: fit-content;
+    max-width: calc(100% - 100px);
+    min-width: 100px;
+    position: relative;
+}
+
+.chat_box::before, .chat_box::after {
+    content: "";
+    position: absolute;
+    width: 49px;
+    height: 49px;
+    top: -12px;
+    background: var(--ear);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    z-index: 0;
+}
+
+.chat_box::before { left: -20px; }
+
+.chat_box::after { right: -20px; }
+
+.chat_box .inner_box {
+    position: relative;
+    padding: 16px 23px !important;
+    z-index: 1;
+    background:
+        var(--dash),
+        var(--dash),
+        var(--pattern),
+        var(--back);
+    background-position: 
+        center top 3px,
+        center bottom 2px,
+        center, center;
+    background-repeat: repeat-x, repeat-x, repeat, repeat;
+    background-size: 298px, 298px, 346px, cover;
+    border-radius: 999vh;
+    outline: var(--outline);
+    border: var(--border);
+    border-radius: 33px;
+}
+
+/* ribbon */
+.chat_box .inner_box::before {
+    content: "";
+    position: absolute;
+    width: 43px;
+    height: 26px;
+    left: 50%;
+    bottom: -14px;
+    background: var(--ribbon);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+/* pin */
+.chat_box .inner_box::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 22px;
+    top: -12px;
+    right: 30px;
+    background: var(--pin1), var(--pin2);
+    background-position: left center, right center;
+    background-repeat: no-repeat, no-repeat;
+    background-size: 5px, 5px;
+}
+
+/* ============================================= 
+        streamer
+============================================= */
+.chat_box.chat.streamer {
+    --back: linear-gradient(0deg, #ffffff, #ffffff);
+    --outline: 2px solid #767a95;
+    --border: 4px solid #b0bbff;
+    --pattern: url(https://lh3.googleusercontent.com/d/19vI9-gnMGY4Zgt_d22dy56u8PJApWeJl);
+    --dash: url(https://lh3.googleusercontent.com/d/1gZuolEnalpmiwfeZgdfoWb3bBV-Asj-N);
+    --ear: url(https://lh3.googleusercontent.com/d/1RPNfsx8nXx-g_xgTBB4ZLJiUElFYBkR5);
+    --pin1: url(https://lh3.googleusercontent.com/d/1yUafyw0YcLaA1VI3gjPfqiK9SN3ii1rB);
+    --pin2: url(https://lh3.googleusercontent.com/d/1QDD0f3ocedXUJsWk4LcYNIzrq8KJHLsg);
+    --ribbon: url(https://lh3.googleusercontent.com/d/17jLCbcssWiTXHlpyN9tw9etn1RtBv1Gd);
+    --text: #474e76;
+}
+
+/* ============================================= 
+        chat - subscribe
+============================================= */
+.chat_box.chat.subscribe {
+    --back: linear-gradient(0deg, #ffffff, #ffffff);
+    --outline: 2px solid #c1903d;
+    --border: 4px solid #ffe2b0;
+    --pattern: url(https://lh3.googleusercontent.com/d/13WB7uMP4Lkc4V-c2k8k0_LCkiPLcBzXG);
+    --dash: url(https://lh3.googleusercontent.com/d/1PFdV2IpoeA-YRbdTcay1FxU-g0t-ADgn);
+    --ear: url(https://lh3.googleusercontent.com/d/1a-sVdpbBEB_FkdWbPqdF0G2sQ8HI2aL4);
+    --pin1: url(https://lh3.googleusercontent.com/d/1DRZQfVef7fDdby-AoIsqbIEyVc1_dJqc);
+    --pin2: url(https://lh3.googleusercontent.com/d/10pKRbFM9tae043wO5XwxXWX6253g7oVS);
+    --ribbon: url(https://lh3.googleusercontent.com/d/14ke848jkLj6p0oOl6kN1gsoOvCRlWP5z);
+    --text: #5c3b20;
+}
+
+/* ============================================= 
+        donation
+============================================= */
+.chat_box.image:not(.subscribe) {
+    --back: linear-gradient(0deg, #ffffff, #ffffff);
+    --outline: 2px solid #d0a253;
+    --border: 4px solid #ffecab;
+    --pattern: url(https://lh3.googleusercontent.com/d/19OMkjh-PcERYeLW0myxItZg__6mQoZUg);
+    --dash: url(https://lh3.googleusercontent.com/d/1PFdV2IpoeA-YRbdTcay1FxU-g0t-ADgn);
+    --ear: url(https://lh3.googleusercontent.com/d/1M77erpVXOHekcG2BUwcZ_5xLe_cREjMZ);
+    --pin1: url(https://lh3.googleusercontent.com/d/15kvbC2Oz0y9BLDSMmTnBuBi3JAPjKkKw);
+    --pin2: url(https://lh3.googleusercontent.com/d/1Nzf72AH3ORUI3Ba66g59b8Tc3OiO0C0i);
+    --ribbon: url(https://lh3.googleusercontent.com/d/1HBE2pD3sZu4V7LhUjNI4GKB7cw1JCTx-);
+    --text: #5c3b20;
+    --valBadge: #fff6d9;
+    --valBorder: #fff2ca;
+    --valout: 1px solid #ffe0ab;
+}
+
+.chat_box.image {
+    width: calc(100% - 50px) !important;
+    max-width: calc(100% - 50px) !important;
+    min-width: calc(100% - 50px) !important;
+}
+
+.chat_box.image .inner_box {
+    padding: 16px 0 !important;
+}
+
+.chat_box.image .inner_box .donation_box {
+    position: relative;
+    overflow: visible !important;
+}
+
+.chat_box.image .inner_box .donation_box::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 54px;
+    top: 0;
+    left: auto;
+    right: auto;
+    background-color: var(--valBadge);
+    box-shadow:
+        inset 0 4px 0 var(--valBorder),
+        inset 0 -4px 0 var(--valBorder);
+    border-top: var(--valout);
+    border-bottom: var(--valout);
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .text_box .nick {
+    font-size: 18px !important;
+    margin-top: 5px !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .text_box .nick::after {
+    content: " 님이";
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .text_box .msg {
+    margin-top: 20px !important;
+    text-align: center !important;
+    padding: 0 74px !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .msg_box .val {
+    font-size: 18px !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .msg_box .val::after {
+    content: " 치즈를 선물했어요!";
+}
+
+.chat_box.image .inner_box .donation_box .nick,
+.chat_box.image .inner_box .donation_box .val {
+    font-size: 18px !important;
+    color: var(--text) !important;
+}
+
+/* ============================================= 
+        donation - subscribe
+============================================= */
+.chat_box.image.subscribe {
+    --back: linear-gradient(0deg, #ffffff, #ffffff);
+    --outline: 2px solid #c1903d;
+    --border: 4px solid #ffe2b0;
+    --pattern: url(https://lh3.googleusercontent.com/d/13WB7uMP4Lkc4V-c2k8k0_LCkiPLcBzXG);
+    --dash: url(https://lh3.googleusercontent.com/d/1PFdV2IpoeA-YRbdTcay1FxU-g0t-ADgn);
+    --ear: url(https://lh3.googleusercontent.com/d/1a-sVdpbBEB_FkdWbPqdF0G2sQ8HI2aL4);
+    --pin1: url(https://lh3.googleusercontent.com/d/1DRZQfVef7fDdby-AoIsqbIEyVc1_dJqc);
+    --pin2: url(https://lh3.googleusercontent.com/d/10pKRbFM9tae043wO5XwxXWX6253g7oVS);
+    --ribbon: url(https://lh3.googleusercontent.com/d/14ke848jkLj6p0oOl6kN1gsoOvCRlWP5z);
+    --text: #5c3b20;
+    --valBadge: #ffe7be;
+    --valBorder: #ffebc8;
+    --valout: 1px solid #ffe2b0;
+}
+
+.chat_box.subscribe.image .inner_box .donation_box .text_box {
+    margin-top: 5px !important;
+}
+
+.chat_box.subscribe.image .inner_box .donation_box .text_box .nick {
+    text-align: center !important;
+    font-size: 18px !important;
+    margin: 0 auto !important;
+}
+
+.chat_box.subscribe.image .inner_box .donation_box .text_box .nick::after {
+    content: "  님과";
+}
+
+.chat_box.subscribe.image .inner_box .donation_box .text_box .msg {
+    font-size: 0 !important;
+}
+
+.chat_box.subscribe.image .inner_box .donation_box .text_box .msg .val {
+    font-size: 18px !important;
+    color: var(--text) !important;
+}
+
+.chat_box.subscribe.image .inner_box .donation_box .text_box .msg .val::after {
+    content: " 동안 함께했습니다!";
+}
+
+.chat_box.subscribe.image .inner_box .donation_box .msg_box {
+    text-align: center !important;
+    margin-top: 20px !important;
+    padding: 0 74px !important;
+}
+
+.chat_box.image .donation_box {
+    position: relative !important;
+    isolation: isolate;
+}
+/* ============================================= 
+        keyframes
+============================================= */
+.chat_box {
+    animation: moojiPopIn 0.58s cubic-bezier(.18, 1.35, .38, 1) both !important;
+    transform-origin: center bottom;
+}
+
+.chat_box.chat {
+    animation-name: moojiChatPopIn !important;
+}
+
+.chat_box.image {
+    animation-name: moojiDonationPopIn !important;
+}
+
+.chat_box::before {
+    animation:
+        moojiEarLeft 0.72s ease-out both,
+        moojiEarTwitchLeft 4.5s ease-in-out 1.2s infinite;
+    transform-origin: right bottom;
+}
+
+.chat_box::after {
+    animation:
+        moojiEarRight 0.72s ease-out both,
+        moojiEarTwitchRight 4.5s ease-in-out 1.2s infinite;
+    transform-origin: left bottom;
+}
+
+.chat_box .inner_box::after {
+    animation: moojiPinDrop 0.62s cubic-bezier(.18, 1.35, .38, 1) 0.12s both;
+}
+
+.chat_box .inner_box::before {
+    animation:
+        moojiRibbonBounce 0.72s cubic-bezier(.18, 1.45, .35, 1) 0.16s both;
+    transform-origin: center center;
+}
+
+/* =========================
+    Pop In
+========================= */
+
+@keyframes moojiChatPopIn {
+    0% {
+        opacity: 0;
+        transform: translateY(18px) scale(0.88);
+    }
+    55% {
+        opacity: 1;
+        transform: translateY(-4px) scale(1.04);
+    }
+    78% {
+        transform: translateY(2px) scale(0.98);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes moojiDonationPopIn {
+    0% {
+        opacity: 0;
+        transform: translateY(26px) scale(0.82);
+    }
+    45% {
+        opacity: 1;
+        transform: translateY(-8px) scale(1.06);
+    }
+    68% {
+        transform: translateY(3px) scale(0.97);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* =========================
+    Ear Intro
+========================= */
+
+@keyframes moojiEarLeft {
+    0% {
+        opacity: 0;
+        transform: rotate(-18deg) scale(0.65);
+    }
+    45% {
+        opacity: 1;
+        transform: rotate(8deg) scale(1.08);
+    }
+    70% {
+        transform: rotate(-4deg) scale(0.98);
+    }
+    100% {
+        opacity: 1;
+        transform: rotate(0) scale(1);
+    }
+}
+
+@keyframes moojiEarRight {
+    0% {
+        opacity: 0;
+        transform: rotate(18deg) scale(0.65);
+    }
+    45% {
+        opacity: 1;
+        transform: rotate(-8deg) scale(1.08);
+    }
+    70% {
+        transform: rotate(4deg) scale(0.98);
+    }
+    100% {
+        opacity: 1;
+        transform: rotate(0) scale(1);
+    }
+}
+
+/* =========================
+    Ear Idle
+========================= */
+@keyframes moojiEarTwitchLeft {
+    0%, 82%, 100% {
+        transform: rotate(0deg) scale(1);
+    }
+
+    86% {
+        transform: rotate(-6deg) scale(1.04);
+    }
+
+    89% {
+        transform: rotate(2deg) scale(1);
+    }
+
+    92% {
+        transform: rotate(-4deg) scale(1.02);
+    }
+
+    95% {
+        transform: rotate(0deg) scale(1);
+    }
+}
+
+@keyframes moojiEarTwitchRight {
+    0%, 82%, 100% {
+        transform: rotate(0deg) scale(1);
+    }
+
+    86% {
+        transform: rotate(6deg) scale(1.04);
+    }
+
+    89% {
+        transform: rotate(-2deg) scale(1);
+    }
+
+    92% {
+        transform: rotate(4deg) scale(1.02);
+    }
+
+    95% {
+        transform: rotate(0deg) scale(1);
+    }
+}
+
+/* =========================
+    Pin
+========================= */
+
+@keyframes moojiPinDrop {
+    0% {
+        opacity: 0;
+        transform: translateY(-18px) scaleY(1.25);
+    }
+    55% {
+        opacity: 1;
+        transform: translateY(3px) scaleY(0.88);
+    }
+    78% {
+        transform: translateY(-2px) scaleY(1.06);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scaleY(1);
+    }
+}
+
+/* =========================
+    Ribbon Intro
+========================= */
+
+@keyframes moojiRibbonBounce {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-8px) scale(0.55);
+    }
+    48% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(2px) scale(1.18);
+    }
+    72% {
+        transform: translateX(-50%) translateY(-1px) scale(0.92);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) scale(1);
+    }
+}
+
+/* =========================
+   badge before text fix
+========================= */
+
+#page_wrap .page_area.chat .chat_list .chat_box.chat .inner_box {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+}
+
+#page_wrap .page_area.chat .chat_list .chat_box.chat .inner_box > p.name {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex: 0 0 auto !important;
+    width: auto !important;
+    min-width: 18px !important;
+    height: 20px !important;
+    order: 1 !important;
+}
+
+#page_wrap .page_area.chat .chat_list .chat_box.chat .inner_box > p.text {
+    order: 2 !important;
+}
+
+#page_wrap .page_area.chat .chat_list .chat_box.chat .inner_box > p.name .icon_platform,
+#page_wrap .page_area.chat .chat_list .chat_box.chat .inner_box > p.name .nick,
+#page_wrap .page_area.chat .chat_list .chat_box.chat .inner_box > p.name .id {
+    display: none !important;
+}
+
+#page_wrap .page_area.chat .chat_list .chat_box.chat .inner_box > p.name .icon_badge {
+    display: inline-block !important;
+    width: 18px !important;
+    height: 18px !important;
+    min-width: 18px !important;
+    flex: 0 0 18px !important;
+    background-size: contain !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
