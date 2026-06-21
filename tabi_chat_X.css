@@ -395,16 +395,6 @@ p {
 /* ============================================= 
         keyframes
 ============================================= */
-@keyframes diaryTinyFloat {
-    0%, 100% {
-        transform: translateY(0) rotate(0deg);
-    }
-
-    50% {
-        transform: translateY(-3px) rotate(.7deg);
-    }
-}
-
 .chat_box.chat::before {
     animation: fanCharSoftNod 3.4s ease-in-out infinite !important;
     transform-origin: 50% 78% !important;
