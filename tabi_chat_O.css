@@ -406,46 +406,6 @@ p {
 /* ============================================= 
         keyframes
 ============================================= */
-.chat_box {
-    animation:
-        diaryPopIn 0.52s cubic-bezier(.18, 1.35, .32, 1) both,
-        diaryTinyFloat 3.8s ease-in-out 0.6s infinite !important;
-
-    transform-origin: center bottom !important;
-    will-change: transform, opacity;
-}
-
-@keyframes diaryPopIn {
-    0% {
-        opacity: 0;
-        transform: translateY(18px) scale(.72) rotate(-4deg);
-    }
-
-    58% {
-        opacity: 1;
-        transform: translateY(-5px) scale(1.08) rotate(2deg);
-    }
-
-    76% {
-        transform: translateY(2px) scale(.97) rotate(-1deg);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0) scale(1) rotate(0deg);
-    }
-}
-
-@keyframes diaryTinyFloat {
-    0%, 100% {
-        transform: translateY(0) rotate(0deg);
-    }
-
-    50% {
-        transform: translateY(-3px) rotate(.7deg);
-    }
-}
-
 .chat_box.chat::before {
     animation: fanCharSoftNod 3.4s ease-in-out infinite !important;
     transform-origin: 50% 78% !important;
