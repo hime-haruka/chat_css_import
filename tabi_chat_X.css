@@ -141,7 +141,7 @@ p {
         tokens
 ============================================= */
 :root {
-    --text: #3896d7;
+    --text: #14639b;
     --fanchar: url(https://lh3.googleusercontent.com/d/1fCh5U-QUIVr7VXH-6ZL-W7AJszDRO7rh);
     --fanchar2: url(https://lh3.googleusercontent.com/d/1obYf5vK_FAUARrFishfuOGf6z79lxQm-);
     --dot: url(https://lh3.googleusercontent.com/d/1iKmW-QoDdKDdoCzKjPA8cb_ZACQnp6aW);
@@ -219,7 +219,7 @@ p {
 }
 
 .chat_box .inner_box {
-    padding: 43px 58px 13px 58px;
+    padding: 35px 58px 5px 58px;
     position: relative;
 }
 
@@ -236,17 +236,18 @@ p {
 
     background-repeat: no-repeat;
     background-size:
-        36px 36px,   /* 작은 별: 12px 안전 여백 포함 */
-        41px 41px,   /* 큰 별: 12px 안전 여백 포함 */
-        38px 37px,   /* 하트: 12px 안전 여백 포함 */
-        61px 60px,   /* 우측 오브: 10px 안전 여백 포함 */
-        57px 59px;   /* 좌측 오브: 10px 안전 여백 포함 */
+        30px 30px,   /* 작은 별 */
+        36px 36px,   /* 큰 별 */
+        30px 29px,   /* 하트 */
+        51px 50px,   /* 우측 오브 */
+        50px 52px;   /* 좌측 오브 */
     background-position:
-        left 23px bottom 50px,      /* 작은 별: 기존 left 35 / bottom 62 - padding 12 */
-        left -2px bottom 52px,      /* 큰 별: 기존 left 10 / bottom 64 - padding 12 */
-        right -4px top 52px,        /* 하트: 기존 right 8 / top 64 - padding 12 */
-        right 0px top 10px,         /* 우측 오브: 기존 right 10 / top 20 - padding 10 */
-        left 0px bottom 10px;       /* 좌측 오브: 기존 left 10 / bottom 20 - padding 10 */
+        left 23px bottom 40px,      /* 작은 별 */
+        left -2px bottom 42px,      /* 큰 별 */
+        right -4px top 48px,        /* 하트 */
+        right 0px top 10px,         /* 우측 오브 */
+        left 0px bottom 8px;        /* 좌측 오브 */
+    z-index: 2;
 }
 
 /* ============================================= 
