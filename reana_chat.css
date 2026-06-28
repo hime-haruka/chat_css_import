@@ -147,21 +147,14 @@ p {
     --outline: 2px solid #7f563f;
 }
 
+/* ============================================= 
+        chat
+============================================= */
 .chat_box.chat:not(.streamer) {
     --but: url(https://lh3.googleusercontent.com/d/1jbjuhpomd1HqeZ34tGQlLI6Mqe2KoHkC);
     --pin: url(https://lh3.googleusercontent.com/d/1I1wYIZQeolU1tStC4x0ppUivYjRPZF4j);
     --fence: url(https://lh3.googleusercontent.com/d/1Q93T5WczFZeFkUQivRZ9JDbPkHte-wSW);
-    --border: 4px solid #f3eae3;
-}
-
-/* ============================================= 
-        chat
-============================================= */
-.chat_box.chat:not(.streamer):not(.subscribe) {
-    --but: url(https://lh3.googleusercontent.com/d/1jbjuhpomd1HqeZ34tGQlLI6Mqe2KoHkC);
-    --pin: url(https://lh3.googleusercontent.com/d/1I1wYIZQeolU1tStC4x0ppUivYjRPZF4j);
-    --fence: url(https://lh3.googleusercontent.com/d/1Q93T5WczFZeFkUQivRZ9JDbPkHte-wSW);
-    --border: 4px solid #f3eae3;
+    --border: 4px solid #F5E3A3;
 }
 
 .chat_box {
@@ -220,7 +213,7 @@ p {
     --but: url(https://lh3.googleusercontent.com/d/1Ikt4QpKWRpbVbJLQ53tqLhNY98viahx-);
     --pin: url(https://lh3.googleusercontent.com/d/11Ggc876Xbd-KnSOARVYN4kZ9E6vgcbPQ);
     --fence: url(https://lh3.googleusercontent.com/d/126DrndY5aDrBL0TEyEcBzHyDUv4liPTE);
-    --border: 4px solid #f3e3e7;
+    --border: 4px solid #F3BFD3;
 }
 
 /* ============================================= 
@@ -237,7 +230,7 @@ p {
     --pin: url(https://lh3.googleusercontent.com/d/1I1wYIZQeolU1tStC4x0ppUivYjRPZF4j);
     --fence: url(https://lh3.googleusercontent.com/d/1Q93T5WczFZeFkUQivRZ9JDbPkHte-wSW);
     --border: 4px solid #f3eae3;
-    --valbadge: #fff6cc;
+    --valbadge: #f5e7b3;
     --valtext: #bf926c;
 }
 
@@ -246,7 +239,7 @@ p {
     --pin: url(https://lh3.googleusercontent.com/d/1eJr1f8Ub3pdCOoeaLOFD5hel5Pc_wwly);
     --fence: url(https://lh3.googleusercontent.com/d/1EkOY5JOja_sOXg8AFhAETGVbeOhB_i1Y);
     --border: 4px solid #defff8;
-    --valbadge: #A8EFD8;
+    --valbadge: #a8efd8;
     --valtext: #22a080;
 }
 
@@ -255,8 +248,8 @@ p {
     --pin: url(https://lh3.googleusercontent.com/d/11Ggc876Xbd-KnSOARVYN4kZ9E6vgcbPQ);
     --fence: url(https://lh3.googleusercontent.com/d/126DrndY5aDrBL0TEyEcBzHyDUv4liPTE);
     --border: 4px solid #f3e3e7;
-    --valbadge: #ffdae3;
-    --valtext: #ff90ac;
+    --valbadge: #f4b4c0;
+    --valtext: #ca506f;
 }
 
 .chat_box.image:not(.subscribe):has(.donation_1000000) {
@@ -264,7 +257,7 @@ p {
     --pin: url(https://lh3.googleusercontent.com/d/1-y4OF_5sAz2JhbYwZo5uwcEXqVWANScQ);
     --fence: url(https://lh3.googleusercontent.com/d/1Zc5b5TTIxJZIkg5IyA1SRkfhz6_3UvAJ);
     --border: 4px solid #f9daff;
-    --valbadge: #f4beff;
+    --valbadge: #dfc6f5;
     --valtext: #ad60bd;
 }
 
@@ -396,12 +389,12 @@ p {
         donation - subscribe
 ============================================= */
 .chat_box.image.subscribe {
-    --but: url(https://lh3.googleusercontent.com/d/1jbjuhpomd1HqeZ34tGQlLI6Mqe2KoHkC);
-    --pin: url(https://lh3.googleusercontent.com/d/1I1wYIZQeolU1tStC4x0ppUivYjRPZF4j);
-    --fence: url(https://lh3.googleusercontent.com/d/1Q93T5WczFZeFkUQivRZ9JDbPkHte-wSW);
-    --border: 4px solid #f3eae3;
-    --valbadge: #fff6cc;
-    --valtext: #bf926c;
+    --but: url(https://lh3.googleusercontent.com/d/1PxvvV-dc2AV7dO8G3z2xdttOZ1ezHLGM);
+    --pin: url(https://lh3.googleusercontent.com/d/1iHfLyeNaXGjH-gjlOG4DKo52HsTG0HBd);
+    --fence: url(https://lh3.googleusercontent.com/d/1yO-LLdsRz5nlyGe-UWNoVrr-6Yppp22y);
+    --border: 4px solid #bfeaff;
+    --valbadge: #bfeaff;
+    --valtext: #60b0d8;
 }
 
 .chat_box.image.subscribe .inner_box .donation_box .text_box .nick::after {
