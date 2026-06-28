@@ -1,0 +1,364 @@
+[data-id = "슈퍼챗"], [data-id = "치즈"], [data-id = "비트"], [data-id = "별풍선"], [data-id = "젬"], [data-id = "비트"], [data-id = "빔"] {
+    display: none;
+}
+
+@font-face {
+    font-family: 'SchoolSafetyNotification';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimAllimjangTTF-R.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SchoolSafetyNotification';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimAllimjangTTF-B.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+}
+
+/* ============================================= 
+        general
+============================================= */
+html {
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+}
+
+p {
+    color: var(--text) !important;
+    position: relative;
+    margin: 0 !important;
+    line-height: 1.2 !important;
+    z-index: 999;
+    text-shadow: 2px 2px 0px #74777c !important;
+    font-family: 'SchoolSafetyNotification', Courier, monospace !important;
+    font-weight: 400 !important;
+    font-size: 22px !important;
+    letter-spacing: -0.2px !important;
+    text-align: center !important;
+}
+
+.chat_area {
+    -webkit-mask-image: -webkit-gradient( linear, left bottom, left top, from(#000), color-stop(0.9, #000), to(transparent));    
+}
+
+.chat_box {
+    margin-left: 30px;
+    margin-right: auto;
+    margin-bottom: 30px !important;
+}
+
+.chat_box:not(.image) .nick {
+    display: none !important;
+}
+
+.chat_box.chat * {
+    box-sizing: border-box !important;
+}
+
+.chat_box .inner_box .name {
+    display: none !important;
+}
+
+.icon_chzzk {
+    display: none !important;
+}
+
+.icon_badge {
+    display: none !important;
+}
+
+/* ============================================= 
+        tokens
+============================================= */
+:root {
+    --text: #fff;
+    --back: linear-gradient( 180deg,#bfc4ca 0%,#aeb4bb 10%,#9fa6ad 25%,#989fa6 55%,#9da4ab 82%,#b4b9bf 100% );
+    --texture: url(https://lh3.googleusercontent.com/d/1M8vmowsPeMysUeJ0WBwfFb6XGY656tDW);
+    --halftone: url(https://lh3.googleusercontent.com/d/1FcgkcS6PLaCl5_oeKJjKl6pAEPGxAqV1);
+    --heart: url(https://lh3.googleusercontent.com/d/1Se7sRBl7mQknxm6jtp5N950CI07vZxhi);
+    --ribbon: url(https://lh3.googleusercontent.com/d/1TXkIUXaUAwiaa3lTEiEnfMeNSkQcGxUu);
+    --star: url(https://lh3.googleusercontent.com/d/18WCPDTJ7Zwb21qYvcpoO39M1dVsOetPa);
+    --tail: url(https://lh3.googleusercontent.com/d/1ymrGS1yLQkumDvzxhoQ4dz3tF95b3LnY);
+}
+
+/* ============================================= 
+        design
+============================================= */
+.chat_box.chat {
+    width: fit-content;
+    position: relative;
+}
+
+.chat_box.chat::before {
+    content: "";
+    position: absolute;
+    width: 61px;
+    height: 23px;
+    right: 3px;
+    top: 7px;
+    background: var(--star);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.chat_box.chat::after {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 21px;
+    left: -14px;
+    top: 50%;
+    background: var(--tail);
+    background-position: center;
+    background-size: 100%;
+    z-index: 2;
+    transform: translateY(-50%);
+}
+
+.chat_box.chat .inner_box {
+    position: static;
+    padding: 18px 40px 18px 28px !important;
+    box-sizing: border-box;
+    border: 2px solid #5c5f62;
+    border-radius: 25px;
+    background:
+        linear-gradient(
+            90deg,
+            transparent 0,
+            transparent 30px,
+            rgba(255, 255, 255, 0.92) 46px,
+            rgba(255, 255, 255, 0.78) calc(100% - 70px),
+            transparent calc(100% - 34px),
+            transparent 100%
+        ) 0 2px / 100% 2px no-repeat,
+
+        linear-gradient(
+            90deg,
+            transparent 0,
+            transparent 36px,
+            rgba(255, 255, 255, 0.36) 58px,
+            rgba(255, 255, 255, 0.16) calc(100% - 88px),
+            transparent calc(100% - 44px),
+            transparent 100%
+        ) 0 5px / 100% 5px no-repeat,
+
+        linear-gradient(
+            90deg,
+            transparent 0,
+            transparent 92px,
+            rgba(255, 255, 255, 0.46) 116px,
+            rgba(255, 255, 255, 0.36) calc(100% - 96px),
+            transparent calc(100% - 54px),
+            transparent 100%
+        ) 0 calc(100% - 4px) / 100% 2px no-repeat,
+
+        linear-gradient(
+            90deg,
+            transparent 0,
+            transparent 110px,
+            rgba(255, 255, 255, 0.16) 138px,
+            rgba(255, 255, 255, 0.1) calc(100% - 118px),
+            transparent calc(100% - 70px),
+            transparent 100%
+        ) 0 calc(100% - 7px) / 100% 3px no-repeat,
+
+        var(--halftone) center / 1032px no-repeat,
+        var(--texture) center / 631px repeat,
+        var(--back) center / cover repeat;
+
+    background-blend-mode:
+        normal,
+        normal,
+        normal,
+        normal,
+        normal,
+        overlay,
+        normal;
+
+    box-shadow:
+        inset 0 4px 3px rgba(255, 255, 255, 0.08),
+        inset 0 8px 7px rgba(45, 49, 59, 0.09),
+        inset -2px -2px 2px rgba(255, 255, 255, 0.24),
+        inset -4px -4px 4px rgba(45, 49, 59, 0.055);
+
+    z-index: 0;
+}
+
+.chat_box.chat .inner_box::before {
+    content: "";
+    position: absolute;
+    width: 38px;
+    height: 44px;
+    right: -10px;
+    bottom: 8px;
+    background: var(--heart);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.chat_box.chat .inner_box::after {
+    content: "";
+    position: absolute;
+    width: 47px;
+    height: 41px;
+    left: 12px;
+    top: -19px;
+    background: var(--ribbon);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    z-index: 2;
+}
+
+/* ============================================= 
+        keyframes
+============================================= */
+.chat_box.chat {
+    animation: chatSlideIn 720ms cubic-bezier(0.16, 1, 0.3, 1) both !important;
+    transform-origin: left center;
+    will-change: transform, opacity;
+}
+
+.chat_box.chat .inner_box {
+    animation: chatBubbleSettle 1100ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 80ms;
+    transform-origin: left center;
+    will-change: transform, filter;
+}
+
+.chat_box.chat::before {
+    animation: chatStarShine 2600ms ease-in-out infinite both;
+    animation-delay: 520ms;
+    transform-origin: center;
+    will-change: transform, opacity, filter;
+}
+
+.chat_box.chat .inner_box::before {
+    animation: chatHeartFloat 2200ms ease-in-out infinite both;
+    animation-delay: 620ms;
+    transform-origin: center bottom;
+    will-change: transform, filter;
+}
+
+.chat_box.chat .inner_box::after {
+    animation: chatRibbonSoft 2400ms ease-in-out infinite both;
+    animation-delay: 500ms;
+    transform-origin: center;
+    will-change: transform;
+}
+
+@keyframes chatSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-42px) scale(0.985);
+        filter: blur(2px);
+    }
+
+    55% {
+        opacity: 1;
+        transform: translateX(4px) scale(1.005);
+        filter: blur(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+@keyframes chatBubbleSettle {
+    0% {
+        transform: scaleX(0.985) scaleY(0.98);
+        filter: brightness(1.08);
+    }
+
+    48% {
+        transform: scaleX(1.008) scaleY(1.006);
+        filter: brightness(1.04);
+    }
+
+    100% {
+        transform: scaleX(1) scaleY(1);
+        filter: brightness(1);
+    }
+}
+
+@keyframes chatStarShine {
+    0% {
+        opacity: 0.82;
+        transform: translateY(0) scale(1);
+        filter: brightness(1);
+    }
+
+    38% {
+        opacity: 1;
+        transform: translateY(-1px) scale(1.035);
+        filter: brightness(1.18);
+    }
+
+    72% {
+        opacity: 0.92;
+        transform: translateY(0.5px) scale(0.995);
+        filter: brightness(1.05);
+    }
+
+    100% {
+        opacity: 0.82;
+        transform: translateY(0) scale(1);
+        filter: brightness(1);
+    }
+}
+
+@keyframes chatTailSoft {
+    0% {
+        transform: translateY(-50%) translateX(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-50%) translateX(-1.5px) scale(1.025);
+    }
+
+    100% {
+        transform: translateY(-50%) translateX(0) scale(1);
+    }
+}
+
+@keyframes chatHeartFloat {
+    0% {
+        transform: translateY(0) rotate(0deg) scale(1);
+        filter: brightness(1);
+    }
+
+    45% {
+        transform: translateY(-2px) rotate(-2deg) scale(1.025);
+        filter: brightness(1.08);
+    }
+
+    100% {
+        transform: translateY(0) rotate(0deg) scale(1);
+        filter: brightness(1);
+    }
+}
+
+@keyframes chatRibbonSoft {
+    0% {
+        transform: translateY(0) rotate(0deg) scale(1);
+    }
+
+    40% {
+        transform: translateY(-1.5px) rotate(2deg) scale(1.018);
+    }
+
+    70% {
+        transform: translateY(0.5px) rotate(-0.8deg) scale(1.005);
+    }
+
+    100% {
+        transform: translateY(0) rotate(0deg) scale(1);
+    }
+}
