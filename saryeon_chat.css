@@ -1,0 +1,833 @@
+[data-id = "슈퍼챗"], [data-id = "치즈"], [data-id = "비트"], [data-id = "별풍선"], [data-id = "젬"], [data-id = "비트"], [data-id = "빔"] {
+    display: none;
+}
+
+@font-face {
+    font-family: 'NexonWarhaven';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/WarhavenR.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NexonWarhaven';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/WarhavenB.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+}
+
+/* ============================================= 
+        general
+============================================= */
+html {
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+}
+
+p {
+    color: var(--text) !important;
+    position: relative;
+    margin: 0 !important;
+    line-height: 1.2 !important;
+    z-index: 999;
+    text-shadow: 2px 2px 0 rgba(105, 83, 151, 0.5) !important;
+    font-family: 'NexonWarhaven', Courier, monospace !important;
+    font-weight: 400 !important;
+    font-size: 22px !important;
+    letter-spacing: -0.8px !important;
+    text-align: center !important;
+    font-style: italic !important;
+}
+
+.chat_area {
+    -webkit-mask-image: -webkit-gradient( linear, left bottom, left top, from(#000), color-stop(0.9, #000), to(transparent));    
+}
+
+.chat_box {
+    margin: 0 auto !important;
+    margin-bottom: 30px !important;
+}
+
+.chat_box:not(.image) .nick {
+    display: none !important;
+}
+
+.chat_box.chat * {
+    box-sizing: border-box !important;
+}
+
+.chat_box .inner_box .name {
+    display: none !important;
+}
+
+.icon_chzzk {
+    display: none !important;
+}
+
+.icon_badge {
+    display: none !important;
+}
+
+/* ============================================= 
+        donation reset
+============================================= */
+.chat_box.image .donation_box p {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+}
+
+.chat_box.image .donation_box {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    background: transparent !important;
+}
+
+.chat_box.image .donation_box .text_box,
+.chat_box.image .donation_box .msg_box {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+}
+
+.chat_box.image:not(.subscribe) .msg_box {
+    order: -1 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background: transparent !important;
+}
+
+.chat_box.image:not(.subscribe) .msg_box .val {
+    text-align: center !important;
+    width: auto !important;
+    background: transparent !important;
+}
+
+.chat_box.subscribe.image .text_box {
+    display: flex !important;
+    flex-direction: column !important;
+    background: transparent !important;
+}
+
+.chat_box.subscribe.image .text_box .msg {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    background: transparent !important;
+}
+
+.chat_box.subscribe.image .text_box .val {
+    order: -1 !important;
+    text-align: center !important;
+    background: transparent !important;
+}
+
+.donation_box.subscribe .msg_box .msg {
+    background: transparent !important;
+}
+
+.donation_box.subscribe::before {
+    display: none !important;
+}
+
+* > .nick {
+    display: none !important;
+}
+
+/* ============================================= 
+        tokens
+============================================= */
+:root {
+    --text: #fff;
+    --dots: url(https://lh3.googleusercontent.com/d/1pIsuqWEV7nhXQCRZy78GNt8VwF2brc4P);
+    --flower1: url(https://lh3.googleusercontent.com/d/11sKxpo9VkSK_ap3JO7ciQurQKkD06921);
+    --flower2: url(https://lh3.googleusercontent.com/d/1pGZOj5K01snfjchoVwL0usrxF-uTTPsM);
+    --liquid: url(https://lh3.googleusercontent.com/d/1PCzAhdECpzSWHA-zFeog083LIlAiDzRj);
+    --border: 1px solid #82699c;
+    --star: url(https://lh3.googleusercontent.com/d/13SAFUW5obhGofPQFPlsgwWEXEw5L019s);
+}
+
+.chat_box.chat:not(.streamer):not(.subscribe) {
+    --pattern: url(https://lh3.googleusercontent.com/d/1ojuDaa4Neg_FgbX8-AC2Y2y-D695IQhj);
+    --squre: url(https://lh3.googleusercontent.com/d/1okNvbCPaGOjEUojfKKHqY2h8E0O2RfoA);
+    --lineB: url(https://lh3.googleusercontent.com/d/1xo7Si3t7mOXJ-Gi1yd19RnNqNDIq8cRD);
+    --lineT: url(https://lh3.googleusercontent.com/d/1j4lzbKPA7A7Ds5m9_sz9GBfS5W1xNq5E);
+    --pearlT: url(https://lh3.googleusercontent.com/d/1f4sqj7TpoQ5PVCkjzR5XDK7lZnyeMyMk);
+    --pearlB: url(https://lh3.googleusercontent.com/d/17Hau9PxX3UelTKGEeQ7200V48--5CtNw);
+    --shadow: 
+        inset 7px 0 0 #5a3762,
+        inset 8px 0 0 #503057,
+        inset -7px 0 0 #5a3762,
+        inset -8px 0 0 #503057;
+    --back: linear-gradient(to top, #ad71ab, #c690c1);
+}
+
+/* ============================================= 
+        design
+============================================= */
+.chat_box {
+    width: fit-content;
+    max-width: calc(100% - 20px);
+    position: relative;
+}
+
+.chat_box .inner_box {
+    position: static;
+    padding: 24px 50px 18px 50px;
+    background: 
+        var(--dots),
+        var(--pearlB),
+        var(--pearlT),
+        var(--lineT),
+        var(--lineB),
+        var(--squre),
+        var(--squre),
+        var(--pattern),
+        var(--back);
+    background-position: 
+        center top 10px,
+        left 18px bottom -2px,
+        right 18px top -2px,
+        right -27px top -7px,
+        left -27px bottom -7px,
+        right -75px center,
+        left -75px center,
+        center, center;
+    background-size: 24px, 37px, 37px, 67px, 53px, 116px, 116px, 581px, cover;
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, repeat, repeat;
+    border: var(--border);
+    box-shadow: var(--shadow);
+}
+
+.chat_box::after,
+.chat_box .inner_box::before,
+.chat_box .inner_box::after {
+    content: "";
+    position: absolute;    
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.chat_box::after {
+    width: 30px;
+    height: 38px;
+    left: 15px;
+    top: -18px;
+    background-image: var(--liquid);
+}
+
+.chat_box .inner_box::before {
+    width: 25px;
+    height: 23px;
+    right: 32px;
+    bottom: -10px;
+    background-image: var(--flower2);
+}
+
+.chat_box .inner_box::after {
+    width: 22px;
+    height: 38px;
+    right: 11px;
+    bottom: -7px;
+    background-image: var(--flower1);
+}
+
+/* ============================================= 
+        streamer
+============================================= */
+.chat_box.chat.streamer {
+    --pattern: url(https://lh3.googleusercontent.com/d/1Z7XFLjXNIMFW75hS9aB5VazQMJDPX6Y3);
+    --squre: url(https://lh3.googleusercontent.com/d/19c0wMs1Cs_GNGyLcoXoThnUGSn2z7zos);
+    --lineB: url(https://lh3.googleusercontent.com/d/13j9Tdn-8-SojpkkbQ_UYe1HudTb79Ccr);
+    --lineT: url(https://lh3.googleusercontent.com/d/1p6cUApmcoIzmG-AuwATsOO1kas863NQb);
+    --pearlT: url(https://lh3.googleusercontent.com/d/1rYR0-B8gi8VYF5IfQAOONwTDsXVRHuBz);
+    --pearlB: url(https://lh3.googleusercontent.com/d/1HLpqMqQi6UoQhT6_c59Uv9utOOOCVuSo);
+    --shadow: 
+        inset 7px 0 0 #443762,
+        inset 8px 0 0 #39295c,
+        inset -7px 0 0 #443762,
+        inset -8px 0 0 #39295c;
+    --back: linear-gradient(to top, #937dce, #a192cb);
+}
+
+/* ============================================= 
+        subscribe
+============================================= */
+.chat_box.chat.subscribe {
+    --pattern: url(https://lh3.googleusercontent.com/d/12mwBbHZTi_aaFTPga7M6oinoFWcnUVP5);
+    --squre: url(https://lh3.googleusercontent.com/d/1jTzxJdcKyY29XbvWmTDFUqw2FkvJSFuN);
+    --lineB: url(https://lh3.googleusercontent.com/d/1iqpoHSNOcQ7zyOVXQQp639xTUQRNO-uR);
+    --lineT: url(https://lh3.googleusercontent.com/d/17ES1EjKVpoRQpkCGaUlaPgtdL5tZ82HR);
+    --pearlT: url(https://lh3.googleusercontent.com/d/1EgL-J7rUPkH0DXA2Awg0-hNJhGGDBo8b);
+    --pearlB: url(https://lh3.googleusercontent.com/d/1SDQnJdZ5x5bM27XEf9-of0sS7GsL38AU);
+    --shadow: 
+        inset 7px 0 0 #503762,
+        inset 8px 0 0 #452e56,
+        inset -7px 0 0 #503762,
+        inset -8px 0 0 #452e56;
+    --back: linear-gradient(to top, #8f58b4, #bd98c6);
+}
+
+/* ============================================= 
+        donation
+============================================= */
+.chat_box.image:not(.subscribe) {
+    --pattern: url(https://lh3.googleusercontent.com/d/1ojuDaa4Neg_FgbX8-AC2Y2y-D695IQhj);
+    --squre: url(https://lh3.googleusercontent.com/d/1okNvbCPaGOjEUojfKKHqY2h8E0O2RfoA);
+    --lineB: url(https://lh3.googleusercontent.com/d/1xo7Si3t7mOXJ-Gi1yd19RnNqNDIq8cRD);
+    --lineT: url(https://lh3.googleusercontent.com/d/1j4lzbKPA7A7Ds5m9_sz9GBfS5W1xNq5E);
+    --pearlT: url(https://lh3.googleusercontent.com/d/1f4sqj7TpoQ5PVCkjzR5XDK7lZnyeMyMk);
+    --pearlB: url(https://lh3.googleusercontent.com/d/17Hau9PxX3UelTKGEeQ7200V48--5CtNw);
+    --shadow: 
+        inset 7px 0 0 #5a3762,
+        inset 8px 0 0 #503057,
+        inset -7px 0 0 #5a3762,
+        inset -8px 0 0 #503057;
+        --back: linear-gradient(to top, #ad71ab, #c690c1);
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .text_box .msg {
+    text-align: center !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .msg_box .val {
+    width: fit-content !important;
+    color: #fff !important;
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    padding: 5px 15px 3px 15px !important;
+    background: #7e4687 !important;
+    --cut: 12%;
+    clip-path: polygon(
+        var(--cut) 0,
+        calc(100% - var(--cut)) 0,
+        100% 50%,
+        calc(100% - var(--cut)) 100%,
+        var(--cut) 100%,
+        0 50%
+    );
+    margin-bottom: 10px !important;
+    font-style: normal !important;
+}
+
+/* ============================================= 
+        donation - subscribe
+============================================= */
+.chat_box.image.subscribe {
+    --pattern: url(https://lh3.googleusercontent.com/d/12mwBbHZTi_aaFTPga7M6oinoFWcnUVP5);
+    --squre: url(https://lh3.googleusercontent.com/d/1jTzxJdcKyY29XbvWmTDFUqw2FkvJSFuN);
+    --lineB: url(https://lh3.googleusercontent.com/d/1iqpoHSNOcQ7zyOVXQQp639xTUQRNO-uR);
+    --lineT: url(https://lh3.googleusercontent.com/d/17ES1EjKVpoRQpkCGaUlaPgtdL5tZ82HR);
+    --pearlT: url(https://lh3.googleusercontent.com/d/1EgL-J7rUPkH0DXA2Awg0-hNJhGGDBo8b);
+    --pearlB: url(https://lh3.googleusercontent.com/d/1SDQnJdZ5x5bM27XEf9-of0sS7GsL38AU);
+    --shadow: 
+        inset 7px 0 0 #503762,
+        inset 8px 0 0 #452e56,
+        inset -7px 0 0 #503762,
+        inset -8px 0 0 #452e56;
+    --back: linear-gradient(to top, #8f58b4, #bd98c6);
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .text_box .msg {
+    font-size: 0 !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .text_box .msg .val {
+    width: fit-content !important;
+    color: #fff !important;
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    padding: 5px 15px 3px 15px !important;
+    background: #8354a0 !important;
+    --cut: 12%;
+    clip-path: polygon(
+        var(--cut) 0,
+        calc(100% - var(--cut)) 0,
+        100% 50%,
+        calc(100% - var(--cut)) 100%,
+        var(--cut) 100%,
+        0 50%
+    );
+    margin-bottom: 10px !important;
+    font-style: normal !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .msg_box .msg {
+    text-align: center !important;
+}
+
+/* ============================================= 
+        keyframes
+============================================= */
+.chat_box::before {
+    content: "";
+    position: absolute;
+    inset: -45px -12px -45px -12px;
+    z-index: 1;
+    pointer-events: none;
+
+    background-image:
+        var(--star), var(--star), var(--star), var(--star), var(--star),
+        var(--star), var(--star), var(--star), var(--star), var(--star);
+
+    background-repeat:
+        no-repeat, no-repeat, no-repeat, no-repeat, no-repeat,
+        no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+
+    background-size:
+        12px 12px,
+        10px 10px,
+        14px 14px,
+        9px 9px,
+        11px 11px,
+
+        12px 12px,
+        10px 10px,
+        14px 14px,
+        9px 9px,
+        11px 11px;
+
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        #000 12%,
+        #000 72%,
+        transparent 100%
+    );
+    mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        #000 12%,
+        #000 72%,
+        transparent 100%
+    );
+
+    animation: chat-star-fall 8.5s linear infinite;
+    will-change: background-position;
+}
+
+@keyframes chat-star-fall {
+    0% {
+        background-position:
+            left 10% top -20px,
+            left 31% top 34px,
+            left 52% top -58px,
+            right 27% top 18px,
+            right 8% top -38px,
+
+            left 10% top -190px,
+            left 31% top -136px,
+            left 52% top -228px,
+            right 27% top -152px,
+            right 8% top -208px;
+    }
+
+    100% {
+        background-position:
+            left 10% top 150px,
+            left 31% top 204px,
+            left 52% top 112px,
+            right 27% top 188px,
+            right 8% top 132px,
+
+            left 10% top -20px,
+            left 31% top 34px,
+            left 52% top -58px,
+            right 27% top 18px,
+            right 8% top -38px;
+    }
+}
+
+
+
+/* ============================================= 
+        popup & object animations - visible version
+============================================= */
+.chat_box {
+    animation: chat-popup-pop 0.72s cubic-bezier(0.16, 1.15, 0.28, 1) both !important;
+    transform-origin: center bottom;
+}
+
+.chat_box.chat.streamer {
+    animation-name: chat-popup-streamer-pop;
+}
+
+.chat_box.chat.subscribe {
+    animation-name: chat-popup-subscribe-pop;
+}
+
+.chat_box.image:not(.subscribe) {
+    animation-name: chat-popup-donation-pop;
+}
+
+.chat_box.image.subscribe {
+    animation-name: chat-popup-subscribe-donation-pop;
+}
+
+.chat_box::after {
+    z-index: 4;
+    transform-origin: 50% 85%;
+    animation: liquid-potion-wobble 3.8s ease-in-out infinite;
+    will-change: transform, filter;
+}
+
+.chat_box .inner_box::before {
+    z-index: 5;
+    transform-origin: 50% 95%;
+    animation: dryflower-sway-small 4.6s ease-in-out infinite;
+    will-change: transform;
+}
+
+.chat_box .inner_box::after {
+    z-index: 6;
+    transform-origin: 50% 96%;
+    animation: dryflower-sway-long 5.2s ease-in-out -0.8s infinite;
+    will-change: transform;
+}
+
+.chat_box.chat.streamer::after {
+    animation-name: liquid-potion-float;
+    animation-duration: 4.4s;
+}
+
+.chat_box.chat.streamer .inner_box::before {
+    animation-name: dryflower-sway-soft;
+    animation-duration: 5.4s;
+}
+
+.chat_box.chat.streamer .inner_box::after {
+    animation-name: dryflower-sway-long;
+    animation-duration: 5.8s;
+}
+
+.chat_box.chat.subscribe::after {
+    animation-name: liquid-potion-bounce;
+    animation-duration: 3.6s;
+}
+
+.chat_box.chat.subscribe .inner_box::before {
+    animation-name: dryflower-sway-small;
+    animation-duration: 4.2s;
+}
+
+.chat_box.chat.subscribe .inner_box::after {
+    animation-name: dryflower-sway-soft;
+    animation-duration: 5s;
+}
+
+.chat_box.image:not(.subscribe)::after {
+    animation-name: liquid-potion-active;
+    animation-duration: 3.2s;
+}
+
+.chat_box.image:not(.subscribe) .inner_box::before {
+    animation-name: dryflower-sway-long;
+    animation-duration: 4.4s;
+}
+
+.chat_box.image:not(.subscribe) .inner_box::after {
+    animation-name: dryflower-sway-small;
+    animation-duration: 4.9s;
+}
+
+.chat_box.image.subscribe::after {
+    animation-name: liquid-potion-magic-active;
+    animation-duration: 3.4s;
+}
+
+.chat_box.image.subscribe .inner_box::before {
+    animation-name: dryflower-sway-soft;
+    animation-duration: 4.5s;
+}
+
+.chat_box.image.subscribe .inner_box::after {
+    animation-name: dryflower-sway-long;
+    animation-duration: 5.1s;
+}
+
+/* ============================================= 
+        popup keyframes
+============================================= */
+
+@keyframes chat-popup-pop {
+    0% {
+        opacity: 0;
+        transform: translateY(22px) scale(0.88);
+        filter: blur(3px);
+    }
+
+    48% {
+        opacity: 1;
+        transform: translateY(-7px) scale(1.06);
+        filter: blur(0);
+    }
+
+    72% {
+        transform: translateY(2px) scale(0.985);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+@keyframes chat-popup-streamer-pop {
+    0% {
+        opacity: 0;
+        transform: translateY(18px) scale(0.9) rotate(-2deg);
+        filter: blur(3px);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateY(-6px) scale(1.045) rotate(1deg);
+        filter: blur(0);
+    }
+
+    78% {
+        transform: translateY(1px) scale(0.99) rotate(-0.35deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotate(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes chat-popup-subscribe-pop {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.86);
+        filter: blur(3px) brightness(1.15);
+    }
+
+    45% {
+        opacity: 1;
+        transform: translateY(-8px) scale(1.075);
+        filter: blur(0) brightness(1.08);
+    }
+
+    74% {
+        transform: translateY(2px) scale(0.985);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0) brightness(1);
+    }
+}
+
+@keyframes chat-popup-donation-pop {
+    0% {
+        opacity: 0;
+        transform: translateY(24px) scale(0.84);
+        filter: blur(3px) brightness(1.18);
+    }
+
+    42% {
+        opacity: 1;
+        transform: translateY(-10px) scale(1.09);
+        filter: blur(0) brightness(1.1);
+    }
+
+    68% {
+        transform: translateY(3px) scale(0.975);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0) brightness(1);
+    }
+}
+
+@keyframes chat-popup-subscribe-donation-pop {
+    0% {
+        opacity: 0;
+        transform: translateY(24px) scale(0.84) rotate(1.5deg);
+        filter: blur(3px) brightness(1.18);
+    }
+
+    44% {
+        opacity: 1;
+        transform: translateY(-10px) scale(1.09) rotate(-1deg);
+        filter: blur(0) brightness(1.12);
+    }
+
+    70% {
+        transform: translateY(3px) scale(0.98) rotate(0.4deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotate(0);
+        filter: blur(0) brightness(1);
+    }
+}
+
+/* ============================================= 
+        liquid keyframes
+============================================= */
+
+@keyframes liquid-potion-wobble {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg) scale(1);
+        filter: drop-shadow(0 0 0 rgba(255, 230, 255, 0));
+    }
+
+    25% {
+        transform: translateY(-4px) rotate(-7deg) scale(1.04);
+        filter: drop-shadow(0 0 5px rgba(255, 230, 255, 0.45));
+    }
+
+    50% {
+        transform: translateY(1px) rotate(5deg) scale(1);
+    }
+
+    75% {
+        transform: translateY(-2px) rotate(-3deg) scale(1.025);
+        filter: drop-shadow(0 0 3px rgba(255, 230, 255, 0.3));
+    }
+}
+
+@keyframes liquid-potion-float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    30% {
+        transform: translateY(-5px) rotate(5deg);
+    }
+
+    60% {
+        transform: translateY(2px) rotate(-6deg);
+    }
+
+    82% {
+        transform: translateY(-2px) rotate(3deg);
+    }
+}
+
+@keyframes liquid-potion-bounce {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg) scale(1);
+        filter: drop-shadow(0 0 0 rgba(255, 230, 255, 0));
+    }
+
+    28% {
+        transform: translateY(-6px) rotate(-8deg) scale(1.06);
+        filter: drop-shadow(0 0 6px rgba(255, 230, 255, 0.5));
+    }
+
+    52% {
+        transform: translateY(2px) rotate(5deg) scale(0.98);
+    }
+
+    76% {
+        transform: translateY(-3px) rotate(-4deg) scale(1.03);
+    }
+}
+
+@keyframes liquid-potion-active {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg) scale(1);
+    }
+
+    22% {
+        transform: translateY(-7px) rotate(-9deg) scale(1.07);
+        filter: drop-shadow(0 0 7px rgba(255, 230, 255, 0.55));
+    }
+
+    48% {
+        transform: translateY(2px) rotate(7deg) scale(0.99);
+    }
+
+    72% {
+        transform: translateY(-4px) rotate(-5deg) scale(1.04);
+    }
+}
+
+@keyframes liquid-potion-magic-active {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg) scale(1);
+        filter: drop-shadow(0 0 0 rgba(255, 230, 255, 0));
+    }
+
+    24% {
+        transform: translateY(-7px) rotate(-8deg) scale(1.08);
+        filter:
+            drop-shadow(0 0 6px rgba(255, 230, 255, 0.55))
+            drop-shadow(0 0 10px rgba(190, 160, 255, 0.35));
+    }
+
+    50% {
+        transform: translateY(2px) rotate(6deg) scale(0.99);
+    }
+
+    76% {
+        transform: translateY(-4px) rotate(-4deg) scale(1.04);
+        filter: drop-shadow(0 0 5px rgba(255, 230, 255, 0.4));
+    }
+}
+
+/* ============================================= 
+        dry flower keyframes
+============================================= */
+
+@keyframes dryflower-sway-small {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    25% {
+        transform: translateY(-2px) rotate(-8deg);
+    }
+
+    52% {
+        transform: translateY(1px) rotate(5deg);
+    }
+
+    78% {
+        transform: translateY(-1px) rotate(-4deg);
+    }
+}
+
+@keyframes dryflower-sway-long {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg) scale(1);
+    }
+
+    28% {
+        transform: translateY(-3px) rotate(7deg) scale(1.03);
+    }
+
+    56% {
+        transform: translateY(1px) rotate(-8deg) scale(1);
+    }
+
+    82% {
+        transform: translateY(-1px) rotate(4deg) scale(1.02);
+    }
+}
+
+@keyframes dryflower-sway-soft {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    35% {
+        transform: translateY(-3px) rotate(-6deg);
+    }
+
+    68% {
+        transform: translateY(2px) rotate(7deg);
+    }
+}
