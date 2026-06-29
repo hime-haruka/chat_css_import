@@ -1,0 +1,763 @@
+[data-id = "슈퍼챗"], [data-id = "치즈"], [data-id = "비트"], [data-id = "별풍선"], [data-id = "젬"], [data-id = "비트"], [data-id = "빔"] {
+    display: none;
+}
+
+@font-face {
+    font-family: 'SchoolSafetyNotification';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimAllimjangTTF-R.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SchoolSafetyNotification';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimAllimjangTTF-B.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+}
+
+/* ============================================= 
+        general
+============================================= */
+html {
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+}
+
+p {
+    color: var(--text) !important;
+    position: relative;
+    margin: 0 !important;
+    line-height: 1.2 !important;
+    z-index: 999;
+    text-shadow: none !important;
+    font-family: 'SchoolSafetyNotification', Courier, monospace !important;
+    font-weight: 400 !important;
+    font-size: 22px !important;
+    letter-spacing: -0.8px !important;
+    text-align: center !important;
+    font-style: italic !important;
+}
+
+.chat_area {
+    -webkit-mask-image: -webkit-gradient( linear, left bottom, left top, from(#000), color-stop(0.9, #000), to(transparent));    
+}
+
+.chat_box {
+    margin: 0 auto !important;
+    margin-bottom: 30px !important;
+}
+
+.chat_box:not(.image) .nick {
+    display: none !important;
+}
+
+.chat_box.chat * {
+    box-sizing: border-box !important;
+}
+
+.chat_box .inner_box .name {
+    display: none !important;
+}
+
+.icon_chzzk {
+    display: none !important;
+}
+
+.icon_badge {
+    display: none !important;
+}
+
+/* ============================================= 
+        donation reset
+============================================= */
+.chat_box.image .donation_box p {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+}
+
+.chat_box.image .donation_box {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    background: transparent !important;
+}
+
+.chat_box.image .donation_box .text_box,
+.chat_box.image .donation_box .msg_box {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+}
+
+.chat_box.image:not(.subscribe) .msg_box {
+    order: -1 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background: transparent !important;
+}
+
+.chat_box.image:not(.subscribe) .msg_box .val {
+    text-align: center !important;
+    width: auto !important;
+    background: transparent !important;
+}
+
+.chat_box.subscribe.image .text_box {
+    display: flex !important;
+    flex-direction: column !important;
+    background: transparent !important;
+}
+
+.chat_box.subscribe.image .text_box .msg {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    background: transparent !important;
+}
+
+.chat_box.subscribe.image .text_box .val {
+    order: -1 !important;
+    text-align: center !important;
+    background: transparent !important;
+}
+
+.donation_box.subscribe .msg_box .msg {
+    background: transparent !important;
+}
+
+.donation_box.subscribe::before {
+    display: none !important;
+}
+
+* > .nick {
+    display: none !important;
+}
+
+/* ============================================= 
+        tokens
+============================================= */
+:root {
+    --text: #000;
+    --back: linear-gradient(0deg, #fff, #fff);
+}
+
+.chat_box.chat:not(.image):nth-child(2n + 1 of .chat_box.chat:not(.image)) {
+    --outline: 2px solid #bc396c;
+    --border: 5px solid #ee6c9f;
+    --inbor: inset 0 0 1.5px #bc396c;
+    --pattern: url(https://lh3.googleusercontent.com/d/1GWxii_WU58ekld0Jnmi4-AtIWYKM4RjG);
+    --reopard: url(https://lh3.googleusercontent.com/d/199MRS_2lVMnl98tkYww21OPTaJNzkHxD);
+    --color: url(https://lh3.googleusercontent.com/d/1fnOeWI6tAYf7v27HK13RYs9upJUwXupT);
+    --lineT: url(https://lh3.googleusercontent.com/d/1j88xN361GgwNidpzYDQrRKjaWTTRuzDZ);
+    --lineB: url(https://lh3.googleusercontent.com/d/1NOp3NGRGfiWasxrVGBlijL5wdTnCiiNJ);
+    --button: url(https://lh3.googleusercontent.com/d/1iQA-NI_3SzZMcPRF0UlvgRvsd7NaVUL0);
+    --heart: url(https://lh3.googleusercontent.com/d/1FXpg888__70bgzuclASKFD0M63F3GOw9);
+    --fish: url(https://lh3.googleusercontent.com/d/1lt7tLhnoZCvUBT_uQsJk5mqPOv7djxn6);
+}
+
+
+/* ============================================= 
+        design
+============================================= */
+.chat_box {
+    position: relative;
+    width: fit-content;
+    max-width: calc(100% - 20px);
+}
+
+/* fish */
+.chat_box:before {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 35px;
+    left: 20px;
+    top: -12px;
+    background: var(--fish);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    z-index: 9;
+}
+
+/* heart */
+.chat_box.chat::after {
+    content: "";
+    position: absolute;
+    width: 23px;
+    height: 20px;
+    right: -10px;
+    bottom: 15px;
+    background: var(--heart);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+.chat_box .inner_box {
+    border-radius: 10px;
+    outline: var(--outline);
+    border: var(--border);
+    box-shadow: var(--inbor);
+    padding: 17px 37px;
+    background:
+        var(--button) no-repeat,
+        var(--button) no-repeat,
+        var(--button) no-repeat,
+        var(--button) no-repeat,
+        var(--lineB) no-repeat,
+        var(--lineT) no-repeat,
+        var(--color) no-repeat,
+        var(--color) no-repeat,
+        var(--reopard) no-repeat,
+        var(--pattern) repeat,
+        var(--back) repeat;
+    background-position: 
+        left 4px top 4px,
+        left 4px bottom 4px,
+        right 4px top 4px,
+        right 4px bottom 4px,
+        left -20px bottom -23px,
+        right -17px top -24px,
+        left -33px bottom -41px,
+        right -33px top -41px,
+        right -3px bottom -22px,
+        center, center;
+    background-size: 7px, 7px, 7px, 7px, 52px, 58px, 93px, 93px, 88px, 392px, cover;
+}
+
+/* ============================================= 
+        chat 02
+============================================= */
+.chat_box.chat:not(.image):nth-child(2n of .chat_box.chat:not(.image)) {
+    --outline: 2px solid #e3c88e;
+    --border: 5px solid #ffec83;
+    --inbor: inset 0 0 1.5px #e3c88e;
+    --pattern: url(https://lh3.googleusercontent.com/d/1TIonRDPpCtqV7tlmNUuKnuiJJU3A7-6O);
+    --reopard: url(https://lh3.googleusercontent.com/d/1atYqfwD-6F-5nEawhEVCINd-SSwTF1iD);
+    --color: url(https://lh3.googleusercontent.com/d/1qWVa-UvMsnQjfpIalPhsQJ9IsN2jL6hs);
+    --lineT: url(https://lh3.googleusercontent.com/d/1wmjJgG9fc5_xA2tw3gdGnw1BhN0R5gx0);
+    --lineB: url(https://lh3.googleusercontent.com/d/19CJzsDSLiF2MveoWkrjTBQaBQA75vxOB);
+    --button: url(https://lh3.googleusercontent.com/d/1zeVJdBlqKGdSL6KpWa7xnfORRgQdMU87);
+    --heart: url(https://lh3.googleusercontent.com/d/1ppZUnC-CL3lVAwIXoVQuZzARdD7PGloi);
+    --fish: url(https://lh3.googleusercontent.com/d/1GPCC1YfQYyRGfc9YTVSsKDb2Rr06p96n);
+}
+
+/* ============================================= 
+        donation
+============================================= */
+.chat_box.image:not(.subscribe) {
+    --outline: 2px solid #bc396c;
+    --border: 5px solid #ee6c9f;
+    --inbor: inset 0 0 1.5px #bc396c;
+    --pattern: url(https://lh3.googleusercontent.com/d/1GWxii_WU58ekld0Jnmi4-AtIWYKM4RjG);
+    --reopard: url(https://lh3.googleusercontent.com/d/199MRS_2lVMnl98tkYww21OPTaJNzkHxD);
+    --color: url(https://lh3.googleusercontent.com/d/1fnOeWI6tAYf7v27HK13RYs9upJUwXupT);
+    --lineT: url(https://lh3.googleusercontent.com/d/1j88xN361GgwNidpzYDQrRKjaWTTRuzDZ);
+    --lineB: url(https://lh3.googleusercontent.com/d/1NOp3NGRGfiWasxrVGBlijL5wdTnCiiNJ);
+    --button: url(https://lh3.googleusercontent.com/d/1iQA-NI_3SzZMcPRF0UlvgRvsd7NaVUL0);
+    --heart: url(https://lh3.googleusercontent.com/d/1ppZUnC-CL3lVAwIXoVQuZzARdD7PGloi);
+    --fish: url(https://lh3.googleusercontent.com/d/1lt7tLhnoZCvUBT_uQsJk5mqPOv7djxn6);
+}
+
+.chat_box.image .inner_box::before,
+.chat_box.image .inner_box::after {
+    content: "";
+    position: absolute;
+    width: 23px;
+    height: 20px;
+    background: var(--heart);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.chat_box.image .inner_box::before {
+    left: -12px;
+    top: 15px;
+}
+
+.chat_box.image .inner_box::after {
+    right: -12px;
+    bottom: 15px;
+}
+
+.chat_box.image .inner_box .donation_box {
+    position: static;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .msg_box .val {
+    width: fit-content !important;
+    color: #fff !important;
+    font-size: 16px !important;
+    font-weight: 400 !important;
+    padding: 2px 15px !important;
+    background-color: #ee6c9f !important;
+    --cut: 12%;
+    clip-path: polygon(
+        var(--cut) 0,
+        calc(100% - var(--cut)) 0,
+        100% 50%,
+        calc(100% - var(--cut)) 100%,
+        var(--cut) 100%,
+        0 50%
+    );
+    margin-bottom: 10px !important;
+    font-style: normal !important;
+}
+
+/* ============================================= 
+        donation - subscribe
+============================================= */
+.chat_box.image.subscribe {
+    --outline: 2px solid #e3c88e;
+    --border: 5px solid #ffec83;
+    --inbor: inset 0 0 1.5px #e3c88e;
+    --pattern: url(https://lh3.googleusercontent.com/d/1TIonRDPpCtqV7tlmNUuKnuiJJU3A7-6O);
+    --reopard: url(https://lh3.googleusercontent.com/d/1atYqfwD-6F-5nEawhEVCINd-SSwTF1iD);
+    --color: url(https://lh3.googleusercontent.com/d/1qWVa-UvMsnQjfpIalPhsQJ9IsN2jL6hs);
+    --lineT: url(https://lh3.googleusercontent.com/d/1wmjJgG9fc5_xA2tw3gdGnw1BhN0R5gx0);
+    --lineB: url(https://lh3.googleusercontent.com/d/19CJzsDSLiF2MveoWkrjTBQaBQA75vxOB);
+    --button: url(https://lh3.googleusercontent.com/d/1zeVJdBlqKGdSL6KpWa7xnfORRgQdMU87);
+    --heart: url(https://lh3.googleusercontent.com/d/1ppZUnC-CL3lVAwIXoVQuZzARdD7PGloi);
+    --fish: url(https://lh3.googleusercontent.com/d/1GPCC1YfQYyRGfc9YTVSsKDb2Rr06p96n);
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .text_box .msg {
+    font-size: 0 !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .text_box .msg .val {
+    width: fit-content !important;
+    color: #fff !important;
+    font-size: 16px !important;
+    font-weight: 400 !important;
+    padding: 2px 15px !important;
+    background-color: #fdc64f !important;
+    --cut: 12%;
+    clip-path: polygon(
+        var(--cut) 0,
+        calc(100% - var(--cut)) 0,
+        100% 50%,
+        calc(100% - var(--cut)) 100%,
+        var(--cut) 100%,
+        0 50%
+    );
+    margin-bottom: 10px !important;
+    font-style: normal !important;
+}
+/* ============================================= 
+        keyframes
+============================================= */
+.chat_box {
+    transform-origin: 50% 65%;
+    animation: gyaru-sticker-in-left 0.72s cubic-bezier(0.16, 1.45, 0.28, 1) both !important;
+    will-change: transform, opacity;
+}
+
+.chat_box:nth-of-type(2n) {
+    animation-name: gyaru-sticker-in-right !important;
+}
+
+.chat_box.image {
+    animation-duration: 0.78s !important;
+}
+
+.chat_box .inner_box {
+    transform-origin: 50% 55%;
+    animation:
+        gyaru-frame-kick 4.8s ease-in-out 0.9s infinite,
+        gyaru-bg-shift 5.6s linear 0.8s infinite;
+    will-change: transform, background-position;
+}
+
+.chat_box::before {
+    transform-origin: 45% 15%;
+    animation:
+        gyaru-object-drop 0.62s cubic-bezier(0.18, 1.55, 0.24, 1) 0.12s both,
+        gyaru-fish-swing 2.4s ease-in-out 0.9s infinite;
+    will-change: transform, opacity;
+}
+
+.chat_box.chat::after {
+    transform-origin: 50% 60%;
+    animation:
+        gyaru-heart-pop 0.58s cubic-bezier(0.18, 1.6, 0.24, 1) 0.22s both,
+        gyaru-heart-tick 2.1s ease-in-out 1s infinite;
+    will-change: transform, opacity;
+}
+
+.chat_box:nth-of-type(3n + 1) .inner_box {
+    animation-delay: 1.1s, 0.6s;
+}
+
+.chat_box:nth-of-type(3n + 2) .inner_box {
+    animation-delay: 1.35s, 1s;
+}
+
+.chat_box:nth-of-type(3n) .inner_box {
+    animation-delay: 1.6s, 1.4s;
+}
+
+.chat_box:nth-of-type(3n + 1)::before {
+    animation-delay: 0.14s, 1.1s;
+}
+
+.chat_box:nth-of-type(3n + 2)::before {
+    animation-delay: 0.1s, 1.45s;
+}
+
+.chat_box:nth-of-type(3n)::before {
+    animation-delay: 0.18s, 1.8s;
+}
+
+.chat_box:nth-of-type(3n + 1)::after {
+    animation-delay: 0.24s, 1.2s;
+}
+
+.chat_box:nth-of-type(3n + 2)::after {
+    animation-delay: 0.2s, 1.55s;
+}
+
+.chat_box:nth-of-type(3n)::after {
+    animation-delay: 0.28s, 1.9s;
+}
+
+.chat_box p {
+    transform-origin: 50% 60%;
+    animation: gyaru-text-snap 0.46s cubic-bezier(0.2, 1.45, 0.28, 1) 0.18s both;
+    will-change: transform, opacity;
+}
+
+@keyframes gyaru-sticker-in-left {
+    0% {
+        opacity: 0;
+        transform: translate(-38px, 16px) scale(0.76) rotate(-3.2deg);
+    }
+
+    42% {
+        opacity: 1;
+        transform: translate(7px, -3px) scale(1.065) rotate(1.45deg);
+    }
+
+    58% {
+        transform: translate(-3px, 1px) scale(0.975) rotate(-0.75deg);
+    }
+
+    72% {
+        transform: translate(1.5px, -0.5px) scale(1.018) rotate(0.35deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+}
+
+@keyframes gyaru-sticker-in-right {
+    0% {
+        opacity: 0;
+        transform: translate(38px, 16px) scale(0.76) rotate(3.2deg);
+    }
+
+    42% {
+        opacity: 1;
+        transform: translate(-7px, -3px) scale(1.065) rotate(-1.45deg);
+    }
+
+    58% {
+        transform: translate(3px, 1px) scale(0.975) rotate(0.75deg);
+    }
+
+    72% {
+        transform: translate(-1.5px, -0.5px) scale(1.018) rotate(-0.35deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+}
+
+@keyframes gyaru-frame-kick {
+    0%, 76%, 100% {
+        transform: translateY(0) rotate(0deg) scale(1);
+    }
+
+    80% {
+        transform: translateY(-1px) rotate(-0.35deg) scale(1.01);
+    }
+
+    84% {
+        transform: translateY(1px) rotate(0.28deg) scale(0.997);
+    }
+
+    88% {
+        transform: translateY(0) rotate(-0.14deg) scale(1.003);
+    }
+
+    92% {
+        transform: translateY(0) rotate(0deg) scale(1);
+    }
+}
+
+@keyframes gyaru-bg-shift {
+    0%, 100% {
+        background-position:
+            left 4px top 4px,
+            left 4px bottom 4px,
+            right 4px top 4px,
+            right 4px bottom 4px,
+            left -20px bottom -23px,
+            right -17px top -24px,
+            left -33px bottom -41px,
+            right -33px top -41px,
+            right -3px bottom -22px,
+            center,
+            center;
+    }
+
+    50% {
+        background-position:
+            left 4px top 4px,
+            left 4px bottom 4px,
+            right 4px top 4px,
+            right 4px bottom 4px,
+            left -17px bottom -22px,
+            right -20px top -25px,
+            left -30px bottom -39px,
+            right -36px top -43px,
+            right 0px bottom -21px,
+            calc(50% + 12px) center,
+            center;
+    }
+}
+
+@keyframes gyaru-object-drop {
+    0% {
+        opacity: 0;
+        transform: translate(-10px, -18px) scale(0.35) rotate(-32deg);
+    }
+
+    52% {
+        opacity: 1;
+        transform: translate(2px, 3px) scale(1.22) rotate(16deg);
+    }
+
+    72% {
+        transform: translate(-1px, -1px) scale(0.94) rotate(-8deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+}
+
+@keyframes gyaru-fish-swing {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    18% {
+        transform: translate(-1px, 1px) rotate(-10deg);
+    }
+
+    36% {
+        transform: translate(1px, -1px) rotate(8deg);
+    }
+
+    54% {
+        transform: translate(-0.5px, 0.5px) rotate(-5deg);
+    }
+
+    72% {
+        transform: translate(0.5px, 0) rotate(3deg);
+    }
+}
+
+@keyframes gyaru-heart-pop {
+    0% {
+        opacity: 0;
+        transform: translate(8px, 8px) scale(0.2) rotate(24deg);
+    }
+
+    48% {
+        opacity: 1;
+        transform: translate(-2px, -2px) scale(1.35) rotate(-14deg);
+    }
+
+    68% {
+        transform: translate(1px, 1px) scale(0.88) rotate(8deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+}
+
+@keyframes gyaru-heart-tick {
+    0%, 100% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+
+    12% {
+        transform: translate(0, -2px) scale(1.18) rotate(-9deg);
+    }
+
+    24% {
+        transform: translate(0, 0) scale(0.92) rotate(6deg);
+    }
+
+    36% {
+        transform: translate(0, -1px) scale(1.08) rotate(-4deg);
+    }
+
+    48% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+}
+
+@keyframes gyaru-text-snap {
+    0% {
+        opacity: 0;
+        transform: translateY(4px) scale(0.94) rotate(-0.5deg);
+    }
+
+    55% {
+        opacity: 1;
+        transform: translateY(-1px) scale(1.04) rotate(0.25deg);
+    }
+
+    78% {
+        transform: translateY(0) scale(0.99) rotate(-0.12deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotate(0deg);
+    }
+}
+
+.chat_box.image .inner_box::before,
+.chat_box.image .inner_box::after {
+    content: "";
+    position: absolute;
+    width: 23px;
+    height: 20px;
+    background: var(--heart);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    z-index: 20;
+    will-change: transform, opacity;
+}
+
+.chat_box.image .inner_box::before {
+    left: -12px;
+    top: 15px;
+    transform-origin: 65% 60%;
+    animation:
+        image-heart-pin-left 0.46s cubic-bezier(0.2, 1.5, 0.25, 1) 0.12s both,
+        image-heart-shine-left 2.9s ease-in-out 0.9s infinite;
+}
+
+.chat_box.image .inner_box::after {
+    right: -12px;
+    bottom: 15px;
+    transform-origin: 35% 55%;
+    animation:
+        image-heart-pin-right 0.46s cubic-bezier(0.2, 1.5, 0.25, 1) 0.2s both,
+        image-heart-shine-right 3.15s ease-in-out 1.1s infinite;
+}
+
+@keyframes image-heart-pin-left {
+    0% {
+        opacity: 0;
+        transform: scale(0.25) rotate(-18deg);
+    }
+
+    52% {
+        opacity: 1;
+        transform: scale(1.22) rotate(9deg);
+    }
+
+    74% {
+        transform: scale(0.92) rotate(-4deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+@keyframes image-heart-pin-right {
+    0% {
+        opacity: 0;
+        transform: scale(0.25) rotate(18deg);
+    }
+
+    52% {
+        opacity: 1;
+        transform: scale(1.22) rotate(-9deg);
+    }
+
+    74% {
+        transform: scale(0.92) rotate(4deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+@keyframes image-heart-shine-left {
+    0%, 100% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+
+    12% {
+        transform: translate(-1px, -1px) scale(1.1) rotate(-6deg);
+    }
+
+    24% {
+        transform: translate(0, 0) scale(0.96) rotate(3deg);
+    }
+
+    36% {
+        transform: translate(-0.5px, 0) scale(1.04) rotate(-2deg);
+    }
+
+    48% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+}
+
+@keyframes image-heart-shine-right {
+    0%, 100% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+
+    14% {
+        transform: translate(1px, -1px) scale(1.08) rotate(6deg);
+    }
+
+    28% {
+        transform: translate(0, 0) scale(0.97) rotate(-3deg);
+    }
+
+    42% {
+        transform: translate(0.5px, 0) scale(1.035) rotate(2deg);
+    }
+
+    56% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+}
