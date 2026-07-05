@@ -576,3 +576,73 @@ p {
         filter: blur(0);
     }
 }
+
+/* =============================================
+        donation message center align patch
+        - 일반 후원 메시지 본문은 .msg_box .msg가 아니라 .text_box .msg에 들어가는 경우가 있어,
+          실제 본문 영역과 금액 영역을 모두 전체 폭 기준 중앙 정렬로 보정합니다.
+============================================= */
+
+/* 일반 도네이션 전체 박스: 내부 아이템이 내용 폭만큼 줄어들지 않도록 고정 */
+.chat_box.image:not(.subscribe) .inner_box .donation_box {
+    width: 100% !important;
+    max-width: 100% !important;
+    align-items: stretch !important;
+    text-align: center !important;
+}
+
+/* 일반 도네이션의 금액 영역 / 메시지 영역 */
+.chat_box.image:not(.subscribe) .inner_box .donation_box .msg_box,
+.chat_box.image:not(.subscribe) .inner_box .donation_box .text_box {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+}
+
+/* 일반 도네이션 메시지 본문 */
+.chat_box.image:not(.subscribe) .inner_box .donation_box .text_box .msg {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+}
+
+/* 일반 도네이션 금액/치즈 뱃지 */
+.chat_box.image:not(.subscribe) .inner_box .donation_box .msg_box .val {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+}
+
+/* 구독/멤버십 계열도 같은 기준으로 중앙 정렬 */
+.chat_box.image.subscribe .inner_box .donation_box,
+.chat_box.image.subscribe .inner_box .donation_box .text_box {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    align-items: center !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .text_box .msg,
+.chat_box.image.subscribe .inner_box .donation_box .text_box .val,
+.chat_box.image.subscribe .inner_box .donation_box .msg_box .msg {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+}
+
