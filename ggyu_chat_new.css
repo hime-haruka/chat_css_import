@@ -1,0 +1,683 @@
+[data-id="슈퍼챗"],
+[data-id="치즈"],
+[data-id="비트"],
+[data-id="별풍선"],
+[data-id="젬"],
+[data-id="빔"] {
+    display: none;
+}
+
+/* =========================================================
+   token
+========================================================= */
+:root {
+    --chat-side-margin: 30px;
+    --chat-gap: 31px;
+    --panel-padding-top: 22px;
+    --panel-padding-right: 43px;
+    --panel-padding-bottom: 21px;
+    --panel-padding-left: 43px;
+    --text: #7f9fff;
+    --panel-border: rgba(255, 255, 255, 0.96);
+    --panel-back:
+        radial-gradient(circle at 10% 0%, rgba(74, 111, 220, 0.30), transparent 42%),
+        linear-gradient(135deg, rgba(13, 28, 86, 0.98) 0%, rgba(7, 17, 66, 0.98) 55%, rgba(4, 10, 43, 0.99) 100%);
+    --panel-shadow:
+        0 0 3px rgba(255, 255, 255, 0.92),
+        0 0 9px rgba(111, 143, 255, 0.72),
+        0 0 18px rgba(47, 82, 196, 0.38),
+        inset 0 0 9px rgba(255, 255, 255, 0.14),
+        inset 0 0 24px rgba(74, 106, 222, 0.34);
+    --name-text: #315bd0;
+    --name-back: #f7faff;
+    --name-border: #6f8ff4;
+    --badge-back: linear-gradient(180deg, #6688ee 0%, #4d69c9 100%);
+    --badge-border: rgba(143, 170, 255, 0.78);
+    --badge-text: #ffffff;
+    --chain1: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='10px' height='272px'%3E%3Cimage x='0px' y='0px' width='10px' height='272px' xlink:href='data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAEQCAYAAACJCOX0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QA/wD/AP+gvaeTAAAAB3RJTUUH6gcNAwko3XA7YwAAFgFJREFUaN6Nmnlwo+d93z/viRs8wPvm3vdqV1oJUryjGnKm8aE4iRy3nsTTwuOOZlV72o5rx00ku7HsZhK1HnVci7YzyY4TW7FHSSwnUm3rWMm6squVvNRyuTyWN0ESIECQIG68wPv2j/cgwKU8ff/BkPjhfZ/3eT7P93c9guo/SN2lAheA88AI8LL9hQgQjkQJR6IAj3X1H3vy0MkPPiTL6ktAs/V/07DuutA3dAet7UN4/C0AJxruWHelq1oZAEPXAarvZygiCKahYfxaQ0mwDMEA0N/fkIY71t7P0LlKxW2AGecOkhoiNj8aiM2PPtnU2vtAR/dBBFGkUimS3061xOZH54GkJKkhgCd7Bk9eOHDsPIJoPqQl1IesuM9tbcRE4HlJUkPDLk/gB0dOfcgam26OUhDwB9vJZ9PnSoXMqAjcF2jqACAVn6VarYAgsLZ0A4DWjkGA35OBVllWAdhKr1AuZVFUL+nkIt0DJ9BrVYCCDHhESTanQJRYnrv2ONDd0jbwWQBdrwGUZEARBHuWBIAsUJKsH1tLWZaBmjW5VLUyPQMn/0IQBUqFLOYddx6d02saAIGmDjp7DyOIIsm1W+aPqxWAjAy8ndtOAdDVf8xcYwM6ug8BkN1KALwumobJ762vTiEIAoIgmpMuCCRiE+SzGyPAr+yViW2mlkWtUryzpa0fgNmJ11lZvD4CfBtI2lthNByJPpxYmXJWJ7k2o4Uj0UfCkej4+9JjTUmlkWjg8qWL5y9fuvh0Z+8RczYFkUBTh+/ypYtP2YaCtV2fPnD8/k+1de5ruPPsxBsk126NAI+IQLS9+6BjZD0WgP1HP4CsuC4AIRH4g7au/QDE5kcRRJFyMUs6uQiAP9gOcLcM6FhLuLWxjNffwtZGDEX10to+iCQrAEER0A1zx2EYBtNjl36yvjr9PZfb67wYIO81PZuASxCkhn/KQMV+AVGU2Hf0A5/ZSi2jVQomPSa4RRnYqGolAJrb+unoPojHE6RczgOgmd+ti8Ab2cw6AN39xwHwBULY05XPbgD8SgT+Jrk2w/ZWHFE0x2VvjdmJN9Br1RGgIElqSAdjKrk20yFJymCgqYNKucDU2MtsJhdHwpHoI7H5UUdIfwR8Jr4yCUAht8H25trz4Uj0kQYorMtRMr1WAyjuRc9ngB92dJt67vY14fYEP7GbnmZRkjePn/0wvkBbwyTfeOc5ctvJrwOPicCF7r5j+AJt9mZ3CDpy+jcRJflRwCcCH29pHwBgfdXcChvJBVLxWWTFhT/YBnBOBHpU1QQgFZ8jvb5AYmWSWs2Wb8FcXcAtSOZEFwtbTN945e+zW4krvkCrNYwaQFmkXrfNseUBl2Ctkl6nPYbNotvbRHf/8X8Xj02glfPgb8WSm5wMbFar5ZAkK7R3H6C9+wCCICDJLgCboiUR+NnWxgqCINLRY+pNS/sAgaYOivkt9Fr1JlAQgZGVhVHKpRySpJhraX3OTb4JppdFktRQSq9VS8nVWx/y+IJ4fM3ktpNMXPsF+Vx6JByJfrWenj+v1bQ/SK+bW3QzFaNYyHzl/eiRdyRahzr3Vk/Po5KkfN9eykBzF5KsfuPypYtfqafnU4rqfvrkuY+jurzOHbRKkRvvPEe5lPst4BcicOHQiQiqy+tQYxg6iuph6NA9YMYYiMD5QHMn+ewG65bAp+KzlItZgi3dAA/YAmCOQRSJL4+bn0vjBJo7kSQFQRD9hqHvSIrbE6RYyBTnJt7460J+s6S6fPVb17czPaaiGYAGiDZR1v9rjmGlUsTrb/EOH77vYY+3SdU0cxPWTHryO2MEeodOE+oYtgIVAa1SBEgAhgi8ur0Zx+UJ0No2CEBb1wFUl9fxWvb0jMxPvYVeqzphgihKaFqJxZmrDfSMV7VyIBmfvc8XDOFy+0knF5kcfRGtUvhaOBK9WE/Pf62U81+3HkU6uUhVK306HIl+9X3oaZgSve47h54nXZ7Al60lo6V9AFGUfnj50sUv1NPzsNff+p2Tdz3ovAxAqZjlxtV/olqtPABcEgEnMHK0xzBwewLsO/IbDfSc9vpbKeTSZNIrAMSXxymXcrR2DAF8ouFlqlqF2Pwo66tTrMVuIkpygzt2DBWXh3x2Y3Ju8q3vVUp5FMWNbpi60zg9u+LF3dPkQFEp5/H5W4939h05vrY0jqHrtvTlGgxlxU3v8Bla2wdsZ4vl0VL2o6eKhQy+QIjmUC8AdrBpebQ3HXpmxl8Dw3A8lyCKlIrbLM9da6DnilYptCcTs3cHmztRXV5SiTkmRn+BXtO+EI5Ef1pPz+fKxey3c5bz3EjMY+j6x8OR6Df3oufXXjY9T7k9gf/ot0LYUMcQgiD+9PKli/+pnp7H/cH2R0/c9bGGOxQLGcbfeY5qtXIYmJYkNfTMqbt/x2uvrSAIjvYIokQmvVLDEqmQrLjYWF9gY30egMTKFIahE2zuAri/4WVqNY2VhfdIrEwSj90EBGTFBdDaYOj1NVMsZC7PT/3LSKmwjSAIiCbxaoOhJcsqpvbcdjlQaJUiPn/r2faeg2fjsQkMQ0fXDewf1tHjom/fGVraBqy7CzY9G7bhRDG/ddQfbHekuaPnMIIgkNlcBXjJoefW+Kvoes3ZroIgkM+lWZl/r4Get7VKKbi+eutekx4f66vTTL334qhh6F8NR6Iv19PzBa1SGLHCKzZTywD/PRyJfm8veoz/L3o83qZHfIGQQ48oSs9evnTxi/X0/Bd/sO2bJ+56sOEO5WKWMVN7IsArlvbcD1CnPTouT4DhXdpz0O0Nks+m2NqIAbC6eJ1KuUCr6UR/p+FlTO25xsrideKxKSRJbshfHUPV5aWQ2xxfnn33z7RKAUlW7ZXSdk+PffU482XsGNZpTwF/sO14Z+/R46uL19H1mpPBNRgqqoe+4TM0h/oAAwEBKylP249+N5/dwOtvoanV1J52S3u20jGAnzv0zIz/kmq1wk4SDrntFLH50QZ6rlW1srq+eut8oKkDl9tv0nP9pauGoT8WjkRfqafnT6pa6X/b9Fii/0Q4Er24Jz1OFrIHTfX0/Gdrw9PWuQ9ZVp+5fOniY/X0fMUfbP/T3dqjVQqMXX2OSjkfBq6IwIXDpx4w6bHiWr1WRVG99O8720BPl6J62EwtkUrMAqb21Goa/qZ2gHDDygiCyMrCe5SKOTYSs3T2HUFR3ADtDW/t9gYpl/Izq4vX/1u5lEcUJVv83Q2GVpwjAkd20WQ0PFrTSvgCbfu6+o7uW10ao1bVbMwa6ZFklf59Jj2CIIAAWqXRc726vRnH422yEIO2rv1IkmLvoZ859MxOvEalXGgYWG47SWyX5xqvVbVqYnUq4g+24/YELHpevmIY+qPhSPRSPT3f0GvVJ/I5k57trTjAt8OR6Pf3oqfm+F/z2jPuecrjbfqyvRXauvajqN4fXL508c/r6XnYFwh95+S53254mVpN4/qVZymXcp8GfiACF/Yf/YDzJZilEklSOHD8/gZ6zLgnv8lGwvRcq0tjFHJpAk0dCKJ4H6A20BObv0Y+l2YjPkt3/zGHAcPKuQCQZZVKuRBPxCY+V61WUKyEzdgdDLNDzwcdbAzDBqNaJ3slAk0dHYdOfvAhXyCEppXsDC4PGM4YRUmmd/gOmlt70XWz0mVl60n7Uc+mk0u43H6a7Qnv3IesuNky3cjzDj3zk29SzG/dRs/S7LsN9MzqejWdWJkc8vpD7R5f0256Xqyn51vAM4VcGoB8NgVw8f3o0XEqIDubytkqVrXwKV8g9MXewVMoqgdZcZHbTj64MH25s2/4zPOx+VEE1X/wMX+w7Wu7PRfA2Ns/JZ9LPwT8Y4P2WDUye/4YOHCugZ5uRfWyvblGIjYBwPrKFOVSHsuJnoVdXmFt6QaVSpF0Yp7O3sNm3CMIrRjGDj2q20e1WskmYhOf07SSLltps+UA5N3aIwEfpa5YdNs8VipFAk0d3iOnf/PDvkBItgXB9ocyoBmGrkiS5NBTq1URRdkuDq1h5Vx/l0rMoaheh55QxxCK6iadXAL4iUPPwvQVuwDkXNnMOksz7zTQEzP0Wmx9darX62/p8fiaScVnmbr+0luGof9xOBJ9qZ6evwKezWdNerLbSYCnw5HoD34tPXvlXA49/mDbH/UMnEB1eZEVF4Vc+qPzU2810PNZf7D9L3d7LoCxq/9EPrvxJeAJEbgwfPhea8uaZXgrZ+XQiQ8iCMJfAJIInPUFQpSKWacku7Y0TjazjssTQDLLy007XkGSWF0co1jIkF5foKP3cP0onMIEkuxC00ql9dXp/1CtVopOhcGagb3ino9Tl57qpvaUHUOtXCDQ3Ok+fOpDH/MF2hSbnvoyt2YYuiJKEn1Dd9DU2oNhGLvpQQQuJtduoahemlrNaKu1fQBFdZMyFfjHO/TcepvtzbWGgWbSqyzN7tAjAqN6rfrJm9d+/koqMWfuwtUpJkZ/8ZKh6w+FI9FpB4pwJPoM8GqpkAEgn9sEeDYcif7jXvQYjuPaIz116Ak2d32pZ+AEiupBUd0Ucpsfm5t8s4Gex4MtXY8eO/Ph22beqhb+W+DHTr3HpKbUQM/AgbugTntCsuIis7lG3NKeeGyScimH198KcArqtEdVPcRjNymXsmyllunuP4YsqyAILY3a4/JSq1YyqfjsH1arFd1uc4gmYMrO9AiO53qk/oVuc3GVcoGm1t7A8Ts/el+gqUMslwsYho5h6BqWi9MMQ0eWVfqGThNo6qB36DSSrNiRy6r9qL9eX72FonoINHcC0BzqQ5ZVrLV/2qFn8dYVMrvo2UwtE5v7VQM97+l67RMT137+cipux4+TTF1/6Z8Nw/hIOBJdrqfnH4DXrJaV7RdfDEeiP9uLnqrlxLGcvFA/lB16Wrr+qGfwJIrqQXX5KBYyH56deN2hR5LU0L8PNHV8/fjZj6CoHsB0Je3dB9jeSpybnXhdws65Bg/e3UBNuZQD4NCJf4UoSo8BLhG40xdoo1LKY7ddVpdusJVeQVbcyFZALGMVzCVFJb48TiG3wVZ6lc5G7dl5a0lSqFYrpJNLv6vXqinVGq+lLOJe2vOn9voDTjIuW/Mn16oaTa09DB64+9TS7FXKpTyK6rVrzVkRiFXKBURJprv/OF5/Cz0DJ1FdXnS9Rq2mFYGcCHw3sTKFKEpO1Bxs6UZ1+UjFZwD+1l6ZsWwmMezxNp/wmr1WwNSe2Yk3MAz9s0BcktRQGUimkwsew+BEU0s3G4l5psZeftEw9C+GI9FX6z3XL4Fn7GiqYurijXAk+pO96HFZnTyny1M/Z3b76imvv+XC8KF7CTR3UikXiM1fY311egT4PFCTJDX0abc3+D9O3/N7uNx+c5VkhZa2Aapa+VxuO9UC/MyKms/Xk025mEWvVbGo+jyWn7nTb7UzrBSUVGKOzdQygiDi8gQAhkVgq1qtIIoS2UyCydEXWFseR5LNd7HyrjYRqNW75q30ym9VtfLbFod23KOIgGYRYuvMz4Gs0/uwysQidc1Pr7+FM/d9kvauAw+Ura1rdX9KIjBj7+euvmO43D46+47gD3ZY+ycLMOd4LgC7n+kPtuP1t5BJr1LVyi8BaUlSQ5PFQqZTEMRzgaZOJ2vPZtaZvnEJXa99EZiwu6Sj25trarmUvbu1fZDtzTg3f/V//0XXa38SjkR/XE/PCvCjcjFbT89COBL9273oOeJsOUu3L1+66L9NewLNnY8PHbwH1eVFcXnB4Fg2s94Smx+9CuQlSQ3d4/W3fPfkXQ86nQpRlGzffW57K+4Hnjf7XP3mkYSC6VUpFbaplPP0DZ/B7QlcAPab2hM0S0xry+MOPXb+5fYGAQ6KQIsd+G5vrjL53ovEYzdtA3sJCyJ1rXNdr7G1EftoVSu/a3cq6lOpnaaEriOK0vNAxa5PWZ9FM5zRdTAM/E0d7D96noVbl++1RdVunYvAQrmUA0Ggu/8Yiuqms/cIPtMFUynt9Lm+k7BalHaSG2zuwuUJkIrPYhj6D4GqJKmh64XcZqckKefsowi29szcfA3D0B8Blm16JjPpVQWEc8GWLlKJOaZ3tOeFenpmgXcrVve2XMwBXH0/7Wm1y9x7XQ497d0H/rh38BSy4sLl9lHVyuenxy41eK5vhjqGP3/g+P12gRdZVmltH6SQ2zx3a/zVdeAdU3uOnUfXa5QK29bOMz1X3/AZqIt73KIokcuss7ZsnspIxCYp5rfweJsADkOdWLo8AZJrM1TKBba34vQMnkAQRQRBVBv6XLLsQtdr25up5QdrVc3YpT07hnb7QhCEfwYMOy/V69qpzuK3dx1oP3PfJ2lq7RErlaIdMeexUqmqYeiobh/dA8dRXV56Bk4iy6r99ov2W4/EYxMoituO7mhq7UGUZNZXpwH+0jb81uLMVdLJhYYlS6xMsbY8/l3q4p5bGMaHpsde+YeNddM4Nj/K/NRb3wVGwpHoTn8mHIm+DKza+Ft6+WY4En2vgZ7Lly6qgLrTJTWHWv+HiJmvPtnVf+xhq8BL7+Apmlt7v1XfY5ckNfTNrr6jnx86FHZavYrqpq1rP1sbK+fmJt9MAldF4MLAgXMYhuFUumyK9h1trDW7RFEis7nqVAtXFt+jXMrj9bUAHG/YCqIosbpwnekbr7CZXEJVPXZFKddgKMsuqtXKWHp94fdrNQ1BFPcuSlu/3pYV1zN2RGgfumgw1CpFOnuP/MaZ+36fppZuDF13BKqBcH+wHbc3iCQp9AydQhBFtHJjzvWjjcQ8qstrv6Xdl7mNnpHZidedFiCYXnZ1aYxkfGYkHIn+jW34mq7Xfndi9IUXrMYDS7NXWZp55/8ATzRAEY5EnwWWdyLSPMAvw5Ho/G562uwVAsdzDeympwf4Wu/QHX/YbLnhvn1naA71/6/dJzSe6t939kLv0Gl2X+PvPk82s/4R7Lind+g0Va2E7V3tz57BUw30AJCMz5Iw54215XEMQ8dtxjz7GlbG5fIRm7tGIbdJbnudoYP32CAHG+6oun3UatqVrY3lj9WqmhnGCE5pp46eqgZwj9sTeM5p/dalpnWGFXoGT3LHvZ+gubUHw9CpWSfDGsYYaOmyzxPSM3gKQXDocXKu7yfXZlAUt62w9kmm2+mZm3zTLgI5ZK8sjJJKzI2EI9G/sw2vGIb+r6fHXn7WNl6cfYfluWv/E3h8Nz0vACn7LFLVpOjtcCS61mB4+dLFAcBnHymyDq8M7qZnEPjywP47P2UHcf3DZwh1Dj+xW3v+bGD/XRd6Bk85LV9ZcRHqGCKbWT83e/P1LexORc/gSWo1zdZFp+I1dCh8Oz2ZjZWdWvPiGFqliMuMVPobVkaUFNaWbpDPbpDZXENW3NTMwKNRKWRFpVqtXEknFx8y9JrTqGV3n6vuTOYr9kvt2RCzA3MgZ4fWFj35BkO3N4jbEzgELLRb56Xq6ZEkNdSnunxnfYEQXf3H6Og5HGjrMk+GLc5cpVjIfAm46ZzQsKdGdXmp1TSWZt8lbR76+nvYSXzutyb231gjyWG6tm8AGYD/B/i+wOc413mMAAAAAElFTkSuQmCC' /%3E%3C/svg%3E");
+    --chain2: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='10px' height='272px'%3E%3Cimage x='0px' y='0px' width='10px' height='272px' xlink:href='data:img/png;base64,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' /%3E%3C/svg%3E");
+}
+
+/* n */
+.chat_box.chat:not(.streamer):not(.subscribe),
+.chat_box.image:not(.subscribe) {
+    --star: url("https://lh3.googleusercontent.com/d/1ATTHKrBLVtpVQKZsyEZyCRvOHgV0NFpz");
+    --cloud: url("https://lh3.googleusercontent.com/d/1SfDMVW2iWTDZU1_tGlcoS0O7a89czxQk");
+    --badge-icon: url("https://lh3.googleusercontent.com/d/1AY1W8hx8e_ufuKsQJWyyT8OiEG57pO6F");
+}
+
+/* str */
+.chat_box.chat.streamer {
+    --star: url("https://lh3.googleusercontent.com/d/12aTr9K2-O4EiUJTLovW62LuDTwl5l59g");
+    --cloud: url("https://lh3.googleusercontent.com/d/1dZtuoqi3HysnCir5ZzRro4IKMqpS2bLp");
+}
+
+/* sub */
+.chat_box.chat.subscribe {
+    --star: url("https://lh3.googleusercontent.com/d/12aTr9K2-O4EiUJTLovW62LuDTwl5l59g");
+    --cloud: url("https://lh3.googleusercontent.com/d/1IdG2i_sLscQ53PST2CfXtfdt1gHcrT8H");
+}
+
+/* dona-sub */
+.chat_box.image.subscribe {
+    --star: url("https://lh3.googleusercontent.com/d/1ATTHKrBLVtpVQKZsyEZyCRvOHgV0NFpz");
+    --cloud: url("https://lh3.googleusercontent.com/d/1IdG2i_sLscQ53PST2CfXtfdt1gHcrT8H");
+    --badge-back: linear-gradient(180deg, #6871b2 0%, #535c93 100%);
+    --badge-border: rgba(164, 174, 226, 0.72);
+}
+
+html {
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+}
+
+.chat_area {
+    -webkit-mask-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        from(#000),
+        color-stop(0.9, #000),
+        to(transparent)
+    );
+}
+
+.chat_box,
+.chat_box * {
+    box-sizing: border-box !important;
+}
+
+.icon_badge {
+    display: none !important;
+}
+
+p {
+    position: relative;
+    z-index: 3;
+    margin: 0 !important;
+    color: var(--text) !important;
+    font-size: 22px !important;
+    font-weight: 400 !important;
+    line-height: 1.22 !important;
+    letter-spacing: -0.8px !important;
+    text-align: left !important;
+    text-shadow:
+        0 0 5px rgba(76, 111, 255, 0.18),
+        0 1px 0 rgba(0, 0, 0, 0.16) !important;
+}
+
+/* =========================================================
+   design
+========================================================= */
+.chat_box {
+    position: relative;
+    width: calc(100% - (var(--chat-side-margin) * 2)) !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    margin: 0 var(--chat-side-margin) var(--chat-gap) !important;
+    overflow: visible !important;
+    animation: chat-popup 650ms cubic-bezier(0.16, 1, 0.3, 1) both !important;
+    transform-origin: center center;
+    will-change: transform, opacity, filter;
+}
+
+.chat_box .inner_box {
+    position: relative !important;
+    z-index: 0;
+    isolation: isolate;
+    min-height: 73px;
+    padding:
+        var(--panel-padding-top)
+        var(--panel-padding-right)
+        var(--panel-padding-bottom)
+        var(--panel-padding-left) !important;
+    overflow: visible !important;
+    border: 1px solid var(--panel-border) !important;
+    border-radius: 0 !important;
+    background: var(--panel-back) !important;
+    box-shadow: var(--panel-shadow) !important;
+}
+
+.chat_box .inner_box::before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    inset: 1px;
+    pointer-events: none;
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    background:
+        linear-gradient(90deg, rgba(130, 158, 255, 0.14), transparent 24%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.07), transparent 50%);
+    box-shadow:
+        inset 0 0 8px rgba(255, 255, 255, 0.10),
+        inset 0 0 20px rgba(83, 116, 236, 0.26);
+}
+
+.chat_box .inner_box::after {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    top: 4px;
+    right: 8px;
+    width: 23px;
+    height: calc(100% - 8px);
+    max-height: 78px;
+
+    pointer-events: none;
+    background-image:
+        var(--chain1),
+        var(--chain2);
+    background-repeat:
+        no-repeat,
+        no-repeat;
+    background-size:
+        10px 272px,
+        10px 272px;
+    background-position:
+        right bottom 15px,
+        left bottom 20px;
+
+    opacity: 0.82;
+    filter: drop-shadow(0 0 2px rgba(94, 127, 255, 0.38));
+    animation: chain-drop-bottom 920ms cubic-bezier(0.16, 1, 0.3, 1) 420ms both;
+}
+
+.chat_box::before {
+    content: "";
+    position: absolute;
+    z-index: 5;
+    top: -13px;
+    right: -15px;
+    width: 31px;
+    height: 31px;
+    pointer-events: none;
+    background-image: var(--star);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0;
+    filter: blur(2px) brightness(1.16);
+    animation: star-pop 420ms cubic-bezier(0.22, 1, 0.36, 1) 520ms both;
+}
+
+.chat_box::after {
+    content: "";
+    position: absolute;
+    z-index: 5;
+    right: -4px;
+    bottom: -6px;
+    width: 50px;
+    height: 28px;
+    pointer-events: none;
+    background-image: var(--cloud);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    transform-origin: center center;
+    animation: cloud-float 4200ms ease-in-out 1100ms infinite;
+}
+
+/* =========================================================
+   nick
+========================================================= */
+.chat_box .inner_box .name {
+    position: absolute !important;
+    z-index: 6;
+    top: -9px;
+    left: 10px;
+    width: fit-content !important;
+    min-width: 57px;
+    height: 20px;
+    margin: 0 !important;
+    padding: 0 11px !important;
+    overflow: visible !important;
+    border: 1px solid var(--name-border) !important;
+    border-radius: 0 !important;
+    background: var(--name-back) !important;
+    box-shadow:
+        0 0 4px rgba(77, 112, 232, 0.25),
+        inset 0 -1px 0 rgba(64, 94, 192, 0.08) !important;
+    transform: none !important;
+}
+
+.chat_box .inner_box .name::before,
+.chat_box .inner_box .name::after {
+    content: "";
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    width: 1px;
+    background: rgba(79, 108, 214, 0.34);
+}
+
+.chat_box .inner_box .name::before {
+    left: 5px;
+}
+
+.chat_box .inner_box .name::after {
+    right: 5px;
+}
+
+.chat_box .inner_box .name .nick {
+    display: block !important;
+    position: relative !important;
+    z-index: 2;
+    width: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: var(--name-text) !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    line-height: 18px !important;
+    letter-spacing: -0.5px !important;
+    text-align: center !important;
+    text-shadow: none !important;
+}
+
+/* =========================================================
+   dona-reset
+========================================================= */
+.chat_box.image,
+.chat_box.image .inner_box,
+.chat_box.image .donation_box,
+.chat_box.image .text_box,
+.chat_box.image .msg_box,
+.chat_box.image .nick,
+.chat_box.image .msg,
+.chat_box.image .val {
+    border-radius: 0 !important;
+}
+
+.chat_box.image .donation_box,
+.chat_box.image .text_box,
+.chat_box.image .msg_box {
+    overflow: visible !important;
+}
+
+.chat_box.image .donation_box::before,
+.chat_box.image .donation_box::after,
+.chat_box.image .donation_box.subscribe::before {
+    display: none !important;
+    content: none !important;
+}
+
+.chat_box.image .donation_box {
+    position: relative !important;
+    z-index: 3;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    width: 100% !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+.chat_box.image .text_box,
+.chat_box.image .msg_box {
+    display: contents !important;
+}
+
+.chat_box.image .nick {
+    order: 10;
+}
+
+.chat_box.image:not(.subscribe) .text_box > .msg {
+    order: 20;
+}
+
+.chat_box.image:not(.subscribe) .msg_box > .val {
+    order: 30;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .text_box .nick {
+    position: absolute !important;
+    z-index: 6;
+    top: -31px;
+    left: -12px;
+    width: fit-content !important;
+    min-width: 57px;
+    height: 20px;
+    margin: 0 !important;
+    padding: 0 11px !important;
+    border: 1px solid var(--name-border) !important;
+    border-radius: 0 !important;
+    background: var(--name-back) !important;
+    box-shadow: 0 0 4px rgba(77, 112, 232, 0.25) !important;
+    color: var(--name-text) !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    line-height: 18px !important;
+    letter-spacing: -0.5px !important;
+    text-align: center !important;
+    text-shadow: none !important;
+    transform: none !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .text_box .msg {
+    position: relative !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: var(--text) !important;
+    text-align: left !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .msg_box .val {
+    position: relative !important;
+    left: auto !important;
+    bottom: auto !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    width: fit-content !important;
+    min-width: 66px;
+    height: 21px;
+    margin: 10px 0 0 !important;
+    padding: 0 10px !important;
+    border: 1px solid var(--badge-border) !important;
+    border-radius: 0 !important;
+    background: var(--badge-back) !important;
+    box-shadow:
+        0 0 5px rgba(65, 103, 230, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+    color: var(--badge-text) !important;
+    font-size: 15px !important;
+    font-weight: 400 !important;
+    line-height: 19px !important;
+    text-align: center !important;
+    text-shadow: none !important;
+    transform: none !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .msg_box .val .icon_chzzk {
+    width: 13px !important;
+    height: 13px !important;
+    background-image: var(--badge-icon) !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: contain !important;
+}
+
+/* =========================================================
+   dona-sub
+========================================================= */
+.chat_box.image.subscribe .donation_box .msg_box > .msg {
+    order: 20;
+}
+
+.chat_box.image.subscribe .donation_box .text_box > .msg {
+    order: 30;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .text_box .nick {
+    position: absolute !important;
+    z-index: 6;
+    top: -31px;
+    left: -12px;
+    width: fit-content !important;
+    min-width: 57px;
+    height: 20px;
+    margin: 0 !important;
+    padding: 0 11px !important;
+    border: 1px solid var(--name-border) !important;
+    border-radius: 0 !important;
+    background: var(--name-back) !important;
+    box-shadow: 0 0 4px rgba(77, 112, 232, 0.25) !important;
+    color: var(--name-text) !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    line-height: 18px !important;
+    letter-spacing: -0.5px !important;
+    text-align: center !important;
+    text-shadow: none !important;
+    transform: none !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .msg_box .msg {
+    position: relative !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: var(--text) !important;
+    text-align: left !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .text_box .msg {
+    position: relative !important;
+    left: auto !important;
+    bottom: auto !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    width: fit-content !important;
+    min-width: 66px;
+    height: 21px;
+    margin: 10px 0 0 !important;
+    padding: 0 10px !important;
+    border: 1px solid var(--badge-border) !important;
+    border-radius: 0 !important;
+    background: var(--badge-back) !important;
+    box-shadow:
+        0 0 5px rgba(65, 103, 230, 0.20),
+        inset 0 1px 0 rgba(255, 255, 255, 0.10) !important;
+    color: var(--badge-text) !important;
+    font-size: 0 !important;
+    line-height: 19px !important;
+    text-align: center !important;
+    text-shadow: none !important;
+    transform: none !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .text_box .msg .val {
+    color: var(--badge-text) !important;
+    font-size: 15px !important;
+    font-weight: 400 !important;
+    line-height: 19px !important;
+    text-shadow: none !important;
+}
+
+/* =========================================================
+   square override
+========================================================= */
+.chat_box,
+.chat_box *,
+.chat_box::before,
+.chat_box::after,
+.chat_box .inner_box::before,
+.chat_box .inner_box::after {
+    border-radius: 0 !important;
+}
+
+
+/* =========================================================
+   subscribe message / rounded badges
+========================================================= */
+.chat_box.chat.subscribe .msg,
+.chat_box.chat.subscribe .msg_box,
+.chat_box.chat.subscribe .text_box {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+.chat_box.image:not(.subscribe)
+.inner_box
+.donation_box
+.msg_box
+.val {
+    border-radius: 999px !important;
+}
+
+.chat_box.image.subscribe
+.inner_box
+.donation_box
+.text_box
+.msg {
+    border-radius: 999px !important;
+}
+
+.chat_box.image.subscribe
+.inner_box
+.donation_box
+.msg_box,
+
+.chat_box.image.subscribe
+.inner_box
+.donation_box
+.msg_box > .msg,
+
+.chat_box.image.subscribe
+.inner_box
+.donation_box
+.msg_box .msg,
+
+.chat_box.image.subscribe
+.inner_box
+.donation_box
+.msg_box > p,
+
+.chat_box.image.subscribe
+.inner_box
+.donation_box
+.msg_box p {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    border-color: transparent !important;
+    outline: 0 !important;
+    filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+.chat_box.image.subscribe
+.inner_box
+.donation_box
+.msg_box .msg > span,
+
+.chat_box.image.subscribe
+.inner_box
+.donation_box
+.msg_box p > span {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+}
+
+.chat_box.image.subscribe
+.inner_box
+.donation_box
+.msg_box::before,
+
+.chat_box.image.subscribe
+.inner_box
+.donation_box
+.msg_box::after,
+
+.chat_box.image.subscribe
+.inner_box
+.donation_box
+.msg_box .msg::before,
+
+.chat_box.image.subscribe
+.inner_box
+.donation_box
+.msg_box .msg::after {
+    content: none !important;
+    display: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+.chat_box.image.subscribe
+.inner_box
+.donation_box
+.text_box
+.msg {
+    background: var(--badge-back) !important;
+    border: 1px solid var(--badge-border) !important;
+    border-radius: 999px !important;
+    box-shadow:
+        0 0 5px rgba(65, 103, 230, 0.20),
+        inset 0 1px 0 rgba(255, 255, 255, 0.10) !important;
+}
+
+
+
+/* =========================================================
+   keyframes
+========================================================= */
+@keyframes chat-popup {
+    0% {
+        opacity: 0;
+        transform: translateY(16px) scale(0.975);
+        filter: blur(6px) brightness(1.10);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0) brightness(1);
+    }
+}
+
+@keyframes star-pop {
+    0% {
+        opacity: 0;
+        transform: scale(0.18) rotate(-12deg);
+        filter: blur(2px) brightness(1.18);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+        filter: blur(0) brightness(1);
+    }
+}
+
+@keyframes chain-drop-bottom {
+    0% {
+        opacity: 0;
+        background-position:
+            right bottom 150px,
+            left bottom 165px;
+        filter: drop-shadow(0 0 0 rgba(94, 127, 255, 0));
+    }
+
+    100% {
+        opacity: 0.82;
+        background-position:
+            right bottom 15px,
+            left bottom 20px;
+        filter: drop-shadow(0 0 2px rgba(94, 127, 255, 0.38));
+    }
+}
+
+@keyframes cloud-float {
+    0%,
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+        filter: brightness(1);
+    }
+
+    25% {
+        transform: translate(-2px, -1px) rotate(-1deg);
+        filter: brightness(1.03);
+    }
+
+    50% {
+        transform: translate(0, -2px) rotate(0deg);
+        filter: brightness(1.05);
+    }
+
+    75% {
+        transform: translate(2px, -1px) rotate(1deg);
+        filter: brightness(1.03);
+    }
+}
