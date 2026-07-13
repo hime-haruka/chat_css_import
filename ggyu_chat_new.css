@@ -17,7 +17,6 @@
     --panel-padding-right: 43px;
     --panel-padding-bottom: 21px;
     --panel-padding-left: 43px;
-    --text: #7f9fff;
     --panel-border: rgba(255, 255, 255, 0.96);
     --panel-back:
         radial-gradient(circle at 10% 0%, rgba(74, 111, 220, 0.30), transparent 42%),
@@ -28,7 +27,6 @@
         0 0 18px rgba(47, 82, 196, 0.38),
         inset 0 0 9px rgba(255, 255, 255, 0.14),
         inset 0 0 24px rgba(74, 106, 222, 0.34);
-    --name-text: #315bd0;
     --name-back: #f7faff;
     --name-border: #6f8ff4;
     --badge-back: linear-gradient(180deg, #6688ee 0%, #4d69c9 100%);
@@ -96,7 +94,6 @@ p {
     position: relative;
     z-index: 3;
     margin: 0 !important;
-    color: var(--text) !important;
     font-size: 22px !important;
     font-weight: 400 !important;
     line-height: 1.22 !important;
@@ -266,7 +263,6 @@ p {
     width: auto !important;
     margin: 0 !important;
     padding: 0 !important;
-    color: var(--name-text) !important;
     font-size: 13px !important;
     font-weight: 400 !important;
     line-height: 18px !important;
@@ -347,7 +343,6 @@ p {
     border-radius: 0 !important;
     background: var(--name-back) !important;
     box-shadow: 0 0 4px rgba(77, 112, 232, 0.25) !important;
-    color: var(--name-text) !important;
     font-size: 13px !important;
     font-weight: 400 !important;
     line-height: 18px !important;
@@ -362,7 +357,6 @@ p {
     width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
-    color: var(--text) !important;
     text-align: left !important;
 }
 
@@ -428,7 +422,6 @@ p {
     border-radius: 0 !important;
     background: var(--name-back) !important;
     box-shadow: 0 0 4px rgba(77, 112, 232, 0.25) !important;
-    color: var(--name-text) !important;
     font-size: 13px !important;
     font-weight: 400 !important;
     line-height: 18px !important;
@@ -443,7 +436,6 @@ p {
     width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
-    color: var(--text) !important;
     text-align: left !important;
 }
 
