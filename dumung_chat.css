@@ -1,0 +1,729 @@
+[data-id = "슈퍼챗"], [data-id = "치즈"], [data-id = "비트"], [data-id = "별풍선"], [data-id = "젬"], [data-id = "비트"], [data-id = "빔"] {
+    display: none;
+}
+
+@font-face {
+    font-family: 'Atomy';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/Atomy-Bold.woff') format('woff');
+    font-weight: normal;
+    font-display: swap;
+}
+
+/* ============================================= 
+        general
+============================================= */
+html {
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+}
+
+p {
+    color: var(--text) !important;
+    position: relative;
+    margin: 0 !important;
+    line-height: 1.2 !important;
+    z-index: 999;
+    text-shadow: none !important;
+    font-family: 'Atomy', Courier, monospace !important;
+    font-weight: 400 !important;
+    font-size: 22px !important;
+    letter-spacing: -0.8px !important;
+    text-align: center !important;
+}
+
+.chat_area {
+    -webkit-mask-image: -webkit-gradient(linear, left bottom, left top, from(#000), color-stop(0.98, #000), to(transparent));    
+}
+
+.chat_box {
+    margin: 0 auto !important;
+    margin-bottom: 50px !important;
+}
+
+.chat_box.chat * {
+    box-sizing: border-box !important;
+}
+
+.icon_badge {
+    display: none !important;
+}
+
+.icon_chzzk {
+    display: none !important;
+}
+
+/* ============================================= 
+        donation reset
+============================================= */
+.chat_box.image .donation_box,
+.chat_box.image .text_box,
+.chat_box.image .msg_box,
+.chat_box.image .nick,
+.chat_box.image .msg,
+.chat_box.image .val {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent !important;
+}
+
+.chat_box.image .donation_box .inner_box {
+    margin: 0;
+    padding: 0;
+}
+
+.chat_box.image,
+.chat_box.image .inner_box,
+.chat_box.image .donation_box,
+.chat_box.image .text_box,
+.chat_box.image .msg_box {
+    overflow: visible;
+}
+
+.chat_box.image .donation_box::before,
+.chat_box.image .donation_box::after,
+.chat_box.image .donation_box.subscribe::before {
+    content: none;
+}
+
+.chat_box.image .donation_box.subscribe::before {
+    display: none !important;
+}
+
+/* =========================================
+        display order
+========================================= */
+.chat_box.image .donation_box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.chat_box.image .text_box,
+.chat_box.image .msg_box {
+    display: contents;
+}
+
+.chat_box.image .nick {
+    order: 10;
+}
+
+.chat_box.image .msg_box > .val {
+    order: 20;
+}
+
+.chat_box.image .text_box > .msg {
+    order: 30;
+}
+
+.chat_box.image .donation_box.subscribe .text_box > .msg {
+    order: 20;
+}
+
+.chat_box.image .donation_box.subscribe .msg_box > .msg {
+    order: 30;
+}
+
+/* ============================================= 
+        tokens
+============================================= */
+:root {
+    --ribbon-L: url("data:image/svg+xml, %3Csvg class='leaf-left-svg' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='31' height='36' viewBox='-3 -4 37 44' %3E%3Cg transform='translate(-3 -3.484) scale(1.19355)'%3E%3Cg id='leaf-left'%3E%3CanimateTransform attributeName='transform' attributeType='XML' type='rotate' values=' 0 12 34; -4 12 34; 2 12 34; -3 12 34; 0 12 34 ' dur='2.8s' repeatCount='indefinite' /%3E%3Cimage x='0' y='6' width='24' height='30' href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAeCAMAAAAB8C7XAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAACZFBMVEVfPjb/rk5fPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjaLXT2+gESocUGDVztjQTfUkEj/rk70p0yAVTvCg0X2oT/7qEbSj0eGWTyrc0H1oD7njy3ymTH4oz79q0nIiEZxSzmUYz76pkLfiC7qkSzvlSvwli33oj3+rEz5qk2gbEB+VDv8qUfrkizZgy/skizxmC/5pULOjEdrRjhlQjf9rU7vlSzhii7ahC/tlCv1njf9q0rqoEt5UDrkm0rulCvYgzDchi/ulSvxly76p0T2p02IWzzGhkX1njjljS3WgTDfiS77q02QYD2ncEH5pEDbhS/kjC2HWjx3Tzr9qknojyz5pUF2TjlgPzb+rU7giS7XgjDjm0piQDbdlkn3oTzYgjDvliyyeEKNXj37p0Tmji3ehy7zmzT+rU3dhy/7qEWXZT7xpEz2oDvskyzpkCz2nzr6qk2SYj5qRTj6pkPnnUrNi0fokCz0nTfLikZhPzbymjLiiy61ekO6fkTiii5oRDf8rE7znDTclkmvdkL8qUjwly57UTralEiOXz1sRzj4oz/1nzn+rEvsoUuCVjtoRTfIh0aRYT6xeELDhEWaZz/////peAbVAAAAQHRSTlMAAEaXdDoHUjW7uE+dqD95jFWxSDF1CYfUkKSNcoUnagIbyZNgBgqO6Pd/EVnZsHCsA4k+KMiRXxdbeKeDoF4UgUG6lwAAAAFiS0dEy4SzBnAAAAAHdElNRQfqBw0XFi17b8reAAAB40lEQVQoz2XR+V9MURgG8HuE7IWsgykh2cm+lzxhhOy9ZkaLoqEoDbK9IaUSFVkGTYrIvmeP7P4q55w71xTPb+f5fs57zznXMLqEdO3W3fg/oUvjE5YlhvQQnWMYPZcDSIpf0av3P9BnJVY5pK1O7tuvE4Stwdp1Kes3ABs3hXeE/puxZWsqbXO64N4+YGAQItKQnpG5gygrG9i5a9BfGJzjwe49uXlEtHcf8guGWGAM3Y+UQu+Bg1IOFeHwkWEWDD+KY3Sci0klGydO2gIw4hRKiE5zqZYSuMtGmjDqDMqJUpkrtFQi6axdQ2TVOcjiPFdnBKbV1EYpEKMv4CJRXh3nFiq45MDlaA1jruCqLHzM1/SW6/AkjlUwLgc3VFHPgQP40RCjQIy/iUa5bqpmvqXgNppjNUy4o2fJy3CmegFy4e5EBdYsNUx/pgUNkxSIyffgVEWTl9mnZ92fomFqGfx6ywNmrzzzQzyapmH6Yw+eaCllfkrkxLMZGkT0cxRpoBdcR5SO5DgTZr58hVZTfPXyuV7PMkwQs9/g7TtTZO9+P8eCubUf4MhSdaMf7o82YYGY11YD16fPLe3Al682EQRh//YdKs0/quaLjiDiFqT9/PW7LTYmMvBrg4lYuGjxEmvxB3fkuHsfeiGkAAAAAElFTkSuQmCC' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");
+    --ribbon-R: url("data:image/svg+xml, %3Csvg class='leaf-right-svg' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='31' height='36' viewBox='-3 -4 37 44' %3E%3Cg transform='translate(-3 -3.484) scale(1.19355)'%3E%3Cg id='leaf-right'%3E%3CanimateTransform attributeName='transform' attributeType='XML' type='rotate' values=' 0 23 30; 3 23 30; -2 23 30; 2 23 30; 0 23 30 ' dur='3.1s' begin='-0.6s' repeatCount='indefinite' /%3E%3Cimage x='16' y='0' width='15' height='32' href='data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAgCAMAAAD68tKbAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAACHFBMVEVfPjb/rk5fPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjZfPjancEHTj0d0TDmvdkL/rk71p0yIWzy3e0P7q02PXz26fkT3o0H5qk19UzvDhEXumTn5pUHsoUtrRjjslzrulCv6p0TMikbvmTnmji3xly7+rEuaZz/ynDndhi/vlSv1nznypUxqRTj1njjYgjDskyz6pkO7f0Tdhy/kjC3ymjL8rE52Tjm1ekP2oTvjjC3ahC+mcEH4oz/pkCzWgTDqkSzxmDD9rU5ySzmPYD3ulSvXgjDhii75pUKDVzv7qEbchi/YgzDzmzP0pkxjQTd1TTn9q0niiy7okCz7qEVsRzjgiS7Hh0ZlQjf+rU3xmC9hPzbehy7/rU1gPjbljS1uSTjvlSzZgy/8qUfblUn0nDXbhS/rkiyRYT2sdEL3oj3jiy34pD+jbUCKXDz7p0VtSDj2oDrzpkznji3tkyv6pkKgbED4pEBvSTh7UTr+rUzBg0XFhkX+rEzjm0poRTdpRTjimkrRjkdkQjeSYj6XZT6EWDxqRjj///9JLVrKAAAAN3RSTlMAAAlyuVCGgJCMkXigRK2BKpM3iXEgTTkGIxWmCusDBwEY+zDGT3tsF2gaLJyjMzpqtghRWTsSwAZZrwAAAAFiS0dEs9pt/34AAAAHdElNRQfqBw0XGQ3HmfbZAAABjklEQVQY003R51NTURAF8H0gTQOo0SCIihVjRWnCsUIwFtBEckTFAiYB8hBCiAmKDUSwYEHsDZGiFFHhL/S+zCThfLq/mbuzd/dKQuKSJFmUxNIDZclaNCIp5Th4KDXutMPAkaNpMS89hgpU2pZFbarCcTtOnEyP+9TpatRkxH3mrMOJc5kx17p4HnUXlkd98VI9L+PKipivXmMDGq+vNGx2w+NtIu2oMhle1YwWn97KG2hrX61s8aO6I9BJBuE2K2fdRIjhLvIWbnevEcm+g7u8p98nH8BvEcnpgZM+vZf04OFakdw+PCIDqqAfdetE1g8A5GOj4Am6N0jeU8PPjAInBjeKbGrEc9brL8iXsG0W2fIKQ+RrfVjN8GaryLa3eEe+1738gI/5Iumf8Jkc1l2qodsssv2LegAZDvCrmllUg29oIEf076P4YRXR1IbH1IVeNeH4DuWdE5jsJx0h/NylPkzTdv9CKBiawvTMnoj3zv6GylxPgRaxZv3z99/8wj6Lsa9I9hcWFZdETv8BRWJzzuE/FIIAAAAASUVORK5CYII=' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.chat_box.chat:not(.streamer):not(.subscribe) {
+    --text: #3c2925;
+    --back: linear-gradient(to bottom, #efd3a2 0%, #e4c18c 100%);
+    --outline: 2px solid #4e3e27;
+    --border: 2px solid #f4ddb8;
+    --face: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 88 26' width='88' height='26' %3E%3Cstyle%3E .blink-eye-open %7B fill: %23e7e7e7; stroke: %234e3e27; stroke-width: 2px; animation: blink-open-animation 4s infinite; %7D .blink-eye-closed %7B fill: none; stroke: %234e3e27; stroke-width: 7px; stroke-linecap: round; stroke-linejoin: round; opacity: 0; animation: blink-closed-animation 4s infinite; %7D .blink-eye-closed-inner %7B fill: none; stroke: %23e7e7e7; stroke-width: 3.5px; stroke-linecap: round; stroke-linejoin: round; opacity: 0; animation: blink-closed-animation 4s infinite; %7D .blink-nose %7B fill: %23e7e7e7; stroke: %234e3e27; stroke-width: 2px; %7D .blink-cheek %7B fill: %23e7e7e7; %7D @keyframes blink-open-animation %7B 0%25, 86%25, 100%25 %7B opacity: 1; %7D 89%25, 94%25 %7B opacity: 0; %7D %7D @keyframes blink-closed-animation %7B 0%25, 86%25, 100%25 %7B opacity: 0; %7D 89%25, 94%25 %7B opacity: 1; %7D %7D %3C/style%3E%3Cpath class='blink-eye-open' d='M10.800,10.230 L17.697,6.249 C19.148,5.411 21.003,5.908 21.841,7.359 C22.679,8.810 22.182,10.666 20.731,11.503 L13.834,15.485 C12.383,16.323 10.528,15.826 9.690,14.375 C8.852,12.924 9.349,11.068 10.800,10.230 Z' /%3E%3Cpath class='blink-eye-open' d='M75.726,10.247 L68.789,6.366 C67.329,5.549 65.463,6.034 64.620,7.448 C63.778,8.862 64.278,10.671 65.737,11.487 L72.674,15.368 C74.134,16.184 76.000,15.700 76.843,14.285 C77.686,12.871 77.186,11.063 75.726,10.247 Z' /%3E%3Cpath class='blink-eye-closed' d='M9.8 11.5 Q15.7 15.2 21.7 11.5' /%3E%3Cpath class='blink-eye-closed-inner' d='M9.8 11.5 Q15.7 15.2 21.7 11.5' /%3E%3Cpath class='blink-eye-closed' d='M64.8 11.5 Q70.8 15.2 76.8 11.5' /%3E%3Cpath class='blink-eye-closed-inner' d='M64.8 11.5 Q70.8 15.2 76.8 11.5' /%3E%3Cpath class='blink-nose' d='M42.1000,14.942 C44.351,14.942 45.447,16.037 45.447,17.388 C45.447,18.739 44.351,19.835 42.1000,19.835 C41.649,19.835 40.553,18.739 40.553,17.388 C40.553,16.037 41.649,14.942 42.1000,14.942 Z' /%3E%3Cpath class='blink-cheek' d='M76.766,20.650 L84.920,20.650 C86.046,20.650 86.959,21.563 86.959,22.689 C86.959,23.815 86.046,24.728 84.920,24.728 L76.766,24.728 C75.640,24.728 74.727,23.815 74.727,22.689 C74.727,21.563 75.640,20.650 76.766,20.650 Z' /%3E%3Cpath class='blink-cheek' d='M2.079,20.650 L10.234,20.650 C11.360,20.650 12.273,21.563 12.273,22.689 C12.273,23.815 11.360,24.728 10.234,24.728 L2.079,24.728 C0.954,24.728 0.041,23.815 0.041,22.689 C0.041,21.563 0.954,20.650 2.079,20.650 Z' /%3E%3C/svg%3E");
+    --ear: url(https://lh3.googleusercontent.com/d/1HxrvCT00twDRHQL0gtRwpUBs7cPXVJCE);
+    --lineB: url(https://lh3.googleusercontent.com/d/1XtuGBkWVct12yuQlmKvviLP70BFyNf_B);
+    --lineR: url(https://lh3.googleusercontent.com/d/1kI7Q3mIQTumRzT_ROSlag9qpzKjE0ioo);
+    --lineL: url(https://lh3.googleusercontent.com/d/1NbyCl_7BxIxfo5-5sZB-IX62kwlrMdoL);
+}
+
+/* ============================================= 
+        design
+============================================= */
+.chat_box {
+    --lineL-x: 9px;
+    --lineL-start-x: -36px;
+    position: relative;
+    isolation: isolate;
+    width: fit-content;
+    min-width: 350px;
+    max-width: calc(100% - 20px);
+    overflow: visible !important;
+    box-sizing: border-box !important;
+    transform-origin: center center;
+    will-change: transform, opacity;
+}
+
+.chat_box::before {
+    content: "";
+    position: absolute;
+    z-index: -4;
+    top: -23px;
+    left: calc(50% - 141px);
+    width: 31px;
+    height: 36px;
+    pointer-events: none;
+    background: var(--ribbon-L) center / 31px 36px no-repeat;
+    transform-origin: center bottom;
+}
+
+.chat_box::after {
+    content: "";
+    position: absolute;
+    z-index: -3;
+    top: -25px;
+    left: calc(50% - 139px);
+    width: 31px;
+    height: 36px;
+    pointer-events: none;
+    background: var(--ribbon-R) center / 31px 36px no-repeat;
+    transform-origin: center bottom;
+}
+
+.chat_box .inner_box {
+    position: relative !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 78px;
+    padding: 24px 35px 18px !important;
+    overflow: visible !important;
+    border: var(--border) !important;
+    outline: var(--outline) !important;
+    outline-offset: -1px;
+    border-radius: 999vh !important;
+    background-image:
+        var(--lineL),
+        var(--lineR),
+        var(--lineB),
+        var(--back) !important;
+    background-repeat:
+        no-repeat,
+        no-repeat,
+        no-repeat,
+        no-repeat !important;
+    background-size:
+        36px 9px,
+        90px 58px,
+        calc(100% - 28px) 2px,
+        auto !important;
+    background-position:
+        left var(--lineL-x) top 6px,
+        right -15px bottom -15px,
+        center bottom 5px,
+        center;
+    background-clip: border-box !important;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.44),
+        inset 0 -1px 0 rgba(78, 62, 39, 0.08),
+        0 2px 0 rgba(60, 41, 37, 0.12);
+    box-sizing: border-box !important;
+}
+
+.chat_box .inner_box::before {
+    content: "";
+    position: absolute;
+    z-index: -2;
+    top: -34px;
+    left: 50%;
+    width: 223px;
+    height: 57px;
+    pointer-events: none;
+    background: var(--ear) center / 223px 57px no-repeat;
+    transform: translateX(-50%);
+    transform-origin: center bottom;
+}
+
+.chat_box .inner_box::after {
+    content: "";
+    position: absolute;
+    z-index: 5;
+    top: -13px;
+    left: 50%;
+    width: 88px;
+    height: 26px;
+    pointer-events: none;
+    background: var(--face) center / 88px 26px no-repeat;
+    transform: translateX(-50%);
+    transform-origin: center center;
+}
+
+.chat_box .inner_box .name,
+.chat_box.image .inner_box .donation_box .nick {
+    display: none !important;
+}
+
+.chat_box .inner_box > .msg,
+.chat_box.chat .inner_box > p,
+.chat_box.image .inner_box .donation_box .msg {
+    position: relative !important;
+    z-index: 4;
+    width: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: var(--text) !important;
+    text-align: center !important;
+    overflow-wrap: anywhere;
+}
+
+
+.chat_box.image,
+.chat_box.chat.subscribe {
+    width: calc(100% - 20px) !important;
+    min-width: calc(100% - 20px) !important;
+    max-width: calc(100% - 20px) !important;
+    --lineL-x: 4px;
+    --lineL-start-x: -41px;
+}
+
+.chat_box.image .inner_box,
+.chat_box.chat.subscribe .inner_box {
+    border-radius: 30px !important;
+}
+
+/* ============================================= 
+        streamer
+============================================= */
+.chat_box.streamer {
+    --text: #3c2925;
+    --back: linear-gradient(to bottom, #f5c58a 0%, #e2b073 100%);
+    --outline: 2px solid #4e3e27;
+    --border: 2px solid #ffd39e;
+    --face: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 88 26' width='88' height='26' %3E%3Cstyle%3E .blink-eye-open %7B fill: %23e7e7e7; stroke: %234e3e27; stroke-width: 2px; animation: blink-open-animation 4s infinite; %7D .blink-eye-closed %7B fill: none; stroke: %234e3e27; stroke-width: 7px; stroke-linecap: round; stroke-linejoin: round; opacity: 0; animation: blink-closed-animation 4s infinite; %7D .blink-eye-closed-inner %7B fill: none; stroke: %23e7e7e7; stroke-width: 3.5px; stroke-linecap: round; stroke-linejoin: round; opacity: 0; animation: blink-closed-animation 4s infinite; %7D .blink-nose %7B fill: %23e7e7e7; stroke: %234e3e27; stroke-width: 2px; %7D .blink-cheek %7B fill: %23e7e7e7; %7D @keyframes blink-open-animation %7B 0%25, 86%25, 100%25 %7B opacity: 1; %7D 89%25, 94%25 %7B opacity: 0; %7D %7D @keyframes blink-closed-animation %7B 0%25, 86%25, 100%25 %7B opacity: 0; %7D 89%25, 94%25 %7B opacity: 1; %7D %7D %3C/style%3E%3Cpath class='blink-eye-open' d='M10.800,10.230 L17.697,6.249 C19.148,5.411 21.003,5.908 21.841,7.359 C22.679,8.810 22.182,10.666 20.731,11.503 L13.834,15.485 C12.383,16.323 10.528,15.826 9.690,14.375 C8.852,12.924 9.349,11.068 10.800,10.230 Z' /%3E%3Cpath class='blink-eye-open' d='M75.726,10.247 L68.789,6.366 C67.329,5.549 65.463,6.034 64.620,7.448 C63.778,8.862 64.278,10.671 65.737,11.487 L72.674,15.368 C74.134,16.184 76.000,15.700 76.843,14.285 C77.686,12.871 77.186,11.063 75.726,10.247 Z' /%3E%3Cpath class='blink-eye-closed' d='M9.8 11.5 Q15.7 15.2 21.7 11.5' /%3E%3Cpath class='blink-eye-closed-inner' d='M9.8 11.5 Q15.7 15.2 21.7 11.5' /%3E%3Cpath class='blink-eye-closed' d='M64.8 11.5 Q70.8 15.2 76.8 11.5' /%3E%3Cpath class='blink-eye-closed-inner' d='M64.8 11.5 Q70.8 15.2 76.8 11.5' /%3E%3Cpath class='blink-nose' d='M42.1000,14.942 C44.351,14.942 45.447,16.037 45.447,17.388 C45.447,18.739 44.351,19.835 42.1000,19.835 C41.649,19.835 40.553,18.739 40.553,17.388 C40.553,16.037 41.649,14.942 42.1000,14.942 Z' /%3E%3Cpath class='blink-cheek' d='M76.766,20.650 L84.920,20.650 C86.046,20.650 86.959,21.563 86.959,22.689 C86.959,23.815 86.046,24.728 84.920,24.728 L76.766,24.728 C75.640,24.728 74.727,23.815 74.727,22.689 C74.727,21.563 75.640,20.650 76.766,20.650 Z' /%3E%3Cpath class='blink-cheek' d='M2.079,20.650 L10.234,20.650 C11.360,20.650 12.273,21.563 12.273,22.689 C12.273,23.815 11.360,24.728 10.234,24.728 L2.079,24.728 C0.954,24.728 0.041,23.815 0.041,22.689 C0.041,21.563 0.954,20.650 2.079,20.650 Z' /%3E%3C/svg%3E");
+    --ear: url(https://lh3.googleusercontent.com/d/1Tcc5dXRsyS4RjqiqqhCAM0FWCN7wGvKJ);
+    --lineB: url(https://lh3.googleusercontent.com/d/1mhVkWrRHReUWkT_zOVWaRLJg4hP4seNi);
+    --lineR: url(https://lh3.googleusercontent.com/d/1bOXjj6XpgGS7ZHjyLg8oaP_PxX-Au5bW);
+    --lineL: url(https://lh3.googleusercontent.com/d/1qVGiWdE-ONKrF5r-ZpgtFCakJoIFMoQ_);
+}
+
+/* ============================================= 
+        subscribe
+============================================s= */
+.chat_box.chat.subscribe {
+    --text: #f9e0b4;
+    --back: linear-gradient(to bottom, #3b2925 0%, #3f2a24 100%);
+    --outline: 2px solid #392925;
+    --border: 2px solid #63481f;
+    --face: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 88 26' width='88' height='26' %3E%3Cstyle%3E .blink-eye-open %7B fill: %23e7e7e7; stroke: %234e3e27; stroke-width: 2px; animation: blink-open-animation 4s infinite; %7D .blink-eye-closed %7B fill: none; stroke: %234e3e27; stroke-width: 7px; stroke-linecap: round; stroke-linejoin: round; opacity: 0; animation: blink-closed-animation 4s infinite; %7D .blink-eye-closed-inner %7B fill: none; stroke: %23e7e7e7; stroke-width: 3.5px; stroke-linecap: round; stroke-linejoin: round; opacity: 0; animation: blink-closed-animation 4s infinite; %7D .blink-nose %7B fill: %23e7e7e7; stroke: %234e3e27; stroke-width: 2px; %7D .blink-cheek %7B fill: %23e7e7e7; %7D @keyframes blink-open-animation %7B 0%25, 86%25, 100%25 %7B opacity: 1; %7D 89%25, 94%25 %7B opacity: 0; %7D %7D @keyframes blink-closed-animation %7B 0%25, 86%25, 100%25 %7B opacity: 0; %7D 89%25, 94%25 %7B opacity: 1; %7D %7D %3C/style%3E%3Cpath class='blink-eye-open' d='M10.800,10.230 L17.697,6.249 C19.148,5.411 21.003,5.908 21.841,7.359 C22.679,8.810 22.182,10.666 20.731,11.503 L13.834,15.485 C12.383,16.323 10.528,15.826 9.690,14.375 C8.852,12.924 9.349,11.068 10.800,10.230 Z' /%3E%3Cpath class='blink-eye-open' d='M75.726,10.247 L68.789,6.366 C67.329,5.549 65.463,6.034 64.620,7.448 C63.778,8.862 64.278,10.671 65.737,11.487 L72.674,15.368 C74.134,16.184 76.000,15.700 76.843,14.285 C77.686,12.871 77.186,11.063 75.726,10.247 Z' /%3E%3Cpath class='blink-eye-closed' d='M9.8 11.5 Q15.7 15.2 21.7 11.5' /%3E%3Cpath class='blink-eye-closed-inner' d='M9.8 11.5 Q15.7 15.2 21.7 11.5' /%3E%3Cpath class='blink-eye-closed' d='M64.8 11.5 Q70.8 15.2 76.8 11.5' /%3E%3Cpath class='blink-eye-closed-inner' d='M64.8 11.5 Q70.8 15.2 76.8 11.5' /%3E%3Cpath class='blink-nose' d='M42.1000,14.942 C44.351,14.942 45.447,16.037 45.447,17.388 C45.447,18.739 44.351,19.835 42.1000,19.835 C41.649,19.835 40.553,18.739 40.553,17.388 C40.553,16.037 41.649,14.942 42.1000,14.942 Z' /%3E%3Cpath class='blink-cheek' d='M76.766,20.650 L84.920,20.650 C86.046,20.650 86.959,21.563 86.959,22.689 C86.959,23.815 86.046,24.728 84.920,24.728 L76.766,24.728 C75.640,24.728 74.727,23.815 74.727,22.689 C74.727,21.563 75.640,20.650 76.766,20.650 Z' /%3E%3Cpath class='blink-cheek' d='M2.079,20.650 L10.234,20.650 C11.360,20.650 12.273,21.563 12.273,22.689 C12.273,23.815 11.360,24.728 10.234,24.728 L2.079,24.728 C0.954,24.728 0.041,23.815 0.041,22.689 C0.041,21.563 0.954,20.650 2.079,20.650 Z' /%3E%3C/svg%3E");
+    --ear: url(https://lh3.googleusercontent.com/d/1NYeaSPSu_ZAmX51QKx6ZWXg-ME5LKjpk);
+    --lineB: url(https://lh3.googleusercontent.com/d/1fHCc1WYPAIedbo0NLZVnBoPZvqhQBqKt);
+    --lineR: url(https://lh3.googleusercontent.com/d/1v5Y_whxQWHhmOFk1G7rRSPY7PPY95gEl);
+    --lineL: url(https://lh3.googleusercontent.com/d/1NV93iT9NNn2SMiNvzfPKYfw3XmBLiLxh);
+}
+
+/* ============================================= 
+        donation
+============================================= */
+.chat_box.image:not(.subscribe) {
+    --text: #3c2925;
+    --back: linear-gradient(to bottom, #efd3a2 0%, #e4c18c 100%);
+    --outline: 2px solid #4e3e27;
+    --border: 2px solid #f4ddb8;
+    --face: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 88 26' width='88' height='26' %3E%3Cstyle%3E .right-eye-static, .right-eye-open %7B fill: %23e7e7e7; stroke: %234e3e27; stroke-width: 2px; %7D .right-eye-open %7B animation: right-wink-open-animation 4s infinite; %7D .right-eye-closed %7B fill: none; stroke: %234e3e27; stroke-width: 7px; stroke-linecap: round; stroke-linejoin: round; opacity: 0; animation: right-wink-closed-animation 4s infinite; %7D .right-eye-closed-inner %7B fill: none; stroke: %23e7e7e7; stroke-width: 3.5px; stroke-linecap: round; stroke-linejoin: round; opacity: 0; animation: right-wink-closed-animation 4s infinite; %7D .right-wink-nose %7B fill: %23e7e7e7; stroke: %234e3e27; stroke-width: 2px; %7D .right-wink-cheek %7B fill: %23e7e7e7; %7D @keyframes right-wink-open-animation %7B 0%25, 82%25, 100%25 %7B opacity: 1; %7D 86%25, 93%25 %7B opacity: 0; %7D %7D @keyframes right-wink-closed-animation %7B 0%25, 82%25, 100%25 %7B opacity: 0; %7D 86%25, 93%25 %7B opacity: 1; %7D %7D %3C/style%3E%3Cpath class='right-eye-static' d='M10.800,10.230 L17.697,6.249 C19.148,5.411 21.003,5.908 21.841,7.359 C22.679,8.810 22.182,10.666 20.731,11.503 L13.834,15.485 C12.383,16.323 10.528,15.826 9.690,14.375 C8.852,12.924 9.349,11.068 10.800,10.230 Z' /%3E%3Cpath class='right-eye-open' d='M75.726,10.247 L68.789,6.366 C67.329,5.549 65.463,6.034 64.620,7.448 C63.778,8.862 64.278,10.671 65.737,11.487 L72.674,15.368 C74.134,16.184 76.000,15.700 76.843,14.285 C77.686,12.871 77.186,11.063 75.726,10.247 Z' /%3E%3Cpath class='right-eye-closed' d='M75.8 8.7 L69 11.1 L75.8 13.8' /%3E%3Cpath class='right-eye-closed-inner' d='M75.8 8.7 L69 11.1 L75.8 13.8' /%3E%3Cpath class='right-wink-nose' d='M42.1000,14.942 C44.351,14.942 45.447,16.037 45.447,17.388 C45.447,18.739 44.351,19.835 42.1000,19.835 C41.649,19.835 40.553,18.739 40.553,17.388 C40.553,16.037 41.649,14.942 42.1000,14.942 Z' /%3E%3Cpath class='right-wink-cheek' d='M76.766,20.650 L84.920,20.650 C86.046,20.650 86.959,21.563 86.959,22.689 C86.959,23.815 86.046,24.728 84.920,24.728 L76.766,24.728 C75.640,24.728 74.727,23.815 74.727,22.689 C74.727,21.563 75.640,20.650 76.766,20.650 Z' /%3E%3Cpath class='right-wink-cheek' d='M2.079,20.650 L10.234,20.650 C11.360,20.650 12.273,21.563 12.273,22.689 C12.273,23.815 11.360,24.728 10.234,24.728 L2.079,24.728 C0.954,24.728 0.041,23.815 0.041,22.689 C0.041,21.563 0.954,20.650 2.079,20.650 Z' /%3E%3C/svg%3E");
+    --ear: url(https://lh3.googleusercontent.com/d/1HxrvCT00twDRHQL0gtRwpUBs7cPXVJCE);
+    --lineB: url(https://lh3.googleusercontent.com/d/1XtuGBkWVct12yuQlmKvviLP70BFyNf_B);
+    --lineR: url(https://lh3.googleusercontent.com/d/1kI7Q3mIQTumRzT_ROSlag9qpzKjE0ioo);
+    --lineL: url(https://lh3.googleusercontent.com/d/1NbyCl_7BxIxfo5-5sZB-IX62kwlrMdoL);
+    --valtext: #fff;
+    --valback: #3c2925;
+}
+
+.chat_box.image {
+    margin-bottom: 59px !important;
+}
+
+.chat_box.image .inner_box {
+    position: relative !important;
+    min-height: 104px;
+    padding: 27px 35px 22px !important;
+    overflow: visible !important;
+}
+
+.chat_box.image .inner_box .donation_box {
+    position: static !important;
+    z-index: 4;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    min-height: 44px;
+    padding: 0 !important;
+    overflow: visible !important;
+}
+
+.chat_box.image .inner_box .donation_box .text_box,
+.chat_box.image .inner_box .donation_box .msg_box {
+    position: static !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    transform: none !important;
+    animation: none !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .text_box {
+    order: 10 !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .msg_box {
+    order: 20 !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .text_box > p.msg,
+.chat_box.image.subscribe .inner_box .donation_box .msg_box > p.msg {
+    position: relative !important;
+    z-index: 50 !important;
+    inset: auto !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: transparent !important;
+    color: var(--text) !important;
+    -webkit-text-fill-color: var(--text) !important;
+    font-family: 'Atomy', Courier, monospace !important;
+    font-size: 22px !important;
+    font-weight: 400 !important;
+    line-height: 1.2 !important;
+    letter-spacing: -0.8px !important;
+    text-align: center !important;
+    text-indent: 0 !important;
+    text-shadow: none !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+    transform: none !important;
+    animation: none !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .msg_box > p.val,
+.chat_box.image.subscribe .inner_box .donation_box .text_box > p.msg {
+    position: absolute !important;
+    z-index: 10000 !important;
+    left: 50% !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: -13px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: fit-content !important;
+    min-width: 80px !important;
+    max-width: none !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 2px 13px 3px !important;
+    overflow: visible !important;
+    border: 0 !important;
+    border-radius: 999vh !important;
+    background: var(--valback) !important;
+    box-sizing: border-box !important;
+    font-family: 'Atomy', Courier, monospace !important;
+    font-weight: 400 !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.4px !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    transform: translateX(-50%) !important;
+    box-shadow: 0 1px 0 rgba(60, 41, 37, 0.14) !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .msg_box > p.val {
+    color: var(--valtext) !important;
+    -webkit-text-fill-color: var(--valtext) !important;
+    font-size: 20px !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .msg_box > p.val > span {
+    display: none !important;
+}
+
+/* ============================================= 
+        donation - subscribe
+============================================= */
+.chat_box.image.subscribe {
+    --text: #f8e4be;
+    --back: linear-gradient(to bottom, #44302d 0%, #35211f 100%);
+    --outline: 2px solid #6f4a13;
+    --border: 2px solid #2b1a18;
+    --face: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 88 26' width='88' height='26' %3E%3Cstyle%3E .left-eye-static, .left-eye-open %7B fill: %23e7e7e7; stroke: %234e3e27; stroke-width: 2px; %7D .left-eye-open %7B animation: left-wink-open-animation 4s infinite; %7D .left-eye-closed %7B fill: none; stroke: %234e3e27; stroke-width: 7px; stroke-linecap: round; stroke-linejoin: round; opacity: 0; animation: left-wink-closed-animation 4s infinite; %7D .left-eye-closed-inner %7B fill: none; stroke: %23e7e7e7; stroke-width: 3.5px; stroke-linecap: round; stroke-linejoin: round; opacity: 0; animation: left-wink-closed-animation 4s infinite; %7D .left-wink-nose %7B fill: %23e7e7e7; stroke: %234e3e27; stroke-width: 2px; %7D .left-wink-cheek %7B fill: %23e7e7e7; %7D @keyframes left-wink-open-animation %7B 0%25, 82%25, 100%25 %7B opacity: 1; %7D 86%25, 93%25 %7B opacity: 0; %7D %7D @keyframes left-wink-closed-animation %7B 0%25, 82%25, 100%25 %7B opacity: 0; %7D 86%25, 93%25 %7B opacity: 1; %7D %7D %3C/style%3E%3Cpath class='left-eye-open' d='M10.800,10.230 L17.697,6.249 C19.148,5.411 21.003,5.908 21.841,7.359 C22.679,8.810 22.182,10.666 20.731,11.503 L13.834,15.485 C12.383,16.323 10.528,15.826 9.690,14.375 C8.852,12.924 9.349,11.068 10.800,10.230 Z' /%3E%3Cpath class='left-eye-closed' d='M10.2 8.7 L17 11.1 L10.2 13.8' /%3E%3Cpath class='left-eye-closed-inner' d='M10.2 8.7 L17 11.1 L10.2 13.8' /%3E%3Cpath class='left-eye-static' d='M75.726,10.247 L68.789,6.366 C67.329,5.549 65.463,6.034 64.620,7.448 C63.778,8.862 64.278,10.671 65.737,11.487 L72.674,15.368 C74.134,16.184 76.000,15.700 76.843,14.285 C77.686,12.871 77.186,11.063 75.726,10.247 Z' /%3E%3Cpath class='left-wink-nose' d='M42.1000,14.942 C44.351,14.942 45.447,16.037 45.447,17.388 C45.447,18.739 44.351,19.835 42.1000,19.835 C41.649,19.835 40.553,18.739 40.553,17.388 C40.553,16.037 41.649,14.942 42.1000,14.942 Z' /%3E%3Cpath class='left-wink-cheek' d='M76.766,20.650 L84.920,20.650 C86.046,20.650 86.959,21.563 86.959,22.689 C86.959,23.815 86.046,24.728 84.920,24.728 L76.766,24.728 C75.640,24.728 74.727,23.815 74.727,22.689 C74.727,21.563 75.640,20.650 76.766,20.650 Z' /%3E%3Cpath class='left-wink-cheek' d='M2.079,20.650 L10.234,20.650 C11.360,20.650 12.273,21.563 12.273,22.689 C12.273,23.815 11.360,24.728 10.234,24.728 L2.079,24.728 C0.954,24.728 0.041,23.815 0.041,22.689 C0.041,21.563 0.954,20.650 2.079,20.650 Z' /%3E%3C/svg%3E");
+    --ear: url(https://lh3.googleusercontent.com/d/1NYeaSPSu_ZAmX51QKx6ZWXg-ME5LKjpk);
+    --lineB: url(https://lh3.googleusercontent.com/d/1fHCc1WYPAIedbo0NLZVnBoPZvqhQBqKt);
+    --lineR: url(https://lh3.googleusercontent.com/d/1v5Y_whxQWHhmOFk1G7rRSPY7PPY95gEl);
+    --lineL: url(https://lh3.googleusercontent.com/d/1NV93iT9NNn2SMiNvzfPKYfw3XmBLiLxh);
+    --valtext: #3d2925;
+    --valback: #f9e0b4;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .msg_box {
+    order: 10 !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .text_box {
+    order: 20 !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .text_box > p.msg {
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+    font-size: 0 !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .text_box > p.msg > span.val {
+    position: static !important;
+    z-index: auto !important;
+    display: inline !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    color: var(--valtext) !important;
+    -webkit-text-fill-color: var(--valtext) !important;
+    box-sizing: border-box !important;
+    font-family: 'Atomy', Courier, monospace !important;
+    font-size: 20px !important;
+    font-weight: 400 !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.4px !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    transform: none !important;
+    box-shadow: none !important;
+    animation: none !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .text_box > p.msg > span,
+.chat_box.image.subscribe .inner_box .donation_box .msg_box > p.msg > span {
+    visibility: visible !important;
+    opacity: 1 !important;
+    color: inherit !important;
+    -webkit-text-fill-color: inherit !important;
+    font-size: inherit !important;
+    line-height: inherit !important;
+    text-shadow: none !important;
+}
+
+/* ============================================= 
+        keyframes
+============================================= */
+
+.chat_box {
+    animation: chat-pop 0.62s cubic-bezier(0.18, 1.24, 0.32, 1) both !important;
+}
+
+.chat_box .inner_box {
+    animation: line-enter 0.72s ease-out 0.18s both;
+}
+
+.chat_box::before {
+    animation: ribbon-left-pop 0.58s cubic-bezier(0.18, 1.28, 0.32, 1) 0.04s both;
+}
+
+.chat_box::after {
+    animation: ribbon-right-pop 0.58s cubic-bezier(0.18, 1.28, 0.32, 1) 0.08s both;
+}
+
+.chat_box .inner_box::before {
+    animation:
+        ear-pop 0.58s cubic-bezier(0.18, 1.28, 0.32, 1) 0.1s both,
+        ear-bounce 3.8s ease-in-out 0.85s infinite;
+}
+
+.chat_box .inner_box::after {
+    animation: face-pop 0.5s cubic-bezier(0.18, 1.32, 0.32, 1) 0.12s both;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .msg_box > p.val,
+.chat_box.image.subscribe .inner_box .donation_box .text_box > p.msg {
+    animation: badge-pop 0.5s cubic-bezier(0.18, 1.3, 0.32, 1) 0.22s both !important;
+}
+
+@keyframes chat-pop {
+    0% {
+        opacity: 0;
+        transform: translateY(16px) scale(0.86);
+    }
+
+    52% {
+        opacity: 1;
+        transform: translateY(-3px) scale(1.035);
+    }
+
+    76% {
+        transform: translateY(1px) scale(0.985);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes line-enter {
+    0% {
+        background-position:
+            left var(--lineL-start-x) top 6px,
+            right -15px bottom -73px,
+            center bottom 5px,
+            center;
+    }
+
+    100% {
+        background-position:
+            left var(--lineL-x) top 6px,
+            right -15px bottom -15px,
+            center bottom 5px,
+            center;
+    }
+}
+
+@keyframes ribbon-left-pop {
+    0% {
+        opacity: 0;
+        transform: translateY(8px) scale(0.55) rotate(-8deg);
+    }
+
+    65% {
+        opacity: 1;
+        transform: translateY(-2px) scale(1.08) rotate(3deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotate(0deg);
+    }
+}
+
+@keyframes ribbon-right-pop {
+    0% {
+        opacity: 0;
+        transform: translateY(8px) scale(0.55) rotate(8deg);
+    }
+
+    65% {
+        opacity: 1;
+        transform: translateY(-2px) scale(1.08) rotate(-3deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotate(0deg);
+    }
+}
+
+@keyframes ear-pop {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(12px) scale(0.68, 0.42);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-3px) scale(1.06, 1.1);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) scale(1);
+    }
+}
+
+@keyframes ear-bounce {
+    0%,
+    10%,
+    28%,
+    58%,
+    76%,
+    100% {
+        transform: translateX(-50%) scale(1) skewX(0deg);
+    }
+
+    13% {
+        transform: translateX(-50%) scale(0.98, 1.11) skewX(-1.4deg);
+    }
+
+    17% {
+        transform: translateX(-50%) scale(1.025, 0.95) skewX(1deg);
+    }
+
+    21% {
+        transform: translateX(-50%) scale(0.99, 1.07) skewX(-0.6deg);
+    }
+
+    61% {
+        transform: translateX(-50%) scale(0.985, 1.09) skewX(1.2deg);
+    }
+
+    65% {
+        transform: translateX(-50%) scale(1.02, 0.96) skewX(-0.8deg);
+    }
+
+    69% {
+        transform: translateX(-50%) scale(0.995, 1.05) skewX(0.4deg);
+    }
+}
+
+@keyframes face-pop {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(6px) scale(0.55);
+    }
+
+    65% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-1px) scale(1.1);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) scale(1);
+    }
+}
+
+@keyframes badge-pop {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(7px) scale(0.72);
+    }
+
+    62% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-2px) scale(1.08);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) scale(1);
+    }
+}
