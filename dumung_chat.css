@@ -286,8 +286,7 @@ p {
     --lineL-start-x: -41px;
 }
 
-.chat_box.image .inner_box,
-.chat_box.chat.subscribe .inner_box {
+.chat_box.image .inner_box {
     border-radius: 30px !important;
 }
 
