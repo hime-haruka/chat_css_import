@@ -9,6 +9,27 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: 'Isamanru';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicLight.woff') format('woff');
+    font-weight: 300;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Isamanru';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff');
+    font-weight: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Isamanru';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicBold.woff') format('woff');
+    font-weight: 700;
+    font-display: swap;
+}
+
 /* ============================================= 
         general
 ============================================= */
@@ -335,6 +356,9 @@ p {
     --lineL: url(https://lh3.googleusercontent.com/d/1NbyCl_7BxIxfo5-5sZB-IX62kwlrMdoL);
     --valtext: #fff;
     --valback: #3c2925;
+    --valborder: #f4ddb8;
+    --valoutline: #4e3e27;
+    --valheart: #f8e4be;
 }
 
 .chat_box.image {
@@ -436,9 +460,11 @@ p {
     margin: 0 !important;
     padding: 2px 13px 3px !important;
     overflow: visible !important;
-    border: 0 !important;
+    border: 2px solid var(--valborder) !important;
+    outline: 0 !important;
     border-radius: 999vh !important;
     background: var(--valback) !important;
+    background-clip: padding-box !important;
     box-sizing: border-box !important;
     font-family: 'Atomy', Courier, monospace !important;
     font-weight: 400 !important;
@@ -447,10 +473,13 @@ p {
     text-align: center !important;
     white-space: nowrap !important;
     transform: translateX(-50%) !important;
-    box-shadow: 0 1px 0 rgba(60, 41, 37, 0.14) !important;
+    box-shadow:
+        0 0 0 2px var(--valoutline),
+        0 1px 0 rgba(60, 41, 37, 0.14) !important;
 }
 
 .chat_box.image:not(.subscribe) .inner_box .donation_box .msg_box > p.val {
+    gap: 6px !important;
     color: var(--valtext) !important;
     -webkit-text-fill-color: var(--valtext) !important;
     font-size: 20px !important;
@@ -475,6 +504,9 @@ p {
     --lineL: url(https://lh3.googleusercontent.com/d/1NV93iT9NNn2SMiNvzfPKYfw3XmBLiLxh);
     --valtext: #3d2925;
     --valback: #f9e0b4;
+    --valborder: #6f4a13;
+    --valoutline: #fff0cf;
+    --valheart: #8a4f2d;
 }
 
 .chat_box.image.subscribe .inner_box .donation_box .msg_box {
@@ -494,7 +526,9 @@ p {
 .chat_box.image.subscribe .inner_box .donation_box .text_box > p.msg > span.val {
     position: static !important;
     z-index: auto !important;
-    display: inline !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
     visibility: visible !important;
     opacity: 1 !important;
     width: auto !important;
@@ -531,6 +565,31 @@ p {
     font-size: inherit !important;
     line-height: inherit !important;
     text-shadow: none !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .msg_box > p.val::before,
+.chat_box.image:not(.subscribe) .inner_box .donation_box .msg_box > p.val::after,
+.chat_box.image.subscribe .inner_box .donation_box .text_box > p.msg > span.val::before,
+.chat_box.image.subscribe .inner_box .donation_box .text_box > p.msg > span.val::after {
+    display: inline-block !important;
+    color: var(--valheart) !important;
+    -webkit-text-fill-color: var(--valheart) !important;
+    font-family: Arial, sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    text-shadow: none !important;
+    transform: translateY(-0.5px);
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .msg_box > p.val::before,
+.chat_box.image.subscribe .inner_box .donation_box .text_box > p.msg > span.val::before {
+    content: "♥" !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .msg_box > p.val::after,
+.chat_box.image.subscribe .inner_box .donation_box .text_box > p.msg > span.val::after {
+    content: "♥" !important;
 }
 
 /* ============================================= 
