@@ -278,7 +278,7 @@ p {
 
 
 .chat_box.image,
-.chat_box.chat.subscribe {
+.chat_box.image.subscribe {
     width: calc(100% - 20px) !important;
     min-width: calc(100% - 20px) !important;
     max-width: calc(100% - 20px) !important;
