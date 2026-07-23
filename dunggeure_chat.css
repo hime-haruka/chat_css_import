@@ -1,0 +1,713 @@
+[data-id = "슈퍼챗"], [data-id = "치즈"], [data-id = "비트"], [data-id = "별풍선"], [data-id = "젬"], [data-id = "비트"], [data-id = "빔"] {
+    display: none;
+}
+
+@font-face {
+    font-family: 'Cafe24ProSlim';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2511-1@1.0/Cafe24PROSlim-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cafe24ProSlim';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2511-1@1.0/Cafe24PROSlim-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cafe24ProSlim';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2511-1@1.0/Cafe24PROSlim-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+}
+
+/* ============================================= 
+        general
+============================================= */
+html {
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+}
+
+p {
+    color: var(--text) !important;
+    font-family: 'Cafe24ProSlim', Courier, monospace;
+    position: relative;
+    margin: 0 !important;
+    line-height: 1.2 !important;
+    z-index: 999;
+    text-shadow: none !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.8px !important;
+    text-align: center !important;
+}
+
+.chat_area {
+    -webkit-mask-image: -webkit-gradient(linear, left bottom, left top, from(#000), color-stop(0.98, #000), to(transparent));    
+}
+
+.chat_box {
+    margin: 0 auto !important;
+    margin-bottom: 30px !important;
+}
+
+.chat_box.chat * {
+    box-sizing: border-box !important;
+}
+
+.icon_badge {
+    display: none !important;
+}
+
+.icon_chzzk {
+    display: none !important;
+}
+
+/* ============================================= 
+        donation reset
+============================================= */
+.chat_box.image .donation_box,
+.chat_box.image .text_box,
+.chat_box.image .msg_box,
+.chat_box.image .nick,
+.chat_box.image .msg,
+.chat_box.image .val {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent !important;
+}
+
+.chat_box.image .donation_box .inner_box {
+    margin: 0;
+    padding: 0;
+}
+
+.chat_box.image,
+.chat_box.image .inner_box,
+.chat_box.image .donation_box,
+.chat_box.image .text_box,
+.chat_box.image .msg_box {
+    overflow: visible;
+}
+
+.chat_box.image .donation_box::before,
+.chat_box.image .donation_box::after,
+.chat_box.image .donation_box.subscribe::before {
+    content: none;
+}
+
+.chat_box.image .donation_box.subscribe::before {
+    display: none !important;
+}
+
+/* =========================================
+        display order
+========================================= */
+.chat_box.image .donation_box {
+    position: relative;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 6px;
+}
+
+.chat_box.image .donation_box > .text_box,
+.chat_box.image .donation_box > .msg_box {
+    display: contents !important;
+}
+
+.chat_box.image .donation_box > .text_box > *,
+.chat_box.image .donation_box > .msg_box > * {
+    order: 0 !important;
+}
+
+.chat_box.image .donation_box > .text_box > .nick {
+    display: none !important;
+}
+
+.chat_box.image:not(.subscribe)
+.donation_box > .msg_box > .val {
+    order: 10 !important;
+}
+
+.chat_box.image:not(.subscribe)
+.donation_box > .text_box > .msg {
+    order: 20 !important;
+}
+
+.chat_box.image.subscribe
+.donation_box.subscribe > .text_box > .msg {
+    order: 10 !important;
+}
+
+.chat_box.image.subscribe
+.donation_box.subscribe > .msg_box > .msg {
+    order: 20 !important;
+}
+
+/* ============================================= 
+        tokens
+============================================= */
+:root {
+    --back: linear-gradient(to bottom, #fff, #fff);
+    --val-line: #b8a0ee;
+    --val-color: #987fda;
+    --corner-fill: rgba(255, 239, 252, 0.96);
+    --corner-line: rgba(237, 196, 232, 0.95);
+}
+
+.chat_box.chat:not(.streamer):not(.subscribe) {
+    --text: linear-gradient(to bottom, #c8b6ff, #9783d9);
+    --outline: 1px solid #645496;
+    --border: 4px solid #c9b8ff;
+    --inbor: inset 0 0 0 1px #ac9be0;
+    --hornL: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/normal/hornL.svg);
+    --hornR: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/normal/hornR.svg);
+    --cloud: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/normal/cloud.svg);
+    --buttonL: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/normal/buttonL.svg);
+    --buttonR: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/normal/buttonR.svg);
+    --confettiL: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/normal/confettiL.svg);
+    --confettiR: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/normal/confettiR.svg);
+    --hornL-size: 36px 40px;
+    --hornR-size: 36px 40px;
+    --buttonL-size: 32px 32px;
+    --buttonR-size: 31px 32px;
+    --confettiL-size: 37px 39px;
+    --confettiR-size: 51px 54px;
+    --corner-fill: rgba(255, 239, 252, 0.96);
+    --corner-line: rgba(237, 196, 232, 0.95);
+}
+
+/* ============================================= 
+        design
+============================================= */
+.chat_box {
+    position: relative;
+    isolation: isolate;
+    width: fit-content;
+    max-width: calc(100% - 60px);
+    border-radius: 10px;
+    overflow: visible !important;
+}
+
+.chat_box::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: -31px;
+    width: 112px;
+    height: 46px;
+    transform: translateX(-50%);
+
+    background-image:
+        var(--hornL),
+        var(--hornR);
+
+    background-repeat:
+        no-repeat,
+        no-repeat;
+
+    background-size:
+        var(--hornL-size),
+        var(--hornR-size);
+    background-position:
+        left 13px bottom 0,
+        right 13px bottom 0;
+
+    pointer-events: none;
+    z-index: 20;
+}
+
+.chat_box::after {
+    content: "";
+    position: absolute;
+    left: -18px;
+    bottom: -10px;
+    width: 52px;
+    height: 48px;
+
+    background-image: var(--cloud);
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    background-size: 45px 39px;
+
+    pointer-events: none;
+    z-index: 22;
+}
+
+.chat_box .inner_box {
+    position: relative;
+    padding: 20px 30px;
+    background: var(--back);
+    outline: var(--outline);
+    border: var(--border);
+    box-shadow: var(--inbor);
+    border-radius: 8px;
+    overflow: visible !important;
+}
+
+.chat_box .inner_box::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 62px;
+    height: 30px;
+    background: linear-gradient(
+        154.18deg,
+        transparent 0,
+        transparent calc(50% - 0.35px),
+        var(--corner-line) calc(50% - 0.35px),
+        var(--corner-line) calc(50% + 0.35px),
+        var(--corner-fill) calc(50% + 0.35px),
+        var(--corner-fill) 100%
+    );
+    border-bottom-right-radius: 3px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.chat_box .inner_box::before {
+    content: "";
+    position: absolute;
+    inset: -24px;
+
+    background-image:
+        var(--buttonL),
+        var(--buttonR),
+        var(--confettiL),
+        var(--confettiR);
+
+    background-repeat:
+        no-repeat,
+        no-repeat,
+        no-repeat,
+        no-repeat;
+
+    background-size:
+        var(--buttonL-size),
+        var(--buttonR-size),
+        var(--confettiL-size),
+        var(--confettiR-size);
+    background-position:
+        left 5px bottom 50px,
+        right 5px bottom 31px,
+        right 35px top 4px,
+        right 2px top 0;
+
+    pointer-events: none;
+    z-index: 10;
+}
+
+.chat_box .inner_box .text {
+    color: transparent !important;
+    background: var(--text);
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+/* ============================================= 
+        streamer
+============================================= */
+.chat_box.chat.streamer {
+    --text: linear-gradient(to bottom, #c8b6ff, #9783d9);
+    --outline: 1px solid #8ecece;
+    --border: 4px solid #d5ffff;
+    --inbor: inset 0 0 0 1px #b3e5e5;
+    --hornL: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/streamer/hornL.svg);
+    --hornR: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/streamer/hornR.svg);
+    --cloud: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/streamer/cloud.svg);
+    --buttonL: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/streamer/buttonL.svg);
+    --buttonR: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/streamer/buttonR.svg);
+    --confettiL: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/streamer/confettiL.svg);
+    --confettiR: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/streamer/confettiR.svg);
+    --hornL-size: 40px 44px;
+    --hornR-size: 40px 44px;
+
+    --buttonL-size: 32px 32px;
+    --buttonR-size: 31px 32px;
+
+    --confettiL-size: 41px 43px;
+    --confettiR-size: 55px 58px;
+    --corner-fill: rgba(239, 234, 255, 0.96);
+    --corner-line: rgba(207, 192, 249, 0.95);
+}
+
+/* ============================================= 
+        subscribe
+============================================s= */
+.chat_box.chat.subscribe {
+    --text: linear-gradient(to bottom, #c8b6ff, #9783d9);
+    --outline: 1px solid #c698c9;
+    --border: 4px solid #c9b8ff;
+    --inbor: inset 0 0 0 1px #ac9be0;
+    --hornL: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/sub/hornL.svg);
+    --hornR: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/sub/hornR.svg);
+    --cloud: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/sub/cloud.svg);
+    --buttonL: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/sub/buttonL.svg);
+    --buttonR: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/sub/buttonR.svg);
+    --confettiL: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/sub/confettiL.svg);
+    --confettiR: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/sub/confettiR.svg);
+    --hornL-size: 38px 42px;
+    --hornR-size: 38px 42px;
+    --buttonL-size: 32px 32px;
+    --buttonR-size: 31px 32px;
+    --confettiL-size: 39px 41px;
+    --confettiR-size: 53px 56px;
+    --corner-fill: rgba(229, 251, 255, 0.98);
+    --corner-line: rgba(176, 232, 238, 0.96);
+}
+
+/* ============================================= 
+        donation
+============================================= */
+.chat_box.image:not(.subscribe) {
+    --text: linear-gradient(to bottom, #c8b6ff, #9783d9);
+    --val-line: #b8a0ee;
+    --val-color: #987fda;
+    --outline: 1px solid #645496;
+    --border: 4px solid #c9b8ff;
+    --inbor: inset 0 0 0 1px #ac9be0;
+    --hornL: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/normal/hornL.svg);
+    --hornR: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/normal/hornR.svg);
+    --cloud: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/normal/cloud.svg);
+    --buttonL: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/normal/buttonL.svg);
+    --buttonR: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/normal/buttonR.svg);
+    --confettiL: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/normal/confettiL.svg);
+    --confettiR: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/normal/confettiR.svg);
+    --hornL-size: 36px 40px;
+    --hornR-size: 36px 40px;
+    --buttonL-size: 32px 32px;
+    --buttonR-size: 31px 32px;
+    --confettiL-size: 37px 39px;
+    --confettiR-size: 51px 54px;
+}
+
+.chat_box.image {
+    width: calc(100% - 60px) !important;
+    max-width: calc(100% - 60px) !important;
+    min-width: calc(100% - 60px) !important;
+}
+
+.chat_box.image .inner_box {
+    padding: 10px 26px 12px;
+}
+
+.chat_box.image:not(.subscribe)
+.donation_box > .text_box > .msg,
+.chat_box.image.subscribe
+.donation_box.subscribe > .msg_box > .msg {
+    width: 100%;
+    max-width: 330px;
+    color: transparent !important;
+    background: var(--text) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    font-size: 25px !important;
+    line-height: 1.12 !important;
+    word-break: keep-all;
+}
+
+.chat_box.image:not(.subscribe)
+.donation_box > .msg_box > .val,
+.chat_box.image.subscribe
+.donation_box.subscribe > .text_box > .msg > .val {
+    position: relative;
+    isolation: isolate;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    min-width: 58px;
+    height: 24px;
+    padding: 0 8px !important;
+    color: var(--val-color) !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    clip-path: none !important;
+    overflow: visible !important;
+    box-sizing: border-box !important;
+    font-size: 16px !important;
+    font-weight: 400 !important;
+    line-height: 24px !important;
+    letter-spacing: -0.3px !important;
+    white-space: nowrap;
+    z-index: 2;
+}
+
+.chat_box.image:not(.subscribe)
+.donation_box > .msg_box > .val::before,
+.chat_box.image.subscribe
+.donation_box.subscribe > .text_box > .msg > .val::before,
+.chat_box.image:not(.subscribe)
+.donation_box > .msg_box > .val::after,
+.chat_box.image.subscribe
+.donation_box.subscribe > .text_box > .msg > .val::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+}
+
+.chat_box.image:not(.subscribe)
+.donation_box > .msg_box > .val::before,
+.chat_box.image.subscribe
+.donation_box.subscribe > .text_box > .msg > .val::before {
+    inset: 0 -13px;
+    background: var(--val-line);
+    clip-path: polygon(
+        12px 0,
+        calc(100% - 12px) 0,
+        100% 50%,
+        calc(100% - 12px) 100%,
+        12px 100%,
+        0 50%
+    );
+    z-index: -2;
+}
+
+.chat_box.image:not(.subscribe)
+.donation_box > .msg_box > .val::after,
+.chat_box.image.subscribe
+.donation_box.subscribe > .text_box > .msg > .val::after {
+    inset: 2px -10px;
+    background: #fff;
+    clip-path: polygon(
+        10px 0,
+        calc(100% - 10px) 0,
+        100% 50%,
+        calc(100% - 10px) 100%,
+        10px 100%,
+        0 50%
+    );
+    z-index: -1;
+}
+
+.chat_box.image.subscribe
+.donation_box.subscribe > .text_box > .msg {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 27px;
+    font-size: 0 !important;
+    line-height: 0 !important;
+    letter-spacing: 0 !important;
+}
+
+/* ============================================= 
+        donation - subscribe
+============================================= */
+.chat_box.image.subscribe {
+    --text: linear-gradient(to bottom, #f2b5eb, #df8bd5);
+    --outline: 1px solid #cf91ca;
+    --border: 4px solid #f0b9e9;
+    --inbor: inset 0 0 0 1px #dfa2d9;
+    --val-line: #efb4e8;
+    --val-color: #df83d4;
+    --corner-fill: rgba(229, 251, 255, 0.98);
+    --corner-line: rgba(176, 232, 238, 0.96);
+    --hornL: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/sub/hornL.svg);
+    --hornR: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/sub/hornR.svg);
+    --cloud: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/sub/cloud.svg);
+    --buttonL: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/sub/buttonL.svg);
+    --buttonR: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/sub/buttonR.svg);
+    --confettiL: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/sub/confettiL.svg);
+    --confettiR: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/sub/confettiR.svg);
+    --hornL-size: 38px 42px;
+    --hornR-size: 38px 42px;
+    --buttonL-size: 32px 32px;
+    --buttonR-size: 31px 32px;
+    --confettiL-size: 39px 41px;
+    --confettiR-size: 53px 56px;
+}
+
+/* ============================================= 
+        keyframes
+============================================= */
+
+@keyframes dunggeurePopup {
+    0% {
+        opacity: 0;
+        transform: translateY(14px) scale(0.96);
+    }
+
+    65% {
+        opacity: 1;
+        transform: translateY(-2px) scale(1.01);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes dunggeureFloatNormal {
+    0%, 100% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+
+    50% {
+        transform: translate3d(1.5px, -5px, 0) rotate(0.12deg);
+    }
+}
+
+@keyframes dunggeureFloatSubscriber {
+    0%, 100% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+
+    50% {
+        transform: translate3d(-1.5px, -5.5px, 0) rotate(-0.14deg);
+    }
+}
+
+@keyframes dunggeureFloatStreamer {
+    0%, 100% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+
+    50% {
+        transform: translate3d(2px, -6px, 0) rotate(0.16deg);
+    }
+}
+
+@keyframes dunggeureFloatSubscribeTheme {
+    0%, 100% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+
+    50% {
+        transform: translate3d(-1px, -4.5px, 0) rotate(-0.1deg);
+    }
+}
+
+@keyframes dunggeureFloatDonation {
+    0%, 100% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+
+    50% {
+        transform: translate3d(1.8px, -5.5px, 0) rotate(0.14deg);
+    }
+}
+
+@keyframes dunggeureCloudNormal {
+    0%, 100% {
+        transform: translate3d(0, 0, 0) rotate(-0.6deg);
+    }
+
+    50% {
+        transform: translate3d(1px, -3px, 0) rotate(0.6deg);
+    }
+}
+
+@keyframes dunggeureCloudSubscriber {
+    0%, 100% {
+        transform: translate3d(0, 0, 0) rotate(0.5deg);
+    }
+
+    50% {
+        transform: translate3d(-1px, -3.5px, 0) rotate(-0.5deg);
+    }
+}
+
+@keyframes dunggeureCloudStreamer {
+    0%, 100% {
+        transform: translate3d(0, 0, 0) rotate(-0.8deg);
+    }
+
+    50% {
+        transform: translate3d(1.4px, -4px, 0) rotate(0.8deg);
+    }
+}
+
+@keyframes dunggeureCloudSubscribeTheme {
+    0%, 100% {
+        transform: translate3d(0, 0, 0) rotate(0.4deg);
+    }
+
+    50% {
+        transform: translate3d(-0.8px, -2.8px, 0) rotate(-0.4deg);
+    }
+}
+
+@keyframes dunggeureCloudDonation {
+    0%, 100% {
+        transform: translate3d(0, 0, 0) rotate(-0.7deg);
+    }
+
+    50% {
+        transform: translate3d(1.2px, -3.6px, 0) rotate(0.7deg);
+    }
+}
+
+/* =============================================
+        animation declarations
+============================================= */
+
+.chat_box.chat:not(.streamer):not(.subscribe) {
+    transform-origin: center bottom;
+    animation:
+        dunggeurePopup 0.48s cubic-bezier(0.22, 1, 0.36, 1) both,
+        dunggeureFloatNormal 6.4s cubic-bezier(0.45, 0, 0.55, 1) 0.48s infinite !important;
+}
+
+.chat_box.chat.subscribe {
+    transform-origin: center bottom;
+    animation:
+        dunggeurePopup 0.48s cubic-bezier(0.22, 1, 0.36, 1) both,
+        dunggeureFloatSubscriber 5.9s cubic-bezier(0.45, 0, 0.55, 1) 0.48s infinite !important;
+}
+
+.chat_box.chat.streamer {
+    transform-origin: center bottom;
+    animation:
+        dunggeurePopup 0.48s cubic-bezier(0.22, 1, 0.36, 1) both,
+        dunggeureFloatStreamer 5.3s cubic-bezier(0.45, 0, 0.55, 1) 0.48s infinite !important;
+}
+
+.chat_box.image.subscribe {
+    transform-origin: center bottom;
+    animation:
+        dunggeurePopup 0.48s cubic-bezier(0.22, 1, 0.36, 1) both,
+        dunggeureFloatSubscribeTheme 6.8s cubic-bezier(0.45, 0, 0.55, 1) 0.48s infinite !important;
+}
+
+.chat_box.image:not(.subscribe) {
+    transform-origin: center bottom;
+    animation:
+        dunggeurePopup 0.48s cubic-bezier(0.22, 1, 0.36, 1) both,
+        dunggeureFloatDonation 5.6s cubic-bezier(0.45, 0, 0.55, 1) 0.48s infinite !important;
+}
+
+.chat_box.chat:not(.streamer):not(.subscribe)::after {
+    transform-origin: 50% 80%;
+    animation: dunggeureCloudNormal 4.8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+.chat_box.chat.subscribe::after {
+    transform-origin: 50% 80%;
+    animation: dunggeureCloudSubscriber 4.4s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+.chat_box.chat.streamer::after {
+    transform-origin: 50% 80%;
+    animation: dunggeureCloudStreamer 4s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+.chat_box.image.subscribe::after {
+    transform-origin: 50% 80%;
+    animation: dunggeureCloudSubscribeTheme 5.2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+.chat_box.image:not(.subscribe)::after {
+    transform-origin: 50% 80%;
+    animation: dunggeureCloudDonation 4.5s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
