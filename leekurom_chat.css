@@ -1,0 +1,654 @@
+[data-id = "슈퍼챗"], [data-id = "치즈"], [data-id = "비트"], [data-id = "별풍선"], [data-id = "젬"], [data-id = "비트"], [data-id = "빔"] {
+    display: none;
+}
+
+@font-face {
+    font-family: 'SchoolSafetyNotification';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimAllimjangTTF-R.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SchoolSafetyNotification';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimAllimjangTTF-B.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+}
+
+/* ============================================= 
+        general
+============================================= */
+html {
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+}
+
+p {
+    color: var(--text) !important;
+    font-family: 'SchoolSafetyNotification', Courier, monospace;
+    position: relative;
+    margin: 0 !important;
+    line-height: 1.2 !important;
+    z-index: 999;
+    font-weight: 400 !important;
+    letter-spacing: -0.8px !important;
+    text-align: center !important;
+    text-shadow: none !important;
+    font-size: 22px !important;
+}
+
+.chat_area {
+    -webkit-mask-image: -webkit-gradient(linear, left bottom, left top, from(#000), color-stop(0.98, #000), to(transparent));    
+}
+
+.chat_box {
+    margin: 0 auto !important;
+    margin-bottom: 30px !important;
+}
+
+.chat_box.chat * {
+    box-sizing: border-box !important;
+}
+
+.icon_badge {
+    display: none !important;
+}
+
+.icon_chzzk {
+    display: none !important;
+}
+
+/* ============================================= 
+        donation reset
+============================================= */
+.chat_box.image .donation_box,
+.chat_box.image .text_box,
+.chat_box.image .msg_box,
+.chat_box.image .nick,
+.chat_box.image .msg,
+.chat_box.image .val {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent !important;
+}
+
+.chat_box.image .donation_box .inner_box {
+    margin: 0;
+    padding: 0;
+}
+
+.chat_box.image,
+.chat_box.image .inner_box,
+.chat_box.image .donation_box,
+.chat_box.image .text_box,
+.chat_box.image .msg_box {
+    overflow: visible;
+}
+
+.chat_box.image .donation_box::before,
+.chat_box.image .donation_box::after,
+.chat_box.image .donation_box.subscribe::before {
+    content: none;
+}
+
+.chat_box.image .donation_box.subscribe::before {
+    display: none !important;
+}
+
+/* =========================================
+        display order
+========================================= */
+.chat_box.image .donation_box {
+    position: relative;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 6px;
+}
+
+.chat_box.image .donation_box > .text_box,
+.chat_box.image .donation_box > .msg_box {
+    display: contents !important;
+}
+
+.chat_box.image .donation_box > .text_box > *,
+.chat_box.image .donation_box > .msg_box > * {
+    order: 0 !important;
+}
+
+/* .chat_box.image .donation_box > .text_box > .nick {
+    display: none !important;
+} */
+
+.chat_box.image:not(.subscribe)
+.donation_box > .msg_box > .val {
+    order: 10 !important;
+}
+
+.chat_box.image:not(.subscribe)
+.donation_box > .text_box > .msg {
+    order: 20 !important;
+}
+
+.chat_box.image.subscribe
+.donation_box.subscribe > .text_box > .msg {
+    order: 10 !important;
+}
+
+.chat_box.image.subscribe
+.donation_box.subscribe > .msg_box > .msg {
+    order: 20 !important;
+}
+
+/* ============================================= 
+        tokens
+============================================= */
+:root {
+    --back: linear-gradient(0deg, #131039b0, #131039b0);
+    --emojiL: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/emojiL.svg);
+    --emojiR: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/emojiR.svg);
+}
+
+.chat_box.chat:not(.streamer):not(.subscribe) {
+    --text: linear-gradient(to bottom, #fdfdff 0%, #7c85ff 70%, #7c85ff 100%);
+    --border: #7780ffe8;
+    --color: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/normal/01-color.svg);
+    --prism: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/normal/02-prism.svg);
+    --patternR: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/normal/03-patternR.svg);
+    --patternL: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/normal/04-patternL.svg);
+    --lineL: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/normal/05-lineL.svg);
+    --lineR: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/normal/06-lineR.svg);
+    --whiskerL: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/normal/08-whiskerL.svg);
+    --whiskerR: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/normal/09-whiskerR.svg);
+    --ear: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/normal/10-ear.svg?v=2);
+    --nickout: 1px solid #7780fe;
+    --nickibor: 2px solid #bab9ff;
+    --nick: #656de7;
+}
+
+/* ============================================= 
+        design
+============================================= */
+.chat_box {
+    position: relative;
+    width: fit-content;
+    max-width: calc(100% - 96px);
+    min-width: 340px;
+    isolation: isolate;
+}
+
+/* ears */
+.chat_box::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: -15px;
+    width: 129px;
+    height: 20px;
+    background-image: var(--ear), var(--ear);
+    background-repeat: no-repeat, no-repeat;
+    background-size: 30px 19px, 30px 19px;
+    background-position: left bottom, right bottom;
+    z-index: 0;
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+/* whiskers + emoji */
+.chat_box::after {
+    content: "";
+    position: absolute;
+    inset: -10px -44px;
+    pointer-events: none;
+    z-index: 4;
+    background-image: var(--whiskerL), var(--whiskerR), var(--emojiL), var(--emojiR);
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+    background-size: 44px 16px, 44px 16px, 19px 20px, 19px 19px;
+    background-position:
+        left 15px center,
+        right 15px center,
+        left 90px bottom 5px,
+        right 96px top 5px;
+}
+
+.chat_box .inner_box {
+    isolation: isolate;
+    padding: 50px 48px 25px 48px;
+    position: relative;
+    overflow: visible;
+    background: transparent;
+    z-index: 1;
+}
+
+/* panel */
+.chat_box .inner_box::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    clip-path: polygon(
+        18px 0,
+        calc(100% - 18px) 0,
+        100% 18px,
+        100% calc(100% - 18px),
+        calc(100% - 18px) 100%,
+        18px 100%,
+        0 calc(100% - 18px),
+        0 18px
+    );
+    background-image:
+        var(--lineR),
+        var(--lineL),
+        var(--patternR),
+        var(--patternL),
+        var(--color),
+        var(--back);
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+    background-size:
+        87px 52px,
+        70px 70px,
+        198px 114px,
+        198px 114px,
+        1024px 274px,
+        auto;
+    background-position:
+        right -16px top -13px,
+        left -10px bottom -32px,
+        right -67px top -12px,
+        left -95px bottom -7px,
+        left -113px top -101px,
+        center;
+    box-shadow: inset 0 0 0 4px var(--border);
+    z-index: 0;
+}
+
+.chat_box .inner_box::after {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    pointer-events: none;
+    clip-path: polygon(
+        18px 0,
+        calc(100% - 18px) 0,
+        100% 18px,
+        100% calc(100% - 18px),
+        calc(100% - 18px) 100%,
+        18px 100%,
+        0 calc(100% - 18px),
+        0 18px
+    );
+    background-image: var(--prism);
+    background-repeat: no-repeat;
+    background-size: 814px 631px;
+    background-position: left -175px top -141px;
+    mix-blend-mode: overlay;
+    opacity: 0.5;
+    z-index: 1;
+}
+
+.chat_box .inner_box .text {
+    color: transparent !important;
+    background: var(--text);
+    background-clip: text;
+    filter: saturate(130%) contrast(115%);
+}
+
+.chat_box .inner_box .name {
+    width: fit-content !important;
+    padding: 2px 20px 1px !important;
+    position: absolute !important;
+    left: 50%;
+    top: 15px;
+    transform: translateX(-50%);
+    border-radius: 999px;
+    border: var(--nickibor) !important;
+    outline: var(--nickout) !important;
+    background: #fff;
+    font-size: 15px !important;
+    z-index: 5;
+    color: var(--nick) !important;
+}
+
+.chat_box.chat:not(.image) {
+    width: fit-content !important;
+    min-width: 340px !important;
+    max-width: calc(100% - 96px) !important;
+    overflow: visible !important;
+    isolation: isolate;
+}
+
+.chat_box.chat:not(.image) > .inner_box {
+    position: relative !important;
+    isolation: isolate;
+    padding: 50px 48px 25px 48px !important;
+    clip-path: polygon(
+        18px 0,
+        calc(100% - 18px) 0,
+        100% 18px,
+        100% calc(100% - 18px),
+        calc(100% - 18px) 100%,
+        18px 100%,
+        0 calc(100% - 18px),
+        0 18px
+    ) !important;
+    overflow: visible !important;
+    background: var(--border) !important;
+    z-index: 1;
+}
+
+.chat_box.chat:not(.image) > .inner_box::before {
+    inset: 4px !important;
+    clip-path: polygon(
+        18px 0,
+        calc(100% - 18px) 0,
+        100% 18px,
+        100% calc(100% - 18px),
+        calc(100% - 18px) 100%,
+        18px 100%,
+        0 calc(100% - 18px),
+        0 18px
+    ) !important;
+    box-shadow: none !important;
+}
+
+.chat_box.chat:not(.image) > .inner_box::after {
+    inset: 4px !important;
+    clip-path: polygon(
+        18px 0,
+        calc(100% - 18px) 0,
+        100% 18px,
+        100% calc(100% - 18px),
+        calc(100% - 18px) 100%,
+        18px 100%,
+        0 calc(100% - 18px),
+        0 18px
+    ) !important;
+}
+
+/* ============================================= 
+        streamer
+============================================= */
+.chat_box.chat.streamer {
+    --text: linear-gradient(to bottom, #f6fbff 0%, #7eceff 70%, #7eceff 100%);
+    --border: #7bc4ffe8;
+    --color: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/str/01-color.svg);
+    --prism: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/str/02-prism.svg);
+    --patternR: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/str/03-patternR.svg);
+    --patternL: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/str/04-patternL.svg);
+    --lineL: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/str/05-lineL.svg);
+    --lineR: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/str/06-lineR.svg);
+    --whiskerL: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/str/08-whiskerL.svg);
+    --whiskerR: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/str/09-whiskerR.svg);
+    --ear: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/str/10-ear.svg);
+    --nickout: 1px solid #5aa7e7;
+    --nickibor: 2px solid #7bc4ff;
+    --nick: #57a8e9;
+}
+
+/* ============================================= 
+        subscribe
+============================================s= */
+.chat_box.chat.subscribe {
+    --text: linear-gradient(to bottom, #f6fbff 0%, #c885ff 70%, #c885ff 100%);
+    --border: #d6a3ffe8;
+    --color: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/sub/01-color.svg);
+    --prism: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/sub/02-prism.svg);
+    --patternR: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/sub/03-patternR.svg);
+    --patternL: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/sub/04-patternL.svg);
+    --lineL: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/sub/05-lineL.svg);
+    --lineR: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/sub/06-lineR.svg);
+    --whiskerL: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/sub/08-whiskerL.svg);
+    --whiskerR: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/sub/09-whiskerR.svg);
+    --ear: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/sub/10-ear.svg);
+    --nickout: 1px solid #c585ff;
+    --nickibor: 2px solid #e5c5ff;
+    --nick: #bf88ec;
+}
+
+/* ============================================= 
+        donation
+============================================= */
+.chat_box.image:not(.subscribe) {
+    --back: linear-gradient(0deg, #131039ed, #131039ed);
+    --text: linear-gradient(to bottom, #fdfdff 0%, #7c85ff 70%, #7c85ff 100%);
+    --border: #7780ffe8;
+    --color: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/normal/01-color.svg);
+    --prism: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/normal/02-prism.svg);
+    --patternR: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/normal/03-patternR.svg);
+    --patternL: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/normal/04-patternL.svg);
+    --lineL: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/normal/05-lineL.svg);
+    --lineR: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/normal/06-lineR.svg);
+    --whiskerL: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/normal/08-whiskerL.svg);
+    --whiskerR: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/normal/09-whiskerR.svg);
+    --ear: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/normal/10-ear.svg?v=2);
+    --nickout: 1px solid #7780fe;
+    --nickibor: 2px solid #bab9ff;
+    --nick: #656de7;
+}
+
+/* ============================================= 
+        donation - subscribe
+============================================= */
+.chat_box.image.subscribe {
+    --back: linear-gradient(0deg, #25113fed, #25113fed);
+    --text: linear-gradient(to bottom, #f6fbff 0%, #c885ff 70%, #c885ff 100%);
+    --border: #d6a3ffe8;
+    --color: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/sub/01-color.svg);
+    --prism: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/sub/02-prism.svg);
+    --patternR: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/sub/03-patternR.svg);
+    --patternL: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/sub/04-patternL.svg);
+    --lineL: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/sub/05-lineL.svg);
+    --lineR: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/sub/06-lineR.svg);
+    --whiskerL: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/sub/08-whiskerL.svg);
+    --whiskerR: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/sub/09-whiskerR.svg);
+    --ear: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/sub/10-ear.svg);
+    --nickout: 1px solid #c585ff;
+    --nickibor: 2px solid #e5c5ff;
+    --nick: #bf88ec;
+}
+
+.chat_area {
+    overflow: visible !important;
+}
+
+.chat_box.image {
+    width: 440px !important;
+    min-width: 440px !important;
+    max-width: 440px !important;
+    overflow: visible !important;
+    isolation: isolate;
+}
+
+.chat_box.image::after {
+    inset: -10px -44px;
+    background-position:
+        left 15px center,
+        right 15px center,
+        left 90px bottom 5px,
+        right 96px top 5px;
+}
+
+.chat_box.image > .inner_box {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    padding: 45px 38px 34px !important;
+    clip-path: none !important;
+    overflow: visible !important;
+    background: transparent !important;
+    box-sizing: border-box !important;
+    z-index: 1;
+}
+
+.chat_box.image > .inner_box::before,
+.chat_box.image > .inner_box::after {
+    clip-path: none !important;
+}
+
+.chat_box.image > .inner_box::before {
+    box-shadow: inset 0 0 0 4px var(--border);
+}
+
+.chat_box.image .donation_box,
+.chat_box.image .donation_box > .text_box,
+.chat_box.image .donation_box > .msg_box {
+    display: contents !important;
+}
+
+.chat_box.image .donation_box > .text_box > .nick {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    position: absolute !important;
+    left: 50% !important;
+    top: 9px !important;
+    transform: translateX(-50%) !important;
+    width: fit-content !important;
+    min-width: 92px !important;
+    max-width: 340px !important;
+    padding: 2px 17px 1px !important;
+    border: var(--nickibor) !important;
+    outline: var(--nickout) !important;
+    border-radius: 999px;
+    background: #fff !important;
+    color: var(--nick) !important;
+    -webkit-text-fill-color: var(--nick) !important;
+    font-size: 15px !important;
+    line-height: 1.1 !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    opacity: 1 !important;
+    visibility: visible !important;
+    z-index: 12;
+}
+
+.chat_box.image:not(.subscribe) .donation_box > .text_box > .msg,
+.chat_box.image.subscribe .donation_box > .msg_box > .msg {
+    display: block !important;
+    position: relative !important;
+    inset: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: transparent !important;
+    background: var(--text) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    filter: saturate(130%) contrast(115%);
+    font-size: 22px !important;
+    line-height: 1.2 !important;
+    text-align: center !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    z-index: 3;
+}
+
+.chat_box.image:not(.subscribe) .donation_box > .msg_box > .val,
+.chat_box.image.subscribe .donation_box > .text_box > .msg {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    position: absolute !important;
+    left: 50% !important;
+    bottom: -10px !important;
+    transform: translateX(-50%) !important;
+    min-width: 82px !important;
+    height: 27px !important;
+    padding: 2px 17px 3px !important;
+    clip-path: polygon(11px 0, calc(100% - 11px) 0, 100% 50%, calc(100% - 11px) 100%, 11px 100%, 0 50%);
+    background: var(--border) !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+    font-size: 17px !important;
+    line-height: 1 !important;
+    white-space: nowrap;
+    filter: drop-shadow(0 0 4px var(--border));
+    opacity: 1 !important;
+    visibility: visible !important;
+    z-index: 12;
+}
+
+.chat_box.image.subscribe .donation_box > .text_box > .msg {
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+    font-size: 0 !important;
+}
+
+.chat_box.image.subscribe .donation_box > .text_box > .msg > .val {
+    display: inline !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+    background: none !important;
+    font-size: 17px !important;
+    line-height: 1 !important;
+}
+
+/* ============================================= 
+        keyframes
+============================================= */
+@keyframes leekurom-panel-enter {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 10px, 0);
+    }
+    68% {
+        opacity: 1;
+        transform: translate3d(0, -1px, 0);
+    }
+    100% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes leekurom-decor-enter {
+    0%, 22% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes leekurom-prism-online {
+    0% {
+        opacity: 0;
+        filter: brightness(1.4) saturate(0.75);
+    }
+    46% {
+        opacity: 0.7;
+        filter: brightness(1.12) saturate(1.05);
+    }
+    100% {
+        opacity: 0.5;
+        filter: none;
+    }
+}
+
+.chat_box.animated {
+    transform-origin: 50% 50%;
+    backface-visibility: hidden;
+    will-change: transform, opacity;
+    animation: leekurom-panel-enter 580ms cubic-bezier(0.16, 0.74, 0.24, 1) both !important;
+}
+
+.chat_box.animated::before,
+.chat_box.animated::after {
+    animation: leekurom-decor-enter 500ms ease-out 90ms both;
+}
+
+.chat_box.animated > .inner_box::after {
+    animation: leekurom-prism-online 720ms ease-out both;
+}
