@@ -1,0 +1,559 @@
+[data-id = "슈퍼챗"], [data-id = "치즈"], [data-id = "비트"], [data-id = "별풍선"], [data-id = "젬"], [data-id = "비트"], [data-id = "빔"] {
+    display: none;
+}
+
+@font-face {
+    font-family: 'NexonWarhaven';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/WarhavenR.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NexonWarhaven';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/WarhavenB.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+}
+
+/* ============================================= 
+        general
+============================================= */
+html {
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+}
+
+p {
+    color: var(--text) !important;
+    font-family: 'NexonWarhaven', Courier, monospace;
+    position: relative;
+    margin: 0 !important;
+    line-height: 1.2 !important;
+    z-index: 999;
+    font-weight: 400 !important;
+    letter-spacing: -0.8px !important;
+    text-align: center !important;
+    text-shadow: 0px 0px 3px 2px #3f2176ad !important;
+    font-size: 22px !important;
+}
+
+.chat_area {
+    -webkit-mask-image: -webkit-gradient(linear, left bottom, left top, from(#000), color-stop(0.98, #000), to(transparent));    
+}
+
+.chat_box {
+    margin: 0 auto !important;
+    margin-bottom: 30px !important;
+}
+
+.chat_box.chat * {
+    box-sizing: border-box !important;
+}
+
+.icon_badge {
+    display: none !important;
+}
+
+.icon_chzzk {
+    display: none !important;
+}
+
+/* ============================================= 
+        donation reset
+============================================= */
+.chat_box.image .donation_box,
+.chat_box.image .text_box,
+.chat_box.image .msg_box,
+.chat_box.image .nick,
+.chat_box.image .msg,
+.chat_box.image .val {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent !important;
+}
+
+.chat_box.image .donation_box .inner_box {
+    margin: 0;
+    padding: 0;
+}
+
+.chat_box.image,
+.chat_box.image .inner_box,
+.chat_box.image .donation_box,
+.chat_box.image .text_box,
+.chat_box.image .msg_box {
+    overflow: visible;
+}
+
+.chat_box.image .donation_box::before,
+.chat_box.image .donation_box::after,
+.chat_box.image .donation_box.subscribe::before {
+    content: none;
+}
+
+.chat_box.image .donation_box.subscribe::before {
+    display: none !important;
+}
+
+/* =========================================
+        display order
+========================================= */
+.chat_box.image .donation_box {
+    position: relative;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 6px;
+}
+
+.chat_box.image .donation_box > .text_box,
+.chat_box.image .donation_box > .msg_box {
+    display: contents !important;
+}
+
+.chat_box.image .donation_box > .text_box > *,
+.chat_box.image .donation_box > .msg_box > * {
+    order: 0 !important;
+}
+
+/* .chat_box.image .donation_box > .text_box > .nick {
+    display: none !important;
+} */
+
+.chat_box.image:not(.subscribe)
+.donation_box > .msg_box > .val {
+    order: 10 !important;
+}
+
+.chat_box.image:not(.subscribe)
+.donation_box > .text_box > .msg {
+    order: 20 !important;
+}
+
+.chat_box.image.subscribe
+.donation_box.subscribe > .text_box > .msg {
+    order: 10 !important;
+}
+
+.chat_box.image.subscribe
+.donation_box.subscribe > .msg_box > .msg {
+    order: 20 !important;
+}
+
+/* ============================================= 
+        tokens
+============================================= */
+:root {
+    --text: #fff;
+    --color: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/01-color.webp);
+    --pattern: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/02-pattern.webp);
+    --pattern2: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/03-pattern2.webp);
+    --texture: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/04-texture.webp);
+    --prism: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/05-prism.webp);
+    --top: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/top-ob.webp);
+}
+
+.chat_box.chat:not(.streamer):not(.subscribe) {
+    --LaurelL: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/normal/LaurelL.webp);
+    --LaurelR: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/normal/LaurelR.webp);
+    --cornerL: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/normal/cornerL.webp);
+    --cornerR: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/normal/cornerR.webp);
+    --back: linear-gradient(0deg, #9448c9, #9448c9);
+    --outline: 1px solid #341e58;
+    --border: 2px solid #d6a6ff;
+    --nickC: linear-gradient(to bottom, #8020ad, #2e0d4b);
+    --nickB: 1px solid #b593ff;
+}
+
+/* ============================================= 
+        design
+============================================= */
+.chat_box {
+    position: relative;
+    width: fit-content;
+    min-width: 340px;
+    max-width: calc(100% - 50px);
+}
+
+.chat_box::before, .chat_box::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.chat_box::before {
+    width: calc(100% + 20px);
+    height: 62px;
+    left: 50%;
+    bottom: -17px;
+    background: var(--LaurelL), var(--LaurelR);
+    background-repeat: no-repeat, no-repeat;
+    background-size: 122px, 122px;
+    background-position: left center, right center;
+    z-index: 2;
+}
+
+.chat_box::after {
+    width: 58px;
+    height: 66px;
+    top: -35px;
+    background: var(--top);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+.chat_box.chat .inner_box {
+    padding: 60px 43px 22px 43px;
+}
+
+.chat_box .inner_box {
+    position: relative;
+    outline: var(--outline);
+    border: var(--border);
+    background: 
+        var(--prism) no-repeat,
+        var(--texture) repeat,
+        var(--pattern2) repeat,
+        var(--pattern) repeat,
+        var(--color) no-repeat,
+        var(--color) no-repeat,
+        var(--back) repeat;
+    background-position: 
+        left -233px top -336px,
+        left -578px top -125px,
+        left -275px top 270px,
+        left -45px top -125px,
+        left -187px top -125px,
+        left -187px top -125px,
+        center;
+    background-size: 747px, 1199px, 956px, 497px, 808px, 808px, cover;
+    background-blend-mode: color-dodge, overlay, color-dodge, soft-light, overlay, overlay, normal;
+    border-radius: 20px 0 20px 0;
+    overflow: hidden;
+    box-shadow: inset 0px 0px 24px 0px #cea6ff62;
+}
+
+.chat_box .inner_box::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--cornerL), var(--cornerR);
+    background-repeat: no-repeat, no-repeat;
+    background-position: left -251px top -186px, right -251px top -186px;
+}
+
+.chat_box .inner_box .name {
+    position: absolute !important;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 18px !important;
+    background: var(--nickC);
+    border: var(--nickB);
+    border-radius: 999vh !important;
+    padding: 3px 20px !important;
+}
+
+/* ============================================= 
+        streamer
+============================================= */
+.chat_box.chat.streamer {
+    --LaurelL: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/str/LaurelL.webp);
+    --LaurelR: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/str/LaurelR.webp);
+    --cornerL: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/str/cornerL.webp);
+    --cornerR: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/str/cornerR.webp);
+    --back: linear-gradient(0deg, #a176ff, #a176ff);
+    --outline: 1px solid #341e58;
+    --border: 2px solid #d6a6ff;
+    --nickC: linear-gradient(to bottom, #533997, #201150);
+    --nickB: 1px solid #b593ff;
+}
+
+/* ============================================= 
+        subscribe
+============================================s= */
+.chat_box.chat.subscribe {
+    --LaurelL: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/sub/LaurelL.webp);
+    --LaurelR: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/sub/LaurelR.webp);
+    --cornerL: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/sub/cornerL.webp);
+    --cornerR: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/sub/cornerR.webp);
+    --back: linear-gradient(0deg, #8248c9, #8248c9);
+    --outline: 1px solid #341e58;
+    --border: 2px solid #d6a6ff;
+    --nickC: linear-gradient(to bottom, #5f20ad, #260d4e);
+    --nickB: 1px solid #b593ff;
+}
+
+/* ============================================= 
+        donation
+============================================= */
+.chat_box.image:not(.subscribe) {
+    --LaurelL: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/normal/LaurelL.webp);
+    --LaurelR: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/normal/LaurelR.webp);
+    --cornerL: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/normal/cornerL.webp);
+    --cornerR: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/normal/cornerR.webp);
+    --back: linear-gradient(0deg, #9448c9, #9448c9);
+    --outline: 1px solid #341e58;
+    --border: 2px solid #d6a6ff;
+    --nickC: linear-gradient(to bottom, #8020ad, #2e0d4b);
+    --nickB: 1px solid #b593ff;
+    --valC: #6824a2c4;
+    --valB: 1px solid #aa77e9;
+}
+
+.chat_box.image .inner_box {
+    overflow: hidden !important;
+}
+
+.chat_box.image .inner_box .donation_box {
+    padding: 32px 0 15px 0;
+    position: relative;
+}
+
+.chat_box.image .inner_box .donation_box::after {
+    content: "";
+    position: absolute;
+    top: 24px;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: #6824a2c4;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .text_box .nick {
+    font-size: 16px !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .text_box .nick::after {
+    content: " 님이";
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .text_box .msg {
+    margin-top: 10px !important;
+    padding: 0 43px !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .msg_box .val {
+    font-size: 16px !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .msg_box .val::after {
+    content: " 치즈를 후원하셨습니다.";
+}
+
+/* ============================================= 
+        donation - subscribe
+============================================= */
+.chat_box.image.subscribe {
+    --LaurelL: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/sub/LaurelL.webp);
+    --LaurelR: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/sub/LaurelR.webp);
+    --cornerL: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/sub/cornerL.webp);
+    --cornerR: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/sub/cornerR.webp);
+    --back: linear-gradient(0deg, #8248c9, #8248c9);
+    --outline: 1px solid #341e58;
+    --border: 2px solid #d6a6ff;
+    --nickC: linear-gradient(to bottom, #5f20ad, #260d4e);
+    --nickB: 1px solid #b593ff;
+    --valC: #6128abc4;
+    --valB: 1px solid #aa77e9;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .text_box .nick {
+    font-size: 16px !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .text_box .nick::after {
+    content: " 님과";
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .text_box .msg {
+    font-size: 0 !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .text_box .msg .val {
+    font-size: 16px !important;
+    color: var(--text) !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .text_box .msg .val::after {
+    content: " 동안 함께했습니다.";
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .msg_box .msg {
+    margin-top: 10px !important;
+    padding: 0 43px !important;
+}
+
+/* ============================================= 
+        keyframes
+============================================= */
+.chat_box {
+    --violet-popup-time: 820ms;
+    --violet-corner-time: 920ms;
+    --violet-corner-delay: 170ms;
+    --violet-laurel-time: 980ms;
+    --violet-laurel-delay: 310ms;
+
+    transform-origin: 50% 72%;
+    animation:
+        violetPopupIn
+        var(--violet-popup-time)
+        cubic-bezier(0.16, 0.82, 0.22, 1)
+        both !important;
+    will-change: transform, opacity, filter;
+}
+
+.chat_box::before {
+    opacity: 0;
+    -webkit-clip-path: inset(0 50% 0 50%);
+    clip-path: inset(0 50% 0 50%);
+    animation:
+        violetLaurelOpen
+        var(--violet-laurel-time)
+        cubic-bezier(0.18, 0.74, 0.2, 1)
+        var(--violet-laurel-delay)
+        both;
+    will-change: clip-path, opacity, filter;
+}
+
+.chat_box .inner_box::before,
+.chat_box .inner_box::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+    will-change: clip-path, opacity, filter;
+}
+
+.chat_box .inner_box::before {
+    left: 0;
+    right: auto;
+    background:
+        var(--cornerL)
+        no-repeat
+        left -251px top -186px;
+    -webkit-clip-path: inset(0 100% 0 0);
+    clip-path: inset(0 100% 0 0);
+    animation:
+        violetCornerLeftOpen
+        var(--violet-corner-time)
+        cubic-bezier(0.2, 0.74, 0.2, 1)
+        var(--violet-corner-delay)
+        both;
+}
+
+.chat_box .inner_box::after {
+    left: auto;
+    right: 0;
+    background:
+        var(--cornerR)
+        no-repeat
+        right -251px top -186px;
+    -webkit-clip-path: inset(0 0 0 100%);
+    clip-path: inset(0 0 0 100%);
+    animation:
+        violetCornerRightOpen
+        var(--violet-corner-time)
+        cubic-bezier(0.2, 0.74, 0.2, 1)
+        var(--violet-corner-delay)
+        both;
+}
+
+@keyframes violetPopupIn {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 18px, 0) scale(0.965);
+        filter: blur(6px) brightness(1.12);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) scale(1);
+        filter: blur(0) brightness(1);
+    }
+}
+
+@keyframes violetLaurelOpen {
+    0% {
+        opacity: 0;
+        -webkit-clip-path: inset(0 50% 0 50%);
+        clip-path: inset(0 50% 0 50%);
+        filter: blur(3px) brightness(1.18);
+    }
+
+    18% {
+        opacity: 0.85;
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-clip-path: inset(0 0 0 0);
+        clip-path: inset(0 0 0 0);
+        filter: blur(0) brightness(1);
+    }
+}
+
+@keyframes violetCornerLeftOpen {
+    0% {
+        opacity: 0;
+        -webkit-clip-path: inset(0 100% 0 0);
+        clip-path: inset(0 100% 0 0);
+        filter: blur(2.5px) brightness(1.16);
+    }
+
+    20% {
+        opacity: 0.75;
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-clip-path: inset(0 0 0 0);
+        clip-path: inset(0 0 0 0);
+        filter: blur(0) brightness(1);
+    }
+}
+
+@keyframes violetCornerRightOpen {
+    0% {
+        opacity: 0;
+        -webkit-clip-path: inset(0 0 0 100%);
+        clip-path: inset(0 0 0 100%);
+        filter: blur(2.5px) brightness(1.16);
+    }
+
+    20% {
+        opacity: 0.75;
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-clip-path: inset(0 0 0 0);
+        clip-path: inset(0 0 0 0);
+        filter: blur(0) brightness(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .chat_box,
+    .chat_box::before,
+    .chat_box .inner_box::before,
+    .chat_box .inner_box::after {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+        -webkit-clip-path: inset(0 0 0 0) !important;
+        clip-path: inset(0 0 0 0) !important;
+    }
+}
