@@ -121,9 +121,9 @@ p {
     order: 0 !important;
 }
 
-/* .chat_box.image .donation_box > .text_box > .nick {
+.chat_box.image .donation_box > .text_box > .nick {
     display: none !important;
-} */
+}
 
 .chat_box.image:not(.subscribe)
 .donation_box > .msg_box > .val {
@@ -150,24 +150,25 @@ p {
 ============================================= */
 :root {
     --text: #fff;
-    --color: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/01-color.webp);
-    --pattern: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/02-pattern.webp);
-    --pattern2: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/03-pattern2.webp);
-    --texture: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/04-texture.webp);
-    --prism: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/05-prism.webp);
-    --top: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/top-ob.webp);
+    --fish: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/fish.webp");
+    --flower: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/flower.webp");
+    --leaf: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/leaf.webp");
+    --back: linear-gradient(0deg, #fff, #fff);
 }
 
 .chat_box.chat:not(.streamer):not(.subscribe) {
-    --LaurelL: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/normal/LaurelL.webp);
-    --LaurelR: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/normal/LaurelR.webp);
-    --cornerL: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/normal/cornerL.webp);
-    --cornerR: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/normal/cornerR.webp);
-    --back: linear-gradient(0deg, #9448c9, #9448c9);
-    --outline: 1px solid #341e58;
-    --border: 2px solid #d6a6ff;
-    --nickC: linear-gradient(to bottom, #8020ad, #2e0d4b);
-    --nickB: 1px solid #b593ff;
+    --text: #2e3131;
+    --paper: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/normal/01-paper.webp");
+    --color: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/normal/02-color.webp");
+    --brush-1: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/normal/03-brush.webp");
+    --brush-2: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/normal/04-brush.webp");
+    --line-1: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/normal/05-line.webp");
+    --line-2: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/normal/06-line.webp");
+    --brush-3: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/normal/07-brush.webp");
+    --brush-4: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/normal/08-brush.webp");
+    --brushout-1: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/normal/09-brushout.webp");
+    --brushout-2: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/normal/10-brushout.webp");
+    --border: linear-gradient(to right, #9adddd, #76c7c7);
 }
 
 /* ============================================= 
@@ -176,155 +177,137 @@ p {
 .chat_box {
     position: relative;
     width: fit-content;
-    min-width: 340px;
     max-width: calc(100% - 50px);
-}
-
-.chat_box::before, .chat_box::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.chat_box::before {
-    width: calc(100% + 20px);
-    height: 62px;
-    left: 50%;
-    bottom: -17px;
-    background: var(--LaurelL), var(--LaurelR);
-    background-repeat: no-repeat, no-repeat;
-    background-size: 122px, 122px;
-    background-position: left center, right center;
-    z-index: 2;
-}
-
-.chat_box::after {
-    width: 58px;
-    height: 66px;
-    top: -35px;
-    background: var(--top);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100%;
-}
-
-.chat_box.chat .inner_box {
-    padding: 60px 43px 22px 43px;
 }
 
 .chat_box .inner_box {
     position: relative;
-    outline: var(--outline);
-    border: var(--border);
-    background: 
-        var(--prism) no-repeat,
-        var(--texture) repeat,
-        var(--pattern2) repeat,
-        var(--pattern) repeat,
-        var(--color) no-repeat,
-        var(--color) no-repeat,
-        var(--back) repeat;
+    padding: 20px 45px;
+    border: 3px solid transparent;
+    background:
+        var(--brush-4) no-repeat padding-box,
+        var(--brush-3) no-repeat padding-box,
+        var(--line-2) no-repeat padding-box,
+        var(--line-1) no-repeat padding-box,
+        var(--brush-2) no-repeat padding-box,
+        var(--brush-1) no-repeat padding-box,
+        var(--color) no-repeat padding-box,
+        var(--paper) repeat padding-box,
+        var(--back) repeat padding-box,
+        var(--border) repeat border-box;
+    background-size: 65px, 99px, 150px, 125px, 690px, 682px, 1017px, 968px, cover, cover;
     background-position: 
-        left -233px top -336px,
-        left -578px top -125px,
-        left -275px top 270px,
-        left -45px top -125px,
-        left -187px top -125px,
-        left -187px top -125px,
-        center;
-    background-size: 747px, 1199px, 956px, 497px, 808px, 808px, cover;
-    background-blend-mode: color-dodge, overlay, color-dodge, soft-light, overlay, overlay, normal;
-    border-radius: 20px 0 20px 0;
-    overflow: hidden;
-    box-shadow: inset 0px 0px 24px 0px #cea6ff62;
+        right -19px top -19px,
+        left -54px bottom -43px,
+        left -94px bottom,
+        right -21px top,
+        left -530px center,
+        right -308px center,
+        center top -78px,
+        center, center, center;
 }
 
+/* ============================================= 
+        object
+============================================= */
+/* flower */
+.chat_box::after {
+    content: "";
+    position: absolute;
+    width: 52px;
+    height: 67px;
+    left: -28px;
+    bottom: -11px;
+    background: var(--flower);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 2;
+}
+
+/* leaf */
+.chat_box::before {
+    content: "";
+    position: absolute;
+    width: 22px;
+    height: 36px;
+    left: 20px;
+    bottom: -14px;
+    background: var(--leaf);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 2;
+}
+
+/* fish */
+.chat_box .inner_box::before {
+    content: "";
+    position: absolute;
+    width: 67px;
+    height: 69px;
+    right: -16px;
+    top: 30%;
+    background: var(--fish);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 3;
+}
+
+/* outbrush */
 .chat_box .inner_box::after {
     content: "";
     position: absolute;
-    inset: 0;
-    background: var(--cornerL), var(--cornerR);
+    inset: -5px -10px -5px -10px;
+    background: var(--brushout-1), var(--brushout-2);
+    background-position: right bottom, left top;
+    background-size: 420px, 390px;
     background-repeat: no-repeat, no-repeat;
-    background-position: left -251px top -186px, right -251px top -186px;
+    z-index: 2;
 }
-
-.chat_box .inner_box .name {
-    position: absolute !important;
-    top: 25px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 18px !important;
-    background: var(--nickC);
-    border: var(--nickB);
-    border-radius: 999vh !important;
-    padding: 3px 20px !important;
-}
-
 /* ============================================= 
         streamer
 ============================================= */
 .chat_box.chat.streamer {
-    --LaurelL: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/str/LaurelL.webp);
-    --LaurelR: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/str/LaurelR.webp);
-    --cornerL: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/str/cornerL.webp);
-    --cornerR: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/str/cornerR.webp);
-    --back: linear-gradient(0deg, #a176ff, #a176ff);
-    --outline: 1px solid #341e58;
-    --border: 2px solid #d6a6ff;
-    --nickC: linear-gradient(to bottom, #533997, #201150);
-    --nickB: 1px solid #b593ff;
+    --text: #2e3131;
+    --paper: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/str/01-paper.webp");
+    --color: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/str/02-color.webp");
+    --brush-1: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/str/03-brush.webp");
+    --brush-2: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/str/04-brush.webp");
+    --line-1: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/str/05-line.webp");
+    --line-2: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/str/06-line.webp");
+    --brush-3: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/str/07-brush.webp");
+    --brush-4: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/str/08-brush.webp");
+    --brushout-1: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/str/09-brushout.webp");
+    --brushout-2: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/str/10-brushout.webp");
+    --border: linear-gradient(to right, #81e6e6, #45a2a2);
 }
 
 /* ============================================= 
         subscribe
 ============================================s= */
 .chat_box.chat.subscribe {
-    --LaurelL: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/sub/LaurelL.webp);
-    --LaurelR: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/sub/LaurelR.webp);
-    --cornerL: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/sub/cornerL.webp);
-    --cornerR: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/sub/cornerR.webp);
-    --back: linear-gradient(0deg, #8248c9, #8248c9);
-    --outline: 1px solid #341e58;
-    --border: 2px solid #d6a6ff;
-    --nickC: linear-gradient(to bottom, #5f20ad, #260d4e);
-    --nickB: 1px solid #b593ff;
+    --text: #52270d;
+    --paper: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/subscribe/01-paper.webp");
+    --color: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/subscribe/02-color.webp");
+    --brush-1: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/subscribe/03-brush.webp");
+    --brush-2: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/subscribe/04-brush.webp");
+    --line-1: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/subscribe/05-line.webp");
+    --line-2: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/subscribe/06-line.webp");
+    --brush-3: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/subscribe/07-brush.webp");
+    --brush-4: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/subscribe/08-brush.webp");
+    --brushout-1: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/subscribe/09-brushout.webp");
+    --brushout-2: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/subscribe/10-brushout.webp");
+    --fish: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/fish2.webp");
+    --border: linear-gradient(to right, #f1d697, #e7d8ad);
 }
 
 /* ============================================= 
         donation
 ============================================= */
 .chat_box.image:not(.subscribe) {
-    --LaurelL: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/normal/LaurelL.webp);
-    --LaurelR: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/normal/LaurelR.webp);
-    --cornerL: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/normal/cornerL.webp);
-    --cornerR: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/normal/cornerR.webp);
-    --back: linear-gradient(0deg, #9448c9, #9448c9);
-    --outline: 1px solid #341e58;
-    --border: 2px solid #d6a6ff;
-    --nickC: linear-gradient(to bottom, #8020ad, #2e0d4b);
-    --nickB: 1px solid #b593ff;
-    --valC: #6824a2c4;
-    --valB: 1px solid #aa77e9;
-}
 
-.chat_box.image .inner_box {
-    overflow: hidden !important;
-}
-
-.chat_box.image .inner_box .donation_box {
-    padding: 32px 0 15px 0;
-    position: relative;
-}
-
-.chat_box.image .inner_box .donation_box::after {
-    content: "";
-    position: absolute;
-    top: 24px;
-    left: 0;
-    width: 100%;
-    height: 60px;
-    background: #6824a2c4;
 }
 
 .chat_box.image:not(.subscribe) .inner_box .donation_box .text_box .nick {
@@ -352,17 +335,7 @@ p {
         donation - subscribe
 ============================================= */
 .chat_box.image.subscribe {
-    --LaurelL: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/sub/LaurelL.webp);
-    --LaurelR: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/sub/LaurelR.webp);
-    --cornerL: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/sub/cornerL.webp);
-    --cornerR: url(https://hime-haruka.github.io/syura_css_svg_import/violeti/sub/cornerR.webp);
-    --back: linear-gradient(0deg, #8248c9, #8248c9);
-    --outline: 1px solid #341e58;
-    --border: 2px solid #d6a6ff;
-    --nickC: linear-gradient(to bottom, #5f20ad, #260d4e);
-    --nickB: 1px solid #b593ff;
-    --valC: #6128abc4;
-    --valB: 1px solid #aa77e9;
+
 }
 
 .chat_box.image.subscribe .inner_box .donation_box .text_box .nick {
@@ -395,32 +368,25 @@ p {
         keyframes
 ============================================= */
 .chat_box {
-    --violet-popup-time: 820ms;
-    --violet-corner-time: 920ms;
-    --violet-corner-delay: 170ms;
-    --violet-laurel-time: 980ms;
-    --violet-laurel-delay: 310ms;
+    --violet-popup-time: 700ms;
+    --violet-corner-time: 620ms;
+    --violet-corner-delay: 120ms;
+    --violet-laurel-time: 760ms;
+    --violet-laurel-delay: 220ms;
 
-    transform-origin: 50% 72%;
-    animation:
-        violetPopupIn
-        var(--violet-popup-time)
-        cubic-bezier(0.16, 0.82, 0.22, 1)
-        both !important;
-    will-change: transform, opacity, filter;
+    animation: none;
+    opacity: 1;
+    filter: none;
+    transform: none;
+    transform-origin: 50% 70%;
 }
 
 .chat_box::before {
-    opacity: 0;
-    -webkit-clip-path: inset(0 50% 0 50%);
-    clip-path: inset(0 50% 0 50%);
-    animation:
-        violetLaurelOpen
-        var(--violet-laurel-time)
-        cubic-bezier(0.18, 0.74, 0.2, 1)
-        var(--violet-laurel-delay)
-        both;
-    will-change: clip-path, opacity, filter;
+    animation: none;
+    opacity: 1;
+    filter: none;
+    -webkit-clip-path: inset(0);
+    clip-path: inset(0);
 }
 
 .chat_box .inner_box::before,
@@ -430,42 +396,59 @@ p {
     top: 0;
     bottom: 0;
     width: 50%;
-    opacity: 0;
+    opacity: 1;
     pointer-events: none;
     z-index: 1;
-    will-change: clip-path, opacity, filter;
+    animation: none;
+    filter: none;
+    -webkit-clip-path: inset(0);
+    clip-path: inset(0);
 }
 
 .chat_box .inner_box::before {
     left: 0;
     right: auto;
-    background:
-        var(--cornerL)
-        no-repeat
-        left -251px top -186px;
-    -webkit-clip-path: inset(0 100% 0 0);
-    clip-path: inset(0 100% 0 0);
+    background: var(--cornerL) no-repeat left -251px top -186px;
+}
+
+.chat_box .inner_box::after {
+    inset: 0 0 0 auto;
+    left: auto;
+    right: 0;
+    background: var(--cornerR) no-repeat right -251px top -186px;
+}
+
+.chat_area .chat_box:last-child {
+    animation:
+        violetPopupIn
+        var(--violet-popup-time)
+        cubic-bezier(0.2, 0.82, 0.24, 1)
+        both;
+}
+
+.chat_area .chat_box:last-child::before {
+    animation:
+        violetLaurelOpen
+        var(--violet-laurel-time)
+        cubic-bezier(0.22, 0.72, 0.2, 1)
+        var(--violet-laurel-delay)
+        both;
+}
+
+.chat_area .chat_box:last-child .inner_box::before {
     animation:
         violetCornerLeftOpen
         var(--violet-corner-time)
-        cubic-bezier(0.2, 0.74, 0.2, 1)
+        cubic-bezier(0.22, 0.72, 0.2, 1)
         var(--violet-corner-delay)
         both;
 }
 
-.chat_box .inner_box::after {
-    left: auto;
-    right: 0;
-    background:
-        var(--cornerR)
-        no-repeat
-        right -251px top -186px;
-    -webkit-clip-path: inset(0 0 0 100%);
-    clip-path: inset(0 0 0 100%);
+.chat_area .chat_box:last-child .inner_box::after {
     animation:
         violetCornerRightOpen
         var(--violet-corner-time)
-        cubic-bezier(0.2, 0.74, 0.2, 1)
+        cubic-bezier(0.22, 0.72, 0.2, 1)
         var(--violet-corner-delay)
         both;
 }
@@ -473,14 +456,17 @@ p {
 @keyframes violetPopupIn {
     0% {
         opacity: 0;
-        transform: translate3d(0, 18px, 0) scale(0.965);
-        filter: blur(6px) brightness(1.12);
+        transform: translateY(12px) scale(0.98);
+    }
+
+    55% {
+        opacity: 1;
+        transform: translateY(-1px) scale(1.002);
     }
 
     100% {
         opacity: 1;
-        transform: translate3d(0, 0, 0) scale(1);
-        filter: blur(0) brightness(1);
+        transform: translateY(0) scale(1);
     }
 }
 
@@ -489,18 +475,16 @@ p {
         opacity: 0;
         -webkit-clip-path: inset(0 50% 0 50%);
         clip-path: inset(0 50% 0 50%);
-        filter: blur(3px) brightness(1.18);
     }
 
-    18% {
-        opacity: 0.85;
+    25% {
+        opacity: 1;
     }
 
     100% {
         opacity: 1;
-        -webkit-clip-path: inset(0 0 0 0);
-        clip-path: inset(0 0 0 0);
-        filter: blur(0) brightness(1);
+        -webkit-clip-path: inset(0);
+        clip-path: inset(0);
     }
 }
 
@@ -509,18 +493,16 @@ p {
         opacity: 0;
         -webkit-clip-path: inset(0 100% 0 0);
         clip-path: inset(0 100% 0 0);
-        filter: blur(2.5px) brightness(1.16);
     }
 
-    20% {
-        opacity: 0.75;
+    25% {
+        opacity: 1;
     }
 
     100% {
         opacity: 1;
-        -webkit-clip-path: inset(0 0 0 0);
-        clip-path: inset(0 0 0 0);
-        filter: blur(0) brightness(1);
+        -webkit-clip-path: inset(0);
+        clip-path: inset(0);
     }
 }
 
@@ -529,18 +511,16 @@ p {
         opacity: 0;
         -webkit-clip-path: inset(0 0 0 100%);
         clip-path: inset(0 0 0 100%);
-        filter: blur(2.5px) brightness(1.16);
     }
 
-    20% {
-        opacity: 0.75;
+    25% {
+        opacity: 1;
     }
 
     100% {
         opacity: 1;
-        -webkit-clip-path: inset(0 0 0 0);
-        clip-path: inset(0 0 0 0);
-        filter: blur(0) brightness(1);
+        -webkit-clip-path: inset(0);
+        clip-path: inset(0);
     }
 }
 
@@ -553,7 +533,7 @@ p {
         opacity: 1 !important;
         transform: none !important;
         filter: none !important;
-        -webkit-clip-path: inset(0 0 0 0) !important;
-        clip-path: inset(0 0 0 0) !important;
+        -webkit-clip-path: inset(0) !important;
+        clip-path: inset(0) !important;
     }
 }
