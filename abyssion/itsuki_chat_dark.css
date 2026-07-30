@@ -1,0 +1,149 @@
+[data-id = "슈퍼챗"], [data-id = "치즈"], [data-id = "비트"], [data-id = "별풍선"], [data-id = "젬"], [data-id = "비트"], [data-id = "빔"] {
+    display: none;
+}
+
+/* ============================================= 
+        general
+============================================= */
+html {
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+}
+
+p {
+    color: var(--text) !important;
+    position: relative;
+    margin: 0 !important;
+    line-height: 1.2 !important;
+    z-index: 999;
+    text-shadow: none !important;
+    font-weight: 700 !important;
+    font-size: 22px !important;
+    letter-spacing: -0.8px !important;
+    text-align: center !important;
+}
+
+.chat_area {
+    -webkit-mask-image: -webkit-gradient(linear, left bottom, left top, from(#000), color-stop(0.9, #000), to(transparent));    
+}
+
+.chat_box {
+    margin: 0 auto !important;
+    margin-bottom: 15px !important;
+}
+
+.chat_box.chat * {
+    box-sizing: border-box !important;
+}
+
+.icon_badge {
+    display: none !important;
+}
+
+* .nick {
+    display: none;
+}
+
+/* ============================================= 
+        tokens
+============================================= */
+.chat_box.chat:not(.streamer):not(.subscribe) {
+    --text: #4a4af9;
+    --img: url(https://lh3.googleusercontent.com/d/1Vzq8027WYd1neOxDdxeU11CU4mMmA2Qx);
+}
+
+/* ============================================= 
+        design
+============================================= */
+.chat_box {
+    position: relative;
+    width: fit-content;
+}
+
+.chat_box .inner_box {
+    position: relative;
+    padding: 20px 55px;
+    border-top: 3px solid var(--text);
+    border-bottom: 3px solid var(--text);
+    border-left: 1px solid var(--text);
+    border-right: 1px solid var(--text);
+}
+
+.chat_box .inner_box::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(23, 22, 172, 0.26);
+}
+
+.chat_box .inner_box::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--img), var(--img);
+    background-position: left 10px center, right 10px center;
+    background-repeat: no-repeat, no-repeat;
+    background-size: 7px, 7px;
+}
+
+/* ============================================= 
+        streamer
+============================================= */
+.chat_box.chat.streamer {
+    --text: #3d6de7;
+    --img: url(https://lh3.googleusercontent.com/d/1mZg1U2Jk57RXYM8m5hKgGKcxoGmWQtVB);
+}
+
+/* ============================================= 
+        subscribe
+============================================= */
+.chat_box.chat.subscribe {
+    --text: #6c6cf9;
+    --img: url(https://lh3.googleusercontent.com/d/1jAzcKQEjQ_mn_RAWSYQBnRdB2A4fBipA);
+}
+
+/* ============================================= 
+        keyframes
+============================================= */
+.chat_box {
+    position: relative;
+    width: fit-content;
+    animation: cyberFrameReveal 0.42s cubic-bezier(.22, .72, .18, 1) both !important;
+    will-change: clip-path, opacity, filter;
+}
+
+@keyframes cyberFrameReveal {
+    0% {
+        opacity: 0;
+        clip-path: polygon(
+            0 0,
+            0 0,
+            0 100%,
+            0 100%
+        );
+        filter: brightness(1.35);
+    }
+
+    52% {
+        opacity: 1;
+        clip-path: polygon(
+            0 0,
+            100% 0,
+            96% 100%,
+            0 100%
+        );
+        filter: brightness(1.12);
+    }
+
+    100% {
+        opacity: 1;
+        clip-path: polygon(
+            0 0,
+            100% 0,
+            100% 100%,
+            0 100%
+        );
+        filter: brightness(1);
+    }
+}

@@ -1,0 +1,368 @@
+[data-id = "슈퍼챗"], [data-id = "치즈"], [data-id = "비트"], [data-id = "별풍선"], [data-id = "젬"], [data-id = "비트"], [data-id = "빔"] {
+    display: none;
+}
+
+@font-face {
+    font-family: 'NexonWarhaven';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/WarhavenR.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NexonWarhaven';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/WarhavenB.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+}
+
+/* ============================================= 
+        general
+============================================= */
+html {
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+}
+
+p {
+    color: var(--text) !important;
+    font-family: 'NexonWarhaven', Courier, monospace;
+    position: relative;
+    margin: 0 !important;
+    line-height: 1.2 !important;
+    z-index: 999;
+    font-weight: 400 !important;
+    letter-spacing: -0.8px !important;
+    text-align: center !important;
+    text-shadow: 0px 0px 3px 2px #3f2176ad !important;
+    font-size: 22px !important;
+}
+
+.chat_area {
+    -webkit-mask-image: -webkit-gradient(linear, left bottom, left top, from(#000), color-stop(0.98, #000), to(transparent));    
+}
+
+.chat_box {
+    margin: 0 auto !important;
+    margin-bottom: 30px !important;
+}
+
+.chat_box.chat * {
+    box-sizing: border-box !important;
+}
+
+.icon_badge {
+    display: none !important;
+}
+
+.icon_chzzk {
+    display: none !important;
+}
+
+/* ============================================= 
+        donation reset
+============================================= */
+.chat_box.image .donation_box,
+.chat_box.image .text_box,
+.chat_box.image .msg_box,
+.chat_box.image .nick,
+.chat_box.image .msg,
+.chat_box.image .val {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent !important;
+}
+
+.chat_box.image .donation_box .inner_box {
+    margin: 0;
+    padding: 0;
+}
+
+.chat_box.image,
+.chat_box.image .inner_box,
+.chat_box.image .donation_box,
+.chat_box.image .text_box,
+.chat_box.image .msg_box {
+    overflow: visible;
+}
+
+.chat_box.image .donation_box::before,
+.chat_box.image .donation_box::after,
+.chat_box.image .donation_box.subscribe::before {
+    content: none;
+}
+
+.chat_box.image .donation_box.subscribe::before {
+    display: none !important;
+}
+
+/* =========================================
+        display order
+========================================= */
+.chat_box.image .donation_box {
+    position: relative;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 6px;
+}
+
+.chat_box.image .donation_box > .text_box,
+.chat_box.image .donation_box > .msg_box {
+    display: contents !important;
+}
+
+.chat_box.image .donation_box > .text_box > *,
+.chat_box.image .donation_box > .msg_box > * {
+    order: 0 !important;
+}
+
+.chat_box.image .donation_box > .text_box > .nick {
+    display: none !important;
+}
+
+.chat_box.image:not(.subscribe)
+.donation_box > .msg_box > .val {
+    order: 10 !important;
+}
+
+.chat_box.image:not(.subscribe)
+.donation_box > .text_box > .msg {
+    order: 20 !important;
+}
+
+.chat_box.image.subscribe
+.donation_box.subscribe > .text_box > .msg {
+    order: 10 !important;
+}
+
+.chat_box.image.subscribe
+.donation_box.subscribe > .msg_box > .msg {
+    order: 20 !important;
+}
+
+/* ============================================= 
+        tokens
+============================================= */
+:root {
+    --text: #131039;
+}
+
+.chat_box.chat:not(.streamer):not(.subscribe) {
+    --back: #edf5f3;
+    --corner-l: url("https://hime-haruka.github.io/syura_css_svg_import/abyssion/koe/normal/cornerL.webp");
+    --corner-r: url("https://hime-haruka.github.io/syura_css_svg_import/abyssion/koe/normal/cornerR.webp");
+    --icon: url("https://hime-haruka.github.io/syura_css_svg_import/abyssion/koe/icon.webp");
+    --pattern: url("https://hime-haruka.github.io/syura_css_svg_import/abyssion/koe/pattern.webp");
+    --outline: #3e4141;
+    --border: #cfd5d4;
+    --inbor: #aab9b6;
+    --shadow1: #cfd5d4;
+    --shadow2: #e9eeed;
+}
+
+/* ============================================= 
+        design
+============================================= */
+.chat_box.chat {
+    --cut-outline: 27px;
+    --cut-border: 26.414px;
+    --cut-inbor: 23.485px;
+    --cut-back: 22.899px;
+
+    width: fit-content;
+    position: relative;
+    isolation: isolate;
+    box-sizing: border-box;
+    padding: 0;
+    border: 0;
+    background: var(--outline);
+
+    clip-path: polygon(
+        var(--cut-outline) 0,
+        calc(100% - var(--cut-outline)) 0,
+        100% var(--cut-outline),
+        100% calc(100% - var(--cut-outline)),
+        calc(100% - var(--cut-outline)) 100%,
+        var(--cut-outline) 100%,
+        0 calc(100% - var(--cut-outline)),
+        0 var(--cut-outline)
+    );
+}
+
+.chat_box.chat::before,
+.chat_box.chat::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+}
+
+.chat_box.chat::before {
+    inset: 1px;
+    z-index: 0;
+    background: var(--border);
+
+    clip-path: polygon(
+        var(--cut-border) 0,
+        calc(100% - var(--cut-border)) 0,
+        100% var(--cut-border),
+        100% calc(100% - var(--cut-border)),
+        calc(100% - var(--cut-border)) 100%,
+        var(--cut-border) 100%,
+        0 calc(100% - var(--cut-border)),
+        0 var(--cut-border)
+    );
+}
+
+.chat_box.chat::after {
+    inset: 6px;
+    z-index: 1;
+    background: var(--inbor);
+
+    clip-path: polygon(
+        var(--cut-inbor) 0,
+        calc(100% - var(--cut-inbor)) 0,
+        100% var(--cut-inbor),
+        100% calc(100% - var(--cut-inbor)),
+        calc(100% - var(--cut-inbor)) 100%,
+        var(--cut-inbor) 100%,
+        0 calc(100% - var(--cut-inbor)),
+        0 var(--cut-inbor)
+    );
+}
+
+.chat_box.chat .inner_box {
+    position: static;
+    isolation: auto;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding: 30px 57px;
+    border: 0;
+    background: transparent;
+    transform: none;
+}
+
+.chat_box.chat .inner_box::before {
+    content: none;
+}
+
+.chat_box.chat .inner_box::after {
+    content: "";
+    position: absolute;
+    inset: 7px;
+    z-index: 2;
+    pointer-events: none;
+
+    background-color: var(--back);
+    background-image:
+        var(--corner-r),
+        var(--corner-l),
+        var(--icon),
+        var(--pattern);
+    background-size:
+        94px,
+        94px,
+        488px,
+        464px;
+    background-position:
+        right -63px center,
+        left -63px center,
+        center,
+        center;
+    background-repeat:
+        no-repeat,
+        no-repeat,
+        no-repeat,
+        repeat;
+    background-blend-mode:
+        normal,
+        normal,
+        normal,
+        luminosity;
+
+    clip-path: polygon(
+        var(--cut-back) 0,
+        calc(100% - var(--cut-back)) 0,
+        100% var(--cut-back),
+        100% calc(100% - var(--cut-back)),
+        calc(100% - var(--cut-back)) 100%,
+        var(--cut-back) 100%,
+        0 calc(100% - var(--cut-back)),
+        0 var(--cut-back)
+    );
+    box-shadow: 
+        inset 0 -7px 0 var(--shadow2),
+        inset 0 -8px 0 var(--shadow1);
+}
+
+.chat_box.chat .inner_box > * {
+    position: relative;
+    z-index: 3;
+}
+
+/* ============================================= 
+        streamer
+============================================= */
+.chat_box.chat.streamer {
+    --icon: url("https://hime-haruka.github.io/syura_css_svg_import/abyssion/koe/str/icon.webp");
+    --pattern: url("https://hime-haruka.github.io/syura_css_svg_import/abyssion/koe/str/pattern.webp");
+    --corner-l: url("https://hime-haruka.github.io/syura_css_svg_import/abyssion/koe/str/cornerL.webp");
+    --corner-r: url("https://hime-haruka.github.io/syura_css_svg_import/abyssion/koe/str/cornerR.webp");
+    --back: #a8e6e9;
+    --outline: #2a403b;
+    --border: #80babc;
+    --inbor: #77a3a5;
+    --shadow1: #80babc;
+    --shadow2: #9ad3d6;
+}
+
+.chat_box.streamer .inner_box::after {
+    background-blend-mode:
+    normal,
+    normal,
+    normal,
+    normal;
+}
+
+/* ============================================= 
+        subscribe
+============================================s= */
+.chat_box.chat.subscribe {
+    --icon: url("https://hime-haruka.github.io/syura_css_svg_import/abyssion/koe/sub/icon.webp");
+    --pattern: url("https://hime-haruka.github.io/syura_css_svg_import/abyssion/koe/sub/pattern.webp");
+    --corner-l: url("https://hime-haruka.github.io/syura_css_svg_import/abyssion/koe/sub/cornerL.webp");
+    --corner-r: url("https://hime-haruka.github.io/syura_css_svg_import/abyssion/koe/sub/cornerR.webp");
+    --back: #beeae1;
+    --outline: #2a403b;
+    --border: #a3d4ca;
+    --inbor: #88b3aa;
+    --shadow1: #b3d5ce;
+    --shadow2: #cff2eb;
+}
+
+/* ============================================= 
+        keyframes
+============================================= */
+.chat_box.chat {
+    transform-origin: center;
+    animation: koe-chat-popup 0.65s cubic-bezier(0.22, 1, 0.36, 1) both !important;
+}
+
+@keyframes koe-chat-popup {
+    0% {
+        opacity: 0;
+        transform: translateY(12px) scale(0.96);
+        filter: blur(3px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}

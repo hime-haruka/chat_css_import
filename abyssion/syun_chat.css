@@ -1,0 +1,162 @@
+[data-id = "슈퍼챗"], [data-id = "치즈"], [data-id = "비트"], [data-id = "별풍선"], [data-id = "젬"], [data-id = "비트"], [data-id = "빔"] {
+    display: none;
+}
+
+@font-face {
+    font-family: 'Cafe24ProSlim';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2511-1@1.0/Cafe24PROSlim-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cafe24ProSlim';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2511-1@1.0/Cafe24PROSlim-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cafe24ProSlim';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2511-1@1.0/Cafe24PROSlim-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+}
+
+/* ============================================= 
+        general
+============================================= */
+html {
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+}
+
+p {
+    color: var(--text) !important;
+    font-family: 'Cafe24ProSlim', Courier, monospace;
+    position: relative;
+    margin: 0 !important;
+    line-height: 1.2 !important;
+    z-index: 999;
+    font-weight: 700 !important;
+    letter-spacing: -0.8px !important;
+    text-align: center !important;
+    text-shadow: 0px 0px 3px 2px #3f2176ad !important;
+    font-size: 22px !important;
+}
+
+.chat_area {
+    -webkit-mask-image: -webkit-gradient(linear, left bottom, left top, from(#000), color-stop(0.98, #000), to(transparent));    
+}
+
+.chat_box {
+    margin: 0 auto !important;
+    margin-bottom: 10px !important;
+}
+
+.chat_box.chat * {
+    box-sizing: border-box !important;
+}
+
+.icon_badge {
+    display: none !important;
+}
+
+.icon_chzzk {
+    display: none !important;
+}
+
+/* ============================================= 
+        tokens
+============================================= */
+:root {
+    --text: #01215e;
+    --back: #fff;
+    --border: 1px solid #072060;
+}
+
+.chat_box.chat:not(.streamer):not(.subscribe) {
+    --circle: url("https://hime-haruka.github.io/syura_css_svg_import/abyssion/syun/01_gray.svg");
+    --shadow: #d3d8dc;
+}
+
+.chat_box.chat {
+    width: fit-content;
+    max-width: calc(100% - 30px);
+    min-width: 120px;
+}
+
+.chat_box.chat .inner_box {
+    position: relative;
+    box-shadow: inset 0 -5px 0 0 var(--shadow), inset 0 5px 0 0 var(--shadow);
+    border: var(--border);
+    background: var(--back);
+    padding: 17px 19px;
+}
+
+.chat_box.chat .inner_box::before,
+.chat_box.chat .inner_box::after {
+    content: "";
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--circle);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.chat_box.chat .inner_box::before {
+    left: -9px;
+}
+
+.chat_box.chat .inner_box::after {
+    right: -9px;
+}
+
+/* ============================================= 
+        streamer
+============================================= */
+.chat_box.chat.streamer {
+    --circle: url("https://hime-haruka.github.io/syura_css_svg_import/abyssion/syun/03_cyan.svg");
+    --shadow: #4499ec;
+}
+
+/* ============================================= 
+        subscribe
+============================================= */
+.chat_box.chat.subscribe {
+    --circle: url("https://hime-haruka.github.io/syura_css_svg_import/abyssion/syun/02_blue.svg");
+    --shadow: #4ddbff;
+}
+
+/* ============================================= 
+        keyframes
+============================================= */
+.chat_box.chat {
+    transform-origin: center;
+    animation: chat-panel-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both !important;
+}
+
+@keyframes chat-panel-in {
+    0% {
+        opacity: 0;
+        transform: translateY(14px) scaleX(0.78) scaleY(0.92);
+        filter: blur(3px) brightness(1.35);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translateY(-2px) scaleX(1.025) scaleY(1);
+        filter: blur(0) brightness(1.08);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scaleX(1) scaleY(1);
+        filter: none;
+    }
+}
