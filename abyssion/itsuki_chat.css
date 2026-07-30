@@ -27,19 +27,9 @@
         general
 ============================================= */
 :root {
-    /*
-        실제 반투명 픽셀을 사용하지 않는 이진 디더 패턴입니다.
-        흰색 픽셀은 항상 완전한 #fff이고, 나머지는 완전 투명이라
-        premultiplied alpha 환경에서도 회색으로 변하지 않습니다.
-    */
-
     --panel-pattern-25: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4' shape-rendering='crispEdges'%3E%3Cpath fill='%23fff' d='M0 0h1v1H0zM2 1h1v1H2zM1 2h1v1H1zM3 3h1v1H3z'/%3E%3C/svg%3E");
-
     --panel-pattern-50: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4' shape-rendering='crispEdges'%3E%3Cpath fill='%23fff' d='M0 0h1v1H0zM2 0h1v1H2zM1 1h1v1H1zM3 1h1v1H3zM0 2h1v1H0zM2 2h1v1H2zM1 3h1v1H1zM3 3h1v1H3z'/%3E%3C/svg%3E");
-
     --panel-pattern-75: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4' shape-rendering='crispEdges'%3E%3Cpath fill='%23fff' d='M0 0h1v1H0zM1 0h1v1H1zM2 0h1v1H2zM0 1h1v1H0zM1 1h1v1H1zM3 1h1v1H3zM0 2h1v1H0zM2 2h1v1H2zM3 2h1v1H3zM1 3h1v1H1zM2 3h1v1H2zM3 3h1v1H3z'/%3E%3C/svg%3E");
-
-    /* 여기서 25 / 50 / 75 중 하나를 선택 */
     --panel-pattern: var(--panel-pattern-50);
 }
 
