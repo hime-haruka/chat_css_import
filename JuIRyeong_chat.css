@@ -1,0 +1,579 @@
+[data-id = "슈퍼챗"], [data-id = "치즈"], [data-id = "비트"], [data-id = "별풍선"], [data-id = "젬"], [data-id = "비트"], [data-id = "빔"] {
+    display: none;
+}
+
+@font-face {
+    font-family: 'NexonWarhaven';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/WarhavenR.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NexonWarhaven';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/WarhavenB.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+}
+
+/* ============================================= 
+        general
+============================================= */
+html {
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+}
+
+p {
+    color: var(--text) !important;
+    font-family: 'NexonWarhaven', Courier, monospace;
+    position: relative;
+    margin: 0 !important;
+    line-height: 1.2 !important;
+    z-index: 999;
+    font-weight: 400 !important;
+    letter-spacing: -0.8px !important;
+    text-align: center !important;
+    text-shadow: 0px 0px 3px 2px #3f2176ad !important;
+    font-size: 22px !important;
+}
+
+.chat_area {
+    -webkit-mask-image: -webkit-gradient(linear, left bottom, left top, from(#000), color-stop(0.98, #000), to(transparent));    
+}
+
+.chat_box {
+    margin: 0 auto !important;
+    margin-bottom: 30px !important;
+}
+
+.chat_box.chat * {
+    box-sizing: border-box !important;
+}
+
+.icon_badge {
+    display: none !important;
+}
+
+.icon_chzzk {
+    display: none !important;
+}
+
+/* ============================================= 
+        donation reset
+============================================= */
+.chat_box.image .donation_box,
+.chat_box.image .text_box,
+.chat_box.image .msg_box,
+.chat_box.image .nick,
+.chat_box.image .msg,
+.chat_box.image .val {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent !important;
+}
+
+.chat_box.image .donation_box .inner_box {
+    margin: 0;
+    padding: 0;
+}
+
+.chat_box.image,
+.chat_box.image .inner_box,
+.chat_box.image .donation_box,
+.chat_box.image .text_box,
+.chat_box.image .msg_box {
+    overflow: visible;
+}
+
+.chat_box.image .donation_box::before,
+.chat_box.image .donation_box::after,
+.chat_box.image .donation_box.subscribe::before {
+    content: none;
+}
+
+.chat_box.image .donation_box.subscribe::before {
+    display: none !important;
+}
+
+/* =========================================
+        display order
+========================================= */
+.chat_box.image .donation_box {
+    position: relative;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 6px;
+}
+
+.chat_box.image .donation_box > .text_box,
+.chat_box.image .donation_box > .msg_box {
+    display: contents !important;
+}
+
+.chat_box.image .donation_box > .text_box > *,
+.chat_box.image .donation_box > .msg_box > * {
+    order: 0 !important;
+}
+
+.chat_box.image .donation_box > .text_box > .nick {
+    display: none !important;
+}
+
+.chat_box.image:not(.subscribe)
+.donation_box > .msg_box > .val {
+    order: 10 !important;
+}
+
+.chat_box.image:not(.subscribe)
+.donation_box > .text_box > .msg {
+    order: 20 !important;
+}
+
+.chat_box.image.subscribe
+.donation_box.subscribe > .text_box > .msg {
+    order: 10 !important;
+}
+
+.chat_box.image.subscribe
+.donation_box.subscribe > .msg_box > .msg {
+    order: 20 !important;
+}
+
+/* ============================================= 
+        tokens
+============================================= */
+:root {
+    --text: #fff;
+    --fish: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/fish.webp");
+    --flower: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/flower.webp");
+    --leaf: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/leaf.webp");
+    --back: linear-gradient(0deg, #fff, #fff);
+}
+
+.chat_box.chat:not(.streamer):not(.subscribe) {
+    --text: #2e3131;
+    --paper: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/normal/01-paper.webp");
+    --color: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/normal/02-color.webp");
+    --brush-1: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/normal/03-brush.webp");
+    --brush-2: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/normal/04-brush.webp");
+    --line-1: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/normal/05-line.webp");
+    --line-2: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/normal/06-line.webp");
+    --brush-3: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/normal/07-brush.webp");
+    --brush-4: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/normal/08-brush.webp");
+    --brushout-1: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/normal/09-brushout.webp");
+    --brushout-2: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/normal/10-brushout.webp");
+    --border: linear-gradient(to right, #9adddd, #76c7c7);
+}
+
+/* ============================================= 
+        design
+============================================= */
+.chat_box {
+    position: relative;
+    width: fit-content;
+    max-width: calc(100% - 70px);
+}
+
+.chat_box .inner_box {
+    position: relative;
+    padding: 20px 45px;
+    border: 3px solid transparent;
+    background:
+        var(--brush-4) no-repeat padding-box,
+        var(--brush-3) no-repeat padding-box,
+        var(--line-2) no-repeat padding-box,
+        var(--line-1) no-repeat padding-box,
+        var(--brush-2) no-repeat padding-box,
+        var(--brush-1) no-repeat padding-box,
+        var(--color) no-repeat padding-box,
+        var(--paper) repeat padding-box,
+        var(--back) repeat padding-box,
+        var(--border) repeat border-box;
+    background-size: 65px, 99px, 150px, 125px, 690px, 682px, 1017px, 968px, cover, cover;
+    background-position: 
+        right -19px top -19px,
+        left -54px bottom -43px,
+        left -94px bottom,
+        right -21px bottom -10px,
+        left -530px center,
+        right -308px center,
+        center top -78px,
+        center, center, center;
+}
+
+/* ============================================= 
+        object
+============================================= */
+/* flower */
+.chat_box::after {
+    content: "";
+    position: absolute;
+    width: 52px;
+    height: 67px;
+    left: -28px;
+    bottom: -11px;
+    background: var(--flower);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 2;
+}
+
+/* leaf */
+.chat_box::before {
+    content: "";
+    position: absolute;
+    width: 22px;
+    height: 36px;
+    left: 20px;
+    bottom: -14px;
+    background: var(--leaf);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 2;
+}
+
+/* fish */
+.chat_box .inner_box::before {
+    content: "";
+    position: absolute;
+    width: 67px;
+    height: 69px;
+    right: -16px;
+    top: calc(50% - 21px);
+    bottom: auto;
+    background: var(--fish);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 3;
+}
+
+/* outbrush */
+.chat_box .inner_box::after {
+    content: "";
+    position: absolute;
+    inset: -5px -10px -5px -10px;
+    background: var(--brushout-1), var(--brushout-2);
+    background-position: right bottom, left top;
+    background-size: 420px, 390px;
+    background-repeat: no-repeat, no-repeat;
+    z-index: 2;
+}
+/* ============================================= 
+        streamer
+============================================= */
+.chat_box.chat.streamer {
+    --text: #2e3131;
+    --paper: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/str/01-paper.webp");
+    --color: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/str/02-color.webp");
+    --brush-1: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/str/03-brush.webp");
+    --brush-2: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/str/04-brush.webp");
+    --line-1: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/str/05-line.webp");
+    --line-2: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/str/06-line.webp");
+    --brush-3: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/str/07-brush.webp");
+    --brush-4: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/str/08-brush.webp");
+    --brushout-1: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/str/09-brushout.webp");
+    --brushout-2: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/str/10-brushout.webp");
+    --border: linear-gradient(to right, #81e6e6, #45a2a2);
+}
+
+/* ============================================= 
+        subscribe
+============================================s= */
+.chat_box.chat.subscribe {
+    --text: #52270d;
+    --paper: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/subscribe/01-paper.webp");
+    --color: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/subscribe/02-color.webp");
+    --brush-1: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/subscribe/03-brush.webp");
+    --brush-2: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/subscribe/04-brush.webp");
+    --line-1: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/subscribe/05-line.webp");
+    --line-2: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/subscribe/06-line.webp");
+    --brush-3: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/subscribe/07-brush.webp");
+    --brush-4: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/subscribe/08-brush.webp");
+    --brushout-1: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/subscribe/09-brushout.webp");
+    --brushout-2: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/subscribe/10-brushout.webp");
+    --fish: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/fish2.webp");
+    --border: linear-gradient(to right, #f1d697, #e7d8ad);
+}
+
+/* ============================================= 
+        donation
+============================================= */
+.chat_box.image:not(.subscribe) {
+    --text: #2e3131;
+    --paper: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/normal/01-paper.webp");
+    --color: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/normal/02-color.webp");
+    --brush-1: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/normal/03-brush.webp");
+    --brush-2: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/normal/04-brush.webp");
+    --line-1: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/normal/05-line.webp");
+    --line-2: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/normal/06-line.webp");
+    --brush-3: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/normal/07-brush.webp");
+    --brush-4: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/normal/08-brush.webp");
+    --brushout-1: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/normal/09-brushout.webp");
+    --brushout-2: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/normal/10-brushout.webp");
+    --border: linear-gradient(to right, #9adddd, #76c7c7);
+    --valC: linear-gradient(to bottom, #8aaea9, #9ecac9);
+    --valT: #fff;
+}
+
+.chat_box.image {
+    width: calc(100% - 70px) !important;
+    min-width: calc(100% - 70px) !important;
+    max-width: calc(100% - 70px) !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .text_box .nick {
+    font-size: 18px !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .text_box .msg {
+    margin-top: 10px !important;
+    padding: 0 25px !important;
+}
+
+.chat_box.image .inner_box .donation_box {
+    overflow: visible !important;
+}
+
+.chat_box.image .inner_box .donation_box .val {
+    font-size: 18px !important;
+    clip-path: polygon(
+        18px 0,
+        calc(100% - 18px) 0,
+        100% 50%,
+        calc(100% - 18px) 100%,
+        18px 100%,
+        0 50%
+    );
+    background: var(--valC) !important;
+    color: var(--valT) !important;
+    padding: 2px 20px !important;
+}
+
+/* ============================================= 
+        donation - subscribe
+============================================= */
+.chat_box.image.subscribe {
+    --text: #52270d;
+    --paper: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/subscribe/01-paper.webp");
+    --color: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/subscribe/02-color.webp");
+    --brush-1: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/subscribe/03-brush.webp");
+    --brush-2: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/subscribe/04-brush.webp");
+    --line-1: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/subscribe/05-line.webp");
+    --line-2: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/subscribe/06-line.webp");
+    --brush-3: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/subscribe/07-brush.webp");
+    --brush-4: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/subscribe/08-brush.webp");
+    --brushout-1: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/subscribe/09-brushout.webp");
+    --brushout-2: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/subscribe/10-brushout.webp");
+    --fish: url("https://hime-haruka.github.io/syura_css_svg_import/JuIRyeong/fish2.webp");
+    --border: linear-gradient(to right, #f1d697, #e7d8ad);
+    --valC: linear-gradient(to bottom, #95705a, #c48d6c);
+    --valT: #fff;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .text_box .nick {
+    font-size: 16px !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .text_box .msg {
+    font-size: 0 !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .text_box .msg .val {
+    font-size: 18px !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .msg_box .msg {
+    margin-top: 10px !important;
+    padding: 0 25px !important;
+}
+
+/* ============================================= 
+        keyframes
+============================================= */
+.chat_box {
+    overflow: visible !important;
+    clip-path: none !important;
+    transform-origin: 50% 65%;
+    animation: ji-chat-open-soft 1100ms cubic-bezier(0.2, 0.7, 0.25, 1) both !important;
+    will-change: transform, opacity, filter;
+}
+
+.chat_box::after {
+    opacity: 0;
+    transform-origin: 44% 90%;
+    animation:
+        ji-flower-in-soft 1100ms cubic-bezier(0.2, 0.72, 0.24, 1) 0ms both,
+        ji-flower-idle-soft 7.2s ease-in-out 1100ms infinite;
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+}
+
+.chat_box::before {
+    opacity: 0;
+    transform-origin: 55% 92%;
+    animation:
+        ji-leaf-in-soft 1100ms cubic-bezier(0.2, 0.72, 0.24, 1) 0ms both,
+        ji-leaf-idle-soft 6.4s ease-in-out 1100ms infinite;
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+}
+
+.chat_box .inner_box::before {
+    transform-origin: 30% 30%;
+    transform: rotate(0deg);
+    animation:
+        ji-fish-appear 900ms ease-out 900ms both,
+        ji-fish-circle 13s linear infinite !important;
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    right: -45px;
+}
+
+@keyframes ji-chat-open-soft {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 14px, 0) scale3d(0.985, 0.985, 1);
+        filter: blur(1.5px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+        filter: blur(0);
+    }
+}
+
+@keyframes ji-flower-in-soft {
+    0% {
+        opacity: 0;
+        transform: rotate(0deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes ji-flower-idle-soft {
+    0%,
+    100% {
+        opacity: 1;
+        transform: rotate(0deg) translate3d(0, 0, 0);
+    }
+
+    28% {
+        opacity: 1;
+        transform: rotate(2.2deg) translate3d(1px, 0, 0);
+    }
+
+    58% {
+        opacity: 1;
+        transform: rotate(-1.8deg) translate3d(-0.8px, 0, 0);
+    }
+
+    80% {
+        opacity: 1;
+        transform: rotate(1deg) translate3d(0.5px, 0, 0);
+    }
+}
+
+@keyframes ji-leaf-in-soft {
+    0% {
+        opacity: 0;
+        transform: rotate(0deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes ji-leaf-idle-soft {
+    0%,
+    100% {
+        opacity: 1;
+        transform: rotate(0deg) translate3d(0, 0, 0);
+    }
+
+    24% {
+        opacity: 1;
+        transform: rotate(-3.2deg) translate3d(-1px, 0, 0);
+    }
+
+    52% {
+        opacity: 1;
+        transform: rotate(2.5deg) translate3d(0.8px, 0, 0);
+    }
+
+    78% {
+        opacity: 1;
+        transform: rotate(-1.4deg) translate3d(-0.5px, 0, 0);
+    }
+}
+
+@keyframes ji-fish-circle {
+    0% {
+        transform:
+            rotate(0deg)
+            rotate(0deg);
+    }
+
+    12.5% {
+        transform:
+            rotate(45deg)
+            rotate(1.5deg);
+    }
+
+    25% {
+        transform:
+            rotate(90deg)
+            rotate(3deg);
+    }
+
+    37.5% {
+        transform:
+            rotate(135deg)
+            rotate(1.5deg);
+    }
+
+    50% {
+        transform:
+            rotate(180deg)
+            rotate(0deg);
+    }
+
+    62.5% {
+        transform:
+            rotate(225deg)
+            rotate(-1.5deg);
+    }
+
+    75% {
+        transform:
+            rotate(270deg)
+            rotate(-3deg);
+    }
+
+    87.5% {
+        transform:
+            rotate(315deg)
+            rotate(-1.5deg);
+    }
+
+    100% {
+        transform:
+            rotate(360deg)
+            rotate(0deg);
+    }
+}
