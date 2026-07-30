@@ -163,23 +163,19 @@ p {
     --cornerTL: url("https://hime-haruka.github.io/syura_css_svg_import/abyssion/kyoma/corner-top-left.svg");
     --cornerTR: url("https://hime-haruka.github.io/syura_css_svg_import/abyssion/kyoma/corner-top-right.svg");
 
+    --normal-back: rgba(0, 0, 0, 0.4);
+    --streamer-back: rgba(0, 0, 0, 0.6);
+    --subscribe-back: rgba(0, 0, 0, 0.5);
+
     --clip-size: 30px;
-
-    --outline: #5c5b60;
-    --border: #000000;
-
-    --outline-width: 2px;
-    --border-width: 4px;
     --inner-inset: 6px;
-
-    --border-cut-fix: 1.171573px;
     --inner-cut-fix: 3.514719px;
+    --inner-clip-size: calc(var(--clip-size) - var(--inner-cut-fix));
 
-    --border-clip-size:
-        calc(var(--clip-size) - var(--border-cut-fix));
-
-    --inner-clip-size:
-        calc(var(--clip-size) - var(--inner-cut-fix));
+    --frame-slice: 33;
+    --frame-width: 33px;
+    --frame-normal: url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2299%22%20height=%2299%22%20viewBox=%220%200%2099%2099%22%3E%0A%3Cpath%20fill=%22%235c5b60%22%20fill-rule=%22evenodd%22%20d=%22M0%200H69L99%2030V99H0ZM2%202V97H97V30.828427L68.171573%202Z%22/%3E%0A%3Cpath%20fill=%22%23000000%22%20fill-rule=%22evenodd%22%20d=%22M2%202H68.171573L97%2030.828427V97H2ZM6%206V93H93V32.485281L66.514719%206Z%22/%3E%0A%3C/svg%3E");
+    --frame-streamer: url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%2299%22%20height=%2299%22%20viewBox=%220%200%2099%2099%22%3E%0A%3Cpath%20fill=%22%235c5b60%22%20fill-rule=%22evenodd%22%20d=%22M30%200H99V99H0V30ZM30.828427%202H97V97H2V30.828427Z%22/%3E%0A%3Cpath%20fill=%22%23000000%22%20fill-rule=%22evenodd%22%20d=%22M30.828427%202H97V97H2V30.828427ZM32.485281%206H93V93H6V32.485281Z%22/%3E%0A%3C/svg%3E");
 
     --chat-padding-y: 15px;
     --chat-padding-x: 40px;
@@ -202,414 +198,27 @@ p {
     overflow: visible !important;
 }
 
-.chat_box.chat::before,
-.chat_box.chat::after {
+.chat_box.chat::before {
     content: "";
     position: absolute;
-    display: block;
-    pointer-events: none;
-}
-
-.chat_box.chat::before {
     z-index: 0;
     inset: 0;
-    background: var(--outline);
-    clip-path: var(--outer-clip);
-    -webkit-clip-path: var(--outer-clip);
+    display: block;
+    box-sizing: border-box;
+    pointer-events: none;
+
+    border: var(--frame-width) solid transparent;
+    border-image-source: var(--frame-image);
+    border-image-slice: var(--frame-slice);
+    border-image-width: var(--frame-width);
+    border-image-outset: 0;
+    border-image-repeat: stretch;
 }
 
 .chat_box.chat::after {
-    z-index: 1;
-    inset: var(--outline-width);
-    background: var(--border);
-    clip-path: var(--border-clip);
-    -webkit-clip-path: var(--border-clip);
-}
-
-.chat_box.chat > .inner_box {
-    position: relative;
-    z-index: 2;
-
-    display: block;
-    box-sizing: border-box;
-
-    width: auto;
-    max-width: 100%;
-    min-width: 0;
-
-    margin: 0;
-    padding:
-        var(--chat-padding-y)
-        var(--chat-padding-x);
-
-    background: var(--back);
-
-    clip-path: var(--inner-clip);
-    -webkit-clip-path: var(--inner-clip);
-}
-
-.chat_box.chat > .inner_box p,
-.chat_box.chat > .inner_box .msg,
-.chat_box.chat > .inner_box .nick {
-    max-width: 100%;
-    overflow-wrap: anywhere;
-    word-break: break-word;
-}
-
-/* ============================================= 
-        normal
-============================================= */
-.chat_box.chat:not(.streamer):not(.subscribe) {
-    --back: #28282b;
-
-    --outer-clip:
-        polygon(
-            0 0,
-            calc(100% - var(--clip-size)) 0,
-            100% var(--clip-size),
-            100% 100%,
-            0 100%
-        );
-
-    --border-clip:
-        polygon(
-            0 0,
-            calc(100% - var(--border-clip-size)) 0,
-            100% var(--border-clip-size),
-            100% 100%,
-            0 100%
-        );
-
-    --inner-clip:
-        polygon(
-            0 0,
-            calc(100% - var(--inner-clip-size)) 0,
-            100% var(--inner-clip-size),
-            100% 100%,
-            0 100%
-        );
-}
-
-.chat_box.chat:not(.streamer) .inner_box::after,
-.chat_box.chat.subscribe .inner_box::after {
-    content: "";
-    position: absolute;
-    inset: 5px;
-    background: var(--conerBL), var(--cornerBR), var(--cornerTL);
-    background-position: left bottom, right bottom, left top;
-    background-size: 8px, 8px, 8px;
-    background-repeat: no-repeat, no-repeat, no-repeat;
-}
-
-/* ============================================= 
-        streamer
-============================================= */
-.chat_box.chat.streamer {
-    --back: #161618;
-
-    --outer-clip:
-        polygon(
-            var(--clip-size) 0,
-            100% 0,
-            100% 100%,
-            0 100%,
-            0 var(--clip-size)
-        );
-
-    --border-clip:
-        polygon(
-            var(--border-clip-size) 0,
-            100% 0,
-            100% 100%,
-            0 100%,
-            0 var(--border-clip-size)
-        );
-
-    --inner-clip:
-        polygon(
-            var(--inner-clip-size) 0,
-            100% 0,
-            100% 100%,
-            0 100%,
-            0 var(--inner-clip-size)
-        );
-}
-
-.chat_box.chat.streamer .inner_box::after {
-    content: "";
-    position: absolute;
-    inset: 5px;
-    background: var(--conerBL), var(--cornerBR), var(--cornerTR);
-    background-position: left bottom, right bottom, right top;
-    background-size: 8px, 8px, 8px;
-    background-repeat: no-repeat, no-repeat, no-repeat;
-}
-
-/* ============================================= 
-        subscribe
-============================================= */
-.chat_box.chat.subscribe {
-    --back: #1d1c1f;
-
-    --outer-clip:
-        polygon(
-            0 0,
-            calc(100% - var(--clip-size)) 0,
-            100% var(--clip-size),
-            100% 100%,
-            0 100%
-        );
-
-    --border-clip:
-        polygon(
-            0 0,
-            calc(100% - var(--border-clip-size)) 0,
-            100% var(--border-clip-size),
-            100% 100%,
-            0 100%
-        );
-
-    --inner-clip:
-        polygon(
-            0 0,
-            calc(100% - var(--inner-clip-size)) 0,
-            100% var(--inner-clip-size),
-            100% 100%,
-            0 100%
-        );
-}
-
-/* ============================================= 
-        keyframes
-============================================= */
-[data-id = "슈퍼챗"], [data-id = "치즈"], [data-id = "비트"], [data-id = "별풍선"], [data-id = "젬"], [data-id = "비트"], [data-id = "빔"] {
-    display: none;
-}
-
-@font-face {
-    font-family: 'Isamanru';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicLight.woff') format('woff');
-    font-weight: 300;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Isamanru';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff');
-    font-weight: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Isamanru';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicBold.woff') format('woff');
-    font-weight: 700;
-    font-display: swap;
-}
-
-/* ============================================= 
-        general
-============================================= */
-html {
-    -webkit-font-smoothing: antialiased !important;
-    -moz-osx-font-smoothing: grayscale !important;
-    text-rendering: optimizeLegibility !important;
-}
-
-p {
-    color: var(--text) !important;
-    font-family: 'Isamanru', Courier, monospace;
-    position: relative;
-    margin: 0 !important;
-    line-height: 1.2 !important;
-    z-index: 999;
-    font-weight: 300 !important;
-    letter-spacing: -0.8px !important;
-    text-align: center !important;
-    text-shadow: 0px 0px 3px 2px #3f2176ad !important;
-    font-size: 22px !important;
-}
-
-.chat_area {
-    -webkit-mask-image: -webkit-gradient(linear, left bottom, left top, from(#000), color-stop(0.98, #000), to(transparent));    
-}
-
-.chat_box {
-    margin: 0 auto !important;
-    margin-bottom: 10px !important;
-}
-
-.chat_box.chat * {
-    box-sizing: border-box !important;
-}
-
-.icon_badge {
-    display: none !important;
-}
-
-.icon_chzzk {
-    display: none !important;
-}
-
-/* ============================================= 
-        donation reset
-============================================= */
-.chat_box.image .donation_box,
-.chat_box.image .text_box,
-.chat_box.image .msg_box,
-.chat_box.image .nick,
-.chat_box.image .msg,
-.chat_box.image .val {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    background: transparent !important;
-}
-
-.chat_box.image .donation_box .inner_box {
-    margin: 0;
-    padding: 0;
-}
-
-.chat_box.image,
-.chat_box.image .inner_box,
-.chat_box.image .donation_box,
-.chat_box.image .text_box,
-.chat_box.image .msg_box {
-    overflow: visible;
-}
-
-.chat_box.image .donation_box::before,
-.chat_box.image .donation_box::after,
-.chat_box.image .donation_box.subscribe::before {
     content: none;
 }
 
-.chat_box.image .donation_box.subscribe::before {
-    display: none !important;
-}
-
-/* =========================================
-        display order
-========================================= */
-.chat_box.image .donation_box {
-    position: relative;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    gap: 6px;
-}
-
-.chat_box.image .donation_box > .text_box,
-.chat_box.image .donation_box > .msg_box {
-    display: contents !important;
-}
-
-.chat_box.image .donation_box > .text_box > *,
-.chat_box.image .donation_box > .msg_box > * {
-    order: 0 !important;
-}
-
-.chat_box.image .donation_box > .text_box > .nick {
-    display: none !important;
-}
-
-.chat_box.image:not(.subscribe)
-.donation_box > .msg_box > .val {
-    order: 10 !important;
-}
-
-.chat_box.image:not(.subscribe)
-.donation_box > .text_box > .msg {
-    order: 20 !important;
-}
-
-.chat_box.image.subscribe
-.donation_box.subscribe > .text_box > .msg {
-    order: 10 !important;
-}
-
-.chat_box.image.subscribe
-.donation_box.subscribe > .msg_box > .msg {
-    order: 20 !important;
-}
-
-/* ============================================= 
-        tokens
-============================================= */
-:root {
-    --text: #b8b8b8;
-
-    --conerBL: url("https://hime-haruka.github.io/syura_css_svg_import/abyssion/kyoma/corner-bottom-left.svg");
-    --cornerBR: url("https://hime-haruka.github.io/syura_css_svg_import/abyssion/kyoma/corner-bottom-right.svg");
-    --cornerTL: url("https://hime-haruka.github.io/syura_css_svg_import/abyssion/kyoma/corner-top-left.svg");
-    --cornerTR: url("https://hime-haruka.github.io/syura_css_svg_import/abyssion/kyoma/corner-top-right.svg");
-
-    --clip-size: 30px;
-
-    --outline: #5c5b60;
-    --border: #000000;
-
-    --outline-width: 2px;
-    --border-width: 4px;
-    --inner-inset: 6px;
-
-    --border-cut-fix: 1.171573px;
-    --inner-cut-fix: 3.514719px;
-
-    --border-clip-size:
-        calc(var(--clip-size) - var(--border-cut-fix));
-
-    --inner-clip-size:
-        calc(var(--clip-size) - var(--inner-cut-fix));
-
-    --chat-padding-y: 15px;
-    --chat-padding-x: 40px;
-}
-
-/* ============================================= 
-        design
-============================================= */
-.chat_box.chat {
-    position: relative;
-    isolation: isolate;
-    box-sizing: border-box !important;
-    width: fit-content;
-    max-width: calc(100% - 20px);
-    min-width: 120px;
-    padding: var(--inner-inset) !important;
-    background: transparent !important;
-    clip-path: none !important;
-    -webkit-clip-path: none !important;
-    overflow: visible !important;
-}
-
-.chat_box.chat::before,
-.chat_box.chat::after {
-    content: "";
-    position: absolute;
-    display: block;
-    pointer-events: none;
-}
-
-.chat_box.chat::before {
-    z-index: 0;
-    inset: 0;
-    background: var(--outline);
-    clip-path: var(--outer-clip);
-    -webkit-clip-path: var(--outer-clip);
-}
-
-.chat_box.chat::after {
-    z-index: 1;
-    inset: var(--outline-width);
-    background: var(--border);
-    clip-path: var(--border-clip);
-    -webkit-clip-path: var(--border-clip);
-}
-
 .chat_box.chat > .inner_box {
     position: relative;
     z-index: 2;
@@ -644,25 +253,8 @@ p {
         normal
 ============================================= */
 .chat_box.chat:not(.streamer):not(.subscribe) {
-    --back: #28282b;
-
-    --outer-clip:
-        polygon(
-            0 0,
-            calc(100% - var(--clip-size)) 0,
-            100% var(--clip-size),
-            100% 100%,
-            0 100%
-        );
-
-    --border-clip:
-        polygon(
-            0 0,
-            calc(100% - var(--border-clip-size)) 0,
-            100% var(--border-clip-size),
-            100% 100%,
-            0 100%
-        );
+    --back: var(--normal-back);
+    --frame-image: var(--frame-normal);
 
     --inner-clip:
         polygon(
@@ -689,25 +281,8 @@ p {
         streamer
 ============================================= */
 .chat_box.chat.streamer {
-    --back: #161618;
-
-    --outer-clip:
-        polygon(
-            var(--clip-size) 0,
-            100% 0,
-            100% 100%,
-            0 100%,
-            0 var(--clip-size)
-        );
-
-    --border-clip:
-        polygon(
-            var(--border-clip-size) 0,
-            100% 0,
-            100% 100%,
-            0 100%,
-            0 var(--border-clip-size)
-        );
+    --back: var(--streamer-back);
+    --frame-image: var(--frame-streamer);
 
     --inner-clip:
         polygon(
@@ -733,25 +308,8 @@ p {
         subscribe
 ============================================= */
 .chat_box.chat.subscribe {
-    --back: #1d1c1f;
-
-    --outer-clip:
-        polygon(
-            0 0,
-            calc(100% - var(--clip-size)) 0,
-            100% var(--clip-size),
-            100% 100%,
-            0 100%
-        );
-
-    --border-clip:
-        polygon(
-            0 0,
-            calc(100% - var(--border-clip-size)) 0,
-            100% var(--border-clip-size),
-            100% 100%,
-            0 100%
-        );
+    --back: var(--subscribe-back);
+    --frame-image: var(--frame-normal);
 
     --inner-clip:
         polygon(
