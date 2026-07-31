@@ -667,3 +667,12 @@ p {
         transform: translate3d(1.1px, -2px, 0) rotate(0.1deg);
     }
 }
+
+.chat_box.chat .inner_box .name .nick {
+    display: none !important;
+}
+
+.chat_box.chat .inner_box .name {
+    padding-right: 10px !important;
+    padding-top: 5px !important;
+}
