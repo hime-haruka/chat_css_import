@@ -1,0 +1,625 @@
+[data-id = "슈퍼챗"], [data-id = "치즈"], [data-id = "비트"], [data-id = "별풍선"], [data-id = "젬"], [data-id = "비트"], [data-id = "빔"] {
+    display: none;
+}
+
+@font-face {
+    font-family: 'Atomy';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/Atomy-Bold.woff') format('woff');
+    font-weight: normal;
+    font-display: swap;
+}
+
+/* ============================================= 
+        general
+============================================= */
+html {
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+}
+
+p {
+    color: var(--text) !important;
+    font-family: 'Atomy', Courier, monospace !important;
+    font-weight: 700 !important;
+    position: relative;
+    margin: 0 !important;
+    line-height: 1.2 !important;
+    z-index: 999;
+    text-shadow: none !important;
+    font-weight: 400 !important;
+    letter-spacing: -0.8px !important;
+    text-align: center !important;
+}
+
+.chat_area {
+    -webkit-mask-image: -webkit-gradient(linear, left bottom, left top, from(#000), color-stop(0.98, #000), to(transparent));    
+}
+
+.chat_box {
+    margin: 0 auto !important;
+    margin-bottom: 30px !important;
+}
+
+.chat_box.chat * {
+    box-sizing: border-box !important;
+}
+
+.icon_badge {
+    display: none !important;
+}
+
+.icon_chzzk {
+    display: none !important;
+}
+
+/* ============================================= 
+        donation reset
+============================================= */
+.chat_box.image .donation_box,
+.chat_box.image .text_box,
+.chat_box.image .msg_box,
+.chat_box.image .nick,
+.chat_box.image .msg,
+.chat_box.image .val {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent !important;
+}
+
+.chat_box.image .donation_box .inner_box {
+    margin: 0;
+    padding: 0;
+}
+
+.chat_box.image,
+.chat_box.image .inner_box,
+.chat_box.image .donation_box,
+.chat_box.image .text_box,
+.chat_box.image .msg_box {
+    overflow: visible;
+}
+
+.chat_box.image .donation_box::before,
+.chat_box.image .donation_box::after,
+.chat_box.image .donation_box.subscribe::before {
+    content: none;
+}
+
+.chat_box.image .donation_box.subscribe::before {
+    display: none !important;
+}
+
+/* .chat_box.image .nick {
+    display: none !important;
+} */
+
+/* =========================================
+        display order
+========================================= */
+.chat_box.image .donation_box {
+    position: relative;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+}
+
+.chat_box.image .donation_box > .text_box,
+.chat_box.image .donation_box > .msg_box {
+    display: contents !important;
+}
+
+.chat_box.image .donation_box > .text_box > *,
+.chat_box.image .donation_box > .msg_box > * {
+    order: 0 !important;
+}
+
+.chat_box.image .donation_box > .text_box > .nick {
+    order: 10 !important;
+}
+
+.chat_box.image:not(.subscribe)
+.donation_box > .text_box > .msg {
+    order: 30 !important;
+}
+
+.chat_box.image:not(.subscribe) .donation_box > .msg_box > .val,
+.chat_box.image.subscribe .donation_box.subscribe > .text_box > .msg {
+    padding: 0 !important;
+    margin: 0 !important;
+    order: 20 !important;
+}
+
+.chat_box.image.subscribe
+.donation_box.subscribe > .msg_box > .msg {
+    padding: 0 !important;
+    margin: 0 !important;
+    order: 30 !important;
+}
+
+/* ============================================= 
+        tokens
+============================================= */
+.chat_box.chat:not(.streamer):not(.subscribe) {
+    --dot: url("https://hime-haruka.github.io/syura_css_svg_import/loentv/normal/dot.webp");
+    --ribbon: url("https://hime-haruka.github.io/syura_css_svg_import/loentv/normal/ribbon.webp");
+    --outline: 1px solid #4d484d;
+    --border: 4px solid #676067;
+    --back: #4d484d;
+    --inSh:
+        inset 7px 0 0 0 #4d484d,
+        inset 8px 0 0 0 #423e42,
+        inset 19px 0 0 0 #443f44,
+        inset 20px 0 0 0 #423e42,
+        inset -7px 0 0 0 #4d484d,
+        inset -8px 0 0 0 #423e42,
+        inset -19px 0 0 0 #443f44,
+        inset -20px 0 0 0 #423e42;
+    --text: #d5d5d5;
+    --tSh: 0px 2px 0px #3b363b;
+}
+
+/* ============================================= 
+        desig
+============================================= */
+.chat_box {
+    width: fit-content;
+    max-width: calc(100% - 24px);
+    position: relative;
+}
+
+.chat_box::after {
+    content: "";
+    position: absolute;
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+
+.chat_box::after {
+    width: 50px;
+    height: 28px;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-image: var(--ribbon);
+    background-position: center;
+    background-size: 100%;
+}
+
+.chat_box.chat .inner_box {
+    padding: 19px 35px;
+}
+
+.chat_box .inner_box {
+    position: relative;
+    background: var(--back);
+    outline: var(--outline);
+    border: var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.chat_box .inner_box::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 0;
+    box-shadow: var(--inSh);
+}
+
+.chat_box .inner_box::after {
+    content: "";
+    position: absolute;
+    top: 15px;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    background-image:
+        var(--dot),
+        var(--dot);
+    background-position:
+        left 11px top,
+        right 11px top;
+    background-size:
+        6px 21px,
+        6px 21px;
+    background-repeat:
+        no-repeat space,
+        no-repeat space;
+    z-index: 1;
+}
+
+/* ============================================= 
+        streamer
+============================================= */
+.chat_box.chat.streamer {
+    --dot: url("https://hime-haruka.github.io/syura_css_svg_import/loentv/str/dot.webp");
+    --ribbon: url("https://hime-haruka.github.io/syura_css_svg_import/loentv/str/ribbon.webp");
+    --outline: 1px solid #bdbdbd;
+    --border: 4px solid #ebebeb;
+    --back: #d9d9d9;
+    --inSh:
+        inset 7px 0 0 0 #d9d9d9,
+        inset 8px 0 0 0 #b2b2b2,
+        inset 19px 0 0 0 #c0c0c0,
+        inset 20px 0 0 0 #b2b2b2,
+        inset -7px 0 0 0 #d9d9d9,
+        inset -8px 0 0 0 #b2b2b2,
+        inset -19px 0 0 0 #c0c0c0,
+        inset -20px 0 0 0 #b2b2b2;
+    --text: #4d484d;
+    --tSh: 0px 2px 0px #ffffff;
+}
+
+/* ============================================= 
+        subscribe
+============================================s= */
+.chat_box.chat.subscribe {
+    --dot: url("https://hime-haruka.github.io/syura_css_svg_import/loentv/sub/dot.webp");
+    --ribbon: url("https://hime-haruka.github.io/syura_css_svg_import/loentv/sub/ribbon.webp");
+    --outline: 1px solid #46141a;
+    --border: 4px solid #914850;
+    --back: #7c373f;
+    --inSh:
+        inset 7px 0 0 0 #7c373f,
+        inset 8px 0 0 0 #531e25,
+        inset 19px 0 0 0 #61242b,
+        inset 20px 0 0 0 #531e25,
+        inset -7px 0 0 0 #7c373f,
+        inset -8px 0 0 0 #531e25,
+        inset -19px 0 0 0 #61242b,
+        inset -20px 0 0 0 #531e25;
+    --text: #e9c7cb;
+    --tSh: 0px 2px 0px #63242b;
+}
+
+/* ============================================= 
+        donation
+============================================= */
+.chat_box.image:not(.subscribe) {
+    --dot: url("https://hime-haruka.github.io/syura_css_svg_import/loentv/normal/dot.webp");
+    --ribbon: url("https://hime-haruka.github.io/syura_css_svg_import/loentv/normal/ribbon.webp");
+    --outline: 1px solid #4d484d;
+    --border: 4px solid #676067;
+    --back: #4d484d;
+    --inSh:
+        inset 7px 0 0 0 #4d484d,
+        inset 8px 0 0 0 #423e42,
+        inset 19px 0 0 0 #443f44,
+        inset 20px 0 0 0 #423e42,
+        inset -7px 0 0 0 #4d484d,
+        inset -8px 0 0 0 #423e42,
+        inset -19px 0 0 0 #443f44,
+        inset -20px 0 0 0 #423e42;
+    --text: #d5d5d5;
+    --tSh: 0px 2px 0px #3b363b;
+    --valC: #5b545b;
+    --valB: 1px solid #5b545b;
+}
+
+.chat_box.image .inner_box::after {
+    top: 30px;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    background-image:
+        var(--dot),
+        var(--dot);
+    background-position:
+        left 11px top,
+        right 11px top;
+    background-size:
+        6px 21px,
+        6px 21px;
+    background-repeat:
+        no-repeat space,
+        no-repeat space;
+    z-index: 1;
+}
+
+.chat_box.image .inner_box .donation_box {
+    position: relative;
+    overflow: visible !important;
+    padding: 16px 0 11px 0;
+}
+
+.chat_box.image .inner_box .donation_box .nick {
+    margin-top: 5px !important;
+    font-size: 17px !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .nick::after {
+    content: " 님이";
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .msg_box .val {
+    font-size: 17px !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .msg_box .val::after {
+    content: "치즈를 후원하셨어요!";
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .text_box .msg {
+    padding: 0 35px;
+    margin-top: 15px !important;
+}
+
+.chat_box.image .inner_box .donation_box::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    background: var(--valC);
+    border-top: var(--valB);
+    border-bottom: var(--valB);
+    z-index: 3;
+}
+
+/* ============================================= 
+        donation - subscribe
+============================================= */
+.chat_box.image.subscribe {
+    --dot: url("https://hime-haruka.github.io/syura_css_svg_import/loentv/sub/dot.webp");
+    --ribbon: url("https://hime-haruka.github.io/syura_css_svg_import/loentv/sub/ribbon.webp");
+    --outline: 1px solid #46141a;
+    --border: 4px solid #914850;
+    --back: #7c373f;
+    --inSh:
+        inset 7px 0 0 0 #7c373f,
+        inset 8px 0 0 0 #531e25,
+        inset 19px 0 0 0 #61242b,
+        inset 20px 0 0 0 #531e25,
+        inset -7px 0 0 0 #7c373f,
+        inset -8px 0 0 0 #531e25,
+        inset -19px 0 0 0 #61242b,
+        inset -20px 0 0 0 #531e25;
+    --text: #e9c7cb;
+    --tSh: 0px 2px 0px #63242b;
+    --valC: #a3565e;
+    --valB: 1px solid #682e34;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .text_box .msg {
+    font-size: 0 !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .text_box .msg .val {
+    font-size: 17px !important;
+    color: var(--text) !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .nick::after {
+    content: " 님과";
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .text_box .msg .val::after {
+    content: " 동안 함께했어요!";
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .msg_box .msg {
+    padding: 0 35px !important;
+    margin-top: 15px !important;
+}
+
+/* ============================================= 
+        keyframes
+============================================= */
+.chat_box {
+    transform: translate3d(0, 0, 0);
+    transform-origin: center center;
+    will-change: transform;
+}
+
+.chat_box.chat:not(.streamer):not(.subscribe) {
+    animation: loentv-chat-float-normal 6.4s linear 0.48s infinite both !important;
+}
+
+.chat_box.chat.streamer {
+    animation: loentv-chat-float-streamer 7s linear 0.48s infinite both !important;
+}
+
+.chat_box.chat.subscribe {
+    animation: loentv-chat-float-subscribe 5.9s linear 0.48s infinite both !important;
+}
+
+.chat_box.image:not(.subscribe) {
+    animation: loentv-chat-float-donation 7.4s linear 0.48s infinite both !important;
+}
+
+.chat_box.image.subscribe {
+    animation: loentv-chat-float-donation-sub 6.8s linear 0.48s infinite both !important;
+}
+
+.chat_box .inner_box {
+    transform-origin: center center;
+    will-change: transform, opacity, filter;
+    animation: loentv-popup-in 0.72s cubic-bezier(0.2, 1.45, 0.35, 1) both;
+}
+
+.chat_box::after {
+    opacity: 0;
+    transform-origin: 50% 65%;
+    will-change: transform, opacity;
+    animation: loentv-ribbon-in 0.48s cubic-bezier(0.18, 1.7, 0.34, 1) 0.2s both;
+}
+
+@keyframes loentv-popup-in {
+    0% {
+        opacity: 0;
+        transform: translateY(15px) scale(0.72);
+        filter: blur(4px) brightness(1.08);
+    }
+    52% {
+        opacity: 1;
+        transform: translateY(-4px) scale(1.055);
+        filter: blur(0) brightness(1.03);
+    }
+    76% {
+        transform: translateY(1px) scale(0.985);
+        filter: blur(0) brightness(1);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0) brightness(1);
+    }
+}
+
+@keyframes loentv-ribbon-in {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(0) scale(0.18) rotate(-8deg);
+        filter: blur(1px);
+    }
+    62% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) scale(1.16) rotate(4deg);
+        filter: blur(0);
+    }
+    82% {
+        transform: translateX(-50%) translateY(0) scale(0.94) rotate(-2deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) scale(1) rotate(0deg);
+        filter: blur(0);
+    }
+}
+
+@keyframes loentv-chat-float-normal {
+    0%, 100% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+    12.5% {
+        transform: translate3d(-1.5px, -2.4px, 0) rotate(-0.12deg);
+    }
+    25% {
+        transform: translate3d(-2.4px, -3.5px, 0) rotate(-0.2deg);
+    }
+    37.5% {
+        transform: translate3d(-1.4px, -1.5px, 0) rotate(-0.08deg);
+    }
+    50% {
+        transform: translate3d(0, 0.7px, 0) rotate(0.06deg);
+    }
+    62.5% {
+        transform: translate3d(1.6px, -1.2px, 0) rotate(0.16deg);
+    }
+    75% {
+        transform: translate3d(2.4px, -3.2px, 0) rotate(0.2deg);
+    }
+    87.5% {
+        transform: translate3d(1.3px, -2px, 0) rotate(0.1deg);
+    }
+}
+
+@keyframes loentv-chat-float-streamer {
+    0%, 100% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+    12.5% {
+        transform: translate3d(1.2px, -1.8px, 0) rotate(0.1deg);
+    }
+    25% {
+        transform: translate3d(2.2px, -3px, 0) rotate(0.18deg);
+    }
+    37.5% {
+        transform: translate3d(1.7px, -3.8px, 0) rotate(0.1deg);
+    }
+    50% {
+        transform: translate3d(0, -2px, 0) rotate(-0.04deg);
+    }
+    62.5% {
+        transform: translate3d(-1.8px, 0.5px, 0) rotate(-0.18deg);
+    }
+    75% {
+        transform: translate3d(-2.3px, -1.2px, 0) rotate(-0.22deg);
+    }
+    87.5% {
+        transform: translate3d(-1.1px, -2.5px, 0) rotate(-0.1deg);
+    }
+}
+
+@keyframes loentv-chat-float-subscribe {
+    0%, 100% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+    12.5% {
+        transform: translate3d(-1.8px, -3.1px, 0) rotate(-0.16deg);
+    }
+    25% {
+        transform: translate3d(-1px, -4.1px, 0) rotate(-0.06deg);
+    }
+    37.5% {
+        transform: translate3d(1.4px, -3px, 0) rotate(0.16deg);
+    }
+    50% {
+        transform: translate3d(2.3px, -0.8px, 0) rotate(0.22deg);
+    }
+    62.5% {
+        transform: translate3d(1px, 0.7px, 0) rotate(0.08deg);
+    }
+    75% {
+        transform: translate3d(-1.3px, -0.8px, 0) rotate(-0.14deg);
+    }
+    87.5% {
+        transform: translate3d(-2.1px, -2.2px, 0) rotate(-0.2deg);
+    }
+}
+
+@keyframes loentv-chat-float-donation {
+    0%, 100% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+    12.5% {
+        transform: translate3d(-1px, -1.3px, 0) rotate(-0.08deg);
+    }
+    25% {
+        transform: translate3d(-2.5px, -2.7px, 0) rotate(-0.18deg);
+    }
+    37.5% {
+        transform: translate3d(-1.8px, -3.7px, 0) rotate(-0.12deg);
+    }
+    50% {
+        transform: translate3d(0.4px, -2.2px, 0) rotate(0.05deg);
+    }
+    62.5% {
+        transform: translate3d(2.3px, -0.3px, 0) rotate(0.18deg);
+    }
+    75% {
+        transform: translate3d(2px, -1.7px, 0) rotate(0.14deg);
+    }
+    87.5% {
+        transform: translate3d(0.9px, -2.9px, 0) rotate(0.06deg);
+    }
+}
+
+@keyframes loentv-chat-float-donation-sub {
+    0%, 100% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+    12.5% {
+        transform: translate3d(1.7px, -2.5px, 0) rotate(0.15deg);
+    }
+    25% {
+        transform: translate3d(2.4px, -3.8px, 0) rotate(0.2deg);
+    }
+    37.5% {
+        transform: translate3d(0.7px, -2.2px, 0) rotate(0.04deg);
+    }
+    50% {
+        transform: translate3d(-1.7px, 0.5px, 0) rotate(-0.16deg);
+    }
+    62.5% {
+        transform: translate3d(-2.4px, -1.1px, 0) rotate(-0.22deg);
+    }
+    75% {
+        transform: translate3d(-0.8px, -3.6px, 0) rotate(-0.06deg);
+    }
+    87.5% {
+        transform: translate3d(1.1px, -2px, 0) rotate(0.1deg);
+    }
+}
