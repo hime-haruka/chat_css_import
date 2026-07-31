@@ -1,0 +1,449 @@
+[data-id = "슈퍼챗"], [data-id = "치즈"], [data-id = "비트"], [data-id = "별풍선"], [data-id = "젬"], [data-id = "비트"], [data-id = "빔"] {
+    display: none;
+}
+
+@font-face {
+    font-family: 'NexonWarhaven';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/WarhavenR.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NexonWarhaven';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/WarhavenB.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+}
+
+/* ============================================= 
+        general
+============================================= */
+html {
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+}
+
+p {
+    color: var(--text) !important;
+    font-family: 'NexonWarhaven', Courier, monospace;
+    position: relative;
+    margin: 0 !important;
+    line-height: 1.2 !important;
+    z-index: 999;
+    font-weight: 400 !important;
+    letter-spacing: -0.8px !important;
+    text-align: center !important;
+    text-shadow: 0px 0px 3px 2px #3f2176ad !important;
+    font-size: 22px !important;
+}
+
+.chat_area {
+    -webkit-mask-image: -webkit-gradient(linear, left bottom, left top, from(#000), color-stop(0.98, #000), to(transparent));    
+}
+
+.chat_box {
+    margin: 0 auto !important;
+    margin-bottom: 30px !important;
+}
+
+.chat_box.chat * {
+    box-sizing: border-box !important;
+}
+
+.icon_badge {
+    display: none !important;
+}
+
+.icon_chzzk {
+    display: none !important;
+}
+
+/* ============================================= 
+        donation reset
+============================================= */
+.chat_box.image .donation_box,
+.chat_box.image .text_box,
+.chat_box.image .msg_box,
+.chat_box.image .nick,
+.chat_box.image .msg,
+.chat_box.image .val {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent !important;
+}
+
+.chat_box.image .donation_box .inner_box {
+    margin: 0;
+    padding: 0;
+}
+
+.chat_box.image,
+.chat_box.image .inner_box,
+.chat_box.image .donation_box,
+.chat_box.image .text_box,
+.chat_box.image .msg_box {
+    overflow: visible;
+}
+
+.chat_box.image .donation_box::before,
+.chat_box.image .donation_box::after,
+.chat_box.image .donation_box.subscribe::before {
+    content: none;
+}
+
+.chat_box.image .donation_box.subscribe::before {
+    display: none !important;
+}
+
+/* =========================================
+        display order
+========================================= */
+.chat_box.image .donation_box {
+    position: relative;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 6px;
+}
+
+.chat_box.image .donation_box > .text_box,
+.chat_box.image .donation_box > .msg_box {
+    display: contents !important;
+}
+
+.chat_box.image .donation_box > .text_box > *,
+.chat_box.image .donation_box > .msg_box > * {
+    order: 0 !important;
+}
+
+.chat_box.image .donation_box > .text_box > .nick {
+    display: none !important;
+}
+
+.chat_box.image:not(.subscribe)
+.donation_box > .msg_box > .val {
+    order: 10 !important;
+}
+
+.chat_box.image:not(.subscribe)
+.donation_box > .text_box > .msg {
+    order: 20 !important;
+}
+
+.chat_box.image.subscribe
+.donation_box.subscribe > .text_box > .msg {
+    order: 10 !important;
+}
+
+.chat_box.image.subscribe
+.donation_box.subscribe > .msg_box > .msg {
+    order: 20 !important;
+}
+
+/* ============================================= 
+        tokens
+============================================= */
+:root {
+    --texture: url("https://hime-haruka.github.io/syura_css_svg_import/haruya/root/01-texture.svg");
+    --mansion-1: url("https://hime-haruka.github.io/syura_css_svg_import/haruya/root/02-mansion.svg");
+    --mansion-2: url("https://hime-haruka.github.io/syura_css_svg_import/haruya/root/03-mansion.svg");
+    --prism: url("https://hime-haruka.github.io/syura_css_svg_import/haruya/root/04-prism.svg");
+    --prism-dotge: url("https://hime-haruka.github.io/syura_css_svg_import/haruya/root/05-prism-dotge.svg");
+    --prism-screen: url("https://hime-haruka.github.io/syura_css_svg_import/haruya/root/06-prism-screen.svg");
+}
+
+.chat_box.chat:not(.streamer) {
+    --fence: url("https://hime-haruka.github.io/syura_css_svg_import/haruya/ob/n/07-fence.svg?v=3");
+    --flower: url("https://hime-haruka.github.io/syura_css_svg_import/haruya/ob/n/08-flower.svg?v=3");
+    --rose-1: url("https://hime-haruka.github.io/syura_css_svg_import/haruya/ob/n/09-rose.svg?v=3");
+    --rose-2: url("https://hime-haruka.github.io/syura_css_svg_import/haruya/ob/n/10-rose.svg?v=3");
+    --outline: 1px solid #4f3871;
+    --border: 2px solid #c0a6e6;
+    --inSh: inset 0 0 0 4px #7856a9, inset 0 0 0 5px #674488;
+    --back: linear-gradient(to top, #381f5c, #4f3871);
+    --text: #fff;
+    --shine-shadow: rgba(85, 52, 140, 0.08);
+    --shine-soft: rgba(206, 190, 255, 0.08);
+    --shine-core: rgba(248, 244, 255, 0.34);
+    --shine-blend: screen;
+    --shine-low-opacity: 0.20;
+    --shine-high-opacity: 0.52;
+}
+
+/* ============================================= 
+        design
+============================================= */
+.chat_box {
+    width: fit-content;
+    max-width: calc(100% - 20px);
+    min-width: 120px;
+}
+
+.chat_box .inner_box {
+    padding: 32px 80px;
+    outline: var(--outline);
+    border: var(--border);
+    box-shadow: var(--inSh);
+    background: 
+        var(--rose-2),
+        var(--rose-1),
+        var(--flower),
+        var(--fence),
+        var(--prism-screen),
+        var(--prism-dotge),
+        var(--prism),
+        var(--mansion-2),
+        var(--mansion-1),
+        var(--texture),
+        var(--back);
+    background-position:
+        right -30px bottom -30px,
+        left 30px bottom 40px,
+        left -50px bottom -38px, 
+        center bottom -88px,
+        left -409px bottom -102px,
+        left -426px top -256px,
+        right -56px top -190px,
+        center, center, center, center;
+    background-repeat: no-repeat, no-repeat, no-repeat, repeat-x, no-repeat, no-repeat, no-repeat, no-repeat, repeat, repeat;
+    background-size: 98px, 51px, 124px, 616px, 1175px, 748px, 427px, 1063px, 1063px, 922px, cover;
+    background-blend-mode: normal, normal, normal, normal, screen, color-dodge, color-dodge, overlay, luminosity, overlay, normal;
+}
+
+/* ============================================= 
+        streamer
+============================================= */
+.chat_box.chat.streamer {
+    --fence: url("https://hime-haruka.github.io/syura_css_svg_import/haruya/ob/str/07-fence.svg?v=3");
+    --flower: url("https://hime-haruka.github.io/syura_css_svg_import/haruya/ob/str/08-flower.svg?v=3");
+    --rose-1: url("https://hime-haruka.github.io/syura_css_svg_import/haruya/ob/str/09-rose.svg?v=3");
+    --rose-2: url("https://hime-haruka.github.io/syura_css_svg_import/haruya/ob/str/10-rose.svg?v=3");
+    --outline: 1px solid #4f3871;
+    --border: 2px solid #ada6e6;
+    --inSh: inset 0 0 0 4px #5e56a9, inset 0 0 0 5px #8a7dcd;
+    --back: linear-gradient(to top, #867adc, #c8c2ee);
+    --text: #372e45;
+    --shine-shadow: rgba(79, 58, 126, 0.13);
+    --shine-soft: rgba(158, 137, 208, 0.11);
+    --shine-core: rgba(255, 255, 255, 0.46);
+    --shine-blend: normal;
+    --shine-low-opacity: 0.22;
+    --shine-high-opacity: 0.54;
+}
+
+/* ============================================= 
+        donation
+============================================= */
+.chat_box.image {
+    --fence: url("https://hime-haruka.github.io/syura_css_svg_import/haruya/ob/n/07-fence.svg?v=3");
+    --flower: url("https://hime-haruka.github.io/syura_css_svg_import/haruya/ob/n/08-flower.svg?v=3");
+    --rose-1: url("https://hime-haruka.github.io/syura_css_svg_import/haruya/ob/n/09-rose.svg?v=3");
+    --rose-2: url("https://hime-haruka.github.io/syura_css_svg_import/haruya/ob/n/10-rose.svg?v=3");
+    --outline: 1px solid #4f3871;
+    --border: 2px solid #c0a6e6;
+    --inSh: inset 0 0 0 4px #7856a9, inset 0 0 0 5px #674488;
+    --back: linear-gradient(to top, #381f5c, #4f3871);
+    --shine-shadow: rgba(85, 52, 140, 0.08);
+    --shine-soft: rgba(206, 190, 255, 0.08);
+    --shine-core: rgba(248, 244, 255, 0.34);
+    --shine-blend: screen;
+    --shine-low-opacity: 0.20;
+    --shine-high-opacity: 0.52;
+}
+
+.chat_box.image {
+    width: calc(100% - 20px) !important;
+    max-width: calc(100% - 20px) !important;
+    min-width: calc(100% - 20px) !important;
+}
+
+.chat_box.image .inner_box .donation_box {
+    padding: 0 20px !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .text_box .nick {
+    display: none !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .msg_box .msg {
+    margin-bottom: 8px !important;
+    color: var(--text) !important;
+    
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .text_box .msg {
+    font-size: 0 !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .text_box .msg .val {
+    width: fit-content !important;
+    padding: 2px 20px !important;
+    background: linear-gradient(to bottom, #a6a0ff, #a6a0ff) !important;
+    color: #fff !important;
+    font-size: 18px !important;
+    border-radius: 0 !important;
+    -webkit-clip-path: polygon(
+        14px 0,
+        calc(100% - 14px) 0,
+        100% 50%,
+        calc(100% - 14px) 100%,
+        14px 100%,
+        0 50%
+    );
+
+    clip-path: polygon(
+        14px 0,
+        calc(100% - 14px) 0,
+        100% 50%,
+        calc(100% - 14px) 100%,
+        14px 100%,
+        0 50%
+    );
+}
+
+.chat_box.image .inner_box {
+    padding: 25px 48px 15px 48px !important;
+}
+
+.chat_box.image .inner_box .donation_box {
+    overflow: visible !important;
+    position: static !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .text_box .nick {
+display: none !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .text_box .msg {
+    margin-bottom: 8px !important;
+    color: #ffffffa4  !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .msg_box .val {
+    width: fit-content !important;
+    padding: 2px 20px !important;
+    background: linear-gradient(to bottom, #341d58, #341d58) !important;
+    color: #fff !important;
+    font-size: 18px !important;
+    border-radius: 0 !important;
+    -webkit-clip-path: polygon(
+        14px 0,
+        calc(100% - 14px) 0,
+        100% 50%,
+        calc(100% - 14px) 100%,
+        14px 100%,
+        0 50%
+    );
+
+    clip-path: polygon(
+        14px 0,
+        calc(100% - 14px) 0,
+        100% 50%,
+        calc(100% - 14px) 100%,
+        14px 100%,
+        0 50%
+    );
+}
+
+.chat_box.image.subscribe {
+    --fence: url("https://hime-haruka.github.io/syura_css_svg_import/haruya/ob/str/07-fence.svg?v=3");
+    --flower: url("https://hime-haruka.github.io/syura_css_svg_import/haruya/ob/str/08-flower.svg?v=3");
+    --rose-1: url("https://hime-haruka.github.io/syura_css_svg_import/haruya/ob/str/09-rose.svg?v=3");
+    --rose-2: url("https://hime-haruka.github.io/syura_css_svg_import/haruya/ob/str/10-rose.svg?v=3");
+    --outline: 1px solid #4f3871;
+    --border: 2px solid #ada6e6;
+    --inSh: inset 0 0 0 4px #5e56a9, inset 0 0 0 5px #8a7dcd;
+    --back: linear-gradient(to top, #867adc, #c8c2ee);
+    --text: #372e45;
+    --shine-shadow: rgba(79, 58, 126, 0.13);
+    --shine-soft: rgba(158, 137, 208, 0.11);
+    --shine-core: rgba(255, 255, 255, 0.46);
+    --shine-blend: normal;
+    --shine-low-opacity: 0.22;
+    --shine-high-opacity: 0.54;
+}
+
+/* ============================================= 
+        keyframes
+============================================= */
+.chat_box {
+    animation: haruyaPopup 950ms cubic-bezier(0.16, 1, 0.3, 1) both !important;
+    transform-origin: center center;
+    backface-visibility: hidden;
+    will-change: transform, opacity, filter, clip-path;
+}
+
+.chat_box .inner_box::after {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(
+        112deg,
+        transparent 0%,
+        transparent 37%,
+        var(--shine-shadow) 42%,
+        var(--shine-soft) 46%,
+        var(--shine-core) 50%,
+        var(--shine-soft) 54%,
+        var(--shine-shadow) 58%,
+        transparent 63%,
+        transparent 100%
+    );
+    background-size: 260% 100%;
+    background-position: 180% 0;
+    mix-blend-mode: var(--shine-blend);
+    opacity: 0;
+    animation: LightSweep 9s cubic-bezier(0.45, 0, 0.35, 1) 900ms infinite;
+}
+
+@keyframes haruyaPopup {
+    0% {
+        opacity: 0;
+        transform: translateY(16px) scale(0.98);
+        filter: blur(7px) brightness(0.72) saturate(0.8);
+        clip-path: inset(44% 0 44% 0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: none;
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+@keyframes LightSweep {
+    0%, 11% {
+        opacity: 0;
+        background-position: 180% 0;
+    }
+
+    18% {
+        opacity: var(--shine-low-opacity);
+    }
+
+    30% {
+        opacity: var(--shine-high-opacity);
+    }
+
+    43% {
+        opacity: var(--shine-low-opacity);
+    }
+
+    52% {
+        opacity: 0;
+        background-position: -80% 0;
+    }
+
+    100% {
+        opacity: 0;
+        background-position: -80% 0;
+    }
+}
