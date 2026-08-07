@@ -333,22 +333,22 @@ p {
         donation
 ============================================= */
 .chat_box.image:not(.subscribe) {
-    --lace: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/normal/01-lace.webp");
-    --chain-ccw: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/normal/02-chain-ccw.svg?v=2");
-    --chain-cw: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/normal/02-chain-cw.svg?v=2");
-    --line: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/normal/03-line.webp");
-    --star-top: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/normal/04-starT.svg");
-    --star-bottom: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/normal/05-starB.svg");
-    --fan-eyes: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/normal/fan-eyes.svg");
-    --wing-l: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/normal/wingL.svg?v=2");
-    --wing-r: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/normal/wingR.svg?v=2");
-    --badge-c: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/dona/badgeC.webp");
-    --badge-l: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/dona/badgeL.webp");
-    --badge-r: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/dona/badgeR.webp");
-    --fan-eyes: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/dona/fan-eyes.svg");
-    --text: linear-gradient(to bottom, #abbbdf, #97abdb);
-    --border: 3px solid #d0d9ee;
-    --inbor: inset 0 0 0 5px #ebf7ff, inset 0 0 0 7px #fff;
+    --lace: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/sub/01-lace.webp");
+    --chain-ccw: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/sub/02-chain-ccw.svg?v=2");
+    --chain-cw: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/sub/02-chain-cw.svg?v=2");
+    --line: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/sub/03-line.webp");
+    --star-top: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/sub/04-starT.svg");
+    --star-bottom: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/sub/05-starB.svg");
+    --fan-eyes: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/sub/fan.svg");
+    --wing-l: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/sub/wingL.svg?v=2");
+    --wing-r: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/sub/wingR.svg?v=2");
+    --badge-c: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/dona-sub/badgeC.webp");
+    --badge-l: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/dona-sub/badgeL.webp");
+    --badge-r: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/dona-sub/badgeR.webp");
+    --fan-eyes: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/dona-sub/fan-eyes.svg");
+    --text: linear-gradient(to bottom, #b4abdf, #a597db);
+    --border: 3px solid #f7e5ff;
+    --inbor: inset 0 0 0 5px #fff, inset 0 0 0 7px #f5ebff;
 }
 
 .chat_box.image .inner_box .donation_box {
@@ -416,22 +416,22 @@ p {
         donation - subscribe
 ============================================= */
 .chat_box.image.subscribe {
-    --lace: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/sub/01-lace.webp");
-    --chain-ccw: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/sub/02-chain-ccw.svg?v=2");
-    --chain-cw: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/sub/02-chain-cw.svg?v=2");
-    --line: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/sub/03-line.webp");
-    --star-top: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/sub/04-starT.svg");
-    --star-bottom: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/sub/05-starB.svg");
-    --fan-eyes: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/sub/fan.svg");
-    --wing-l: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/sub/wingL.svg?v=2");
-    --wing-r: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/sub/wingR.svg?v=2");
-    --badge-c: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/dona-sub/badgeC.webp");
-    --badge-l: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/dona-sub/badgeL.webp");
-    --badge-r: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/dona-sub/badgeR.webp");
-    --fan-eyes: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/dona-sub/fan-eyes.svg");
-    --text: linear-gradient(to bottom, #b4abdf, #a597db);
-    --border: 3px solid #f7e5ff;
-    --inbor: inset 0 0 0 5px #fff, inset 0 0 0 7px #f5ebff;
+    --lace: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/normal/01-lace.webp");
+    --chain-ccw: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/normal/02-chain-ccw.svg?v=2");
+    --chain-cw: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/normal/02-chain-cw.svg?v=2");
+    --line: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/normal/03-line.webp");
+    --star-top: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/normal/04-starT.svg");
+    --star-bottom: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/normal/05-starB.svg");
+    --fan-eyes: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/normal/fan-eyes.svg");
+    --wing-l: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/normal/wingL.svg?v=2");
+    --wing-r: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/normal/wingR.svg?v=2");
+    --badge-c: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/dona/badgeC.webp");
+    --badge-l: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/dona/badgeL.webp");
+    --badge-r: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/dona/badgeR.webp");
+    --fan-eyes: url("https://hime-haruka.github.io/syura_css_svg_import/kurione-rima/dona/fan-eyes.svg");
+    --text: linear-gradient(to bottom, #abbbdf, #97abdb);
+    --border: 3px solid #d0d9ee;
+    --inbor: inset 0 0 0 5px #ebf7ff, inset 0 0 0 7px #fff;
 }
 
 
