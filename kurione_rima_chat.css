@@ -395,7 +395,7 @@ p {
 }
 
 .chat_box.image:not(.subscribe) .inner_box .donation_box .text_box .msg {
-    padding: 0 35px;
+    padding: 0 15px;
     color: transparent !important;
     background: var(--text) !important;
     background-clip: text !important;
@@ -493,7 +493,10 @@ p {
 }
 
 .chat_box.image.subscribe .inner_box .donation_box .msg_box .msg {
-    padding: 0 35px !important;
+    padding: 0 15px !important;
+    color: transparent !important;
+    background: var(--text) !important;
+    background-clip: text !important;
 }
 
 .chat_box.image.subscribe {
