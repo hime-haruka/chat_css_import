@@ -1,0 +1,714 @@
+[data-id = "슈퍼챗"], [data-id = "치즈"], [data-id = "비트"], [data-id = "별풍선"], [data-id = "젬"], [data-id = "비트"], [data-id = "빔"] {
+    display: none;
+}
+
+@font-face {
+    font-family: 'Paperozi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-1Thin.woff2') format('woff2');
+    font-weight: 100;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Paperozi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-2ExtraLight.woff2') format('woff2');
+    font-weight: 200;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Paperozi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-3Light.woff2') format('woff2');
+    font-weight: 300;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Paperozi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-4Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Paperozi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-5Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Paperozi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-6SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Paperozi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-7Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Paperozi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-8ExtraBold.woff2') format('woff2');
+    font-weight: 800;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Paperozi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-9Black.woff2') format('woff2');
+    font-weight: 900;
+    font-display: swap;
+}
+
+/* =============================================
+    general
+============================================= */
+html {
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+}
+
+p {
+    color: var(--text) !important;
+    font-family: 'Paperozi', Courier, monospace !important;
+    font-weight: 500 !important;
+    position: relative;
+    margin: 0 !important;
+    line-height: 1.2 !important;
+    z-index: 999;
+    text-shadow: none !important;
+    letter-spacing: -0.8px !important;
+    text-align: center !important;
+}
+
+.chat_area {
+    -webkit-mask-image: -webkit-gradient(linear, left bottom, left top, from(#000), color-stop(0.98, #000), to(transparent));
+}
+
+.chat_box {
+    margin: 0 auto !important;
+    margin-bottom: 20px !important;
+}
+
+.chat_box.chat * {
+    box-sizing: border-box !important;
+}
+
+.icon_badge {
+    display: none !important;
+}
+
+.icon_chzzk {
+    display: none !important;
+}
+
+/* =============================================
+    donation reset
+============================================= */
+.chat_box.image .donation_box,
+.chat_box.image .text_box,
+.chat_box.image .msg_box,
+.chat_box.image .nick,
+.chat_box.image .msg,
+.chat_box.image .val {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent !important;
+}
+
+.chat_box.image .donation_box .inner_box {
+    margin: 0;
+    padding: 0;
+}
+
+.chat_box.image,
+.chat_box.image .inner_box,
+.chat_box.image .donation_box,
+.chat_box.image .text_box,
+.chat_box.image .msg_box {
+    overflow: visible;
+}
+
+.chat_box.image .donation_box::before,
+.chat_box.image .donation_box::after,
+.chat_box.image .donation_box.subscribe::before {
+    content: none;
+}
+
+.chat_box.image .donation_box.subscribe::before {
+    display: none !important;
+}
+
+/* .chat_box.image .nick {
+    display: none !important;
+} */
+
+/* =========================================
+    display order
+========================================= */
+.chat_box.image .donation_box {
+    position: relative;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+}
+
+.chat_box.image .donation_box > .text_box,
+.chat_box.image .donation_box > .msg_box {
+    display: contents !important;
+}
+
+.chat_box.image .donation_box > .text_box > *,
+.chat_box.image .donation_box > .msg_box > * {
+    order: 0 !important;
+}
+
+.chat_box.image .donation_box > .text_box > .nick {
+    order: 10 !important;
+}
+
+.chat_box.image:not(.subscribe)
+.donation_box > .text_box > .msg {
+    order: 30 !important;
+}
+
+.chat_box.image:not(.subscribe) .donation_box > .msg_box > .val,
+.chat_box.image.subscribe .donation_box.subscribe > .text_box > .msg {
+    padding: 0 !important;
+    margin: 0 !important;
+    order: 20 !important;
+}
+
+.chat_box.image.subscribe
+.donation_box.subscribe > .msg_box > .msg {
+    padding: 0 !important;
+    margin: 0 !important;
+    order: 30 !important;
+}
+
+/* =============================================
+    tokens
+============================================= */
+:root {
+    --onigiri-L-0: url("https://hime-haruka.github.io/syura_css_svg_import/toka/onigiriL_0.svg");
+    --onigiri-L-1: url("https://hime-haruka.github.io/syura_css_svg_import/toka/onigiriL_1.svg");
+    --onigiri-L-2: url("https://hime-haruka.github.io/syura_css_svg_import/toka/onigiriL_2.svg");
+    --onigiri-L-3: url("https://hime-haruka.github.io/syura_css_svg_import/toka/onigiriL_3.svg");
+    --onigiri-R-0: url("https://hime-haruka.github.io/syura_css_svg_import/toka/onigiriR_0.svg");
+    --onigiri-R-1: url("https://hime-haruka.github.io/syura_css_svg_import/toka/onigiriR_1.svg");
+    --onigiri-R-2: url("https://hime-haruka.github.io/syura_css_svg_import/toka/onigiriR_2.svg");
+    --onigiri-R-3: url("https://hime-haruka.github.io/syura_css_svg_import/toka/onigiriR_3.svg");
+}
+
+.chat_box.chat:not(.streamer):not(.subscribe) {
+    --heart-l: url("https://hime-haruka.github.io/syura_css_svg_import/toka/normal/heartL.svg");
+    --heart-r: url("https://hime-haruka.github.io/syura_css_svg_import/toka/normal/heartR.svg");
+    --lace: url("https://hime-haruka.github.io/syura_css_svg_import/toka/normal/lace.svg");
+    --ribbon: url("https://hime-haruka.github.io/syura_css_svg_import/toka/normal/ribbon.svg");
+    --pattern: url("https://hime-haruka.github.io/syura_css_svg_import/toka/pattern_repeat.svg");
+    --back: linear-gradient(0deg, #37363b, #37363b);
+    --border: 1px solid #151416;
+    --inbor: inset 0 0 0 3px #212023, inset 0 0 0 5px #37363b;
+    --text: #ffffff;
+    --glow: rgba(255, 255, 255, 0.18);
+    --focus: radial-gradient(
+        ellipse at center,
+        rgba(255, 255, 255, 0.22) 0%,
+        rgba(255, 255, 255, 0.18) 25%,
+        rgba(255, 255, 255, 0.10) 48%,
+        rgba(255, 255, 255, 0.035) 66%,
+        rgba(255, 255, 255, 0) 82%
+    );
+}
+
+/* =============================================
+    design
+============================================= */
+.chat_box {
+    position: relative;
+    width: fit-content;
+    max-width: calc( 100% -  20px );
+    min-width: 120px;
+}
+
+/* ribbon */
+.chat_box::before {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 19px;
+    left: 50%;
+    top: -6px;
+    z-index: 2;
+    background: var(--ribbon);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    transform: translateX(-50%);
+}
+
+/* onigiri */
+.chat_box::after {
+    content: "";
+    position: absolute;
+    inset: 0 -11px 0 -11px;
+    background-image:
+        var(--onigiri-L-0),
+        var(--onigiri-R-0);
+    background-position:
+        left top 25px,
+        right bottom 15px;
+    background-repeat:
+        no-repeat,
+        no-repeat;
+    background-size:
+        23px,
+        27px;
+    z-index: 9;
+}
+
+.chat_box .inner_box {
+    position: relative;
+    padding: 25px 30px;
+    border: var(--border);
+    box-shadow: var(--inbor);
+    background:
+        var(--lace),
+        var(--focus),
+        var(--pattern),
+        var(--back);
+    background-position:
+        center bottom -10px,
+        center center,
+        center,
+        center;
+    background-repeat:
+        no-repeat,
+        no-repeat,
+        repeat,
+        no-repeat;
+    background-size:
+        371px auto,
+        78% 115px,
+        25px 25px,
+        cover;
+    border-radius: 10px;
+}
+
+.chat_box .inner_box::before,
+.chat_box .inner_box::after {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 15px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 18px auto;
+    z-index: 9;
+}
+
+.chat_box .inner_box::before {
+    background-image: var(--heart-l);
+    left: 8px;
+    top: 18px;
+}
+
+.chat_box .inner_box::after {
+    background-image: var(--heart-r);
+    right: 4px;
+    bottom: 30px;
+}
+
+/* =============================================
+    streamer
+============================================= */
+.chat_box.chat.streamer {
+    --heart-l: url("https://hime-haruka.github.io/syura_css_svg_import/toka/str/heartL.svg");
+    --heart-r: url("https://hime-haruka.github.io/syura_css_svg_import/toka/str/heartR.svg");
+    --lace: url("https://hime-haruka.github.io/syura_css_svg_import/toka/str/lace.svg");
+    --ribbon: url("https://hime-haruka.github.io/syura_css_svg_import/toka/str/ribbon.svg");
+    --pattern: url("https://hime-haruka.github.io/syura_css_svg_import/toka/pattern_soft.svg?v=3");
+    --back: linear-gradient(0deg, #ffffff, #ffffff);
+    --border: 1px solid #626262;
+    --inbor: inset 0 0 0 3px #7e7e7e, inset 0 0 0 5px #a7a7a7;
+    --text: #59595e;
+    --glow: rgba(255, 255, 255, 0.72);
+    --focus: radial-gradient(
+        ellipse 95% 400% at 50% 0%,
+        rgba(255, 255, 255, 0.82) 0%,
+        rgba(255, 255, 255, 0.72) 15%,
+        rgba(255, 255, 255, 0.44) 35%,
+        rgba(255, 255, 255, 0.22) 58%,
+        rgba(255, 255, 255, 0) 82%
+    );
+}
+
+/* =============================================
+    subscribe
+============================================s= */
+.chat_box.chat.subscribe {
+    --heart-l: url("https://hime-haruka.github.io/syura_css_svg_import/toka/sub/heartL.svg");
+    --heart-r: url("https://hime-haruka.github.io/syura_css_svg_import/toka/sub/heartR.svg");
+    --lace: url("https://hime-haruka.github.io/syura_css_svg_import/toka/sub/lace.svg");
+    --ribbon: url("https://hime-haruka.github.io/syura_css_svg_import/toka/sub/ribbon.svg");
+    --pattern: url("https://hime-haruka.github.io/syura_css_svg_import/toka/pattern_repeat.svg");
+    --back: linear-gradient(0deg, #76747c, #76747c);
+    --border: 1px solid #242226;
+    --inbor: inset 0 0 0 3px #343237, inset 0 0 0 5px #55535b;
+    --text: #ffffff;
+    --glow: rgba(255, 255, 255, 0.24);
+    --focus: radial-gradient(
+        ellipse 72% 100% at 50% 50%,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0) 42%,
+        rgba(255, 255, 255, 0.018) 56%,
+        rgba(255, 255, 255, 0.035) 70%,
+        rgba(255, 255, 255, 0.055) 84%,
+        rgba(255, 255, 255, 0.075) 100%
+    );
+}
+
+/* =============================================
+    donation
+============================================= */
+.chat_box.image:not(.subscribe) {
+    --heart-l: url("https://hime-haruka.github.io/syura_css_svg_import/toka/normal/heartL.svg");
+    --heart-r: url("https://hime-haruka.github.io/syura_css_svg_import/toka/normal/heartR.svg");
+    --lace: url("https://hime-haruka.github.io/syura_css_svg_import/toka/normal/lace.svg");
+    --ribbon: url("https://hime-haruka.github.io/syura_css_svg_import/toka/normal/ribbon.svg");
+    --pattern: url("https://hime-haruka.github.io/syura_css_svg_import/toka/pattern_repeat.svg");
+    --back: linear-gradient(0deg, #37363b, #37363b);
+    --border: 1px solid #151416;
+    --inbor: inset 0 0 0 3px #212023, inset 0 0 0 5px #37363b;
+    --text: #ffffff;
+    --glow: rgba(255, 255, 255, 0.18);
+    --focus: radial-gradient(
+        ellipse at center,
+        rgba(255, 255, 255, 0.22) 0%,
+        rgba(255, 255, 255, 0.18) 25%,
+        rgba(255, 255, 255, 0.10) 48%,
+        rgba(255, 255, 255, 0.035) 66%,
+        rgba(255, 255, 255, 0) 82%
+    );
+    --valC: #37363b;
+    --valB: 2px solid #313035;
+    --valS: inset 0 2px 0 0 #46444b, inset 0 -2px 0 0 #46444b;
+}
+
+.chat_box.image {
+    width: calc( 100% -  30px ) !important;
+    max-width: calc( 100% -  30px ) !important;
+    min-width: calc( 100% -  30px ) !important;
+}
+
+.chat_box.image .inner_box {
+    padding: 0;
+}
+
+.chat_box.image .inner_box .donation_box {
+    position: relative;
+    overflow: visible !important;
+    padding: 16px 0 16px 0;
+}
+
+.chat_box.image .inner_box .donation_box::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    background: var(--valC);
+    border-top: var(--valB);
+    border-bottom: var(--valB);
+    z-index: 3;
+    box-shadow: var(--valS);
+}
+
+.chat_box.image .inner_box .donation_box .nick {
+    margin-top: 7px !important;
+    font-size: 15px !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .nick::after {
+    content: " 님이";
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .msg_box .val {
+    font-size: 15px !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .msg_box .val::after {
+    content: "치즈를 후원하셨어요!";
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .text_box .msg {
+    padding: 0 25px;
+    margin-top: 20px !important;
+}
+
+/* =============================================
+    donation - subscribe
+============================================= */
+.chat_box.image.subscribe {
+    --heart-l: url("https://hime-haruka.github.io/syura_css_svg_import/toka/sub/heartL.svg");
+    --heart-r: url("https://hime-haruka.github.io/syura_css_svg_import/toka/sub/heartR.svg");
+    --lace: url("https://hime-haruka.github.io/syura_css_svg_import/toka/sub/lace.svg");
+    --ribbon: url("https://hime-haruka.github.io/syura_css_svg_import/toka/sub/ribbon.svg");
+    --pattern: url("https://hime-haruka.github.io/syura_css_svg_import/toka/pattern_repeat.svg");
+    --back: linear-gradient(0deg, #76747c, #76747c);
+    --border: 1px solid #242226;
+    --inbor: inset 0 0 0 3px #343237, inset 0 0 0 5px #55535b;
+    --text: #ffffff;
+    --glow: rgba(255, 255, 255, 0.24);
+    --focus: radial-gradient(
+        ellipse 72% 100% at 50% 50%,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0) 42%,
+        rgba(255, 255, 255, 0.018) 56%,
+        rgba(255, 255, 255, 0.035) 70%,
+        rgba(255, 255, 255, 0.055) 84%,
+        rgba(255, 255, 255, 0.075) 100%
+    );
+    --valC: #55535b;
+    --valB: 2px solid #4f4e55;
+    --valS: inset 0 2px 0 0 #65636c, inset 0 -2px 0 0 #65636c;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .text_box .msg {
+    font-size: 0 !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .text_box .msg .val {
+    font-size: 15px !important;
+    color: var(--text) !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .nick::after {
+    content: " 님과";
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .text_box .msg .val::after {
+    content: " 동안 함께했어요!";
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .msg_box .msg {
+    padding: 0 35px !important;
+    margin-top: 20px !important;
+}
+
+/* =============================================
+    keyframes
+============================================= */
+.chat_box::after {
+    animation: onigiri 5.2s linear infinite;
+}
+
+@keyframes onigiri {
+    0%, 12% {
+        background-image:
+            var(--onigiri-L-0),
+            var(--onigiri-R-0);
+        background-size:
+            23px,
+            27px;
+    }
+
+    12.01%, 21% {
+        background-image:
+            var(--onigiri-L-1),
+            var(--onigiri-R-0);
+        background-size:
+            23px,
+            27px;
+    }
+
+    21.01%, 33% {
+        background-image:
+            var(--onigiri-L-1),
+            var(--onigiri-R-1);
+        background-size:
+            23px,
+            27px;
+    }
+
+    33.01%, 45% {
+        background-image:
+            var(--onigiri-L-2),
+            var(--onigiri-R-1);
+        background-size:
+            23px,
+            27px;
+    }
+
+    45.01%, 57% {
+        background-image:
+            var(--onigiri-L-2),
+            var(--onigiri-R-2);
+        background-size:
+            23px,
+            27px;
+    }
+
+    57.01%, 67% {
+        background-image:
+            var(--onigiri-L-3),
+            var(--onigiri-R-2);
+        background-size:
+            23px,
+            27px;
+    }
+
+    67.01%, 75% {
+        background-image:
+            var(--onigiri-L-3),
+            var(--onigiri-R-3);
+        background-size:
+            23px,
+            27px;
+    }
+
+    75.01% {
+        background-image:
+            var(--onigiri-L-0),
+            var(--onigiri-R-3);
+        background-size:
+            0px,
+            0px;
+    }
+
+    80% {
+        background-image:
+            var(--onigiri-L-0),
+            var(--onigiri-R-3);
+        background-size:
+            29px,
+            0px;
+    }
+
+    84% {
+        background-image:
+            var(--onigiri-L-0),
+            var(--onigiri-R-3);
+        background-size:
+            23px,
+            0px;
+    }
+
+    84.01% {
+        background-image:
+            var(--onigiri-L-0),
+            var(--onigiri-R-0);
+        background-size:
+            23px,
+            0px;
+    }
+
+    90% {
+        background-image:
+            var(--onigiri-L-0),
+            var(--onigiri-R-0);
+        background-size:
+            23px,
+            34px;
+    }
+
+    95%, 100% {
+        background-image:
+            var(--onigiri-L-0),
+            var(--onigiri-R-0);
+        background-size:
+            23px,
+            27px;
+    }
+}
+
+.chat_box {
+    transform-origin: center center;
+    animation: chat-pop 0.55s cubic-bezier(0.22, 1.45, 0.45, 1) both !important;
+}
+
+.chat_box .inner_box::before {
+    transform-origin: center center;
+    animation: heart-left 2.4s ease-in-out 0.3s infinite;
+}
+
+.chat_box .inner_box::after {
+    transform-origin: center center;
+    animation: heart-right 2.9s ease-in-out 0.65s infinite;
+}
+
+
+@keyframes chat-pop {
+    0% {
+        opacity: 0;
+        transform: translateY(12px) scale(0.88);
+    }
+
+    55% {
+        opacity: 1;
+        transform: translateY(-3px) scale(1.045);
+    }
+
+    75% {
+        transform: translateY(1px) scale(0.985);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes heart-left {
+    0%,
+    100% {
+        transform: translate(0, 0) rotate(-4deg) scale(1);
+    }
+
+    24% {
+        transform: translate(-1px, -3px) rotate(-12deg) scale(1.14);
+    }
+
+    40% {
+        transform: translate(1px, -1px) rotate(3deg) scale(0.96);
+    }
+
+    58% {
+        transform: translate(0, -2px) rotate(-6deg) scale(1.07);
+    }
+
+    76% {
+        transform: translate(0, 0) rotate(-2deg) scale(1);
+    }
+}
+
+
+@keyframes heart-right {
+    0%,
+    18%,
+    100% {
+        transform: translate(0, 0) rotate(5deg) scale(1);
+    }
+
+    36% {
+        transform: translate(2px, -2px) rotate(13deg) scale(1.08);
+    }
+
+    50% {
+        transform: translate(-1px, -4px) rotate(-5deg) scale(1.16);
+    }
+
+    66% {
+        transform: translate(1px, -1px) rotate(7deg) scale(0.97);
+    }
+
+    82% {
+        transform: translate(0, -1px) rotate(3deg) scale(1.05);
+    }
+}
