@@ -151,14 +151,14 @@ p {
     --hand: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='24px' height='23px'%3E%3Cpath fill-rule='evenodd' stroke-width='2px' stroke='rgb(103, 57, 70)' fill='rgb(206, 178, 157)' d='M12.000,5.485 C15.456,5.485 18.257,8.287 18.257,11.743 C18.257,15.198 15.456,18.000 12.000,18.000 C8.544,18.000 5.743,15.198 5.743,11.743 C5.743,8.287 8.544,5.485 12.000,5.485 Z'/%3E%3C/svg%3E");
     --star: url("https://hime-haruka.github.io/syura_css_svg_import/uyuni/star.svg");
     --particle-star: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0xMiAtMTIgMTM3Ljc3IDEzMy41MSI+CjxwYXRoIGQ9Ik02OS41LDkuMTZsNC4zNCwxMy4zNWMxLjc4LDUuNDcsNi44Nyw5LjE2LDEyLjYxLDkuMTZoMTQuMDNjMTIuODUsMCwxOC4xOSwxNi40NCw3LjgsMjMuOTlsLTExLjM1LDguMjVjLTQuNjUsMy4zOC02LjU5LDkuMzYtNC44MiwxNC44M2w0LjM0LDEzLjM1YzMuOTcsMTIuMjItMTAuMDEsMjIuMzgtMjAuNDEsMTQuODNsLTExLjM1LTguMjVjLTQuNjUtMy4zOC0xMC45NC0zLjM4LTE1LjU5LDBsLTExLjM1LDguMjVjLTEwLjM5LDcuNTUtMjQuMzgtMi42MS0yMC40MS0xNC44M2w0LjM0LTEzLjM1YzEuNzgtNS40Ny0uMTctMTEuNDUtNC44Mi0xNC44M0w1LjUxLDU1LjY2Qy00LjksNDguMTIuNDQsMzEuNjcsMTMuMjksMzEuNjdoMTQuMDNjNS43NCwwLDEwLjg0LTMuNywxMi42MS05LjE2bDQuMzQtMTMuMzVjMy45Ny0xMi4yMiwyMS4yNi0xMi4yMiwyNS4yMywwIiBmaWxsPSIjZmZkZjg4IiBzdHJva2U9IiNlYmI4NDgiIHN0cm9rZS13aWR0aD0iOCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8cGF0aCBkPSJNNjkuNSw5LjE2bDQuMzQsMTMuMzVjMS43OCw1LjQ3LDYuODcsOS4xNiwxMi42MSw5LjE2aDE0LjAzYzEyLjg1LDAsMTguMTksMTYuNDQsNy44LDIzLjk5bC0xMS4zNSw4LjI1Yy00LjY1LDMuMzgtNi41OSw5LjM2LTQuODIsMTQuODNsNC4zNCwxMy4zNWMzLjk3LDEyLjIyLTEwLjAxLDIyLjM4LTIwLjQxLDE0LjgzbC0xMS4zNS04LjI1Yy00LjY1LTMuMzgtMTAuOTQtMy4zOC0xNS41OSwwbC0xMS4zNSw4LjI1Yy0xMC4zOSw3LjU1LTI0LjM4LTIuNjEtMjAuNDEtMTQuODNsNC4zNC0xMy4zNWMxLjc4LTUuNDctLjE3LTExLjQ1LTQuODItMTQuODNMNS41MSw1NS42NkMtNC45LDQ4LjEyLjQ0LDMxLjY3LDEzLjI5LDMxLjY3aDE0LjAzYzUuNzQsMCwxMC44NC0zLjcsMTIuNjEtOS4xNmw0LjM0LTEzLjM1YzMuOTctMTIuMjIsMjEuMjYtMTIuMjIsMjUuMjMsMCIgZmlsbD0iI2ZmZGY4OCIvPgo8L3N2Zz4=");
-    --wing-l: url("https://hime-haruka.github.io/syura_css_svg_import/uyuni/wingL.svg?v=2");
-    --wing-r: url("https://hime-haruka.github.io/syura_css_svg_import/uyuni/wingR.svg?v=2");
+    --wing-l: url("https://hime-haruka.github.io/syura_css_svg_import/uyuni/wingL.svg?v=3");
+    --wing-r: url("https://hime-haruka.github.io/syura_css_svg_import/uyuni/wingR.svg?v=3");
 }
 
 .chat_box.chat:not(.streamer):not(.subscribe) {
     --beads-l: url("https://hime-haruka.github.io/syura_css_svg_import/uyuni/normal/beadsL.svg");
     --beads-r: url("https://hime-haruka.github.io/syura_css_svg_import/uyuni/normal/beadsR.svg");
-    --bunny: url("https://hime-haruka.github.io/syura_css_svg_import/uyuni/normal/bunny.svg");
+    --bunny: url("https://hime-haruka.github.io/syura_css_svg_import/uyuni/normal/bunny.svg?v=3");
     --divider: url("https://hime-haruka.github.io/syura_css_svg_import/uyuni/normal/divider.svg");
     --text: #fff;
     --back: linear-gradient(0deg, #ceb29d, #ceb29d);
@@ -289,7 +289,7 @@ p {
 .chat_box.chat.streamer {
     --beads-l: url("https://hime-haruka.github.io/syura_css_svg_import/uyuni/str/beadsL.svg");
     --beads-r: url("https://hime-haruka.github.io/syura_css_svg_import/uyuni/str/beadsR.svg");
-    --bunny: url("https://hime-haruka.github.io/syura_css_svg_import/uyuni/str/bunny.svg?v=2");
+    --bunny: url("https://hime-haruka.github.io/syura_css_svg_import/uyuni/str/bunny.svg?v=3");
     --divider: url("https://hime-haruka.github.io/syura_css_svg_import/uyuni/str/divider.svg");
     --text: #fff;
     --back: linear-gradient(0deg, #f5c8c3, #f5c8c3);
@@ -305,7 +305,7 @@ p {
 .chat_box.chat.subscribe {
     --beads-l: url("https://hime-haruka.github.io/syura_css_svg_import/uyuni/sub/beadsR.svg");
     --beads-r: url("https://hime-haruka.github.io/syura_css_svg_import/uyuni/sub/beadsL.svg");
-    --bunny: url("https://hime-haruka.github.io/syura_css_svg_import/uyuni/sub/bunny.svg?v=2");
+    --bunny: url("https://hime-haruka.github.io/syura_css_svg_import/uyuni/sub/bunny.svg?v=3");
     --divider: url("https://hime-haruka.github.io/syura_css_svg_import/uyuni/sub/divider.svg");
     --text: #90d0c0;
     --back: linear-gradient(0deg, #d6f6ee, #d6f6ee);
@@ -321,7 +321,7 @@ p {
 .chat_box.image:not(.subscribe) {
     --beads-l: url("https://hime-haruka.github.io/syura_css_svg_import/uyuni/normal/beadsL.svg");
     --beads-r: url("https://hime-haruka.github.io/syura_css_svg_import/uyuni/normal/beadsR.svg");
-    --bunny: url("https://hime-haruka.github.io/syura_css_svg_import/uyuni/normal/bunny.svg");
+    --bunny: url("https://hime-haruka.github.io/syura_css_svg_import/uyuni/normal/bunny.svg?v=3");
     --divider: url("https://hime-haruka.github.io/syura_css_svg_import/uyuni/normal/divider.svg");
     --text: #fff;
     --back: linear-gradient(0deg, #ceb29d, #ceb29d);
@@ -373,7 +373,7 @@ p {
 .chat_box.image.subscribe {
     --beads-l: url("https://hime-haruka.github.io/syura_css_svg_import/uyuni/sub/beadsR.svg");
     --beads-r: url("https://hime-haruka.github.io/syura_css_svg_import/uyuni/sub/beadsL.svg");
-    --bunny: url("https://hime-haruka.github.io/syura_css_svg_import/uyuni/sub/bunny.svg?v=2");
+    --bunny: url("https://hime-haruka.github.io/syura_css_svg_import/uyuni/sub/bunny.svg?v=3");
     --divider: url("https://hime-haruka.github.io/syura_css_svg_import/uyuni/sub/divider.svg");
     --text: #90d0c0;
     --back: linear-gradient(0deg, #d6f6ee, #d6f6ee);
