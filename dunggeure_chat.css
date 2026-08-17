@@ -156,17 +156,17 @@ p {
 ============================================= */
 :root {
     --back: linear-gradient(to bottom, #fff, #fff);
-    --val-line: #5a3d7d;
+    --val-line: #b8a0ee;
     --val-color: #24162f;
-    --corner-fill: rgba(245, 239, 250, 0.98);
-    --corner-line: rgba(122, 96, 154, 0.96);
+    --corner-fill: rgba(255, 239, 252, 0.96);
+    --corner-line: rgba(237, 196, 232, 0.95);
 }
 
 .chat_box.chat:not(.streamer):not(.subscribe) {
-    --text: linear-gradient(to bottom, #6a4e94, #1f142b);
-    --outline: 1px solid #2f1f43;
-    --border: 4px solid #67488f;
-    --inbor: inset 0 0 0 1px #442e62;
+    --text: linear-gradient(to bottom, #5f437f, #21152d);
+    --outline: 1px solid #645496;
+    --border: 4px solid #c9b8ff;
+    --inbor: inset 0 0 0 1px #ac9be0;
     --hornL: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/normal/hornL.svg);
     --hornR: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/normal/hornR.svg);
     --cloud: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/normal/cloud.svg);
@@ -180,8 +180,8 @@ p {
     --buttonR-size: 31px 32px;
     --confettiL-size: 37px 39px;
     --confettiR-size: 51px 54px;
-    --corner-fill: rgba(245, 239, 250, 0.98);
-    --corner-line: rgba(122, 96, 154, 0.96);
+    --corner-fill: rgba(255, 239, 252, 0.96);
+    --corner-line: rgba(237, 196, 232, 0.95);
 }
 
 /* ============================================= 
@@ -316,10 +316,10 @@ p {
         streamer
 ============================================= */
 .chat_box.chat.streamer {
-    --text: linear-gradient(to bottom, #6a4e94, #1f142b);
-    --outline: 1px solid #40305a;
-    --border: 4px solid #6a5091;
-    --inbor: inset 0 0 0 1px #463465;
+    --text: linear-gradient(to bottom, #5f437f, #21152d);
+    --outline: 1px solid #8ecece;
+    --border: 4px solid #d5ffff;
+    --inbor: inset 0 0 0 1px #b3e5e5;
     --hornL: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/streamer/hornL.svg);
     --hornR: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/streamer/hornR.svg);
     --cloud: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/streamer/cloud.svg);
@@ -335,18 +335,18 @@ p {
 
     --confettiL-size: 41px 43px;
     --confettiR-size: 55px 58px;
-    --corner-fill: rgba(243, 238, 250, 0.98);
-    --corner-line: rgba(112, 89, 146, 0.96);
+    --corner-fill: rgba(239, 234, 255, 0.96);
+    --corner-line: rgba(207, 192, 249, 0.95);
 }
 
 /* ============================================= 
         subscribe
 ============================================s= */
 .chat_box.chat.subscribe {
-    --text: linear-gradient(to bottom, #6a4e94, #1f142b);
-    --outline: 1px solid #3a294f;
-    --border: 4px solid #67488f;
-    --inbor: inset 0 0 0 1px #442e62;
+    --text: linear-gradient(to bottom, #5f437f, #21152d);
+    --outline: 1px solid #c698c9;
+    --border: 4px solid #c9b8ff;
+    --inbor: inset 0 0 0 1px #ac9be0;
     --hornL: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/sub/hornL.svg);
     --hornR: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/sub/hornR.svg);
     --cloud: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/sub/cloud.svg);
@@ -360,20 +360,20 @@ p {
     --buttonR-size: 31px 32px;
     --confettiL-size: 39px 41px;
     --confettiR-size: 53px 56px;
-    --corner-fill: rgba(243, 238, 250, 0.98);
-    --corner-line: rgba(123, 97, 156, 0.96);
+    --corner-fill: rgba(229, 251, 255, 0.98);
+    --corner-line: rgba(176, 232, 238, 0.96);
 }
 
 /* ============================================= 
         donation
 ============================================= */
 .chat_box.image:not(.subscribe) {
-    --text: linear-gradient(to bottom, #6a4e94, #1f142b);
-    --val-line: #5a3d7d;
+    --text: linear-gradient(to bottom, #5f437f, #21152d);
+    --val-line: #b8a0ee;
     --val-color: #24162f;
-    --outline: 1px solid #2f1f43;
-    --border: 4px solid #67488f;
-    --inbor: inset 0 0 0 1px #442e62;
+    --outline: 1px solid #645496;
+    --border: 4px solid #c9b8ff;
+    --inbor: inset 0 0 0 1px #ac9be0;
     --hornL: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/normal/hornL.svg);
     --hornR: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/normal/hornR.svg);
     --cloud: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/normal/cloud.svg);
@@ -504,14 +504,14 @@ p {
         donation - subscribe
 ============================================= */
 .chat_box.image.subscribe {
-    --text: linear-gradient(to bottom, #7a4c8f, #23162d);
-    --outline: 1px solid #38254a;
-    --border: 4px solid #724f99;
-    --inbor: inset 0 0 0 1px #4a3167;
-    --val-line: #6b4785;
-    --val-color: #26172f;
-    --corner-fill: rgba(243, 238, 250, 0.98);
-    --corner-line: rgba(123, 97, 156, 0.96);
+    --text: linear-gradient(to bottom, #6b467d, #26172f);
+    --outline: 1px solid #cf91ca;
+    --border: 4px solid #f0b9e9;
+    --inbor: inset 0 0 0 1px #dfa2d9;
+    --val-line: #efb4e8;
+    --val-color: #2a1833;
+    --corner-fill: rgba(229, 251, 255, 0.98);
+    --corner-line: rgba(176, 232, 238, 0.96);
     --hornL: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/sub/hornL.svg);
     --hornR: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/sub/hornR.svg);
     --cloud: url(https://hime-haruka.github.io/syura_css_svg_import/dunggeure/sub/cloud.svg);
