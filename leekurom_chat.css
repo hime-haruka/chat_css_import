@@ -26,7 +26,6 @@ html {
 }
 
 p {
-    color: var(--text) !important;
     font-family: 'SchoolSafetyNotification', Courier, monospace;
     position: relative;
     margin: 0 !important;
@@ -36,7 +35,6 @@ p {
     letter-spacing: -0.8px !important;
     text-align: center !important;
     text-shadow: none !important;
-    font-size: 22px !important;
 }
 
 .chat_area {
@@ -155,7 +153,6 @@ p {
 }
 
 .chat_box.chat:not(.streamer):not(.subscribe) {
-    --text: linear-gradient(to bottom, #fdfdff 0%, #7c85ff 70%, #7c85ff 100%);
     --border: #7780ffe8;
     --color: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/normal/01-color.svg);
     --prism: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/normal/02-prism.svg);
@@ -290,13 +287,6 @@ p {
     z-index: 1;
 }
 
-.chat_box .inner_box .text {
-    color: transparent !important;
-    background: var(--text);
-    background-clip: text;
-    filter: saturate(130%) contrast(115%);
-}
-
 .chat_box .inner_box .name {
     width: fit-content !important;
     padding: 2px 20px 1px !important;
@@ -373,7 +363,6 @@ p {
         streamer
 ============================================= */
 .chat_box.chat.streamer {
-    --text: linear-gradient(to bottom, #f6fbff 0%, #7eceff 70%, #7eceff 100%);
     --border: #7bc4ffe8;
     --color: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/str/01-color.svg);
     --prism: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/str/02-prism.svg);
@@ -393,7 +382,6 @@ p {
         subscribe
 ============================================s= */
 .chat_box.chat.subscribe {
-    --text: linear-gradient(to bottom, #f6fbff 0%, #c885ff 70%, #c885ff 100%);
     --border: #d6a3ffe8;
     --color: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/sub/01-color.svg);
     --prism: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/sub/02-prism.svg);
@@ -414,7 +402,6 @@ p {
 ============================================= */
 .chat_box.image:not(.subscribe) {
     --back: linear-gradient(0deg, #131039ed, #131039ed);
-    --text: linear-gradient(to bottom, #fdfdff 0%, #7c85ff 70%, #7c85ff 100%);
     --border: #7780ffe8;
     --color: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/normal/01-color.svg);
     --prism: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/normal/02-prism.svg);
@@ -435,7 +422,6 @@ p {
 ============================================= */
 .chat_box.image.subscribe {
     --back: linear-gradient(0deg, #25113fed, #25113fed);
-    --text: linear-gradient(to bottom, #f6fbff 0%, #c885ff 70%, #c885ff 100%);
     --border: #d6a3ffe8;
     --color: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/sub/01-color.svg);
     --prism: url(https://hime-haruka.github.io/syura_css_svg_import/leekurom/sub/02-prism.svg);
@@ -541,13 +527,6 @@ p {
     max-height: none !important;
     margin: 0 !important;
     padding: 0 !important;
-    color: transparent !important;
-    background: var(--text) !important;
-    background-clip: text !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    filter: saturate(130%) contrast(115%);
-    font-size: 22px !important;
     line-height: 1.2 !important;
     text-align: center !important;
     opacity: 1 !important;
