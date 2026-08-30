@@ -1,0 +1,1331 @@
+[data-id = "슈퍼챗"], [data-id = "치즈"], [data-id = "비트"], [data-id = "별풍선"], [data-id = "젬"], [data-id = "비트"], [data-id = "빔"] {
+    display: none;
+}
+
+@font-face {
+    font-family: 'MitmiFont';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2402_1@1.0/Ownglyph_meetme-Rg.woff2') format('woff2');
+    font-weight: normal;
+    font-display: swap;
+}
+
+/* =============================================
+    general
+============================================= */
+html {
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+}
+
+p {
+    color: var(--text) !important;
+    font-family: 'MitmiFont', Courier, monospace !important;
+    font-weight: 400 !important;
+    position: relative;
+    margin: 0 !important;
+    line-height: 1.2 !important;
+    z-index: 999;
+    text-shadow: var(--Tshadow) !important;
+    letter-spacing: -0.8px !important;
+    text-align: center !important;
+}
+
+.chat_area {
+    -webkit-mask-image: -webkit-gradient(linear, left bottom, left top, from(#000), color-stop(0.98, #000), to(transparent));
+}
+
+.chat_box {
+    margin: 0 auto !important;
+    margin-bottom: 20px !important;
+}
+
+.chat_box.chat * {
+    box-sizing: border-box !important;
+}
+
+.icon_badge {
+    display: none !important;
+}
+
+.icon_chzzk {
+    display: none !important;
+}
+
+/* =============================================
+    donation reset
+============================================= */
+.chat_box.image .donation_box,
+.chat_box.image .text_box,
+.chat_box.image .msg_box,
+.chat_box.image .nick,
+.chat_box.image .msg,
+.chat_box.image .val {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent !important;
+}
+
+.chat_box.image .donation_box .inner_box {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+.chat_box.image,
+.chat_box.image .inner_box,
+.chat_box.image .donation_box,
+.chat_box.image .text_box,
+.chat_box.image .msg_box {
+    overflow: visible;
+}
+
+.chat_box.image .donation_box::before,
+.chat_box.image .donation_box::after,
+.chat_box.image .donation_box.subscribe::before {
+    content: none;
+}
+
+.chat_box.image .donation_box.subscribe::before {
+    display: none !important;
+}
+
+.chat_box.image .nick {
+    display: none !important;
+}
+
+/* =========================================
+    display order
+========================================= */
+.chat_box.image .donation_box {
+    position: relative;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+}
+
+.chat_box.image .donation_box > .text_box,
+.chat_box.image .donation_box > .msg_box {
+    display: contents !important;
+}
+
+.chat_box.image .donation_box > .text_box > *,
+.chat_box.image .donation_box > .msg_box > * {
+    order: 0 !important;
+}
+
+.chat_box.image .donation_box > .text_box > .nick {
+    order: 10 !important;
+}
+
+.chat_box.image:not(.subscribe)
+.donation_box > .text_box > .msg {
+    order: 20 !important;
+}
+
+.chat_box.image:not(.subscribe) .donation_box > .msg_box > .val,
+.chat_box.image.subscribe .donation_box.subscribe > .text_box > .msg {
+    padding: 0 !important;
+    margin: 0 !important;
+    order: 30 !important;
+}
+
+.chat_box.image.subscribe
+.donation_box.subscribe > .msg_box > .msg {
+    padding: 0 !important;
+    margin: 0 !important;
+    order: 20 !important;
+}
+
+/* =============================================
+    tokens
+============================================= */
+:root {
+    --text: #ffffff;
+    --Tshadow: 2px 2px 2px 0 #273c71;
+    --texture: url(https://hime-haruka.github.io/syura_css_svg_import/YeonHwaRin/texture.png);
+    --pattern: url(https://hime-haruka.github.io/syura_css_svg_import/YeonHwaRin/pattern.png);
+    --flag: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg id='_레이어_1' data-name='레이어_1' xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 30.89 102.02'%3E%3Cdefs%3E%3ClinearGradient id='gradient' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23fce8c7'/%3E%3Cstop offset='100%25' stop-color='%23d0a271'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpolygon fill='url(%23gradient)' points='0 0 0 87.92 15.68 102.02 30.89 87.92 30.89 0 0 0' /%3E%3C/svg%3E");
+    --mark: url(https://hime-haruka.github.io/syura_css_svg_import/YeonHwaRin/mark.png);
+    --corner: url(https://hime-haruka.github.io/syura_css_svg_import/YeonHwaRin/corner.png);
+    --line: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 118.05 1987.92'%3E%3Cdefs%3E%3Cpath id='tile' d='M0,6.19h198.78V0H0v6.19ZM9.33,99.39V18.66h31.04v18.57h-6.19v-12.38H15.52v31.04h43.51V18.66h80.73v37.23h43.51v-31.04h-18.66v12.38h-6.19v-18.57h31.04v80.73h-31.04v-18.66h6.19v12.47h18.66v-31.13h-43.51v37.32H59.03v-37.32H15.52v31.13h18.66v-12.47h6.19v18.66H9.33ZM3.05,105.58h43.51v-31.04h-18.66v12.47h-6.19v-18.66h31.04v37.23h93.2v-37.23h31.04v18.66h-6.19v-12.47h-18.66v31.04h43.51V12.38h-43.51v31.13h18.66v-12.47h6.19v18.66h-31.04V12.38H52.74v37.32h-31.04v-18.66h6.19v12.47h18.66V12.38H3.05v93.2ZM99.39,68.54c-5.26,0-9.61-4.34-9.61-9.51s4.34-9.61,9.61-9.61,9.51,4.34,9.51,9.61-4.34,9.51-9.51,9.51M94.31,92.56c1.11.09,2.12-.09,3.05-.92.83-.74,1.29-1.76,1.29-2.77v-15.15h1.48v15.15c0,1.02.46,2.03,1.29,2.77.92.83,1.85,1.02,3.05.92,5.54-.83,10.71-3.05,14.96-6.28.92-.65,1.48-1.57,1.57-2.77.09-1.11-.28-2.12-1.11-2.96l-10.62-10.62,1.02-1.02,10.62,10.62c.83.83,1.85,1.2,2.96,1.11,1.11-.09,2.12-.65,2.77-1.57,3.23-4.25,5.45-9.42,6.28-14.96.09-1.2-.09-2.12-.92-3.05-.74-.83-1.76-1.29-2.77-1.29h-15.15v-1.48h15.15c1.02,0,2.03-.46,2.77-1.29.83-.92,1.02-1.94.92-3.05-.83-5.54-3.05-10.71-6.28-15.06-.65-.92-1.66-1.48-2.77-1.57-1.11-.09-2.12.37-2.96,1.2l-10.62,10.62-1.02-1.11,10.62-10.62c.83-.83,1.2-1.75,1.11-2.96-.09-1.11-.65-2.12-1.57-2.77-4.25-3.14-9.42-5.36-14.96-6.19-1.2-.18-2.12.09-3.05.92-.83.74-1.29,1.66-1.29,2.86v14.96h-1.48v-14.96c0-1.2-.46-2.12-1.29-2.86-.92-.83-1.94-1.11-3.05-.92-5.54.83-10.71,3.05-15.06,6.19-.92.65-1.48,1.66-1.57,2.77-.09,1.2.37,2.12,1.2,2.96l10.62,10.62-1.11,1.11-10.62-10.62c-.83-.83-1.76-1.29-2.96-1.2-1.11.09-2.12.65-2.77,1.57-3.14,4.34-5.36,9.51-6.19,15.06-.19,1.11.09,2.12.92,3.05.74.83,1.66,1.29,2.77,1.29h15.06v1.48h-15.06c-1.11,0-2.03.46-2.77,1.29-.83.92-1.11,1.85-.92,3.05.83,5.54,3.05,10.72,6.19,14.96.65.92,1.66,1.48,2.77,1.57,1.2.09,2.12-.28,2.96-1.11l10.62-10.62,1.11,1.02-10.62,10.62c-.83.83-1.29,1.85-1.2,2.96.09,1.2.65,2.12,1.57,2.77,4.34,3.23,9.51,5.45,15.06,6.28M99.39,63.74c2.59,0,4.71-2.12,4.71-4.71s-2.12-4.71-4.71-4.71-4.71,2.03-4.71,4.71,2.03,4.71,4.71,4.71M0,118.05h198.78v-6.28H0v6.28ZM129.97,93.66c2.22,0,4.06-1.85,4.06-4.07s-1.85-4.06-4.06-4.06-4.07,1.76-4.07,4.06,1.75,4.07,4.07,4.07M129.97,32.79c2.22,0,4.06-1.85,4.06-4.06s-1.85-4.16-4.06-4.16-4.07,1.94-4.07,4.16,1.75,4.06,4.07,4.06M68.82,93.66c2.31,0,4.06-1.85,4.06-4.07s-1.75-4.06-4.06-4.06-4.16,1.76-4.16,4.06,1.85,4.07,4.16,4.07M68.82,32.79c2.31,0,4.06-1.85,4.06-4.06s-1.75-4.16-4.06-4.16-4.16,1.94-4.16,4.16,1.85,4.06,4.16,4.06'/%3E%3C/defs%3E%3Cg transform='translate(118.05 0) rotate(90)' fill='%23ffffff' opacity='0.7'%3E%3Cuse href='%23tile' x='0'/%3E%3Cuse href='%23tile' x='198.78'/%3E%3Cuse href='%23tile' x='397.57'/%3E%3Cuse href='%23tile' x='596.35'/%3E%3Cuse href='%23tile' x='795.13'/%3E%3Cuse href='%23tile' x='993.91'/%3E%3Cuse href='%23tile' x='1192.70'/%3E%3Cuse href='%23tile' x='1391.48'/%3E%3Cuse href='%23tile' x='1590.36'/%3E%3Cuse href='%23tile' x='1789.14'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.chat_box.chat:not(.streamer):not(.subscribe) {
+    --flower: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='3542.5 1244.5 700 700' preserveAspectRatio='xMidYMid meet'%0A%3E%3Cdefs%3E%3Cstyle%3E .st0 %7B fill: url(%23linear-gradient2); %7D .st1 %7B fill: %236552b2; %7D .st2 %7B fill: url(%23linear-gradient1); %7D .st3 %7B fill: %237b63c6; %7D .st4 %7B fill: url(%23linear-gradient4); %7D .st5 %7B fill: url(%23linear-gradient3); %7D .st6 %7B fill: %23f0ebff; %7D .st7 %7B fill: url(%23linear-gradient); %7D .st8 %7B fill: %239173d8; %7D .outer-stroke %7B fill: none; stroke: %2320294E; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; %7D .flower-layer %7B filter: drop-shadow(-0.5px 0.866px 0 %2320294E); %7D %3C/style%3E%3ClinearGradient id='linear-gradient' x1='3711.64' y1='1844.98' x2='3892.74' y2='1580.97' gradientUnits='userSpaceOnUse' %3E%3Cstop offset='0' stop-color='%23ab8bea'/%3E%3Cstop offset='.02' stop-color='%23e7dcff'/%3E%3Cstop offset='1' stop-color='%237543c4'/%3E%3C/linearGradient%3E%3ClinearGradient id='linear-gradient1' x1='3905' y1='1517.67' x2='3887.98' y2='1268.73' gradientUnits='userSpaceOnUse' %3E%3Cstop offset='0' stop-color='%23ab8bea'/%3E%3Cstop offset='.42' stop-color='%23e7dcff'/%3E%3C/linearGradient%3E%3ClinearGradient id='linear-gradient2' x1='3940.56' y1='1631.01' x2='4196.58' y2='1533.18' gradientUnits='userSpaceOnUse' %3E%3Cstop offset='0' stop-color='%23ab8bea'/%3E%3Cstop offset='.66' stop-color='%23e7dcff'/%3E%3C/linearGradient%3E%3ClinearGradient id='linear-gradient3' x1='3917.25' y1='1680.67' x2='4129.97' y2='1943.84' gradientUnits='userSpaceOnUse' %3E%3Cstop offset='0' stop-color='%23ab8bea'/%3E%3Cstop offset='.69' stop-color='%23e7dcff'/%3E%3Cstop offset='1' stop-color='%237543c4'/%3E%3C/linearGradient%3E%3ClinearGradient id='linear-gradient4' x1='3827.95' y1='1554.3' x2='3549.07' y2='1540.48' gradientUnits='userSpaceOnUse' %3E%3Cstop offset='0' stop-color='%23ab8bea'/%3E%3Cstop offset='.89' stop-color='%23e7dcff'/%3E%3C/linearGradient%3E%3Cfilter id='color-overlay' x='-10%25' y='-10%25' width='120%25' height='120%25' color-interpolation-filters='sRGB' %3E%3CfeFlood flood-color='%235272BF' flood-opacity='1' result='overlayColor' /%3E%3CfeComposite in='overlayColor' in2='SourceAlpha' operator='in' result='overlayShape' /%3E%3CfeBlend in='overlayShape' in2='SourceGraphic' mode='color' /%3E%3C/filter%3E%3Cpath id='petal-bottom-left' d='M3722.53,1825.21c-13.67-10.76-25.48-21.14-35.33-31.15-51.64-52.47-49.52-94.68,19.9-127.11,25.75-12.03,48.88-20.94,68.52-27.53,18.72-6.27,34.26-10.42,45.89-13.11.51-.11,1.02-.23,1.51-.34,12.91-2.94,27.65,2.34,36.07,12.85l20.25,25.24c5.89,7.35,7.83,16.21,5.17,23.94-7.36,21.39-20.22,67.94-10.38,109.6.5,2.09.86,4.17,1.11,6.21,6.27,52.79-70.55,86.05-152.71,21.4Z' /%3E%3Cpath id='petal-top' d='M4008.52,1463.22c-23.65,58.97-47.47,98.58-62.12,120.12-8,11.77-22.87,16.69-36.34,12.11l-32.38-11c-9.43-3.2-16.8-10.61-19.89-20.07-2.07-6.36-4.89-14.42-8.47-23.47-11.14-28.14-29.66-65.85-56.36-91.83-47.66-46.39-11.88-139.06,98.52-131.44,50.77,3.51,87.65,14.51,108.97,34.6,25.04,23.58,28.62,59.72,8.06,110.99Z' /%3E%3Cpath id='highlight-top' d='M3891.49,1387.33c-8.62,9.38-16.61,17.05-23.6,23.21-8.38,7.38-21.37,5.28-27.04-4.33-3.5-5.93-7.68-11.73-12.58-16.5-18.29-17.81-4.56-53.37,37.81-50.45,11.41.79,20.99,2.56,28.61,5.44,9.59,3.62,14.11,14.63,9.84,23.95-2.7,5.91-7.02,12.12-13.05,18.68Z' /%3E%3Cpath id='petal-right' d='M4072.69,1693.72c-64.03-7.68-109.11-20.59-134.07-29.27-13.64-4.74-22.36-17.99-21.41-32.37l2.29-34.54c.31-4.66,1.62-9.12,3.78-13.12,2.5-4.64,6.14-8.64,10.69-11.59,23.41-15.2,71.62-50.1,96.03-93.6,32.98-58.74,133.22-48.03,154.72,61.9,5.41,27.65,7.52,51.83,6.02,72.34-4.46,61-40.93,89.48-118.06,80.23Z' /%3E%3Cpath id='petal-bottom-right' d='M4059.3,1853.31c-5.13,2.08-10.16,3.99-15.09,5.75-83.87,29.84-138.58,12.02-160.43-69.54-2.8-10.41-5.16-20.28-7.18-29.58-8.38-38.61-10.61-67.46-10.98-85.14-.25-11.99,8.84-21.51,22.18-23.33l32.05-4.39c.07,0,.15-.02.22-.03,9.27-1.2,19.23,1.49,26.97,7.36,21.57,16.34,69.24,49.37,116.76,61.42,29.13,7.38,49.91,28.65,55.31,53.18,6.49,29.54-9.34,63.83-59.82,84.29Z' /%3E%3Cpath id='petal-left' d='M3868.49,1596.43l-17.82,24.06c-5.19,7.01-13.88,10.97-23.53,10.65-7-.23-16.06-.35-26.36-.04h0c-28.93.85-67.57,5.02-97.46,19.23-36.04,17.13-82.74-2.63-101.2-44.19-3.79-8.51-6.39-17.95-7.46-28.16-1.67-15.7.27-33.24,7-52.17,32.5-91.37,83.43-115.94,164.42-54.11,9.2,7.02,17.78,13.85,25.77,20.43,35.74,29.44,59.64,54.03,73.54,69.66,9.29,10.46,10.53,24.61,3.12,34.63Z' /%3E%3Cpath id='center-outer' d='M3828.39,1649.42l4.69-15.43c2.1-6.9.21-13.97-5.05-18.9l-11.76-11.04c-13.24-12.42-2.94-33.83,17.43-36.23l18.1-2.13c8.09-.95,15.45-5.26,19.69-11.52l9.48-14c10.67-15.76,36.65-15.58,43.96.31l6.5,14.12c2.9,6.31,9.34,10.72,17.22,11.78l17.62,2.38c19.83,2.68,25.59,24.2,9.73,36.42l-14.08,10.85c-6.3,4.85-9.68,11.88-9.05,18.8l1.41,15.48c1.59,17.42-20.83,30.54-37.94,22.2l-15.2-7.41c-6.79-3.31-15.32-3.37-22.81-.16l-16.75,7.18c-18.85,8.09-38.46-5.33-33.18-22.7Z' /%3E%3Cpath id='center-middle' d='M3954.46,1607.72c-.98,2.1-2.57,4.12-4.8,5.84l-9.3,7.17c-4.15,3.2-6.39,7.84-5.97,12.41l.94,10.22c1.05,11.51-13.76,20.17-25.06,14.66l-10.04-4.9c-4.48-2.18-10.12-2.22-15.06-.11l-11.06,4.75c-12.45,5.34-25.4-3.53-21.92-14.99l3.1-10.19c1.39-4.55.14-9.22-3.34-12.48l-3.16-2.97-4.61-4.32c-8.74-8.2-1.93-22.34,11.51-23.92l11.95-1.41c5.34-.63,10.2-3.48,13-7.6l6.26-9.25c7.05-10.41,24.2-10.29,29.03.21l4.28,9.32c1.92,4.17,6.17,7.08,11.37,7.78l11.64,1.57c10.29,1.4,14.84,10.47,11.23,18.21Z' /%3E%3Cpath id='center-inner' d='M3940.35,1620.73c-4.15,3.2-6.39,7.84-5.97,12.41l.94,10.22c1.05,11.51-13.76,20.17-25.06,14.66l-10.04-4.9c-4.48-2.18-10.12-2.22-15.06-.11l-11.06,4.75c-12.45,5.34-25.4-3.53-21.92-14.99l3.1-10.19c1.39-4.55.14-9.22-3.34-12.48h0c-1.68-1.58-1.46-4.28.42-5.6,26.31-18.45,61.14-23.67,93.2-10.84,1.01.4,2,.82,2.99,1.25,3.48,1.52,4.15,6.27,1.15,8.6-.02.02-.04.03-.07.05l-9.3,7.17Z' /%3E%3Cpath id='highlight-right' d='M4114.34,1516.84c-6.49,7.07-12.51,12.85-17.78,17.49-6.31,5.56-16.1,3.98-20.37-3.26-2.64-4.47-5.79-8.84-9.48-12.43-13.78-13.41-3.43-40.21,28.49-38.01,8.59.59,15.81,1.93,21.55,4.1,7.23,2.73,10.63,11.02,7.42,18.04-2.03,4.45-5.29,9.13-9.83,14.07Z' /%3E%3Cpath id='highlight-left' d='M3693.38,1495.82c-4.52,4.91-8.7,8.93-12.36,12.16-4.39,3.86-11.2,2.77-14.17-2.27-1.83-3.11-4.02-6.15-6.59-8.65-9.58-9.33-2.39-27.96,19.81-26.43,5.98.41,10.99,1.34,14.99,2.85,5.02,1.9,7.39,7.66,5.16,12.55-1.42,3.09-3.68,6.35-6.83,9.79Z' /%3E%3C/defs%3E%3Cg class='flower-layer'%3E%3Cg aria-hidden='true'%3E%3Cuse href='%23petal-bottom-left' class='outer-stroke'/%3E%3Cuse href='%23petal-top' class='outer-stroke'/%3E%3Cuse href='%23petal-right' class='outer-stroke'/%3E%3Cuse href='%23petal-bottom-right' class='outer-stroke'/%3E%3Cuse href='%23petal-left' class='outer-stroke'/%3E%3C/g%3E%3Cg filter='url(%23color-overlay)'%3E%3Cuse href='%23petal-bottom-left' class='st7'/%3E%3Cuse href='%23petal-top' class='st2'/%3E%3Cuse href='%23highlight-top' class='st6'/%3E%3Cuse href='%23petal-right' class='st0'/%3E%3Cuse href='%23petal-bottom-right' class='st5'/%3E%3Cuse href='%23petal-left' class='st4'/%3E%3Cuse href='%23center-outer' class='st8'/%3E%3Cuse href='%23center-middle' class='st3'/%3E%3Cuse href='%23center-inner' class='st1'/%3E%3Cuse href='%23highlight-right' class='st6'/%3E%3Cuse href='%23highlight-left' class='st6'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    --back: linear-gradient(to right, #395089, #273862);
+    --out: 2px solid #20294e;
+    --bor: 3px solid #cdb69b;
+    --shadow: inset 10px 0 0 0 #20294e, inset 12px 0 0 0 #1a2246;
+}
+
+
+/* =============================================
+    design
+============================================= */
+.chat_box {
+    position: relative;
+    width: fit-content;
+    max-width: calc(100% - 30px);
+    min-width: 20px;
+}
+
+.chat_box::before, .chat_box::after,
+.chat_box .inner_box::before,
+.chat_box .inner_box::after {
+    content: "";
+    position: absolute;
+}
+
+.chat_box::before {
+    inset: 4px;
+    background: var(--corner);
+    background-position: bottom -85px right -8px;
+    background-repeat: no-repeat;
+    background-size: 64px;
+    z-index: 2;
+}
+
+.chat_box::after {
+    width: 20px;
+    height: 19px;
+    top: 50%;
+    left: -10px;
+    transform: translateY(-50%);
+    background: var(--flower);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.chat_box .inner_box {
+    position: relative;
+    padding: 18px 50px;
+    background:
+    var(--pattern),
+    var(--texture),
+    var(--back);
+    background-position: 
+    left -85px top -202px,
+    left -16px top -202px,
+    center;
+    background-size: 443px, 720px, cover;
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-blend-mode: normal, multiply, normal;
+    border: var(--bor);
+    outline: var(--out);
+    box-shadow: var(--shadow);
+}
+
+.chat_box .inner_box::before {
+    inset: 0;
+    background: var(--line);
+    background-size: 20px;
+    background-position: left 19px center;
+    background-repeat: no-repeat;
+    opacity: 0.3;
+}
+
+.chat_box .inner_box::after {
+    inset: 0;
+    background: var(--mark), var(--flag);
+    background-position: right 20px top 20px, right 19px top -25px;
+    background-repeat: no-repeat;
+    background-size: 20px, 22px;
+}
+
+/* =============================================
+    streamer
+============================================= */
+.chat_box.chat.streamer {
+    --back: linear-gradient(to right, #8e77cf, #625496);
+    --out: 2px solid #3a2966;
+    --bor: 3px solid #bd9562;
+    --shadow: inset 10px 0 0 0 #453374, inset 12px 0 0 0 #3a2966;
+    --flower: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='3542.5 1244.5 700 700' preserveAspectRatio='xMidYMid meet'%3E%3Cdefs%3E%3Cstyle%3E.st0%7Bfill:url(%23linear-gradient2)%7D.st1%7Bfill:%236552b2%7D.st2%7Bfill:url(%23linear-gradient1)%7D.st3%7Bfill:%237b63c6%7D.st4%7Bfill:url(%23linear-gradient4)%7D.st5%7Bfill:url(%23linear-gradient3)%7D.st6%7Bfill:%23f0ebff%7D.st7%7Bfill:url(%23linear-gradient)%7D.st8%7Bfill:%239173d8%7D.outer-stroke%7Bfill:none;stroke:%2320294E;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke%7D.flower-layer%7Bfilter:drop-shadow(-0.5px 0.866px 0 %2320294E)%7D%3C/style%3E%3ClinearGradient id='linear-gradient' x1='3711.64' y1='1844.98' x2='3892.74' y2='1580.97' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%23ab8bea'/%3E%3Cstop offset='.02' stop-color='%23e7dcff'/%3E%3Cstop offset='1' stop-color='%237543c4'/%3E%3C/linearGradient%3E%3ClinearGradient id='linear-gradient1' x1='3905' y1='1517.67' x2='3887.98' y2='1268.73' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%23ab8bea'/%3E%3Cstop offset='.42' stop-color='%23e7dcff'/%3E%3C/linearGradient%3E%3ClinearGradient id='linear-gradient2' x1='3940.56' y1='1631.01' x2='4196.58' y2='1533.18' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%23ab8bea'/%3E%3Cstop offset='.66' stop-color='%23e7dcff'/%3E%3C/linearGradient%3E%3ClinearGradient id='linear-gradient3' x1='3917.25' y1='1680.67' x2='4129.97' y2='1943.84' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%23ab8bea'/%3E%3Cstop offset='.69' stop-color='%23e7dcff'/%3E%3Cstop offset='1' stop-color='%237543c4'/%3E%3C/linearGradient%3E%3ClinearGradient id='linear-gradient4' x1='3827.95' y1='1554.3' x2='3549.07' y2='1540.48' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%23ab8bea'/%3E%3Cstop offset='.89' stop-color='%23e7dcff'/%3E%3C/linearGradient%3E%3Cpath id='petal-bottom-left' d='M3722.53,1825.21c-13.67-10.76-25.48-21.14-35.33-31.15-51.64-52.47-49.52-94.68,19.9-127.11,25.75-12.03,48.88-20.94,68.52-27.53,18.72-6.27,34.26-10.42,45.89-13.11.51-.11,1.02-.23,1.51-.34,12.91-2.94,27.65,2.34,36.07,12.85l20.25,25.24c5.89,7.35,7.83,16.21,5.17,23.94-7.36,21.39-20.22,67.94-10.38,109.6.5,2.09.86,4.17,1.11,6.21,6.27,52.79-70.55,86.05-152.71,21.4Z'/%3E%3Cpath id='petal-top' d='M4008.52,1463.22c-23.65,58.97-47.47,98.58-62.12,120.12-8,11.77-22.87,16.69-36.34,12.11l-32.38-11c-9.43-3.2-16.8-10.61-19.89-20.07-2.07-6.36-4.89-14.42-8.47-23.47-11.14-28.14-29.66-65.85-56.36-91.83-47.66-46.39-11.88-139.06,98.52-131.44,50.77,3.51,87.65,14.51,108.97,34.6,25.04,23.58,28.62,59.72,8.06,110.99Z'/%3E%3Cpath id='highlight-top' d='M3891.49,1387.33c-8.62,9.38-16.61,17.05-23.6,23.21-8.38,7.38-21.37,5.28-27.04-4.33-3.5-5.93-7.68-11.73-12.58-16.5-18.29-17.81-4.56-53.37,37.81-50.45,11.41.79,20.99,2.56,28.61,5.44,9.59,3.62,14.11,14.63,9.84,23.95-2.7,5.91-7.02,12.12-13.05,18.68Z'/%3E%3Cpath id='petal-right' d='M4072.69,1693.72c-64.03-7.68-109.11-20.59-134.07-29.27-13.64-4.74-22.36-17.99-21.41-32.37l2.29-34.54c.31-4.66,1.62-9.12,3.78-13.12,2.5-4.64,6.14-8.64,10.69-11.59,23.41-15.2,71.62-50.1,96.03-93.6,32.98-58.74,133.22-48.03,154.72,61.9,5.41,27.65,7.52,51.83,6.02,72.34-4.46,61-40.93,89.48-118.06,80.23Z'/%3E%3Cpath id='petal-bottom-right' d='M4059.3,1853.31c-5.13,2.08-10.16,3.99-15.09,5.75-83.87,29.84-138.58,12.02-160.43-69.54-2.8-10.41-5.16-20.28-7.18-29.58-8.38-38.61-10.61-67.46-10.98-85.14-.25-11.99,8.84-21.51,22.18-23.33l32.05-4.39c.07,0,.15-.02.22-.03,9.27-1.2,19.23,1.49,26.97,7.36,21.57,16.34,69.24,49.37,116.76,61.42,29.13,7.38,49.91,28.65,55.31,53.18,6.49,29.54-9.34,63.83-59.82,84.29Z'/%3E%3Cpath id='petal-left' d='M3868.49,1596.43l-17.82,24.06c-5.19,7.01-13.88,10.97-23.53,10.65-7-.23-16.06-.35-26.36-.04h0c-28.93.85-67.57,5.02-97.46,19.23-36.04,17.13-82.74-2.63-101.2-44.19-3.79-8.51-6.39-17.95-7.46-28.16-1.67-15.7.27-33.24,7-52.17,32.5-91.37,83.43-115.94,164.42-54.11,9.2,7.02,17.78,13.85,25.77,20.43,35.74,29.44,59.64,54.03,73.54,69.66,9.29,10.46,10.53,24.61,3.12,34.63Z'/%3E%3Cpath id='center-outer' d='M3828.39,1649.42l4.69-15.43c2.1-6.9.21-13.97-5.05-18.9l-11.76-11.04c-13.24-12.42-2.94-33.83,17.43-36.23l18.1-2.13c8.09-.95,15.45-5.26,19.69-11.52l9.48-14c10.67-15.76,36.65-15.58,43.96.31l6.5,14.12c2.9,6.31,9.34,10.72,17.22,11.78l17.62,2.38c19.83,2.68,25.59,24.2,9.73,36.42l-14.08,10.85c-6.3,4.85-9.68,11.88-9.05,18.8l1.41,15.48c1.59,17.42-20.83,30.54-37.94,22.2l-15.2-7.41c-6.79-3.31-15.32-3.37-22.81-.16l-16.75,7.18c-18.85,8.09-38.46-5.33-33.18-22.7Z'/%3E%3Cpath id='center-middle' d='M3954.46,1607.72c-.98,2.1-2.57,4.12-4.8,5.84l-9.3,7.17c-4.15,3.2-6.39,7.84-5.97,12.41l.94,10.22c1.05,11.51-13.76,20.17-25.06,14.66l-10.04-4.9c-4.48-2.18-10.12-2.22-15.06-.11l-11.06,4.75c-12.45,5.34-25.4-3.53-21.92-14.99l3.1-10.19c1.39-4.55.14-9.22-3.34-12.48l-3.16-2.97-4.61-4.32c-8.74-8.2-1.93-22.34,11.51-23.92l11.95-1.41c5.34-.63,10.2-3.48,13-7.6l6.26-9.25c7.05-10.41,24.2-10.29,29.03.21l4.28,9.32c1.92,4.17,6.17,7.08,11.37,7.78l11.64,1.57c10.29,1.4,14.84,10.47,11.23,18.21Z'/%3E%3Cpath id='center-inner' d='M3940.35,1620.73c-4.15,3.2-6.39,7.84-5.97,12.41l.94,10.22c1.05,11.51-13.76,20.17-25.06,14.66l-10.04-4.9c-4.48-2.18-10.12-2.22-15.06-.11l-11.06,4.75c-12.45,5.34-25.4-3.53-21.92-14.99l3.1-10.19c1.39-4.55.14-9.22-3.34-12.48h0c-1.68-1.58-1.46-4.28.42-5.6,26.31-18.45,61.14-23.67,93.2-10.84,1.01.4,2,.82,2.99,1.25,3.48,1.52,4.15,6.27,1.15,8.6-.02.02-.04.03-.07.05l-9.3,7.17Z'/%3E%3Cpath id='highlight-right' d='M4114.34,1516.84c-6.49,7.07-12.51,12.85-17.78,17.49-6.31,5.56-16.1,3.98-20.37-3.26-2.64-4.47-5.79-8.84-9.48-12.43-13.78-13.41-3.43-40.21,28.49-38.01,8.59.59,15.81,1.93,21.55,4.1,7.23,2.73,10.63,11.02,7.42,18.04-2.03,4.45-5.29,9.13-9.83,14.07Z'/%3E%3Cpath id='highlight-left' d='M3693.38,1495.82c-4.52,4.91-8.7,8.93-12.36,12.16-4.39,3.86-11.2,2.77-14.17-2.27-1.83-3.11-4.02-6.15-6.59-8.65-9.58-9.33-2.39-27.96,19.81-26.43,5.98.41,10.99,1.34,14.99,2.85,5.02,1.9,7.39,7.66,5.16,12.55-1.42,3.09-3.68,6.35-6.83,9.79Z'/%3E%3C/defs%3E%3Cg class='flower-layer'%3E%3Cg aria-hidden='true'%3E%3Cuse href='%23petal-bottom-left' class='outer-stroke'/%3E%3Cuse href='%23petal-top' class='outer-stroke'/%3E%3Cuse href='%23petal-right' class='outer-stroke'/%3E%3Cuse href='%23petal-bottom-right' class='outer-stroke'/%3E%3Cuse href='%23petal-left' class='outer-stroke'/%3E%3C/g%3E%3Cg%3E%3Cuse href='%23petal-bottom-left' class='st7'/%3E%3Cuse href='%23petal-top' class='st2'/%3E%3Cuse href='%23highlight-top' class='st6'/%3E%3Cuse href='%23petal-right' class='st0'/%3E%3Cuse href='%23petal-bottom-right' class='st5'/%3E%3Cuse href='%23petal-left' class='st4'/%3E%3Cuse href='%23center-outer' class='st8'/%3E%3Cuse href='%23center-middle' class='st3'/%3E%3Cuse href='%23center-inner' class='st1'/%3E%3Cuse href='%23highlight-right' class='st6'/%3E%3Cuse href='%23highlight-left' class='st6'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    
+}
+
+/* =============================================
+    subscribe
+============================================s= */
+.chat_box.chat.subscribe {
+    --flower: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='3542.5 1244.5 700 700' preserveAspectRatio='xMidYMid meet'%0A%3E%3Cdefs%3E%3Cstyle%3E .st0 %7B fill: url(%23linear-gradient2); %7D .st1 %7B fill: %236552b2; %7D .st2 %7B fill: url(%23linear-gradient1); %7D .st3 %7B fill: %237b63c6; %7D .st4 %7B fill: url(%23linear-gradient4); %7D .st5 %7B fill: url(%23linear-gradient3); %7D .st6 %7B fill: %23f0ebff; %7D .st7 %7B fill: url(%23linear-gradient); %7D .st8 %7B fill: %239173d8; %7D .outer-stroke %7B fill: none; stroke: %2320294E; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; %7D .flower-layer %7B filter: drop-shadow(-0.5px 0.866px 0 %2320294E); %7D %3C/style%3E%3ClinearGradient id='linear-gradient' x1='3711.64' y1='1844.98' x2='3892.74' y2='1580.97' gradientUnits='userSpaceOnUse' %3E%3Cstop offset='0' stop-color='%23ab8bea'/%3E%3Cstop offset='.02' stop-color='%23e7dcff'/%3E%3Cstop offset='1' stop-color='%237543c4'/%3E%3C/linearGradient%3E%3ClinearGradient id='linear-gradient1' x1='3905' y1='1517.67' x2='3887.98' y2='1268.73' gradientUnits='userSpaceOnUse' %3E%3Cstop offset='0' stop-color='%23ab8bea'/%3E%3Cstop offset='.42' stop-color='%23e7dcff'/%3E%3C/linearGradient%3E%3ClinearGradient id='linear-gradient2' x1='3940.56' y1='1631.01' x2='4196.58' y2='1533.18' gradientUnits='userSpaceOnUse' %3E%3Cstop offset='0' stop-color='%23ab8bea'/%3E%3Cstop offset='.66' stop-color='%23e7dcff'/%3E%3C/linearGradient%3E%3ClinearGradient id='linear-gradient3' x1='3917.25' y1='1680.67' x2='4129.97' y2='1943.84' gradientUnits='userSpaceOnUse' %3E%3Cstop offset='0' stop-color='%23ab8bea'/%3E%3Cstop offset='.69' stop-color='%23e7dcff'/%3E%3Cstop offset='1' stop-color='%237543c4'/%3E%3C/linearGradient%3E%3ClinearGradient id='linear-gradient4' x1='3827.95' y1='1554.3' x2='3549.07' y2='1540.48' gradientUnits='userSpaceOnUse' %3E%3Cstop offset='0' stop-color='%23ab8bea'/%3E%3Cstop offset='.89' stop-color='%23e7dcff'/%3E%3C/linearGradient%3E%3Cfilter id='color-overlay' x='-10%25' y='-10%25' width='120%25' height='120%25' color-interpolation-filters='sRGB' %3E%3CfeFlood flood-color='%235272BF' flood-opacity='1' result='overlayColor' /%3E%3CfeComposite in='overlayColor' in2='SourceAlpha' operator='in' result='overlayShape' /%3E%3CfeBlend in='overlayShape' in2='SourceGraphic' mode='color' /%3E%3C/filter%3E%3Cpath id='petal-bottom-left' d='M3722.53,1825.21c-13.67-10.76-25.48-21.14-35.33-31.15-51.64-52.47-49.52-94.68,19.9-127.11,25.75-12.03,48.88-20.94,68.52-27.53,18.72-6.27,34.26-10.42,45.89-13.11.51-.11,1.02-.23,1.51-.34,12.91-2.94,27.65,2.34,36.07,12.85l20.25,25.24c5.89,7.35,7.83,16.21,5.17,23.94-7.36,21.39-20.22,67.94-10.38,109.6.5,2.09.86,4.17,1.11,6.21,6.27,52.79-70.55,86.05-152.71,21.4Z' /%3E%3Cpath id='petal-top' d='M4008.52,1463.22c-23.65,58.97-47.47,98.58-62.12,120.12-8,11.77-22.87,16.69-36.34,12.11l-32.38-11c-9.43-3.2-16.8-10.61-19.89-20.07-2.07-6.36-4.89-14.42-8.47-23.47-11.14-28.14-29.66-65.85-56.36-91.83-47.66-46.39-11.88-139.06,98.52-131.44,50.77,3.51,87.65,14.51,108.97,34.6,25.04,23.58,28.62,59.72,8.06,110.99Z' /%3E%3Cpath id='highlight-top' d='M3891.49,1387.33c-8.62,9.38-16.61,17.05-23.6,23.21-8.38,7.38-21.37,5.28-27.04-4.33-3.5-5.93-7.68-11.73-12.58-16.5-18.29-17.81-4.56-53.37,37.81-50.45,11.41.79,20.99,2.56,28.61,5.44,9.59,3.62,14.11,14.63,9.84,23.95-2.7,5.91-7.02,12.12-13.05,18.68Z' /%3E%3Cpath id='petal-right' d='M4072.69,1693.72c-64.03-7.68-109.11-20.59-134.07-29.27-13.64-4.74-22.36-17.99-21.41-32.37l2.29-34.54c.31-4.66,1.62-9.12,3.78-13.12,2.5-4.64,6.14-8.64,10.69-11.59,23.41-15.2,71.62-50.1,96.03-93.6,32.98-58.74,133.22-48.03,154.72,61.9,5.41,27.65,7.52,51.83,6.02,72.34-4.46,61-40.93,89.48-118.06,80.23Z' /%3E%3Cpath id='petal-bottom-right' d='M4059.3,1853.31c-5.13,2.08-10.16,3.99-15.09,5.75-83.87,29.84-138.58,12.02-160.43-69.54-2.8-10.41-5.16-20.28-7.18-29.58-8.38-38.61-10.61-67.46-10.98-85.14-.25-11.99,8.84-21.51,22.18-23.33l32.05-4.39c.07,0,.15-.02.22-.03,9.27-1.2,19.23,1.49,26.97,7.36,21.57,16.34,69.24,49.37,116.76,61.42,29.13,7.38,49.91,28.65,55.31,53.18,6.49,29.54-9.34,63.83-59.82,84.29Z' /%3E%3Cpath id='petal-left' d='M3868.49,1596.43l-17.82,24.06c-5.19,7.01-13.88,10.97-23.53,10.65-7-.23-16.06-.35-26.36-.04h0c-28.93.85-67.57,5.02-97.46,19.23-36.04,17.13-82.74-2.63-101.2-44.19-3.79-8.51-6.39-17.95-7.46-28.16-1.67-15.7.27-33.24,7-52.17,32.5-91.37,83.43-115.94,164.42-54.11,9.2,7.02,17.78,13.85,25.77,20.43,35.74,29.44,59.64,54.03,73.54,69.66,9.29,10.46,10.53,24.61,3.12,34.63Z' /%3E%3Cpath id='center-outer' d='M3828.39,1649.42l4.69-15.43c2.1-6.9.21-13.97-5.05-18.9l-11.76-11.04c-13.24-12.42-2.94-33.83,17.43-36.23l18.1-2.13c8.09-.95,15.45-5.26,19.69-11.52l9.48-14c10.67-15.76,36.65-15.58,43.96.31l6.5,14.12c2.9,6.31,9.34,10.72,17.22,11.78l17.62,2.38c19.83,2.68,25.59,24.2,9.73,36.42l-14.08,10.85c-6.3,4.85-9.68,11.88-9.05,18.8l1.41,15.48c1.59,17.42-20.83,30.54-37.94,22.2l-15.2-7.41c-6.79-3.31-15.32-3.37-22.81-.16l-16.75,7.18c-18.85,8.09-38.46-5.33-33.18-22.7Z' /%3E%3Cpath id='center-middle' d='M3954.46,1607.72c-.98,2.1-2.57,4.12-4.8,5.84l-9.3,7.17c-4.15,3.2-6.39,7.84-5.97,12.41l.94,10.22c1.05,11.51-13.76,20.17-25.06,14.66l-10.04-4.9c-4.48-2.18-10.12-2.22-15.06-.11l-11.06,4.75c-12.45,5.34-25.4-3.53-21.92-14.99l3.1-10.19c1.39-4.55.14-9.22-3.34-12.48l-3.16-2.97-4.61-4.32c-8.74-8.2-1.93-22.34,11.51-23.92l11.95-1.41c5.34-.63,10.2-3.48,13-7.6l6.26-9.25c7.05-10.41,24.2-10.29,29.03.21l4.28,9.32c1.92,4.17,6.17,7.08,11.37,7.78l11.64,1.57c10.29,1.4,14.84,10.47,11.23,18.21Z' /%3E%3Cpath id='center-inner' d='M3940.35,1620.73c-4.15,3.2-6.39,7.84-5.97,12.41l.94,10.22c1.05,11.51-13.76,20.17-25.06,14.66l-10.04-4.9c-4.48-2.18-10.12-2.22-15.06-.11l-11.06,4.75c-12.45,5.34-25.4-3.53-21.92-14.99l3.1-10.19c1.39-4.55.14-9.22-3.34-12.48h0c-1.68-1.58-1.46-4.28.42-5.6,26.31-18.45,61.14-23.67,93.2-10.84,1.01.4,2,.82,2.99,1.25,3.48,1.52,4.15,6.27,1.15,8.6-.02.02-.04.03-.07.05l-9.3,7.17Z' /%3E%3Cpath id='highlight-right' d='M4114.34,1516.84c-6.49,7.07-12.51,12.85-17.78,17.49-6.31,5.56-16.1,3.98-20.37-3.26-2.64-4.47-5.79-8.84-9.48-12.43-13.78-13.41-3.43-40.21,28.49-38.01,8.59.59,15.81,1.93,21.55,4.1,7.23,2.73,10.63,11.02,7.42,18.04-2.03,4.45-5.29,9.13-9.83,14.07Z' /%3E%3Cpath id='highlight-left' d='M3693.38,1495.82c-4.52,4.91-8.7,8.93-12.36,12.16-4.39,3.86-11.2,2.77-14.17-2.27-1.83-3.11-4.02-6.15-6.59-8.65-9.58-9.33-2.39-27.96,19.81-26.43,5.98.41,10.99,1.34,14.99,2.85,5.02,1.9,7.39,7.66,5.16,12.55-1.42,3.09-3.68,6.35-6.83,9.79Z' /%3E%3C/defs%3E%3Cg class='flower-layer'%3E%3Cg aria-hidden='true'%3E%3Cuse href='%23petal-bottom-left' class='outer-stroke'/%3E%3Cuse href='%23petal-top' class='outer-stroke'/%3E%3Cuse href='%23petal-right' class='outer-stroke'/%3E%3Cuse href='%23petal-bottom-right' class='outer-stroke'/%3E%3Cuse href='%23petal-left' class='outer-stroke'/%3E%3C/g%3E%3Cg filter='url(%23color-overlay)'%3E%3Cuse href='%23petal-bottom-left' class='st7'/%3E%3Cuse href='%23petal-top' class='st2'/%3E%3Cuse href='%23highlight-top' class='st6'/%3E%3Cuse href='%23petal-right' class='st0'/%3E%3Cuse href='%23petal-bottom-right' class='st5'/%3E%3Cuse href='%23petal-left' class='st4'/%3E%3Cuse href='%23center-outer' class='st8'/%3E%3Cuse href='%23center-middle' class='st3'/%3E%3Cuse href='%23center-inner' class='st1'/%3E%3Cuse href='%23highlight-right' class='st6'/%3E%3Cuse href='%23highlight-left' class='st6'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    --back: linear-gradient(to right, #4b67ae, #384f87);
+    --out: 2px solid #1a2b5a;
+    --bor: 3px solid #ceb89d;
+    --shadow: inset 10px 0 0 0 #22366e, inset 12px 0 0 0 #1a2b5a;
+}
+
+/* =============================================
+    donation
+============================================= */
+.chat_box.image:not(.subscribe) {
+    --flower: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='3542.5 1244.5 700 700' preserveAspectRatio='xMidYMid meet'%0A%3E%3Cdefs%3E%3Cstyle%3E .st0 %7B fill: url(%23linear-gradient2); %7D .st1 %7B fill: %236552b2; %7D .st2 %7B fill: url(%23linear-gradient1); %7D .st3 %7B fill: %237b63c6; %7D .st4 %7B fill: url(%23linear-gradient4); %7D .st5 %7B fill: url(%23linear-gradient3); %7D .st6 %7B fill: %23f0ebff; %7D .st7 %7B fill: url(%23linear-gradient); %7D .st8 %7B fill: %239173d8; %7D .outer-stroke %7B fill: none; stroke: %2320294E; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; %7D .flower-layer %7B filter: drop-shadow(-0.5px 0.866px 0 %2320294E); %7D %3C/style%3E%3ClinearGradient id='linear-gradient' x1='3711.64' y1='1844.98' x2='3892.74' y2='1580.97' gradientUnits='userSpaceOnUse' %3E%3Cstop offset='0' stop-color='%23ab8bea'/%3E%3Cstop offset='.02' stop-color='%23e7dcff'/%3E%3Cstop offset='1' stop-color='%237543c4'/%3E%3C/linearGradient%3E%3ClinearGradient id='linear-gradient1' x1='3905' y1='1517.67' x2='3887.98' y2='1268.73' gradientUnits='userSpaceOnUse' %3E%3Cstop offset='0' stop-color='%23ab8bea'/%3E%3Cstop offset='.42' stop-color='%23e7dcff'/%3E%3C/linearGradient%3E%3ClinearGradient id='linear-gradient2' x1='3940.56' y1='1631.01' x2='4196.58' y2='1533.18' gradientUnits='userSpaceOnUse' %3E%3Cstop offset='0' stop-color='%23ab8bea'/%3E%3Cstop offset='.66' stop-color='%23e7dcff'/%3E%3C/linearGradient%3E%3ClinearGradient id='linear-gradient3' x1='3917.25' y1='1680.67' x2='4129.97' y2='1943.84' gradientUnits='userSpaceOnUse' %3E%3Cstop offset='0' stop-color='%23ab8bea'/%3E%3Cstop offset='.69' stop-color='%23e7dcff'/%3E%3Cstop offset='1' stop-color='%237543c4'/%3E%3C/linearGradient%3E%3ClinearGradient id='linear-gradient4' x1='3827.95' y1='1554.3' x2='3549.07' y2='1540.48' gradientUnits='userSpaceOnUse' %3E%3Cstop offset='0' stop-color='%23ab8bea'/%3E%3Cstop offset='.89' stop-color='%23e7dcff'/%3E%3C/linearGradient%3E%3Cfilter id='color-overlay' x='-10%25' y='-10%25' width='120%25' height='120%25' color-interpolation-filters='sRGB' %3E%3CfeFlood flood-color='%235272BF' flood-opacity='1' result='overlayColor' /%3E%3CfeComposite in='overlayColor' in2='SourceAlpha' operator='in' result='overlayShape' /%3E%3CfeBlend in='overlayShape' in2='SourceGraphic' mode='color' /%3E%3C/filter%3E%3Cpath id='petal-bottom-left' d='M3722.53,1825.21c-13.67-10.76-25.48-21.14-35.33-31.15-51.64-52.47-49.52-94.68,19.9-127.11,25.75-12.03,48.88-20.94,68.52-27.53,18.72-6.27,34.26-10.42,45.89-13.11.51-.11,1.02-.23,1.51-.34,12.91-2.94,27.65,2.34,36.07,12.85l20.25,25.24c5.89,7.35,7.83,16.21,5.17,23.94-7.36,21.39-20.22,67.94-10.38,109.6.5,2.09.86,4.17,1.11,6.21,6.27,52.79-70.55,86.05-152.71,21.4Z' /%3E%3Cpath id='petal-top' d='M4008.52,1463.22c-23.65,58.97-47.47,98.58-62.12,120.12-8,11.77-22.87,16.69-36.34,12.11l-32.38-11c-9.43-3.2-16.8-10.61-19.89-20.07-2.07-6.36-4.89-14.42-8.47-23.47-11.14-28.14-29.66-65.85-56.36-91.83-47.66-46.39-11.88-139.06,98.52-131.44,50.77,3.51,87.65,14.51,108.97,34.6,25.04,23.58,28.62,59.72,8.06,110.99Z' /%3E%3Cpath id='highlight-top' d='M3891.49,1387.33c-8.62,9.38-16.61,17.05-23.6,23.21-8.38,7.38-21.37,5.28-27.04-4.33-3.5-5.93-7.68-11.73-12.58-16.5-18.29-17.81-4.56-53.37,37.81-50.45,11.41.79,20.99,2.56,28.61,5.44,9.59,3.62,14.11,14.63,9.84,23.95-2.7,5.91-7.02,12.12-13.05,18.68Z' /%3E%3Cpath id='petal-right' d='M4072.69,1693.72c-64.03-7.68-109.11-20.59-134.07-29.27-13.64-4.74-22.36-17.99-21.41-32.37l2.29-34.54c.31-4.66,1.62-9.12,3.78-13.12,2.5-4.64,6.14-8.64,10.69-11.59,23.41-15.2,71.62-50.1,96.03-93.6,32.98-58.74,133.22-48.03,154.72,61.9,5.41,27.65,7.52,51.83,6.02,72.34-4.46,61-40.93,89.48-118.06,80.23Z' /%3E%3Cpath id='petal-bottom-right' d='M4059.3,1853.31c-5.13,2.08-10.16,3.99-15.09,5.75-83.87,29.84-138.58,12.02-160.43-69.54-2.8-10.41-5.16-20.28-7.18-29.58-8.38-38.61-10.61-67.46-10.98-85.14-.25-11.99,8.84-21.51,22.18-23.33l32.05-4.39c.07,0,.15-.02.22-.03,9.27-1.2,19.23,1.49,26.97,7.36,21.57,16.34,69.24,49.37,116.76,61.42,29.13,7.38,49.91,28.65,55.31,53.18,6.49,29.54-9.34,63.83-59.82,84.29Z' /%3E%3Cpath id='petal-left' d='M3868.49,1596.43l-17.82,24.06c-5.19,7.01-13.88,10.97-23.53,10.65-7-.23-16.06-.35-26.36-.04h0c-28.93.85-67.57,5.02-97.46,19.23-36.04,17.13-82.74-2.63-101.2-44.19-3.79-8.51-6.39-17.95-7.46-28.16-1.67-15.7.27-33.24,7-52.17,32.5-91.37,83.43-115.94,164.42-54.11,9.2,7.02,17.78,13.85,25.77,20.43,35.74,29.44,59.64,54.03,73.54,69.66,9.29,10.46,10.53,24.61,3.12,34.63Z' /%3E%3Cpath id='center-outer' d='M3828.39,1649.42l4.69-15.43c2.1-6.9.21-13.97-5.05-18.9l-11.76-11.04c-13.24-12.42-2.94-33.83,17.43-36.23l18.1-2.13c8.09-.95,15.45-5.26,19.69-11.52l9.48-14c10.67-15.76,36.65-15.58,43.96.31l6.5,14.12c2.9,6.31,9.34,10.72,17.22,11.78l17.62,2.38c19.83,2.68,25.59,24.2,9.73,36.42l-14.08,10.85c-6.3,4.85-9.68,11.88-9.05,18.8l1.41,15.48c1.59,17.42-20.83,30.54-37.94,22.2l-15.2-7.41c-6.79-3.31-15.32-3.37-22.81-.16l-16.75,7.18c-18.85,8.09-38.46-5.33-33.18-22.7Z' /%3E%3Cpath id='center-middle' d='M3954.46,1607.72c-.98,2.1-2.57,4.12-4.8,5.84l-9.3,7.17c-4.15,3.2-6.39,7.84-5.97,12.41l.94,10.22c1.05,11.51-13.76,20.17-25.06,14.66l-10.04-4.9c-4.48-2.18-10.12-2.22-15.06-.11l-11.06,4.75c-12.45,5.34-25.4-3.53-21.92-14.99l3.1-10.19c1.39-4.55.14-9.22-3.34-12.48l-3.16-2.97-4.61-4.32c-8.74-8.2-1.93-22.34,11.51-23.92l11.95-1.41c5.34-.63,10.2-3.48,13-7.6l6.26-9.25c7.05-10.41,24.2-10.29,29.03.21l4.28,9.32c1.92,4.17,6.17,7.08,11.37,7.78l11.64,1.57c10.29,1.4,14.84,10.47,11.23,18.21Z' /%3E%3Cpath id='center-inner' d='M3940.35,1620.73c-4.15,3.2-6.39,7.84-5.97,12.41l.94,10.22c1.05,11.51-13.76,20.17-25.06,14.66l-10.04-4.9c-4.48-2.18-10.12-2.22-15.06-.11l-11.06,4.75c-12.45,5.34-25.4-3.53-21.92-14.99l3.1-10.19c1.39-4.55.14-9.22-3.34-12.48h0c-1.68-1.58-1.46-4.28.42-5.6,26.31-18.45,61.14-23.67,93.2-10.84,1.01.4,2,.82,2.99,1.25,3.48,1.52,4.15,6.27,1.15,8.6-.02.02-.04.03-.07.05l-9.3,7.17Z' /%3E%3Cpath id='highlight-right' d='M4114.34,1516.84c-6.49,7.07-12.51,12.85-17.78,17.49-6.31,5.56-16.1,3.98-20.37-3.26-2.64-4.47-5.79-8.84-9.48-12.43-13.78-13.41-3.43-40.21,28.49-38.01,8.59.59,15.81,1.93,21.55,4.1,7.23,2.73,10.63,11.02,7.42,18.04-2.03,4.45-5.29,9.13-9.83,14.07Z' /%3E%3Cpath id='highlight-left' d='M3693.38,1495.82c-4.52,4.91-8.7,8.93-12.36,12.16-4.39,3.86-11.2,2.77-14.17-2.27-1.83-3.11-4.02-6.15-6.59-8.65-9.58-9.33-2.39-27.96,19.81-26.43,5.98.41,10.99,1.34,14.99,2.85,5.02,1.9,7.39,7.66,5.16,12.55-1.42,3.09-3.68,6.35-6.83,9.79Z' /%3E%3C/defs%3E%3Cg class='flower-layer'%3E%3Cg aria-hidden='true'%3E%3Cuse href='%23petal-bottom-left' class='outer-stroke'/%3E%3Cuse href='%23petal-top' class='outer-stroke'/%3E%3Cuse href='%23petal-right' class='outer-stroke'/%3E%3Cuse href='%23petal-bottom-right' class='outer-stroke'/%3E%3Cuse href='%23petal-left' class='outer-stroke'/%3E%3C/g%3E%3Cg filter='url(%23color-overlay)'%3E%3Cuse href='%23petal-bottom-left' class='st7'/%3E%3Cuse href='%23petal-top' class='st2'/%3E%3Cuse href='%23highlight-top' class='st6'/%3E%3Cuse href='%23petal-right' class='st0'/%3E%3Cuse href='%23petal-bottom-right' class='st5'/%3E%3Cuse href='%23petal-left' class='st4'/%3E%3Cuse href='%23center-outer' class='st8'/%3E%3Cuse href='%23center-middle' class='st3'/%3E%3Cuse href='%23center-inner' class='st1'/%3E%3Cuse href='%23highlight-right' class='st6'/%3E%3Cuse href='%23highlight-left' class='st6'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    --back: linear-gradient(to right, #395089, #273862);
+    --out: 2px solid #20294e;
+    --bor: 3px solid #cdb69b;
+    --shadow: inset 10px 0 0 0 #20294e, inset 12px 0 0 0 #1a2246;
+}
+
+.chat_box.image {
+    width: 330px !important;
+    max-width: 330px !important;
+    min-width: 330px !important;
+}
+
+.chat_box.image::before {
+    content: "";
+    position: absolute;
+    inset: -5px -13px -5px -13px;
+    background: var(--bar);
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    z-index: 2;
+}
+
+.chat_box.image > .inner_box {
+    padding: 20px 36px 15px 36px;
+}
+
+.chat_box.image .inner_box .donation_box {
+    position: relative;
+    overflow: visible !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .msg_box .val {
+    font-size: 16px !important;
+    background: var(--valC) !important;
+    outline: var(--valB);
+    border: var(--valS);
+    color: #b6957c !important;
+    padding: 1px 15px 0 15px !important;
+    border-radius: 5px !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .msg_box .val::after {
+    content: "치즈";
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .text_box {
+    position: static;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .text_box .msg {
+    padding: 0 25px;
+    margin-bottom: 10px !important;
+    margin-top: -10px !important;
+}
+
+.chat_box.image .inner_box .donation_box .text_box .nick {
+    display: block !important;
+    width: 350px !important;
+    border: var(--nickB) !important;
+    background: var(--nickC) !important;
+    top: -25px !important;
+    border-radius: 999vh;
+    border: var(--nickB) !important;
+    padding: 2px 0 !important;
+    font-size: 16px !important;
+    color: var(--nickT) !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.5px !important;
+    box-shadow: inset 0 -1px 0 0 #ffffffda !important;
+}
+
+/* =============================================
+    donation - subscribe
+============================================= */
+.chat_box.image.subscribe {
+    --flower: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='3542.5 1244.5 700 700' preserveAspectRatio='xMidYMid meet'%0A%3E%3Cdefs%3E%3Cstyle%3E .st0 %7B fill: url(%23linear-gradient2); %7D .st1 %7B fill: %236552b2; %7D .st2 %7B fill: url(%23linear-gradient1); %7D .st3 %7B fill: %237b63c6; %7D .st4 %7B fill: url(%23linear-gradient4); %7D .st5 %7B fill: url(%23linear-gradient3); %7D .st6 %7B fill: %23f0ebff; %7D .st7 %7B fill: url(%23linear-gradient); %7D .st8 %7B fill: %239173d8; %7D .outer-stroke %7B fill: none; stroke: %2320294E; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; %7D .flower-layer %7B filter: drop-shadow(-0.5px 0.866px 0 %2320294E); %7D %3C/style%3E%3ClinearGradient id='linear-gradient' x1='3711.64' y1='1844.98' x2='3892.74' y2='1580.97' gradientUnits='userSpaceOnUse' %3E%3Cstop offset='0' stop-color='%23ab8bea'/%3E%3Cstop offset='.02' stop-color='%23e7dcff'/%3E%3Cstop offset='1' stop-color='%237543c4'/%3E%3C/linearGradient%3E%3ClinearGradient id='linear-gradient1' x1='3905' y1='1517.67' x2='3887.98' y2='1268.73' gradientUnits='userSpaceOnUse' %3E%3Cstop offset='0' stop-color='%23ab8bea'/%3E%3Cstop offset='.42' stop-color='%23e7dcff'/%3E%3C/linearGradient%3E%3ClinearGradient id='linear-gradient2' x1='3940.56' y1='1631.01' x2='4196.58' y2='1533.18' gradientUnits='userSpaceOnUse' %3E%3Cstop offset='0' stop-color='%23ab8bea'/%3E%3Cstop offset='.66' stop-color='%23e7dcff'/%3E%3C/linearGradient%3E%3ClinearGradient id='linear-gradient3' x1='3917.25' y1='1680.67' x2='4129.97' y2='1943.84' gradientUnits='userSpaceOnUse' %3E%3Cstop offset='0' stop-color='%23ab8bea'/%3E%3Cstop offset='.69' stop-color='%23e7dcff'/%3E%3Cstop offset='1' stop-color='%237543c4'/%3E%3C/linearGradient%3E%3ClinearGradient id='linear-gradient4' x1='3827.95' y1='1554.3' x2='3549.07' y2='1540.48' gradientUnits='userSpaceOnUse' %3E%3Cstop offset='0' stop-color='%23ab8bea'/%3E%3Cstop offset='.89' stop-color='%23e7dcff'/%3E%3C/linearGradient%3E%3Cfilter id='color-overlay' x='-10%25' y='-10%25' width='120%25' height='120%25' color-interpolation-filters='sRGB' %3E%3CfeFlood flood-color='%235272BF' flood-opacity='1' result='overlayColor' /%3E%3CfeComposite in='overlayColor' in2='SourceAlpha' operator='in' result='overlayShape' /%3E%3CfeBlend in='overlayShape' in2='SourceGraphic' mode='color' /%3E%3C/filter%3E%3Cpath id='petal-bottom-left' d='M3722.53,1825.21c-13.67-10.76-25.48-21.14-35.33-31.15-51.64-52.47-49.52-94.68,19.9-127.11,25.75-12.03,48.88-20.94,68.52-27.53,18.72-6.27,34.26-10.42,45.89-13.11.51-.11,1.02-.23,1.51-.34,12.91-2.94,27.65,2.34,36.07,12.85l20.25,25.24c5.89,7.35,7.83,16.21,5.17,23.94-7.36,21.39-20.22,67.94-10.38,109.6.5,2.09.86,4.17,1.11,6.21,6.27,52.79-70.55,86.05-152.71,21.4Z' /%3E%3Cpath id='petal-top' d='M4008.52,1463.22c-23.65,58.97-47.47,98.58-62.12,120.12-8,11.77-22.87,16.69-36.34,12.11l-32.38-11c-9.43-3.2-16.8-10.61-19.89-20.07-2.07-6.36-4.89-14.42-8.47-23.47-11.14-28.14-29.66-65.85-56.36-91.83-47.66-46.39-11.88-139.06,98.52-131.44,50.77,3.51,87.65,14.51,108.97,34.6,25.04,23.58,28.62,59.72,8.06,110.99Z' /%3E%3Cpath id='highlight-top' d='M3891.49,1387.33c-8.62,9.38-16.61,17.05-23.6,23.21-8.38,7.38-21.37,5.28-27.04-4.33-3.5-5.93-7.68-11.73-12.58-16.5-18.29-17.81-4.56-53.37,37.81-50.45,11.41.79,20.99,2.56,28.61,5.44,9.59,3.62,14.11,14.63,9.84,23.95-2.7,5.91-7.02,12.12-13.05,18.68Z' /%3E%3Cpath id='petal-right' d='M4072.69,1693.72c-64.03-7.68-109.11-20.59-134.07-29.27-13.64-4.74-22.36-17.99-21.41-32.37l2.29-34.54c.31-4.66,1.62-9.12,3.78-13.12,2.5-4.64,6.14-8.64,10.69-11.59,23.41-15.2,71.62-50.1,96.03-93.6,32.98-58.74,133.22-48.03,154.72,61.9,5.41,27.65,7.52,51.83,6.02,72.34-4.46,61-40.93,89.48-118.06,80.23Z' /%3E%3Cpath id='petal-bottom-right' d='M4059.3,1853.31c-5.13,2.08-10.16,3.99-15.09,5.75-83.87,29.84-138.58,12.02-160.43-69.54-2.8-10.41-5.16-20.28-7.18-29.58-8.38-38.61-10.61-67.46-10.98-85.14-.25-11.99,8.84-21.51,22.18-23.33l32.05-4.39c.07,0,.15-.02.22-.03,9.27-1.2,19.23,1.49,26.97,7.36,21.57,16.34,69.24,49.37,116.76,61.42,29.13,7.38,49.91,28.65,55.31,53.18,6.49,29.54-9.34,63.83-59.82,84.29Z' /%3E%3Cpath id='petal-left' d='M3868.49,1596.43l-17.82,24.06c-5.19,7.01-13.88,10.97-23.53,10.65-7-.23-16.06-.35-26.36-.04h0c-28.93.85-67.57,5.02-97.46,19.23-36.04,17.13-82.74-2.63-101.2-44.19-3.79-8.51-6.39-17.95-7.46-28.16-1.67-15.7.27-33.24,7-52.17,32.5-91.37,83.43-115.94,164.42-54.11,9.2,7.02,17.78,13.85,25.77,20.43,35.74,29.44,59.64,54.03,73.54,69.66,9.29,10.46,10.53,24.61,3.12,34.63Z' /%3E%3Cpath id='center-outer' d='M3828.39,1649.42l4.69-15.43c2.1-6.9.21-13.97-5.05-18.9l-11.76-11.04c-13.24-12.42-2.94-33.83,17.43-36.23l18.1-2.13c8.09-.95,15.45-5.26,19.69-11.52l9.48-14c10.67-15.76,36.65-15.58,43.96.31l6.5,14.12c2.9,6.31,9.34,10.72,17.22,11.78l17.62,2.38c19.83,2.68,25.59,24.2,9.73,36.42l-14.08,10.85c-6.3,4.85-9.68,11.88-9.05,18.8l1.41,15.48c1.59,17.42-20.83,30.54-37.94,22.2l-15.2-7.41c-6.79-3.31-15.32-3.37-22.81-.16l-16.75,7.18c-18.85,8.09-38.46-5.33-33.18-22.7Z' /%3E%3Cpath id='center-middle' d='M3954.46,1607.72c-.98,2.1-2.57,4.12-4.8,5.84l-9.3,7.17c-4.15,3.2-6.39,7.84-5.97,12.41l.94,10.22c1.05,11.51-13.76,20.17-25.06,14.66l-10.04-4.9c-4.48-2.18-10.12-2.22-15.06-.11l-11.06,4.75c-12.45,5.34-25.4-3.53-21.92-14.99l3.1-10.19c1.39-4.55.14-9.22-3.34-12.48l-3.16-2.97-4.61-4.32c-8.74-8.2-1.93-22.34,11.51-23.92l11.95-1.41c5.34-.63,10.2-3.48,13-7.6l6.26-9.25c7.05-10.41,24.2-10.29,29.03.21l4.28,9.32c1.92,4.17,6.17,7.08,11.37,7.78l11.64,1.57c10.29,1.4,14.84,10.47,11.23,18.21Z' /%3E%3Cpath id='center-inner' d='M3940.35,1620.73c-4.15,3.2-6.39,7.84-5.97,12.41l.94,10.22c1.05,11.51-13.76,20.17-25.06,14.66l-10.04-4.9c-4.48-2.18-10.12-2.22-15.06-.11l-11.06,4.75c-12.45,5.34-25.4-3.53-21.92-14.99l3.1-10.19c1.39-4.55.14-9.22-3.34-12.48h0c-1.68-1.58-1.46-4.28.42-5.6,26.31-18.45,61.14-23.67,93.2-10.84,1.01.4,2,.82,2.99,1.25,3.48,1.52,4.15,6.27,1.15,8.6-.02.02-.04.03-.07.05l-9.3,7.17Z' /%3E%3Cpath id='highlight-right' d='M4114.34,1516.84c-6.49,7.07-12.51,12.85-17.78,17.49-6.31,5.56-16.1,3.98-20.37-3.26-2.64-4.47-5.79-8.84-9.48-12.43-13.78-13.41-3.43-40.21,28.49-38.01,8.59.59,15.81,1.93,21.55,4.1,7.23,2.73,10.63,11.02,7.42,18.04-2.03,4.45-5.29,9.13-9.83,14.07Z' /%3E%3Cpath id='highlight-left' d='M3693.38,1495.82c-4.52,4.91-8.7,8.93-12.36,12.16-4.39,3.86-11.2,2.77-14.17-2.27-1.83-3.11-4.02-6.15-6.59-8.65-9.58-9.33-2.39-27.96,19.81-26.43,5.98.41,10.99,1.34,14.99,2.85,5.02,1.9,7.39,7.66,5.16,12.55-1.42,3.09-3.68,6.35-6.83,9.79Z' /%3E%3C/defs%3E%3Cg class='flower-layer'%3E%3Cg aria-hidden='true'%3E%3Cuse href='%23petal-bottom-left' class='outer-stroke'/%3E%3Cuse href='%23petal-top' class='outer-stroke'/%3E%3Cuse href='%23petal-right' class='outer-stroke'/%3E%3Cuse href='%23petal-bottom-right' class='outer-stroke'/%3E%3Cuse href='%23petal-left' class='outer-stroke'/%3E%3C/g%3E%3Cg filter='url(%23color-overlay)'%3E%3Cuse href='%23petal-bottom-left' class='st7'/%3E%3Cuse href='%23petal-top' class='st2'/%3E%3Cuse href='%23highlight-top' class='st6'/%3E%3Cuse href='%23petal-right' class='st0'/%3E%3Cuse href='%23petal-bottom-right' class='st5'/%3E%3Cuse href='%23petal-left' class='st4'/%3E%3Cuse href='%23center-outer' class='st8'/%3E%3Cuse href='%23center-middle' class='st3'/%3E%3Cuse href='%23center-inner' class='st1'/%3E%3Cuse href='%23highlight-right' class='st6'/%3E%3Cuse href='%23highlight-left' class='st6'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    --back: linear-gradient(to right, #4b67ae, #384f87);
+    --out: 2px solid #1a2b5a;
+    --bor: 3px solid #ceb89d;
+    --shadow: inset 10px 0 0 0 #22366e, inset 12px 0 0 0 #1a2b5a;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .text_box .msg {
+    font-size: 0 !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .text_box .msg .val {
+    font-size: 16px !important;
+    background: var(--valC) !important;
+    outline: var(--valB);
+    border: var(--valS);
+    color: #b6957c !important;
+    padding: 1px 15px 0 15px !important;
+    border-radius: 5px !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .msg_box .msg {
+    margin-bottom: 10px !important;
+    margin-top: -10px !important;
+}
+
+/* =============================================
+    keyframes
+============================================= */
+@keyframes yeonhwaPopup {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 18px, 0);
+        filter: blur(2px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+        filter: blur(0);
+    }
+}
+
+@keyframes yeonhwaBackground {
+    from {
+        background-position:
+            left -108px top -202px,
+            left -36px top -202px,
+            center;
+    }
+
+    to {
+        background-position:
+            left -85px top -202px,
+            left -16px top -202px,
+            center;
+    }
+}
+
+@keyframes yeonhwaLine {
+    from {
+        opacity: 0;
+        clip-path: inset(48% 0 48% 0);
+    }
+
+    to {
+        opacity: 0.3;
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+@keyframes yeonhwaCorner {
+    from {
+        opacity: 0;
+        clip-path: inset(100% 0 0 0);
+        filter: blur(1px);
+    }
+
+    to {
+        opacity: 1;
+        clip-path: inset(0 0 0 0);
+        filter: blur(0);
+    }
+}
+
+@keyframes yeonhwaOrnament {
+    from {
+        opacity: 0;
+        clip-path: inset(0 0 32% 0);
+        filter: blur(1.2px) brightness(1.1);
+    }
+
+    to {
+        opacity: 1;
+        clip-path: inset(0 0 0 0);
+        filter: blur(0) brightness(1);
+    }
+}
+
+@keyframes yeonhwaText {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 8px, 0);
+        filter: blur(2px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+        filter: blur(0);
+    }
+}
+
+@keyframes yeonhwaFlowerReveal {
+    from {
+        opacity: 0;
+        clip-path: circle(0% at 28% 72%);
+        filter: blur(2px);
+    }
+
+    to {
+        opacity: 1;
+        clip-path: circle(78% at 50% 50%);
+        filter: blur(0);
+    }
+}
+
+@keyframes yeonhwaFlowerLoop {
+    from {
+        transform:
+            translate3d(-3px, calc(-50% + 4px), 0)
+            rotate(-5.5deg);
+    }
+
+    to {
+        transform:
+            translate3d(5px, calc(-50% - 6px), 0)
+            rotate(5.5deg);
+    }
+}
+
+.chat_box {
+    transform-origin: center center;
+    backface-visibility: hidden;
+    will-change: transform, opacity, filter;
+    animation:
+        yeonhwaPopup 0.9s cubic-bezier(0.22, 0.65, 0.28, 1) both;
+}
+
+.chat_box .inner_box {
+    backface-visibility: hidden;
+    will-change: background-position;
+    animation:
+        yeonhwaBackground 1.55s cubic-bezier(0.22, 0.65, 0.28, 1) 0.05s both;
+}
+
+.chat_box .inner_box::before {
+    backface-visibility: hidden;
+    will-change: opacity, clip-path;
+    animation:
+        yeonhwaLine 1.25s cubic-bezier(0.22, 0.65, 0.28, 1) 0.12s both;
+}
+
+.chat_box::before {
+    backface-visibility: hidden;
+    will-change: opacity, clip-path, filter;
+    animation:
+        yeonhwaCorner 1.45s cubic-bezier(0.22, 0.65, 0.28, 1) 0.14s both;
+}
+
+.chat_box .inner_box::after {
+    backface-visibility: hidden;
+    will-change: opacity, clip-path, filter;
+    animation:
+        yeonhwaOrnament 1.45s cubic-bezier(0.22, 0.65, 0.28, 1) 0.16s both;
+}
+
+.chat_box p {
+    backface-visibility: hidden;
+    will-change: transform, opacity, filter;
+    animation:
+        yeonhwaText 1.15s cubic-bezier(0.22, 0.65, 0.28, 1) 0.22s both;
+}
+
+.chat_box::after {
+    transform-origin: 28% 78%;
+    backface-visibility: hidden;
+    will-change: transform, opacity, clip-path, filter;
+    animation:
+        yeonhwaFlowerReveal 1.25s cubic-bezier(0.18, 0.68, 0.24, 1) 0.62s both,
+        yeonhwaFlowerLoop 3.6s ease-in-out 0.62s infinite alternate;
+}
+.chat_box.image {
+    width: 330px !important;
+    max-width: 330px !important;
+    min-width: 330px !important;
+    margin: 0 auto 28px auto !important;
+    overflow: visible !important;
+}
+
+.chat_box.image::before {
+    content: "" !important;
+    inset: 4px !important;
+    background: var(--corner) !important;
+    background-position: bottom -85px right -8px !important;
+    background-repeat: no-repeat !important;
+    background-size: 64px !important;
+    z-index: 2 !important;
+    pointer-events: none !important;
+}
+
+.chat_box.image::after {
+    width: 20px !important;
+    height: 19px !important;
+    top: 50% !important;
+    left: -10px !important;
+    background: var(--flower) !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: 100% 100% !important;
+    z-index: 6 !important;
+    pointer-events: none !important;
+}
+
+.chat_box.image > .inner_box {
+    position: relative !important;
+    width: 100% !important;
+    min-height: 74px !important;
+    padding: 12px 42px 14px 44px !important;
+    background: var(--pattern), var(--texture), var(--back) !important;
+    background-position: left -85px top -202px, left -16px top -202px, center !important;
+    background-size: 443px, 720px, cover !important;
+    background-repeat: no-repeat, no-repeat, no-repeat !important;
+    background-blend-mode: normal, multiply, normal !important;
+    border: var(--bor) !important;
+    outline: var(--out) !important;
+    box-shadow: var(--shadow) !important;
+    border-radius: 0 !important;
+    overflow: visible !important;
+}
+
+.chat_box.image > .inner_box::before {
+    content: "" !important;
+    inset: 0 !important;
+    background: var(--line) !important;
+    background-size: 20px !important;
+    background-position: left 19px center !important;
+    background-repeat: no-repeat !important;
+    opacity: 0.3 !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
+}
+
+.chat_box.image > .inner_box::after {
+    content: "" !important;
+    inset: 0 !important;
+    background: var(--mark), var(--flag) !important;
+    background-position: right 20px top 20px, right 19px top -25px !important;
+    background-repeat: no-repeat, no-repeat !important;
+    background-size: 20px, 22px !important;
+    z-index: 3 !important;
+    pointer-events: none !important;
+}
+
+.chat_box.image .inner_box .donation_box,
+.chat_box.image .inner_box .donation_box > .text_box,
+.chat_box.image .inner_box .donation_box > .msg_box {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    outline: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+}
+
+.chat_box.image .inner_box .donation_box {
+    min-height: 44px !important;
+    z-index: 4 !important;
+}
+
+.chat_box.image .inner_box .donation_box .text_box .nick {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .text_box .msg {
+    display: block !important;
+    position: relative !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: #ffffff !important;
+    font-size: 17px !important;
+    line-height: 1.22 !important;
+    letter-spacing: -0.6px !important;
+    text-align: left !important;
+    white-space: normal !important;
+    word-break: keep-all !important;
+    z-index: 4 !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .msg_box {
+    position: static !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .msg_box .val {
+    display: block !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: calc(100% + 5px) !important;
+    width: fit-content !important;
+    min-width: 42px !important;
+    margin: 0 !important;
+    padding: 1px 7px 1px 7px !important;
+    background: #20294e !important;
+    border: 1px solid #d2b998 !important;
+    outline: 1px solid #20294e !important;
+    border-radius: 0 !important;
+    color: #ffffff !important;
+    font-size: 13px !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.5px !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    text-shadow: none !important;
+    z-index: 10 !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .msg_box .val::after {
+    content: none !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .msg_box {
+    position: static !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .msg_box .msg {
+    display: block !important;
+    position: relative !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: #ffffff !important;
+    font-size: 17px !important;
+    line-height: 1.22 !important;
+    letter-spacing: -0.6px !important;
+    text-align: left !important;
+    white-space: normal !important;
+    z-index: 4 !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .text_box .msg {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+    overflow: visible !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .text_box .msg .val {
+    display: block !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: calc(100% + 5px) !important;
+    width: fit-content !important;
+    min-width: 42px !important;
+    margin: 0 !important;
+    padding: 1px 7px 1px 7px !important;
+    background: #20294e !important;
+    border: 1px solid #d2b998 !important;
+    outline: 1px solid #20294e !important;
+    border-radius: 0 !important;
+    color: #ffffff !important;
+    font-size: 13px !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.5px !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    text-shadow: none !important;
+    z-index: 10 !important;
+}
+
+.chat_box.image,
+.chat_box.image * {
+    box-sizing: border-box !important;
+}
+
+.chat_box.image {
+    width: 350px !important;
+    max-width: 350px !important;
+    min-width: 350px !important;
+    margin: 0 auto 30px auto !important;
+}
+
+.chat_box.image > .inner_box {
+    width: 350px !important;
+    min-height: 82px !important;
+    padding: 12px 42px 12px 44px !important;
+}
+
+.chat_box.image .inner_box .donation_box {
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    min-height: 56px !important;
+    height: 56px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.chat_box.image .inner_box .donation_box > .text_box,
+.chat_box.image .inner_box .donation_box > .msg_box {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.chat_box.image .inner_box .donation_box .nick,
+.chat_box.image .inner_box .donation_box .text_box .nick {
+    display: none !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    height: 0 !important;
+    max-width: 0 !important;
+    max-height: 0 !important;
+    overflow: hidden !important;
+    opacity: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box > .text_box {
+    position: static !important;
+    display: block !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .text_box .msg {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: #ffffff !important;
+    font-size: 24px !important;
+    line-height: 1.18 !important;
+    letter-spacing: -0.7px !important;
+    text-align: left !important;
+    white-space: normal !important;
+    word-break: keep-all !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box > .msg_box {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    height: 0 !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .msg_box .val {
+    position: absolute !important;
+    left: 0 !important;
+    top: calc(100% + 3px) !important;
+    bottom: auto !important;
+    display: block !important;
+    width: fit-content !important;
+    min-width: 46px !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 2px 8px 2px 8px !important;
+    background: #20294e !important;
+    border: 1px solid #d2b998 !important;
+    outline: 1px solid #20294e !important;
+    border-radius: 0 !important;
+    color: #ffffff !important;
+    font-size: 19px !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.4px !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    text-shadow: none !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box > .text_box {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box > .text_box > .msg {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+    overflow: visible !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box > .text_box > .msg > .val {
+    position: absolute !important;
+    left: 0 !important;
+    top: calc(100% + 3px) !important;
+    bottom: auto !important;
+    display: block !important;
+    width: fit-content !important;
+    min-width: 46px !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 2px 8px 2px 8px !important;
+    background: #20294e !important;
+    border: 1px solid #d2b998 !important;
+    outline: 1px solid #20294e !important;
+    border-radius: 0 !important;
+    color: #ffffff !important;
+    font-size: 19px !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.4px !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    text-shadow: none !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box > .msg_box {
+    position: static !important;
+    display: flex !important;
+    align-items: center !important;
+    width: 100% !important;
+    height: 56px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box > .msg_box > .msg {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: #ffffff !important;
+    font-size: 24px !important;
+    line-height: 1.18 !important;
+    letter-spacing: -0.7px !important;
+    text-align: left !important;
+    white-space: normal !important;
+}
+
+
+.chat_box.image {
+    position: relative !important;
+    width: 350px !important;
+    max-width: 350px !important;
+    min-width: 350px !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 auto 38px auto !important;
+    overflow: visible !important;
+}
+
+.chat_box.image > .inner_box {
+    position: relative !important;
+    width: 350px !important;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 22px 42px 24px 44px !important;
+    overflow: visible !important;
+}
+
+.chat_box.image .inner_box .donation_box {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+}
+
+.chat_box.image .inner_box .donation_box .nick,
+.chat_box.image .inner_box .donation_box .text_box .nick {
+    display: none !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    max-width: 0 !important;
+    height: 0 !important;
+    max-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    opacity: 0 !important;
+    overflow: hidden !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box > .text_box {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box > .text_box > .msg {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: #ffffff !important;
+    font-size: 24px !important;
+    line-height: 1.38 !important;
+    letter-spacing: 0.8px !important;
+    text-align: left !important;
+    white-space: normal !important;
+    word-break: keep-all !important;
+    overflow-wrap: break-word !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box > .msg_box {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box > .msg_box > .val {
+    position: absolute !important;
+    inset: auto !important;
+    left: 0 !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: -31px !important;
+    display: block !important;
+    width: fit-content !important;
+    min-width: 46px !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 3px 10px 3px 10px !important;
+    background: #20294e !important;
+    border: 1px solid #d2b998 !important;
+    outline: 1px solid #20294e !important;
+    border-radius: 0 !important;
+    color: #ffffff !important;
+    font-size: 19px !important;
+    line-height: 1.08 !important;
+    letter-spacing: 0.4px !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    text-shadow: none !important;
+    transform: none !important;
+    translate: none !important;
+    z-index: 20 !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box > .msg_box > .val::after {
+    content: none !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box > .text_box {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box > .text_box > .msg {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+    letter-spacing: 0 !important;
+    overflow: visible !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box > .text_box > .msg > .val {
+    position: absolute !important;
+    inset: auto !important;
+    left: 0 !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: -31px !important;
+    display: block !important;
+    width: fit-content !important;
+    min-width: 46px !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 3px 10px 3px 10px !important;
+    background: #20294e !important;
+    border: 1px solid #d2b998 !important;
+    outline: 1px solid #20294e !important;
+    border-radius: 0 !important;
+    color: #ffffff !important;
+    font-size: 19px !important;
+    line-height: 1.08 !important;
+    letter-spacing: 0.4px !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    text-shadow: none !important;
+    transform: none !important;
+    translate: none !important;
+    z-index: 20 !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box > .msg_box {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box > .msg_box > .msg {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: #ffffff !important;
+    font-size: 24px !important;
+    line-height: 1.38 !important;
+    letter-spacing: 0.8px !important;
+    text-align: left !important;
+    white-space: normal !important;
+    word-break: keep-all !important;
+    overflow-wrap: break-word !important;
+}
+
+.chat_box.image:not(.subscribe) > .inner_box {
+    position: relative !important;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 12px 42px 14px 44px !important;
+    overflow: visible !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box > .text_box {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box > .text_box > .msg {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: #ffffff !important;
+    font-size: 24px !important;
+    line-height: 1.28 !important;
+    letter-spacing: 0.25px !important;
+    text-align: left !important;
+    white-space: normal !important;
+    word-break: keep-all !important;
+    overflow-wrap: break-word !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box > .msg_box {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box > .msg_box > .val {
+    position: absolute !important;
+    left: 44px !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: -13px !important;
+    display: block !important;
+    width: max-content !important;
+    min-width: 46px !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 3px 10px 3px 10px !important;
+    background: #20294e !important;
+    border: 1px solid #d2b998 !important;
+    outline: 1px solid #20294e !important;
+    border-radius: 0 !important;
+    color: #ffffff !important;
+    font-size: 19px !important;
+    line-height: 1.08 !important;
+    letter-spacing: 0.8px !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    text-shadow: none !important;
+    transform: none !important;
+    translate: none !important;
+    z-index: 30 !important;
+}
+
+.chat_box.image.subscribe > .inner_box {
+    position: relative !important;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 12px 42px 14px 44px !important;
+    overflow: visible !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box > .text_box {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box > .text_box > .msg {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+    letter-spacing: 0 !important;
+    overflow: visible !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box > .text_box > .msg > .val {
+    position: absolute !important;
+    left: 44px !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: -13px !important;
+    display: block !important;
+    width: max-content !important;
+    min-width: 46px !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 3px 10px 3px 10px !important;
+    background: #20294e !important;
+    border: 1px solid #d2b998 !important;
+    outline: 1px solid #20294e !important;
+    border-radius: 0 !important;
+    color: #ffffff !important;
+    font-size: 19px !important;
+    line-height: 1.08 !important;
+    letter-spacing: 0.8px !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    text-shadow: none !important;
+    transform: none !important;
+    translate: none !important;
+    z-index: 30 !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box > .msg_box {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box > .msg_box > .msg {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: #ffffff !important;
+    font-size: 24px !important;
+    line-height: 1.28 !important;
+    letter-spacing: 0.25px !important;
+    text-align: left !important;
+    white-space: normal !important;
+    word-break: keep-all !important;
+    overflow-wrap: break-word !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box > .text_box,
+.chat_box.image.subscribe .inner_box .donation_box > .text_box > .msg {
+    position: static !important;
+    transform: none !important;
+    translate: none !important;
+    rotate: none !important;
+    filter: none !important;
+    animation: none !important;
+    will-change: auto !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box > .text_box > .msg > .val {
+    position: absolute !important;
+    left: 44px !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: -13px !important;
+    inset: auto auto -13px 44px !important;
+    transform: none !important;
+    translate: none !important;
+    rotate: none !important;
+    filter: none !important;
+    animation: none !important;
+    margin: 0 !important;
+    z-index: 50 !important;
+}
