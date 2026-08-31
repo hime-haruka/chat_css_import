@@ -1,0 +1,612 @@
+[data-id = "슈퍼챗"], [data-id = "치즈"], [data-id = "비트"], [data-id = "별풍선"], [data-id = "젬"], [data-id = "비트"], [data-id = "빔"] {
+    display: none;
+}
+
+@font-face {
+    font-family: 'SchoolSafetyNotification';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimAllimjangTTF-R.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SchoolSafetyNotification';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimAllimjangTTF-B.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+}
+
+/* =============================================
+    general
+============================================= */
+html {
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+}
+
+p {
+    color: var(--text) !important;
+    font-family: 'SchoolSafetyNotification', Courier, monospace !important;
+    font-weight: 400 !important;
+    position: relative;
+    margin: 0 !important;
+    line-height: 1.2 !important;
+    z-index: 999;
+    text-shadow: var(--text) !important;
+    letter-spacing: -0.8px !important;
+    text-align: center !important;
+}
+
+.chat_area {
+    -webkit-mask-image: -webkit-gradient(linear, left bottom, left top, from(#000), color-stop(0.98, #000), to(transparent));
+}
+
+.chat_box {
+    margin: 0 auto !important;
+    margin-bottom: 55px !important;
+}
+
+.chat_box.chat * {
+    box-sizing: border-box !important;
+}
+
+.icon_badge {
+    display: none !important;
+}
+
+.icon_chzzk {
+    display: none !important;
+}
+
+/* =============================================
+    donation reset
+============================================= */
+.chat_box.image .donation_box,
+.chat_box.image .text_box,
+.chat_box.image .msg_box,
+.chat_box.image .nick,
+.chat_box.image .msg,
+.chat_box.image .val {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent !important;
+}
+
+.chat_box.image .donation_box .inner_box {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+.chat_box.image,
+.chat_box.image .inner_box,
+.chat_box.image .donation_box,
+.chat_box.image .text_box,
+.chat_box.image .msg_box {
+    overflow: visible;
+}
+
+.chat_box.image .donation_box::before,
+.chat_box.image .donation_box::after,
+.chat_box.image .donation_box.subscribe::before {
+    content: none;
+}
+
+.chat_box.image .donation_box.subscribe::before {
+    display: none !important;
+}
+
+/* .chat_box.image .nick {
+    display: none !important;
+} */
+
+/* =========================================
+    display order
+========================================= */
+.chat_box.image .donation_box {
+    position: relative;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+}
+
+.chat_box.image .donation_box > .text_box,
+.chat_box.image .donation_box > .msg_box {
+    display: contents !important;
+}
+
+.chat_box.image .donation_box > .text_box > *,
+.chat_box.image .donation_box > .msg_box > * {
+    order: 0 !important;
+}
+
+.chat_box.image .donation_box > .text_box > .nick {
+    order: 10 !important;
+}
+
+.chat_box.image:not(.subscribe)
+.donation_box > .text_box > .msg {
+    order: 30 !important;
+}
+
+.chat_box.image:not(.subscribe) .donation_box > .msg_box > .val,
+.chat_box.image.subscribe .donation_box.subscribe > .text_box > .msg {
+    padding: 0 !important;
+    margin: 0 !important;
+    order: 20 !important;
+}
+
+.chat_box.image.subscribe
+.donation_box.subscribe > .msg_box > .msg {
+    padding: 0 !important;
+    margin: 0 !important;
+    order: 30 !important;
+}
+
+/* =============================================
+    tokens
+============================================= */
+:root {
+}
+
+.chat_box.chat:not(.streamer):not(.subscribe) {
+    --ear-L: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-6 -32 338.74 325.31' overflow='visible'%3E%3Cg class='ear'%3E%3Cpath d='M0,174.66S153.49-66.04,254.65,17.69s66.28,261.63,66.28,261.63L0,174.66Z' fill='%23ffe7b8' stroke='%239e7b5f' stroke-width='4' stroke-linejoin='round' paint-order='stroke fill' vector-effect='non-scaling-stroke'/%3E%3Cpath d='M55.36,193.31S161.01,18.19,226.62,72.49c65.61,54.3,36.88,188.69,36.88,188.69L55.36,193.31Z' fill='%23fff8f0'/%3E%3C/g%3E%3C/svg%3E");
+    --ear-R: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-6 -32 338.74 325.31' overflow='visible'%3E%3Cg class='ear'%3E%3Cg transform='translate(326.74 0) scale(-1 1)'%3E%3Cpath d='M0,174.66S153.49-66.04,254.65,17.69s66.28,261.63,66.28,261.63L0,174.66Z' fill='%23ffe7b8' stroke='%239e7b5f' stroke-width='4' stroke-linejoin='round' paint-order='stroke fill' vector-effect='non-scaling-stroke'/%3E%3Cpath d='M55.36,193.31S161.01,18.19,226.62,72.49c65.61,54.3,36.88,188.69,36.88,188.69L55.36,193.31Z' fill='%23fff8f0'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    --pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 126 126' width='126' height='126'%3E%3Crect x='0' y='0' width='63' height='63' fill='%23fbdca2'/%3E%3Crect x='63' y='0' width='63' height='63' fill='%23fce1ad'/%3E%3Crect x='0' y='63' width='63' height='63' fill='%23fce1ad'/%3E%3Crect x='63' y='63' width='63' height='63' fill='%23ffe7ba'/%3E%3C/svg%3E");
+    --brow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='23' viewBox='0 0 29 23'%3E%3Cdefs%3E%3Cfilter id='innerLight' x='-3' y='-3' width='35' height='29' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3E%3CfeOffset in='SourceAlpha' dx='1.204' dy='1.597' result='offsetAlpha'/%3E%3CfeGaussianBlur in='offsetAlpha' stdDeviation='1' result='blurOut'/%3E%3CfeFlood flood-color='%23ffefd3' result='floodOut'/%3E%3CfeComposite in='floodOut' in2='blurOut' operator='out' result='compOut'/%3E%3CfeComposite in='compOut' in2='SourceAlpha' operator='in' result='innerLightOnly'/%3E%3CfeComponentTransfer in='innerLightOnly' result='innerLightFinal'%3E%3CfeFuncA type='linear' slope='1'/%3E%3C/feComponentTransfer%3E%3CfeBlend mode='normal' in='innerLightFinal' in2='SourceGraphic'/%3E%3C/filter%3E%3C/defs%3E%3Cpath d='M17.358 5.8L11.272 6.024C8.19 6.138 5.782 8.732 5.891 11.819C6.001 14.907 8.589 17.317 11.67 17.203L17.757 16.979C20.838 16.866 23.247 14.271 23.137 11.184C23.027 8.097 20.44 5.687 17.358 5.8Z' fill='%23f5dcaf' filter='url(%23innerLight)' /%3E%3Cpath d='M17.358 5.8L11.272 6.024C8.19 6.138 5.782 8.732 5.891 11.819C6.001 14.907 8.589 17.317 11.67 17.203L17.757 16.979C20.838 16.866 23.247 14.271 23.137 11.184C23.027 8.097 20.44 5.687 17.358 5.8Z' fill='none' stroke='%239e7b5f' stroke-width='2' stroke-linejoin='round' vector-effect='non-scaling-stroke' /%3E%3C/svg%3E");
+    --text: #3c2925;
+    --outline: 2px solid #9e7b5f;
+    --border: 3px solid #ffeedc;
+    --center-light: 255, 235, 211;
+}
+
+
+/* =============================================
+    design
+============================================= */
+.chat_box {
+    position: relative;
+    width: fit-content;
+    max-width: calc(100% - 20px);
+    min-width: 320px;
+    z-index: 1;
+}
+
+.chat_box::before, .chat_box::after,
+.chat_box .inner_box::before, .chat_box .inner_box::after {
+  content: "";
+  position: absolute;
+}
+
+.chat_box::before, .chat_box::after {
+    width: 72px;
+    height: 73px;
+    top: -34px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    z-index: -1;
+}
+
+.chat_box::before {
+    background-image: var(--ear-R);
+    left: 20%;
+    transform-origin: 91% 72%;
+    animation: earTwitchR 2.5s ease-in-out infinite;
+}
+
+.chat_box::after {
+    background-image: var(--ear-L);
+    right: 20%;
+    transform-origin: 9% 72%;
+    animation: earTwitchL 2.5s ease-in-out infinite;
+}
+
+.chat_box .inner_box::before {
+    width: 72px;
+    height: 20px;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--brow), var(--brow);
+    background-position: left center, right center;
+    background-repeat: no-repeat, no-repeat;
+    background-size: 25px auto, 25px auto;
+    z-index: 3;
+}
+
+.chat_box .inner_box::after {
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(
+        90deg,
+        rgba(var(--center-light), 0) 0%,
+        rgba(var(--center-light), 0) 14%,
+        rgba(var(--center-light), 0.16) 23%,
+        rgba(var(--center-light), 0.48) 31%,
+        rgba(var(--center-light), 0.74) 37%,
+        rgba(var(--center-light), 0.82) 43%,
+        rgba(var(--center-light), 0.84) 50%,
+        rgba(var(--center-light), 0.82) 57%,
+        rgba(var(--center-light), 0.74) 63%,
+        rgba(var(--center-light), 0.48) 69%,
+        rgba(var(--center-light), 0.16) 77%,
+        rgba(var(--center-light), 0) 86%,
+        rgba(var(--center-light), 0) 100%
+    );
+    pointer-events: none;
+    z-index: 0;
+}
+
+.chat_box .inner_box {
+    position: relative;
+    padding: 15px 30px 10px 30px;
+    outline: var(--outline);
+    border: var(--border);
+    border-radius: 999vh;
+    background: var(--pattern);
+    background-position: center;
+    background-repeat: repeat;
+    background-size: 30px;
+    z-index: 1;
+}
+
+/* =============================================
+    streamer
+============================================= */
+.chat_box.chat.streamer {
+    --ear-L: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-8 -32 344.74 354.31' overflow='visible'%3E%3Cg class='ear'%3E%3Cpath d='M0,174.66S153.49-66.04,254.65,17.69s66.28,261.63,66.28,261.63L0,174.66Z' fill='%23ffe0e2' stroke='%23866262' stroke-width='4' stroke-linejoin='round' paint-order='stroke fill' vector-effect='non-scaling-stroke'/%3E%3Cpath d='M55.36,193.31S161.01,18.19,226.62,72.49c65.61,54.3,36.88,188.69,36.88,188.69L55.36,193.31Z' fill='%23fff7f8'/%3E%3C/g%3E%3C/svg%3E");
+    --ear-R: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-8 -32 344.74 354.31' overflow='visible'%3E%3Cg class='ear'%3E%3Cg transform='translate(326.74 0) scale(-1 1)'%3E%3Cpath d='M0,174.66S153.49-66.04,254.65,17.69s66.28,261.63,66.28,261.63L0,174.66Z' fill='%23ffe0e2' stroke='%23866262' stroke-width='4' stroke-linejoin='round' paint-order='stroke fill' vector-effect='non-scaling-stroke'/%3E%3Cpath d='M55.36,193.31S161.01,18.19,226.62,72.49c65.61,54.3,36.88,188.69,36.88,188.69L55.36,193.31Z' fill='%23fff7f8'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    --pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 126 126' width='126' height='126'%3E%3Crect x='0' y='0' width='63' height='63' fill='%23ffc2c8'/%3E%3Crect x='63' y='0' width='63' height='63' fill='%23ffcace'/%3E%3Crect x='0' y='63' width='63' height='63' fill='%23ffc9ce'/%3E%3Crect x='63' y='63' width='63' height='63' fill='%23ffd3d6'/%3E%3C/svg%3E");
+    --brow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='23' viewBox='0 0 29 23'%3E%3Cdefs%3E%3Cfilter id='innerLightPink' x='-3' y='-3' width='35' height='29' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3E%3CfeOffset in='SourceAlpha' dx='1.204' dy='1.597' result='offsetAlpha'/%3E%3CfeGaussianBlur in='offsetAlpha' stdDeviation='1' result='blurOut'/%3E%3CfeFlood flood-color='%23fff7f8' result='floodOut'/%3E%3CfeComposite in='floodOut' in2='blurOut' operator='out' result='compOut'/%3E%3CfeComposite in='compOut' in2='SourceAlpha' operator='in' result='innerLightOnly'/%3E%3CfeBlend mode='normal' in='innerLightOnly' in2='SourceGraphic'/%3E%3C/filter%3E%3C/defs%3E%3Cpath d='M17.358 5.8L11.272 6.024C8.19 6.138 5.782 8.732 5.891 11.819C6.001 14.907 8.589 17.317 11.67 17.203L17.757 16.979C20.838 16.866 23.247 14.271 23.137 11.184C23.027 8.097 20.44 5.687 17.358 5.8Z' fill='%23ffe0e2' filter='url(%23innerLightPink)' /%3E%3Cpath d='M17.358 5.8L11.272 6.024C8.19 6.138 5.782 8.732 5.891 11.819C6.001 14.907 8.589 17.317 11.67 17.203L17.757 16.979C20.838 16.866 23.247 14.271 23.137 11.184C23.027 8.097 20.44 5.687 17.358 5.8Z' fill='none' stroke='%23866262' stroke-width='2' stroke-linejoin='round' vector-effect='non-scaling-stroke' /%3E%3C/svg%3E");
+    --text: #5d3232;
+    --outline: 2px solid #866262;
+    --border: 3px solid #ffe0e2;
+    --center-light: 255, 212, 213;
+}
+
+/* =============================================
+    subscribe
+============================================s= */
+.chat_box.chat.subscribe {
+    --ear-L: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-8 -32 344.74 354.31' overflow='visible'%3E%3Cg class='ear'%3E%3Cpath d='M0,174.66S153.49-66.04,254.65,17.69s66.28,261.63,66.28,261.63L0,174.66Z' fill='%23f8edab' stroke='%23988155' stroke-width='4' stroke-linejoin='round' paint-order='stroke fill' vector-effect='non-scaling-stroke'/%3E%3Cpath d='M55.36,193.31S161.01,18.19,226.62,72.49c65.61,54.3,36.88,188.69,36.88,188.69L55.36,193.31Z' fill='%23fffbe1'/%3E%3C/g%3E%3C/svg%3E");
+    --ear-R: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-8 -32 344.74 354.31' overflow='visible'%3E%3Cg class='ear'%3E%3Cg transform='translate(326.74 0) scale(-1 1)'%3E%3Cpath d='M0,174.66S153.49-66.04,254.65,17.69s66.28,261.63,66.28,261.63L0,174.66Z' fill='%23f8edab' stroke='%23988155' stroke-width='4' stroke-linejoin='round' paint-order='stroke fill' vector-effect='non-scaling-stroke'/%3E%3Cpath d='M55.36,193.31S161.01,18.19,226.62,72.49c65.61,54.3,36.88,188.69,36.88,188.69L55.36,193.31Z' fill='%23fffbe1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    --pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 126 126' width='126' height='126'%3E%3Crect x='0' y='0' width='63' height='63' fill='%23fbeba2'/%3E%3Crect x='63' y='0' width='63' height='63' fill='%23fcf0ad'/%3E%3Crect x='0' y='63' width='63' height='63' fill='%23fcf0ad'/%3E%3Crect x='63' y='63' width='63' height='63' fill='%23fff7ba'/%3E%3C/svg%3E");
+    --brow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='23' viewBox='0 0 29 23'%3E%3Cdefs%3E%3Cfilter id='innerLightYellow' x='-3' y='-3' width='35' height='29' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3E%3CfeOffset in='SourceAlpha' dx='1.204' dy='1.597' result='offsetAlpha'/%3E%3CfeGaussianBlur in='offsetAlpha' stdDeviation='1' result='blurOut'/%3E%3CfeFlood flood-color='%23fffbe1' result='floodOut'/%3E%3CfeComposite in='floodOut' in2='blurOut' operator='out' result='compOut'/%3E%3CfeComposite in='compOut' in2='SourceAlpha' operator='in' result='innerLightOnly'/%3E%3CfeBlend mode='normal' in='innerLightOnly' in2='SourceGraphic'/%3E%3C/filter%3E%3C/defs%3E%3Cpath d='M17.358 5.8L11.272 6.024C8.19 6.138 5.782 8.732 5.891 11.819C6.001 14.907 8.589 17.317 11.67 17.203L17.757 16.979C20.838 16.866 23.247 14.271 23.137 11.184C23.027 8.097 20.44 5.687 17.358 5.8Z' fill='%23f8edab' filter='url(%23innerLightYellow)' /%3E%3Cpath d='M17.358 5.8L11.272 6.024C8.19 6.138 5.782 8.732 5.891 11.819C6.001 14.907 8.589 17.317 11.67 17.203L17.757 16.979C20.838 16.866 23.247 14.271 23.137 11.184C23.027 8.097 20.44 5.687 17.358 5.8Z' fill='none' stroke='%23988155' stroke-width='2' stroke-linejoin='round' vector-effect='non-scaling-stroke' /%3E%3C/svg%3E");
+    --text: #5b4f2e;
+    --outline: 2px solid #988155;
+    --border: 3px solid #fff9d4;
+    --center-light: 255, 248, 211;
+}
+
+/* =============================================
+    donation
+============================================= */
+.chat_box.image:not(.subscribe) {
+    --ear-L: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-6 -32 338.74 325.31' overflow='visible'%3E%3Cg class='ear'%3E%3Cpath d='M0,174.66S153.49-66.04,254.65,17.69s66.28,261.63,66.28,261.63L0,174.66Z' fill='%23ffe7b8' stroke='%239e7b5f' stroke-width='4' stroke-linejoin='round' paint-order='stroke fill' vector-effect='non-scaling-stroke'/%3E%3Cpath d='M55.36,193.31S161.01,18.19,226.62,72.49c65.61,54.3,36.88,188.69,36.88,188.69L55.36,193.31Z' fill='%23fff8f0'/%3E%3C/g%3E%3C/svg%3E");
+    --ear-R: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-6 -32 338.74 325.31' overflow='visible'%3E%3Cg class='ear'%3E%3Cg transform='translate(326.74 0) scale(-1 1)'%3E%3Cpath d='M0,174.66S153.49-66.04,254.65,17.69s66.28,261.63,66.28,261.63L0,174.66Z' fill='%23ffe7b8' stroke='%239e7b5f' stroke-width='4' stroke-linejoin='round' paint-order='stroke fill' vector-effect='non-scaling-stroke'/%3E%3Cpath d='M55.36,193.31S161.01,18.19,226.62,72.49c65.61,54.3,36.88,188.69,36.88,188.69L55.36,193.31Z' fill='%23fff8f0'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    --pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 126 126' width='126' height='126'%3E%3Crect x='0' y='0' width='63' height='63' fill='%23fbdca2'/%3E%3Crect x='63' y='0' width='63' height='63' fill='%23fce1ad'/%3E%3Crect x='0' y='63' width='63' height='63' fill='%23fce1ad'/%3E%3Crect x='63' y='63' width='63' height='63' fill='%23ffe7ba'/%3E%3C/svg%3E");
+    --brow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='23' viewBox='0 0 29 23'%3E%3Cdefs%3E%3Cfilter id='innerLight' x='-3' y='-3' width='35' height='29' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3E%3CfeOffset in='SourceAlpha' dx='1.204' dy='1.597' result='offsetAlpha'/%3E%3CfeGaussianBlur in='offsetAlpha' stdDeviation='1' result='blurOut'/%3E%3CfeFlood flood-color='%23ffefd3' result='floodOut'/%3E%3CfeComposite in='floodOut' in2='blurOut' operator='out' result='compOut'/%3E%3CfeComposite in='compOut' in2='SourceAlpha' operator='in' result='innerLightOnly'/%3E%3CfeComponentTransfer in='innerLightOnly' result='innerLightFinal'%3E%3CfeFuncA type='linear' slope='1'/%3E%3C/feComponentTransfer%3E%3CfeBlend mode='normal' in='innerLightFinal' in2='SourceGraphic'/%3E%3C/filter%3E%3C/defs%3E%3Cpath d='M17.358 5.8L11.272 6.024C8.19 6.138 5.782 8.732 5.891 11.819C6.001 14.907 8.589 17.317 11.67 17.203L17.757 16.979C20.838 16.866 23.247 14.271 23.137 11.184C23.027 8.097 20.44 5.687 17.358 5.8Z' fill='%23f5dcaf' filter='url(%23innerLight)' /%3E%3Cpath d='M17.358 5.8L11.272 6.024C8.19 6.138 5.782 8.732 5.891 11.819C6.001 14.907 8.589 17.317 11.67 17.203L17.757 16.979C20.838 16.866 23.247 14.271 23.137 11.184C23.027 8.097 20.44 5.687 17.358 5.8Z' fill='none' stroke='%239e7b5f' stroke-width='2' stroke-linejoin='round' vector-effect='non-scaling-stroke' /%3E%3C/svg%3E");
+    --text: #3c2925;
+    --outline: 2px solid #9e7b5f;
+    --border: 3px solid #ffeedc;
+    --center-light: 255, 235, 211;
+    --panel: #fff5eb;
+    --meta-text: #a77e60;
+    --divider: rgba(158, 123, 95, 0.30);
+}
+
+.chat_box.image {
+    width: calc(100% - 30px) !important;
+    max-width: calc(100% - 30px) !important;
+    min-width: calc(100% - 30px) !important;
+}
+
+.chat_box.image,
+.chat_box.image * {
+    box-sizing: border-box !important;
+}
+
+.chat_box.image > .inner_box {
+    padding: 0 !important;
+    background-image:
+        linear-gradient(
+            to bottom,
+            transparent 0,
+            transparent 16px,
+            var(--panel) 16px,
+            var(--panel) 56px,
+            transparent 56px,
+            transparent 100%
+        ),
+        var(--pattern) !important;
+    background-position: center, center !important;
+    background-repeat: no-repeat, repeat !important;
+    background-size: 100% 100%, 30px 30px !important;
+    border-radius: 32px !important;
+    box-shadow: none !important;
+    filter: none !important;
+}
+
+.chat_box.image .inner_box::after {
+    content: none;
+}
+
+.chat_box.image .donation_box {
+    width: 100%;
+    padding-top: 56px !important;
+    align-items: stretch;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    filter: none !important;
+}
+
+.chat_box.image .donation_box > .text_box > .nick {
+    display: flex !important;
+    position: absolute !important;
+    top: 17px;
+    left: 0;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100%;
+    height: 16px;
+    margin: 0 !important;
+    padding: 0 18px !important;
+    color: var(--meta-text) !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    line-height: 16px !important;
+    letter-spacing: -0.5px !important;
+    text-align: center !important;
+    text-shadow: none !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chat_box.image .donation_box > .text_box > .nick::after {
+    content: "님이";
+    margin-left: -0.15em;
+}
+
+.chat_box.image:not(.subscribe) .donation_box > .msg_box > .val,
+.chat_box.image.subscribe .donation_box.subscribe > .text_box > .msg {
+    display: flex !important;
+    position: absolute !important;
+    top: 33px;
+    left: 0;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100%;
+    height: 16px;
+    min-height: 0;
+    margin: 0 !important;
+    padding: 0 18px !important;
+    color: var(--meta-text) !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    line-height: 16px !important;
+    letter-spacing: -0.5px !important;
+    text-align: center !important;
+    text-shadow: none !important;
+    white-space: nowrap;
+    background: transparent !important;
+}
+
+.chat_box.image:not(.subscribe) .donation_box > .msg_box > .val::after {
+    content: " 치즈를 후원하였습니다.";
+}
+
+.chat_box.image:not(.subscribe) .donation_box > .text_box,
+.chat_box.image:not(.subscribe) .donation_box > .msg_box,
+.chat_box.image.subscribe .donation_box.subscribe > .text_box,
+.chat_box.image.subscribe .donation_box.subscribe > .msg_box {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+    filter: none !important;
+    background: transparent !important;
+}
+
+.chat_box.image.subscribe .donation_box > .text_box > .msg > .val {
+    color: inherit !important;
+    font-size: inherit !important;
+    font-weight: inherit !important;
+    line-height: inherit !important;
+    letter-spacing: inherit !important;
+    padding: 0 !important;
+    background: transparent !important;
+}
+
+.chat_box.image:not(.subscribe) .donation_box > .text_box > .msg,
+.chat_box.image.subscribe .donation_box.subscribe > .msg_box > .msg {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 64px;
+    margin: 0 !important;
+    padding: 10px 30px !important;
+    border: 0 !important;
+    border-radius: 0 0 27px 27px !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+    filter: none !important;
+    transform: none !important;
+    color: var(--text) !important;
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    line-height: 1.2 !important;
+    letter-spacing: -0.8px !important;
+    text-align: center !important;
+    text-shadow: none !important;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(var(--center-light), 0) 0%,
+            rgba(var(--center-light), 0) 15%,
+            rgba(var(--center-light), 0.18) 25%,
+            rgba(var(--center-light), 0.58) 34%,
+            rgba(var(--center-light), 0.88) 41%,
+            rgba(var(--center-light), 0.97) 47%,
+            rgba(var(--center-light), 0.98) 50%,
+            rgba(var(--center-light), 0.97) 53%,
+            rgba(var(--center-light), 0.88) 59%,
+            rgba(var(--center-light), 0.58) 66%,
+            rgba(var(--center-light), 0.18) 75%,
+            rgba(var(--center-light), 0) 85%,
+            rgba(var(--center-light), 0) 100%
+        ),
+        var(--pattern) !important;
+    background-position: center, center !important;
+    background-repeat: no-repeat, repeat !important;
+    background-size: 100% 100%, 30px 30px !important;
+}
+
+/* =============================================
+    donation - subscribe
+============================================= */
+.chat_box.image.subscribe {
+    --ear-L: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-8 -32 344.74 354.31' overflow='visible'%3E%3Cg class='ear'%3E%3Cpath d='M0,174.66S153.49-66.04,254.65,17.69s66.28,261.63,66.28,261.63L0,174.66Z' fill='%23f8edab' stroke='%23988155' stroke-width='4' stroke-linejoin='round' paint-order='stroke fill' vector-effect='non-scaling-stroke'/%3E%3Cpath d='M55.36,193.31S161.01,18.19,226.62,72.49c65.61,54.3,36.88,188.69,36.88,188.69L55.36,193.31Z' fill='%23fffbe1'/%3E%3C/g%3E%3C/svg%3E");
+    --ear-R: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-8 -32 344.74 354.31' overflow='visible'%3E%3Cg class='ear'%3E%3Cg transform='translate(326.74 0) scale(-1 1)'%3E%3Cpath d='M0,174.66S153.49-66.04,254.65,17.69s66.28,261.63,66.28,261.63L0,174.66Z' fill='%23f8edab' stroke='%23988155' stroke-width='4' stroke-linejoin='round' paint-order='stroke fill' vector-effect='non-scaling-stroke'/%3E%3Cpath d='M55.36,193.31S161.01,18.19,226.62,72.49c65.61,54.3,36.88,188.69,36.88,188.69L55.36,193.31Z' fill='%23fffbe1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    --pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 126 126' width='126' height='126'%3E%3Crect x='0' y='0' width='63' height='63' fill='%23fbeba2'/%3E%3Crect x='63' y='0' width='63' height='63' fill='%23fcf0ad'/%3E%3Crect x='0' y='63' width='63' height='63' fill='%23fcf0ad'/%3E%3Crect x='63' y='63' width='63' height='63' fill='%23fff7ba'/%3E%3C/svg%3E");
+    --brow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='23' viewBox='0 0 29 23'%3E%3Cdefs%3E%3Cfilter id='innerLightYellow' x='-3' y='-3' width='35' height='29' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3E%3CfeOffset in='SourceAlpha' dx='1.204' dy='1.597' result='offsetAlpha'/%3E%3CfeGaussianBlur in='offsetAlpha' stdDeviation='1' result='blurOut'/%3E%3CfeFlood flood-color='%23fffbe1' result='floodOut'/%3E%3CfeComposite in='floodOut' in2='blurOut' operator='out' result='compOut'/%3E%3CfeComposite in='compOut' in2='SourceAlpha' operator='in' result='innerLightOnly'/%3E%3CfeBlend mode='normal' in='innerLightOnly' in2='SourceGraphic'/%3E%3C/filter%3E%3C/defs%3E%3Cpath d='M17.358 5.8L11.272 6.024C8.19 6.138 5.782 8.732 5.891 11.819C6.001 14.907 8.589 17.317 11.67 17.203L17.757 16.979C20.838 16.866 23.247 14.271 23.137 11.184C23.027 8.097 20.44 5.687 17.358 5.8Z' fill='%23f8edab' filter='url(%23innerLightYellow)' /%3E%3Cpath d='M17.358 5.8L11.272 6.024C8.19 6.138 5.782 8.732 5.891 11.819C6.001 14.907 8.589 17.317 11.67 17.203L17.757 16.979C20.838 16.866 23.247 14.271 23.137 11.184C23.027 8.097 20.44 5.687 17.358 5.8Z' fill='none' stroke='%23988155' stroke-width='2' stroke-linejoin='round' vector-effect='non-scaling-stroke' /%3E%3C/svg%3E");
+    --text: #5b4f2e;
+    --outline: 2px solid #988155;
+    --border: 3px solid #fff9d4;
+    --center-light: 255, 248, 211;
+    --panel: #fffade;
+    --meta-text: #a58b45;
+    --divider: rgba(152, 129, 85, 0.28);
+}
+
+/* =============================================
+    keyframes
+============================================= */
+
+@keyframes earTwitchL {
+    0%, 4%, 62%, 100% {
+        transform: rotate(0deg);
+    }
+    12% {
+        transform: rotate(1.2deg);
+    }
+    24% {
+        transform: rotate(-6.5deg);
+    }
+    38% {
+        transform: rotate(-1.8deg);
+    }
+    50% {
+        transform: rotate(-3.8deg);
+    }
+}
+
+@keyframes earTwitchR {
+    0%, 4%, 62%, 100% {
+        transform: rotate(0deg);
+    }
+    12% {
+        transform: rotate(-1.2deg);
+    }
+    24% {
+        transform: rotate(6.5deg);
+    }
+    38% {
+        transform: rotate(1.8deg);
+    }
+    50% {
+        transform: rotate(3.8deg);
+    }
+}
+@keyframes chatPopupIn {
+    0% {
+        opacity: 0;
+        transform: translateY(18px) scale(0.88);
+    }
+    42% {
+        opacity: 1;
+        transform: translateY(-3px) scale(1.025, 0.975);
+    }
+    62% {
+        transform: translateY(1px) scale(0.992, 1.012);
+    }
+    80% {
+        transform: translateY(-1px) scale(1.006, 0.996);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes topAccentPop {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(7px) scaleX(0.86) scaleY(0.72);
+    }
+    45% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-4px) scaleX(1.06) scaleY(1.12);
+    }
+    68% {
+        transform: translateX(-50%) translateY(1px) scaleX(0.98) scaleY(0.96);
+    }
+    84% {
+        transform: translateX(-50%) translateY(-1px) scaleX(1.01) scaleY(1.03);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) scale(1);
+    }
+}
+
+@keyframes panelLightPulse {
+    0% {
+        opacity: 0;
+    }
+    42% {
+        opacity: 1;
+    }
+    64% {
+        opacity: 0.68;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes chatArrivalGlow {
+    0%, 100% {
+        filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
+    }
+    42% {
+        filter: drop-shadow(0 4px 8px rgba(255, 255, 255, 0.34));
+    }
+}
+
+.chat_box {
+    transform-origin: center top;
+    animation:
+        chatPopupIn 560ms cubic-bezier(0.22, 1.35, 0.46, 1) both,
+        chatArrivalGlow 720ms ease-out both !important;
+}
+
+.chat_box .inner_box::before {
+    transform-origin: center bottom;
+    animation: topAccentPop 680ms cubic-bezier(0.2, 1.5, 0.4, 1) 70ms both !important;
+}
+
+.chat_box .inner_box::after {
+    animation: panelLightPulse 760ms ease-out 70ms both !important;
+}
