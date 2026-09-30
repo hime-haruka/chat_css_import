@@ -36,11 +36,36 @@ p {
     letter-spacing: -0.8px !important;
     text-align: center !important;
     text-shadow: 0px 0px 3px 2px #3f2176ad !important;
-    font-size: 22px !important;
 }
 
 .chat_area {
-    -webkit-mask-image: -webkit-gradient(linear, left bottom, left top, from(#000), color-stop(0.98, #000), to(transparent));    
+    -webkit-mask-image: linear-gradient(
+        to top,
+        #000 0%,
+        #000 88%,
+        rgba(0, 0, 0, 0.9) 91%,
+        rgba(0, 0, 0, 0.6) 95%,
+        rgba(0, 0, 0, 0.25) 98%,
+        transparent 100%
+    );
+
+    mask-image: linear-gradient(
+        to top,
+        #000 0%,
+        #000 88%,
+        rgba(0, 0, 0, 0.9) 91%,
+        rgba(0, 0, 0, 0.6) 95%,
+        rgba(0, 0, 0, 0.25) 98%,
+        transparent 100%
+    );
+
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+
+    margin-top: 20px;
 }
 
 .chat_box {
@@ -445,5 +470,127 @@ display: none !important;
     100% {
         opacity: 0;
         background-position: -80% 0;
+    }
+}
+
+/* ============================================= 
+        Notice Widget
+============================================= */
+/*
+<div class="notice_wrap top">
+    <div class="notice">
+        <div class="text_wrap">
+                <p class="text"><span>공지사항</span></p>
+            </div>
+        </div>
+    </div>
+*/
+
+.notice_wrap {
+    --hall: url("https://hime-haruka.github.io/syura_css_svg_import/haruya/widget/01-hall.png");
+    --texture: url("https://hime-haruka.github.io/syura_css_svg_import/haruya/widget/02-texture.png");
+    --flower-l: url("https://hime-haruka.github.io/syura_css_svg_import/haruya/widget/03-flowerL.png");
+    --flower-r: url("https://hime-haruka.github.io/syura_css_svg_import/haruya/widget/03-flowerR.png");
+    --leaf: url("https://hime-haruka.github.io/syura_css_svg_import/haruya/widget/leaf.png");
+    --rose: url("https://hime-haruka.github.io/syura_css_svg_import/haruya/widget/rose.png");
+    border-radius: 0 !important;
+    position: relative;
+}
+
+.notice_wrap::before,
+.notice_wrap::after {
+    content: "";
+    position: absolute;
+    width: 29px;
+    height: 29px;
+    background: var(--rose) center / contain no-repeat;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.notice_wrap::before {
+    left: -10px;
+    bottom: -7px;
+    animation: rose-left 3s ease-in-out infinite;
+}
+
+.notice_wrap::after {
+    right: -10px;
+    top: -7px;
+    animation: rose-right 3.4s ease-in-out infinite;
+}
+
+.notice_wrap .notice {
+    outline: 2px solid #4f3871 !important;
+    border: 2px solid #ada6e6 !important;
+    box-shadow: inset 0 0 0 5px #5e56a9 !important;
+
+    background:
+        var(--leaf) right 20px bottom 26px / 14px auto no-repeat,
+        var(--flower-l) left -39px bottom -44px / 99px auto no-repeat,
+        var(--flower-r) right -39px bottom -44px / 99px auto no-repeat,
+        var(--texture) center / 922px auto no-repeat,
+        var(--hall) center bottom -110px / 634px auto no-repeat,
+        linear-gradient(to top, #bbb3eb, #d6d0f3) !important;
+
+    background-blend-mode:
+        normal,
+        normal,
+        normal,
+        soft-light,
+        normal,
+        normal;
+
+    border-radius: 0 !important;
+    padding: 15px 0 !important;
+}
+
+.notice_wrap .notice .text_wrap {
+    width: calc(100% - 75px) !important;
+    margin: 0 auto !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        #000 9%,
+        #000 91%,
+        transparent 100%
+    );
+
+    mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        #000 9%,
+        #000 91%,
+        transparent 100%
+    );
+}
+
+.notice_wrap .notice .text_wrap .text span {
+    text-shadow: none !important;
+    font-size: 20px !important;
+}
+
+@keyframes rose-left {
+    0%,
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    50% {
+        transform: translate(-2px, -2px) rotate(-5deg);
+    }
+}
+
+@keyframes rose-right {
+    0%,
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    50% {
+        transform: translate(2px, -2px) rotate(5deg);
     }
 }
