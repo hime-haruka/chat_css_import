@@ -1,0 +1,534 @@
+[data-id = "슈퍼챗"], [data-id = "치즈"], [data-id = "비트"], [data-id = "별풍선"], [data-id = "젬"], [data-id = "비트"], [data-id = "빔"] {
+    display: none;
+}
+
+@font-face {
+    font-family: 'SchoolSafetyNotification';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimAllimjangTTF-R.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SchoolSafetyNotification';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimAllimjangTTF-B.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+}
+
+
+@property --weflab-font-size {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: 22px;
+}
+
+/* =============================================
+    general
+============================================= */
+html {
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+}
+
+p {
+    color: var(--text) !important;
+    font-family: 'SchoolSafetyNotification', Courier, monospace !important;
+    font-weight: 400 !important;
+    position: relative;
+    margin: 0 !important;
+    line-height: 1.2 !important;
+    z-index: 999;
+    text-shadow: var(--text) !important;
+    letter-spacing: -0.8px !important;
+    text-align: center !important;
+}
+
+.chat_box.chat p,
+.chat_box.image:not(.subscribe) .inner_box .donation_box .text_box .msg,
+.chat_box.image .inner_box .donation_box .msg_box .msg {
+    transform: translateY(2px);
+}
+
+.chat_area {
+    -webkit-mask-image: linear-gradient(
+        to top,
+        #000 0%,
+        #000 88%,
+        rgba(0, 0, 0, 0.9) 91%,
+        rgba(0, 0, 0, 0.6) 95%,
+        rgba(0, 0, 0, 0.25) 98%,
+        transparent 100%
+    );
+
+    mask-image: linear-gradient(
+        to top,
+        #000 0%,
+        #000 88%,
+        rgba(0, 0, 0, 0.9) 91%,
+        rgba(0, 0, 0, 0.6) 95%,
+        rgba(0, 0, 0, 0.25) 98%,
+        transparent 100%
+    );
+
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+}
+
+.chat_box {
+    margin: 0 auto 10px 30px;
+}
+
+.chat_box.chat * {
+    box-sizing: border-box !important;
+}
+
+.icon_badge {
+    display: none !important;
+}
+
+.icon_chzzk {
+    display: none !important;
+}
+
+/* =============================================
+    donation reset
+============================================= */
+.chat_box.image .donation_box,
+.chat_box.image .text_box,
+.chat_box.image .msg_box,
+.chat_box.image .nick,
+.chat_box.image .msg,
+.chat_box.image .val {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent !important;
+}
+
+.chat_box.image .donation_box .inner_box {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+.chat_box.image,
+.chat_box.image .inner_box,
+.chat_box.image .donation_box,
+.chat_box.image .text_box,
+.chat_box.image .msg_box {
+    overflow: visible;
+}
+
+.chat_box.image .donation_box::before,
+.chat_box.image .donation_box::after,
+.chat_box.image .donation_box.subscribe::before {
+    content: none;
+}
+
+.chat_box.image .donation_box.subscribe::before {
+    display: none !important;
+}
+
+.chat_box.image .nick {
+    display: none !important;
+}
+
+/* =========================================
+    display order
+========================================= */
+.chat_box.image .donation_box {
+    position: relative;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+}
+
+.chat_box.image .donation_box > .text_box,
+.chat_box.image .donation_box > .msg_box {
+    display: contents !important;
+}
+
+.chat_box.image .donation_box > .text_box > *,
+.chat_box.image .donation_box > .msg_box > * {
+    order: 0 !important;
+}
+
+.chat_box.image .donation_box > .text_box > .nick {
+    order: 10 !important;
+}
+
+.chat_box.image:not(.subscribe)
+.donation_box > .text_box > .msg {
+    order: 20 !important;
+}
+
+.chat_box.image.subscribe
+.donation_box.subscribe > .msg_box > .msg {
+    padding: 0 !important;
+    margin: 0 !important;
+    order: 20 !important;
+}
+
+.chat_box.image:not(.subscribe) .donation_box > .msg_box > .val,
+.chat_box.image.subscribe .donation_box.subscribe > .text_box > .msg {
+    padding: 0 !important;
+    margin: 0 !important;
+    order: 30 !important;
+}
+
+/* =============================================
+    tokens
+============================================= */
+:root {
+    --mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='337' height='74.796' viewBox='0 0 337 74.796' preserveAspectRatio='none'%3E%3Cpath fill='white' d='M330.005,36.015 C330.005,46.388 322.824,55.079 313.164,57.401 C307.663,63.756 299.544,67.783 290.479,67.783 L42.780,67.783 C33.365,67.783 24.968,63.443 19.468,56.658 C11.030,53.581 5.005,45.487 5.005,35.984 C5.005,26.126 11.490,17.783 20.426,14.986 C25.919,8.851 33.897,4.987 42.780,4.987 L290.479,4.987 C299.095,4.987 306.858,8.625 312.330,14.443 C322.409,16.452 330.005,25.346 330.005,36.015 Z' transform='translate(0.995 1.013)'/%3E%3C/svg%3E");
+    --text: #737660;
+}
+
+.chat_box.chat:not(.streamer):not(.subscribe) {
+    --line: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='244.5px' height='3.5px'%3E%3Cpath fill-rule='evenodd' stroke='%23ede8b8' stroke-width='1px' stroke-dasharray='4, 2' stroke-linecap='butt' stroke-linejoin='miter' fill='none' d='M0.500,1.500 L243.500,1.500 '/%3E%3C/svg%3E");
+    --ring: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cdefs%3E%3ClinearGradient id='innerStrokeGradient' gradientUnits='userSpaceOnUse' x1='4' y1='27.8' x2='36' y2='12.2'%3E%3Cstop offset='0' stop-color='%23f6eb93'/%3E%3Cstop offset='1' stop-color='%23fff6ad'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='20' cy='20' r='19' fill='none' stroke='%23e2d88a' stroke-width='2'/%3E%3Ccircle cx='20' cy='20' r='15.5' fill='none' stroke='url(%23innerStrokeGradient)' stroke-width='5'/%3E%3C/svg%3E");
+    --frame: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='337' height='74.796' viewBox='0 0 337 74.796' preserveAspectRatio='none'%3E%3Cdefs%3E%3Cpath id='bubbleShape' d='M330.005,36.015 C330.005,46.388 322.824,55.079 313.164,57.401 C307.663,63.756 299.544,67.783 290.479,67.783 L42.780,67.783 C33.365,67.783 24.968,63.443 19.468,56.658 C11.030,53.581 5.005,45.487 5.005,35.984 C5.005,26.126 11.490,17.783 20.426,14.986 C25.919,8.851 33.897,4.987 42.780,4.987 L290.479,4.987 C299.095,4.987 306.858,8.625 312.330,14.443 C322.409,16.452 330.005,25.346 330.005,36.015 Z' transform='translate(0.995 1.013)'/%3E%3Cmask id='innerMask' maskUnits='userSpaceOnUse' x='0.995' y='1.013' width='325' height='62.796'%3E%3Cuse href='%23bubbleShape' fill='%23fff'/%3E%3C/mask%3E%3C/defs%3E%3Cuse href='%23bubbleShape' fill='none' stroke='%23cec263' stroke-width='12' vector-effect='non-scaling-stroke'/%3E%3Cuse href='%23bubbleShape' fill='none' stroke='%23f6eb93' stroke-width='8' vector-effect='non-scaling-stroke'/%3E%3Cuse href='%23bubbleShape' fill='%23ffffe3'/%3E%3C/svg%3E");
+    --petal-RT: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg id='petal' data-name='petal' xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 29.35 33.99'%3E%3Cdefs%3E%3Cstyle%3E .st0 %7B fill: %23d3f182; %7D .st1 %7B fill: none; %7D .st2 %7B clip-path: url(%23clippath); %7D %3C/style%3E%3CclipPath id='clippath'%3E%3Crect class='st1' y='0' width='29.35' height='33.99'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg class='st2' transform='translate(29.35 0) scale(-1 1)'%3E%3Cpath class='st0' d='M27.08,4.05l-6.54,3.5.24-7.42C15.02-.79,7.99,3.08,3.62,10.13c-5.33,8.58-4.7,18.62,1.41,22.41,6.11,3.79,15.38-.09,20.71-8.68,4.37-7.04,4.73-15.06,1.34-19.81'/%3E%3C/g%3E%3C/svg%3E");
+    --petal-RB: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg id='petal' data-name='petal' xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 29.35 33.99'%3E%3Cdefs%3E%3Cstyle%3E .st0 %7B fill: %23f1e582; %7D .st1 %7B fill: none; %7D .st2 %7B clip-path: url(%23clippath); %7D %3C/style%3E%3CclipPath id='clippath'%3E%3Crect class='st1' y='0' width='29.35' height='33.99'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg class='st2'%3E%3Cpath class='st0' d='M27.08,4.05l-6.54,3.5.24-7.42C15.02-.79,7.99,3.08,3.62,10.13c-5.33,8.58-4.7,18.62,1.41,22.41,6.11,3.79,15.38-.09,20.71-8.68,4.37-7.04,4.73-15.06,1.34-19.81'/%3E%3C/g%3E%3C/svg%3E");
+    --petal-L: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg id='petal' data-name='petal' xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 29.35 33.99'%3E%3Cdefs%3E%3Cstyle%3E .st0 %7B fill: %23f1e582; %7D .st1 %7B fill: none; %7D .st2 %7B clip-path: url(%23clippath); %7D %3C/style%3E%3CclipPath id='clippath'%3E%3Crect class='st1' y='0' width='29.35' height='33.99'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg class='st2'%3E%3Cpath class='st0' d='M27.08,4.05l-6.54,3.5.24-7.42C15.02-.79,7.99,3.08,3.62,10.13c-5.33,8.58-4.7,18.62,1.41,22.41,6.11,3.79,15.38-.09,20.71-8.68,4.37-7.04,4.73-15.06,1.34-19.81'/%3E%3C/g%3E%3C/svg%3E");
+    --pattern: url(https://hime-haruka.github.io/syura_css_svg_import/yoendano/n-pattern.png);
+    --clover: url(https://hime-haruka.github.io/syura_css_svg_import/yoendano/n-clover.png);
+}
+
+/* =============================================
+    design
+============================================= */
+.chat_box {
+    position: relative;
+    width: fit-content;
+    max-width: calc(100% - 100px);
+    min-width: 100px;
+}
+
+.chat_box::after {
+    content: "";
+    position: absolute;
+    width: 25px;
+    height: 26px;
+    top: -5px;
+    left: 25px;
+    background: var(--clover) center / 100% no-repeat;
+    z-index: 3;
+}
+
+.chat_box .inner_box {
+    position: relative;
+    min-height: 74.796px;
+    padding: 21px 35px;
+}
+
+.chat_box .inner_box::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    box-sizing: border-box;
+    border: 37px 50px solid transparent;
+    border-image-source: var(--frame);
+    border-image-slice: 37 50 37 50 fill;
+    border-image-width: 37px 50px;
+    border-image-repeat: stretch;
+    z-index: 0;
+}
+
+.chat_box .inner_box::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    -webkit-mask-box-image-source: var(--mask);
+    -webkit-mask-box-image-slice: 37 50 37 50 fill;
+    -webkit-mask-box-image-width: 37px 50px;
+    -webkit-mask-box-image-repeat: stretch;
+    background: var(--ring), var(--ring), var(--ring), var(--ring), var(--line), var(--pattern);
+    background-position:
+        left 8px bottom -11px,
+        left -14px bottom 13px,
+        right 8px bottom -11px,
+        right -14px bottom 13px,
+        center bottom 10px,
+        center;
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, repeat;
+    background-size: 37px, 37px, 37px, 37px, calc(100% - 80px) 4px, 353px;
+    z-index: 1;
+}
+
+.chat_box .inner_box .text {
+    position: relative;
+    top: 3px;
+}
+
+/* =============================================
+    streamer
+============================================= */
+.chat_box.chat.streamer {
+    --line: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='244.5px' height='3.5px'%3E%3Cpath fill-rule='evenodd' stroke='%23d4deb4' stroke-width='1px' stroke-dasharray='4, 2' stroke-linecap='butt' stroke-linejoin='miter' fill='none' d='M0.500,1.500 L243.500,1.500 '/%3E%3C/svg%3E");
+    --ring: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cdefs%3E%3ClinearGradient id='innerStrokeGradient' gradientUnits='userSpaceOnUse' x1='4' y1='27.8' x2='36' y2='12.2'%3E%3Cstop offset='0' stop-color='%23c0d295'/%3E%3Cstop offset='1' stop-color='%23e6f0c7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='20' cy='20' r='19' fill='none' stroke='%23bcca93' stroke-width='2'/%3E%3Ccircle cx='20' cy='20' r='15.5' fill='none' stroke='url(%23innerStrokeGradient)' stroke-width='5'/%3E%3C/svg%3E");
+    --frame: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='337' height='74.796' viewBox='0 0 337 74.796' preserveAspectRatio='none'%3E%3Cdefs%3E%3Cpath id='bubbleShape' d='M330.005,36.015 C330.005,46.388 322.824,55.079 313.164,57.401 C307.663,63.756 299.544,67.783 290.479,67.783 L42.780,67.783 C33.365,67.783 24.968,63.443 19.468,56.658 C11.030,53.581 5.005,45.487 5.005,35.984 C5.005,26.126 11.490,17.783 20.426,14.986 C25.919,8.851 33.897,4.987 42.780,4.987 L290.479,4.987 C299.095,4.987 306.858,8.625 312.330,14.443 C322.409,16.452 330.005,25.346 330.005,36.015 Z' transform='translate(0.995 1.013)'/%3E%3Cmask id='innerMask' maskUnits='userSpaceOnUse' x='0.995' y='1.013' width='325' height='62.796'%3E%3Cuse href='%23bubbleShape' fill='%23ffffe3'/%3E%3C/mask%3E%3C/defs%3E%3Cuse href='%23bubbleShape' fill='none' stroke='%23adc18c' stroke-width='12' vector-effect='non-scaling-stroke'/%3E%3Cuse href='%23bubbleShape' fill='none' stroke='%23cfdf9f' stroke-width='8' vector-effect='non-scaling-stroke'/%3E%3Cuse href='%23bubbleShape' fill='%23ffffe3'/%3E%3C/svg%3E");
+    --petal-RT: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg id='petal' data-name='petal' xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 29.35 33.99'%3E%3Cdefs%3E%3Cstyle%3E .st0 %7B fill: %23b7d99b; %7D .st1 %7B fill: none; %7D .st2 %7B clip-path: url(%23clippath); %7D %3C/style%3E%3CclipPath id='clippath'%3E%3Crect class='st1' y='0' width='29.35' height='33.99'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg class='st2' transform='translate(29.35 0) scale(-1 1)'%3E%3Cpath class='st0' d='M27.08,4.05l-6.54,3.5.24-7.42C15.02-.79,7.99,3.08,3.62,10.13c-5.33,8.58-4.7,18.62,1.41,22.41,6.11,3.79,15.38-.09,20.71-8.68,4.37-7.04,4.73-15.06,1.34-19.81'/%3E%3C/g%3E%3C/svg%3E");
+    --petal-RB: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg id='petal' data-name='petal' xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 29.35 33.99'%3E%3Cdefs%3E%3Cstyle%3E .st0 %7B fill: %23cfdf9f; %7D .st1 %7B fill: none; %7D .st2 %7B clip-path: url(%23clippath); %7D %3C/style%3E%3CclipPath id='clippath'%3E%3Crect class='st1' y='0' width='29.35' height='33.99'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg class='st2'%3E%3Cpath class='st0' d='M27.08,4.05l-6.54,3.5.24-7.42C15.02-.79,7.99,3.08,3.62,10.13c-5.33,8.58-4.7,18.62,1.41,22.41,6.11,3.79,15.38-.09,20.71-8.68,4.37-7.04,4.73-15.06,1.34-19.81'/%3E%3C/g%3E%3C/svg%3E");
+    --petal-L: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg id='petal' data-name='petal' xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 29.35 33.99'%3E%3Cdefs%3E%3Cstyle%3E .st0 %7B fill: %23cfdf9f; %7D .st1 %7B fill: none; %7D .st2 %7B clip-path: url(%23clippath); %7D %3C/style%3E%3CclipPath id='clippath'%3E%3Crect class='st1' y='0' width='29.35' height='33.99'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg class='st2'%3E%3Cpath class='st0' d='M27.08,4.05l-6.54,3.5.24-7.42C15.02-.79,7.99,3.08,3.62,10.13c-5.33,8.58-4.7,18.62,1.41,22.41,6.11,3.79,15.38-.09,20.71-8.68,4.37-7.04,4.73-15.06,1.34-19.81'/%3E%3C/g%3E%3C/svg%3E");
+    --pattern: url(https://hime-haruka.github.io/syura_css_svg_import/yoendano/st-pattern.png);
+    --clover: url(https://hime-haruka.github.io/syura_css_svg_import/yoendano/st-clover.png);
+}
+
+/* =============================================
+    subscribe
+============================================s= */
+.chat_box.chat.subscribe {
+    --line: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='244.5px' height='3.5px'%3E%3Cpath fill-rule='evenodd' stroke='%23e9eac2' stroke-width='1px' stroke-dasharray='4, 2' stroke-linecap='butt' stroke-linejoin='miter' fill='none' d='M0.500,1.500 L243.500,1.500 '/%3E%3C/svg%3E");
+    --ring: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cdefs%3E%3ClinearGradient id='innerStrokeGradient' gradientUnits='userSpaceOnUse' x1='4' y1='27.8' x2='36' y2='12.2'%3E%3Cstop offset='0' stop-color='%23dddf9f'/%3E%3Cstop offset='1' stop-color='%23fcffaa'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='20' cy='20' r='19' fill='none' stroke='%23cdce9e' stroke-width='2'/%3E%3Ccircle cx='20' cy='20' r='15.5' fill='none' stroke='url(%23innerStrokeGradient)' stroke-width='5'/%3E%3C/svg%3E");
+    --frame: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='337' height='74.796' viewBox='0 0 337 74.796' preserveAspectRatio='none'%3E%3Cdefs%3E%3Cpath id='bubbleShape' d='M330.005,36.015 C330.005,46.388 322.824,55.079 313.164,57.401 C307.663,63.756 299.544,67.783 290.479,67.783 L42.780,67.783 C33.365,67.783 24.968,63.443 19.468,56.658 C11.030,53.581 5.005,45.487 5.005,35.984 C5.005,26.126 11.490,17.783 20.426,14.986 C25.919,8.851 33.897,4.987 42.780,4.987 L290.479,4.987 C299.095,4.987 306.858,8.625 312.330,14.443 C322.409,16.452 330.005,25.346 330.005,36.015 Z' transform='translate(0.995 1.013)'/%3E%3Cmask id='innerMask' maskUnits='userSpaceOnUse' x='0.995' y='1.013' width='325' height='62.796'%3E%3Cuse href='%23bubbleShape' fill='%23ffffe3'/%3E%3C/mask%3E%3C/defs%3E%3Cuse href='%23bubbleShape' fill='none' stroke='%23bbbd84' stroke-width='12' vector-effect='non-scaling-stroke'/%3E%3Cuse href='%23bubbleShape' fill='none' stroke='%23dddf9f' stroke-width='8' vector-effect='non-scaling-stroke'/%3E%3Cuse href='%23bubbleShape' fill='%23ffffe3'/%3E%3C/svg%3E");
+    --petal-RT: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg id='petal' data-name='petal' xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 29.35 33.99'%3E%3Cdefs%3E%3Cstyle%3E .st0 %7B fill: %23aad99b; %7D .st1 %7B fill: none; %7D .st2 %7B clip-path: url(%23clippath); %7D %3C/style%3E%3CclipPath id='clippath'%3E%3Crect class='st1' y='0' width='29.35' height='33.99'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg class='st2' transform='translate(29.35 0) scale(-1 1)'%3E%3Cpath class='st0' d='M27.08,4.05l-6.54,3.5.24-7.42C15.02-.79,7.99,3.08,3.62,10.13c-5.33,8.58-4.7,18.62,1.41,22.41,6.11,3.79,15.38-.09,20.71-8.68,4.37-7.04,4.73-15.06,1.34-19.81'/%3E%3C/g%3E%3C/svg%3E");
+    --petal-RB: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg id='petal' data-name='petal' xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 29.35 33.99'%3E%3Cdefs%3E%3Cstyle%3E .st0 %7B fill: %23dddf9f; %7D .st1 %7B fill: none; %7D .st2 %7B clip-path: url(%23clippath); %7D %3C/style%3E%3CclipPath id='clippath'%3E%3Crect class='st1' y='0' width='29.35' height='33.99'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg class='st2'%3E%3Cpath class='st0' d='M27.08,4.05l-6.54,3.5.24-7.42C15.02-.79,7.99,3.08,3.62,10.13c-5.33,8.58-4.7,18.62,1.41,22.41,6.11,3.79,15.38-.09,20.71-8.68,4.37-7.04,4.73-15.06,1.34-19.81'/%3E%3C/g%3E%3C/svg%3E");
+    --petal-L: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg id='petal' data-name='petal' xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 29.35 33.99'%3E%3Cdefs%3E%3Cstyle%3E .st0 %7B fill: %23dddf9f; %7D .st1 %7B fill: none; %7D .st2 %7B clip-path: url(%23clippath); %7D %3C/style%3E%3CclipPath id='clippath'%3E%3Crect class='st1' y='0' width='29.35' height='33.99'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg class='st2'%3E%3Cpath class='st0' d='M27.08,4.05l-6.54,3.5.24-7.42C15.02-.79,7.99,3.08,3.62,10.13c-5.33,8.58-4.7,18.62,1.41,22.41,6.11,3.79,15.38-.09,20.71-8.68,4.37-7.04,4.73-15.06,1.34-19.81'/%3E%3C/g%3E%3C/svg%3E");
+    --pattern: url(https://hime-haruka.github.io/syura_css_svg_import/yoendano/sub-pattern.png);
+    --clover: url(https://hime-haruka.github.io/syura_css_svg_import/yoendano/sub-clover.png);
+}
+
+/* =============================================
+    donation
+============================================= */
+.chat_box.image:not(.subscribe) {
+    --line: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='244.5px' height='3.5px'%3E%3Cpath fill-rule='evenodd' stroke='%23ede8b8' stroke-width='1px' stroke-dasharray='4, 2' stroke-linecap='butt' stroke-linejoin='miter' fill='none' d='M0.500,1.500 L243.500,1.500 '/%3E%3C/svg%3E");
+    --ring: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cdefs%3E%3ClinearGradient id='innerStrokeGradient' gradientUnits='userSpaceOnUse' x1='4' y1='27.8' x2='36' y2='12.2'%3E%3Cstop offset='0' stop-color='%23f6eb93'/%3E%3Cstop offset='1' stop-color='%23fff6ad'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='20' cy='20' r='19' fill='none' stroke='%23e2d88a' stroke-width='2'/%3E%3Ccircle cx='20' cy='20' r='15.5' fill='none' stroke='url(%23innerStrokeGradient)' stroke-width='5'/%3E%3C/svg%3E");
+    --frame: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='337' height='74.796' viewBox='0 0 337 74.796' preserveAspectRatio='none'%3E%3Cdefs%3E%3Cpath id='bubbleShape' d='M330.005,36.015 C330.005,46.388 322.824,55.079 313.164,57.401 C307.663,63.756 299.544,67.783 290.479,67.783 L42.780,67.783 C33.365,67.783 24.968,63.443 19.468,56.658 C11.030,53.581 5.005,45.487 5.005,35.984 C5.005,26.126 11.490,17.783 20.426,14.986 C25.919,8.851 33.897,4.987 42.780,4.987 L290.479,4.987 C299.095,4.987 306.858,8.625 312.330,14.443 C322.409,16.452 330.005,25.346 330.005,36.015 Z' transform='translate(0.995 1.013)'/%3E%3Cmask id='innerMask' maskUnits='userSpaceOnUse' x='0.995' y='1.013' width='325' height='62.796'%3E%3Cuse href='%23bubbleShape' fill='%23fff'/%3E%3C/mask%3E%3C/defs%3E%3Cuse href='%23bubbleShape' fill='none' stroke='%23cec263' stroke-width='12' vector-effect='non-scaling-stroke'/%3E%3Cuse href='%23bubbleShape' fill='none' stroke='%23f6eb93' stroke-width='8' vector-effect='non-scaling-stroke'/%3E%3Cuse href='%23bubbleShape' fill='%23ffffe3'/%3E%3C/svg%3E");
+    --petal-RT: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg id='petal' data-name='petal' xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 29.35 33.99'%3E%3Cdefs%3E%3Cstyle%3E .st0 %7B fill: %23d3f182; %7D .st1 %7B fill: none; %7D .st2 %7B clip-path: url(%23clippath); %7D %3C/style%3E%3CclipPath id='clippath'%3E%3Crect class='st1' y='0' width='29.35' height='33.99'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg class='st2' transform='translate(29.35 0) scale(-1 1)'%3E%3Cpath class='st0' d='M27.08,4.05l-6.54,3.5.24-7.42C15.02-.79,7.99,3.08,3.62,10.13c-5.33,8.58-4.7,18.62,1.41,22.41,6.11,3.79,15.38-.09,20.71-8.68,4.37-7.04,4.73-15.06,1.34-19.81'/%3E%3C/g%3E%3C/svg%3E");
+    --petal-RB: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg id='petal' data-name='petal' xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 29.35 33.99'%3E%3Cdefs%3E%3Cstyle%3E .st0 %7B fill: %23f1e582; %7D .st1 %7B fill: none; %7D .st2 %7B clip-path: url(%23clippath); %7D %3C/style%3E%3CclipPath id='clippath'%3E%3Crect class='st1' y='0' width='29.35' height='33.99'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg class='st2'%3E%3Cpath class='st0' d='M27.08,4.05l-6.54,3.5.24-7.42C15.02-.79,7.99,3.08,3.62,10.13c-5.33,8.58-4.7,18.62,1.41,22.41,6.11,3.79,15.38-.09,20.71-8.68,4.37-7.04,4.73-15.06,1.34-19.81'/%3E%3C/g%3E%3C/svg%3E");
+    --petal-L: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg id='petal' data-name='petal' xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 29.35 33.99'%3E%3Cdefs%3E%3Cstyle%3E .st0 %7B fill: %23f1e582; %7D .st1 %7B fill: none; %7D .st2 %7B clip-path: url(%23clippath); %7D %3C/style%3E%3CclipPath id='clippath'%3E%3Crect class='st1' y='0' width='29.35' height='33.99'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg class='st2'%3E%3Cpath class='st0' d='M27.08,4.05l-6.54,3.5.24-7.42C15.02-.79,7.99,3.08,3.62,10.13c-5.33,8.58-4.7,18.62,1.41,22.41,6.11,3.79,15.38-.09,20.71-8.68,4.37-7.04,4.73-15.06,1.34-19.81'/%3E%3C/g%3E%3C/svg%3E");
+    --pattern: url(https://hime-haruka.github.io/syura_css_svg_import/yoendano/n-pattern.png);
+    --clover: url(https://hime-haruka.github.io/syura_css_svg_import/yoendano/n-clover.png);
+    --valC: #f6eb93;
+    --valT: #737660;
+    --valB: 2px solid #fff8bd;
+    --valO: 1px solid #cec263;
+}
+
+.chat_box.image {
+    --weflab-font-size: 1em;
+    width: calc(100% - 90px) !important;
+    max-width: calc(100% - 90px) !important;
+    min-width: calc(100% - 90px) !important;
+    margin-bottom: 30px !important;
+}
+
+.chat_box.image .inner_box .donation_box {
+    overflow: visible !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .msg_box .val {
+    position: absolute !important;
+    bottom: -35px !important;
+    outline: var(--valO);
+    border: var(--valB) !important;
+    background: var(--valC) !important;
+    border-radius: 999vh !important;
+    padding: 2px 10px !important;
+    color: var(--valT) !important;
+    font-size: calc(var(--weflab-font-size) - 5px) !important;
+    font-weight: 400 !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .msg_box .val::after {
+    content: " 치즈";
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .text_box .msg {
+    font-size: var(--weflab-font-size) !important;
+}
+
+/* =============================================
+    donation - subscribe
+============================================= */
+.chat_box.image.subscribe {
+    --line: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='244.5px' height='3.5px'%3E%3Cpath fill-rule='evenodd' stroke='%23e9eac2' stroke-width='1px' stroke-dasharray='4, 2' stroke-linecap='butt' stroke-linejoin='miter' fill='none' d='M0.500,1.500 L243.500,1.500 '/%3E%3C/svg%3E");
+    --ring: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cdefs%3E%3ClinearGradient id='innerStrokeGradient' gradientUnits='userSpaceOnUse' x1='4' y1='27.8' x2='36' y2='12.2'%3E%3Cstop offset='0' stop-color='%23dddf9f'/%3E%3Cstop offset='1' stop-color='%23fcffaa'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='20' cy='20' r='19' fill='none' stroke='%23cdce9e' stroke-width='2'/%3E%3Ccircle cx='20' cy='20' r='15.5' fill='none' stroke='url(%23innerStrokeGradient)' stroke-width='5'/%3E%3C/svg%3E");
+    --frame: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='337' height='74.796' viewBox='0 0 337 74.796' preserveAspectRatio='none'%3E%3Cdefs%3E%3Cpath id='bubbleShape' d='M330.005,36.015 C330.005,46.388 322.824,55.079 313.164,57.401 C307.663,63.756 299.544,67.783 290.479,67.783 L42.780,67.783 C33.365,67.783 24.968,63.443 19.468,56.658 C11.030,53.581 5.005,45.487 5.005,35.984 C5.005,26.126 11.490,17.783 20.426,14.986 C25.919,8.851 33.897,4.987 42.780,4.987 L290.479,4.987 C299.095,4.987 306.858,8.625 312.330,14.443 C322.409,16.452 330.005,25.346 330.005,36.015 Z' transform='translate(0.995 1.013)'/%3E%3Cmask id='innerMask' maskUnits='userSpaceOnUse' x='0.995' y='1.013' width='325' height='62.796'%3E%3Cuse href='%23bubbleShape' fill='%23ffffe3'/%3E%3C/mask%3E%3C/defs%3E%3Cuse href='%23bubbleShape' fill='none' stroke='%23bbbd84' stroke-width='12' vector-effect='non-scaling-stroke'/%3E%3Cuse href='%23bubbleShape' fill='none' stroke='%23dddf9f' stroke-width='8' vector-effect='non-scaling-stroke'/%3E%3Cuse href='%23bubbleShape' fill='%23ffffe3'/%3E%3C/svg%3E");
+    --petal-RT: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg id='petal' data-name='petal' xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 29.35 33.99'%3E%3Cdefs%3E%3Cstyle%3E .st0 %7B fill: %23aad99b; %7D .st1 %7B fill: none; %7D .st2 %7B clip-path: url(%23clippath); %7D %3C/style%3E%3CclipPath id='clippath'%3E%3Crect class='st1' y='0' width='29.35' height='33.99'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg class='st2' transform='translate(29.35 0) scale(-1 1)'%3E%3Cpath class='st0' d='M27.08,4.05l-6.54,3.5.24-7.42C15.02-.79,7.99,3.08,3.62,10.13c-5.33,8.58-4.7,18.62,1.41,22.41,6.11,3.79,15.38-.09,20.71-8.68,4.37-7.04,4.73-15.06,1.34-19.81'/%3E%3C/g%3E%3C/svg%3E");
+    --petal-RB: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg id='petal' data-name='petal' xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 29.35 33.99'%3E%3Cdefs%3E%3Cstyle%3E .st0 %7B fill: %23dddf9f; %7D .st1 %7B fill: none; %7D .st2 %7B clip-path: url(%23clippath); %7D %3C/style%3E%3CclipPath id='clippath'%3E%3Crect class='st1' y='0' width='29.35' height='33.99'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg class='st2'%3E%3Cpath class='st0' d='M27.08,4.05l-6.54,3.5.24-7.42C15.02-.79,7.99,3.08,3.62,10.13c-5.33,8.58-4.7,18.62,1.41,22.41,6.11,3.79,15.38-.09,20.71-8.68,4.37-7.04,4.73-15.06,1.34-19.81'/%3E%3C/g%3E%3C/svg%3E");
+    --petal-L: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg id='petal' data-name='petal' xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 29.35 33.99'%3E%3Cdefs%3E%3Cstyle%3E .st0 %7B fill: %23dddf9f; %7D .st1 %7B fill: none; %7D .st2 %7B clip-path: url(%23clippath); %7D %3C/style%3E%3CclipPath id='clippath'%3E%3Crect class='st1' y='0' width='29.35' height='33.99'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg class='st2'%3E%3Cpath class='st0' d='M27.08,4.05l-6.54,3.5.24-7.42C15.02-.79,7.99,3.08,3.62,10.13c-5.33,8.58-4.7,18.62,1.41,22.41,6.11,3.79,15.38-.09,20.71-8.68,4.37-7.04,4.73-15.06,1.34-19.81'/%3E%3C/g%3E%3C/svg%3E");
+    --pattern: url(https://hime-haruka.github.io/syura_css_svg_import/yoendano/sub-pattern.png);
+    --clover: url(https://hime-haruka.github.io/syura_css_svg_import/yoendano/sub-clover.png);
+    --valC: #dddf9f;
+    --valT: #737660;
+    --valB: 2px solid #f1f3bd;
+    --valO: 1px solid #bac680;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box {
+    overflow: visible !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .text_box .msg {
+    font-size: 0 !important;
+    overflow: visible !important;
+    position: absolute !important;
+    bottom: -30px !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .text_box .msg .val {
+    outline: var(--valO);
+    border: var(--valB) !important;
+    background: var(--valC) !important;
+    border-radius: 999vh !important;
+    padding: 2px 10px !important;
+    color: var(--valT) !important;
+    font-size: calc(var(--weflab-font-size) - 5px) !important;
+    font-weight: 400 !important;
+}
+
+.chat_box.image .inner_box .donation_box .msg_box .msg {
+    font-size: var(--weflab-font-size) !important;
+}
+
+/* =============================================
+    keyframes
+============================================= */
+@keyframes chatEnter {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 20px, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes chatPrevTailA {
+    from {
+        transform: translate3d(0, 14px, 0);
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes chatPrevTailB {
+    from {
+        transform: translate3d(0, 14px, 0);
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes cloverLoop {
+    0%,
+    100% {
+        transform: translate3d(-2px, 2px, 0) rotate(-7deg);
+    }
+
+    50% {
+        transform: translate3d(4px, -5px, 0) rotate(9deg);
+    }
+}
+
+@keyframes petalFall {
+    0% {
+        background-position:
+            18% -14px,
+            57% -24px,
+            86% -8px;
+    }
+
+    22% {
+        background-position:
+            23% 18%,
+            52% 12%,
+            82% 23%;
+    }
+
+    46% {
+        background-position:
+            16% 43%,
+            60% 38%,
+            88% 49%;
+    }
+
+    70% {
+        background-position:
+            22% 69%,
+            54% 64%,
+            81% 74%;
+    }
+
+    100% {
+        background-position:
+            17% calc(100% + 18px),
+            62% calc(100% + 26px),
+            87% calc(100% + 14px);
+    }
+}
+
+.chat_list > .chat_box:last-child.animated {
+    animation:
+        chatEnter 0.9s cubic-bezier(0.16, 0.84, 0.24, 1) both !important;
+    will-change: transform, opacity;
+}
+
+.chat_list:has(> .chat_box:last-child:nth-child(odd))
+> .chat_box:not(:last-child) {
+    animation:
+        chatPrevTailA 0.78s cubic-bezier(0.16, 0.84, 0.24, 1) both !important;
+    will-change: transform;
+}
+
+.chat_list:has(> .chat_box:last-child:nth-child(even))
+> .chat_box:not(:last-child) {
+    animation:
+        chatPrevTailB 0.78s cubic-bezier(0.16, 0.84, 0.24, 1) both !important;
+    will-change: transform;
+}
+
+.chat_box::after {
+    transform-origin: 24% 86%;
+
+    animation:
+        cloverLoop 3.8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+.chat_box::before {
+    content: "";
+    position: absolute;
+    left: -25px;
+    top: -22px;
+    width: calc(100% + 50px);
+    height: calc(100% + 80px);
+
+    background-image:
+        var(--petal-L),
+        var(--petal-RT),
+        var(--petal-RB);
+
+    background-repeat: no-repeat;
+
+    background-size:
+        6px auto,
+        5px auto,
+        7px auto;
+
+    background-position:
+        18% -14px,
+        57% -24px,
+        86% -8px;
+
+    pointer-events: none;
+    z-index: 2;
+
+    animation:
+        petalFall 6.8s cubic-bezier(0.42, 0, 0.58, 1) 0.04s infinite;
+}
