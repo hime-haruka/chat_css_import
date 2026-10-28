@@ -1,0 +1,452 @@
+[data-id = "슈퍼챗"], [data-id = "치즈"], [data-id = "비트"], [data-id = "별풍선"], [data-id = "젬"], [data-id = "비트"], [data-id = "빔"] {
+    display: none;
+}
+
+@font-face {
+    font-family: 'SchoolSafetyNotification';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimAllimjangTTF-R.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SchoolSafetyNotification';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimAllimjangTTF-B.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+}
+
+
+@property --weflab-font-size {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: 16px;
+}
+
+/* =============================================
+    general
+============================================= */
+html {
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+}
+
+p {
+    color: var(--text) !important;
+    font-family: 'SchoolSafetyNotification', Courier, monospace !important;
+    font-weight: 400 !important;
+    position: relative;
+    margin: 0 !important;
+    line-height: 1.2 !important;
+    z-index: 999;
+    text-shadow: var(--text) !important;
+    letter-spacing: -0.8px !important;
+    text-align: center !important;
+}
+
+.chat_area {
+    -webkit-mask-image: linear-gradient(
+        to top,
+        #000 0%,
+        #000 88%,
+        rgba(0, 0, 0, 0.9) 91%,
+        rgba(0, 0, 0, 0.6) 95%,
+        rgba(0, 0, 0, 0.25) 98%,
+        transparent 100%
+    );
+
+    mask-image: linear-gradient(
+        to top,
+        #000 0%,
+        #000 88%,
+        rgba(0, 0, 0, 0.9) 91%,
+        rgba(0, 0, 0, 0.6) 95%,
+        rgba(0, 0, 0, 0.25) 98%,
+        transparent 100%
+    );
+
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+}
+
+.chat_box {
+    margin: 0 auto !important;
+    margin-bottom: 20px !important;
+}
+
+.chat_box.chat * {
+    box-sizing: border-box !important;
+}
+
+.icon_badge {
+    display: none !important;
+}
+
+.icon_chzzk {
+    display: none !important;
+}
+
+/* =============================================
+    donation reset
+============================================= */
+.chat_box.image .donation_box,
+.chat_box.image .text_box,
+.chat_box.image .msg_box,
+.chat_box.image .nick,
+.chat_box.image .msg,
+.chat_box.image .val {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent !important;
+}
+
+.chat_box.image .donation_box .inner_box {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+.chat_box.image,
+.chat_box.image .inner_box,
+.chat_box.image .donation_box,
+.chat_box.image .text_box,
+.chat_box.image .msg_box {
+    overflow: visible;
+}
+
+.chat_box.image .donation_box::before,
+.chat_box.image .donation_box::after,
+.chat_box.image .donation_box.subscribe::before {
+    content: none;
+}
+
+.chat_box.image .donation_box.subscribe::before {
+    display: none !important;
+}
+
+.chat_box.image .nick {
+    display: none !important;
+}
+
+/* =========================================
+    display order
+========================================= */
+.chat_box.image .donation_box {
+    position: relative;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+}
+
+.chat_box.image .donation_box > .text_box,
+.chat_box.image .donation_box > .msg_box {
+    display: contents !important;
+}
+
+.chat_box.image .donation_box > .text_box > *,
+.chat_box.image .donation_box > .msg_box > * {
+    order: 0 !important;
+}
+
+.chat_box.image .donation_box > .text_box > .nick {
+    order: 10 !important;
+}
+
+.chat_box.image:not(.subscribe) .donation_box > .msg_box > .val,
+.chat_box.image.subscribe .donation_box.subscribe > .text_box > .msg {
+    padding: 0 !important;
+    margin: 0 !important;
+    order: 30 !important;
+}
+
+.chat_box.image:not(.subscribe) .donation_box > .text_box > .msg,
+.chat_box.image.subscribe .donation_box.subscribe > .msg_box > .msg {
+    order: 10 !important;
+}
+
+.chat_box.image.subscribe
+.donation_box.subscribe > .msg_box > .msg {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* =============================================
+    tokens
+============================================= */
+:root {
+    --text: #3f2c36;
+    --outline: 2px solid #402c36;
+    --border: 2px solid #fff;
+    --back: linear-gradient(0deg, #fff, #fff);
+}
+
+.chat_box.chat:not(.streamer):not(.subscribe) {
+    --dots: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='4px' height='23px'%3E%3Cpath fill-rule='evenodd' fill='rgb(130, 130, 130)' d='M2.000,12.500 C1.310,12.500 0.750,11.940 0.750,11.250 C0.750,10.560 1.310,10.000 2.000,10.000 C2.690,10.000 3.250,10.560 3.250,11.250 C3.250,11.940 2.690,12.500 2.000,12.500 ZM2.000,2.500 C1.310,2.500 0.750,1.940 0.750,1.250 C0.750,0.560 1.310,0.000 2.000,0.000 C2.690,0.000 3.250,0.560 3.250,1.250 C3.250,1.940 2.690,2.500 2.000,2.500 ZM2.000,19.1000 C2.690,19.1000 3.250,20.560 3.250,21.250 C3.250,21.940 2.690,22.500 2.000,22.500 C1.310,22.500 0.750,21.940 0.750,21.250 C0.750,20.560 1.310,19.1000 2.000,19.1000 Z'/%3E%3C/svg%3E");
+    --inbor: inset 0 0 0 3px #ff0c84, inset 9px 0 0 0 #242425, inset -9px 0 0 0 #242425;
+    --chain: url(https://hime-haruka.github.io/syura_css_svg_import/seotemi/n-chain.png);
+    --star: url(https://hime-haruka.github.io/syura_css_svg_import/seotemi/n-star.png);
+}
+
+/* =============================================
+    design
+============================================= */
+.chat_box {
+    position: relative;
+    width: fit-content;
+    max-width: calc(100% - 20px);
+    min-width: 120px;
+}
+
+.chat_box.chat .inner_box {
+    position: relative;
+    padding: 17px 25px;
+    outline: var(--outline);
+    border: var(--border);
+    box-shadow: var(--inbor);
+    background:
+    var(--chain) left 12px center / 7px no-repeat,
+    var(--chain) right 12px center / 7px no-repeat,
+    var(--back);
+}
+
+.chat_box .inner_box::before {
+    content: "";
+    position: absolute;
+    width: 23px;
+    height: 24px;
+    bottom: -10px;
+    right: -10px;
+    background: var(--star) center / 100% no-repeat;   
+}
+
+.chat_box .inner_box::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--dots) left 4px center / 4px no-repeat, var(--dots) right 4px center / 4px no-repeat;
+    z-index: 2;
+}
+
+/* =============================================
+    streamer
+============================================= */
+.chat_box.chat.streamer {
+    --dots: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='4px' height='23px'%3E%3Cpath fill-rule='evenodd' fill='rgb(255, 255, 255)' d='M2.000,12.500 C1.310,12.500 0.750,11.940 0.750,11.250 C0.750,10.560 1.310,9.1000 2.000,9.1000 C2.690,9.1000 3.250,10.560 3.250,11.250 C3.250,11.940 2.690,12.500 2.000,12.500 ZM2.000,2.500 C1.310,2.500 0.750,1.940 0.750,1.250 C0.750,0.560 1.310,-0.000 2.000,-0.000 C2.690,-0.000 3.250,0.560 3.250,1.250 C3.250,1.940 2.690,2.500 2.000,2.500 ZM2.000,19.1000 C2.690,19.1000 3.250,20.560 3.250,21.250 C3.250,21.940 2.690,22.500 2.000,22.500 C1.310,22.500 0.750,21.940 0.750,21.250 C0.750,20.560 1.310,19.1000 2.000,19.1000 Z'/%3E%3C/svg%3E");
+    --inbor: inset 0 0 0 3px #302a2c, inset 9px 0 0 0 #ff0c84, inset -9px 0 0 0 #ff0c84;
+    --chain: url(https://hime-haruka.github.io/syura_css_svg_import/seotemi/s-chain.png);
+    --star: url(https://hime-haruka.github.io/syura_css_svg_import/seotemi/st-star.png);
+}
+
+/* =============================================
+    subscribe
+============================================s= */
+.chat_box.chat.subscribe {
+    --dots: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='4px' height='23px'%3E%3Cpath fill-rule='evenodd' fill='rgb(255, 255, 255)' d='M2.000,12.500 C1.310,12.500 0.750,11.940 0.750,11.250 C0.750,10.560 1.310,9.1000 2.000,9.1000 C2.690,9.1000 3.250,10.560 3.250,11.250 C3.250,11.940 2.690,12.500 2.000,12.500 ZM2.000,2.500 C1.310,2.500 0.750,1.940 0.750,1.250 C0.750,0.560 1.310,-0.000 2.000,-0.000 C2.690,-0.000 3.250,0.560 3.250,1.250 C3.250,1.940 2.690,2.500 2.000,2.500 ZM2.000,19.1000 C2.690,19.1000 3.250,20.560 3.250,21.250 C3.250,21.940 2.690,22.500 2.000,22.500 C1.310,22.500 0.750,21.940 0.750,21.250 C0.750,20.560 1.310,19.1000 2.000,19.1000 Z'/%3E%3C/svg%3E");
+    --inbor: inset 0 0 0 3px #d53a76, inset 9px 0 0 0 #550c28, inset -9px 0 0 0 #550c28;
+    --chain: url(https://hime-haruka.github.io/syura_css_svg_import/seotemi/n-chain.png);
+    --star: url(https://hime-haruka.github.io/syura_css_svg_import/seotemi/sub-star.png);
+}
+
+/* =============================================
+    donation
+============================================= */
+.chat_box.image:not(.subscribe) {
+    --dots: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='4px' height='23px'%3E%3Cpath fill-rule='evenodd' fill='rgb(130, 130, 130)' d='M2.000,12.500 C1.310,12.500 0.750,11.940 0.750,11.250 C0.750,10.560 1.310,10.000 2.000,10.000 C2.690,10.000 3.250,10.560 3.250,11.250 C3.250,11.940 2.690,12.500 2.000,12.500 ZM2.000,2.500 C1.310,2.500 0.750,1.940 0.750,1.250 C0.750,0.560 1.310,0.000 2.000,0.000 C2.690,0.000 3.250,0.560 3.250,1.250 C3.250,1.940 2.690,2.500 2.000,2.500 ZM2.000,19.1000 C2.690,19.1000 3.250,20.560 3.250,21.250 C3.250,21.940 2.690,22.500 2.000,22.500 C1.310,22.500 0.750,21.940 0.750,21.250 C0.750,20.560 1.310,19.1000 2.000,19.1000 Z'/%3E%3C/svg%3E");
+    --inbor: inset 0 0 0 3px #ff0c84, inset 9px 0 0 0 #242425, inset -9px 0 0 0 #242425;
+    --chain: url(https://hime-haruka.github.io/syura_css_svg_import/seotemi/n-chain.png);
+    --star: url(https://hime-haruka.github.io/syura_css_svg_import/seotemi/n-star.png);
+    --bottom: url(https://hime-haruka.github.io/syura_css_svg_import/seotemi/dona.png);
+    --valC: #fff;
+    --valB: 2px solid #ff0c84;
+}
+
+.chat_box.image {
+    --weflab-font-size: 1em;
+    width: calc(100% - 20px) !important;
+    max-width: calc(100% - 20px) !important;
+    min-width: calc(100% - 20px) !important;
+}
+
+.chat_box .inner_box {
+    position: relative;
+    padding: 17px 25px;
+    outline: var(--outline);
+    border: var(--border);
+    box-shadow: var(--inbor);
+    background:
+    var(--bottom) center bottom -5px / 418px repeat-x,
+    var(--chain) left 12px center / 7px no-repeat,
+    var(--chain) right 12px center / 7px no-repeat,
+    var(--back);
+}
+
+.chat_box.image .inner_box .donation_box {
+    overflow: visible !important;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .msg_box .val {
+    border: var(--valB) !important;
+    background: var(--valC) !important;
+    border-radius: 999vh !important;
+    padding: 2px 10px !important;
+    color: var(--text) !important;
+    font-size: calc(var(--weflab-font-size) - 5px) !important;
+    font-weight: 400 !important;
+    outline: var(--outline);
+    position: absolute;
+    bottom: -30px;
+    right: 10px;
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .msg_box .val::after {
+    content: " 치즈";
+}
+
+.chat_box.image:not(.subscribe) .inner_box .donation_box .text_box .msg {
+    font-size: var(--weflab-font-size) !important;
+}
+
+/* =============================================
+    donation - subscribe
+============================================= */
+.chat_box.image.subscribe {
+    --dots: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='4px' height='23px'%3E%3Cpath fill-rule='evenodd' fill='rgb(255, 255, 255)' d='M2.000,12.500 C1.310,12.500 0.750,11.940 0.750,11.250 C0.750,10.560 1.310,9.1000 2.000,9.1000 C2.690,9.1000 3.250,10.560 3.250,11.250 C3.250,11.940 2.690,12.500 2.000,12.500 ZM2.000,2.500 C1.310,2.500 0.750,1.940 0.750,1.250 C0.750,0.560 1.310,-0.000 2.000,-0.000 C2.690,-0.000 3.250,0.560 3.250,1.250 C3.250,1.940 2.690,2.500 2.000,2.500 ZM2.000,19.1000 C2.690,19.1000 3.250,20.560 3.250,21.250 C3.250,21.940 2.690,22.500 2.000,22.500 C1.310,22.500 0.750,21.940 0.750,21.250 C0.750,20.560 1.310,19.1000 2.000,19.1000 Z'/%3E%3C/svg%3E");
+    --inbor: inset 0 0 0 3px #d53a76, inset 9px 0 0 0 #550c28, inset -9px 0 0 0 #550c28;
+    --chain: url(https://hime-haruka.github.io/syura_css_svg_import/seotemi/n-chain.png);
+    --star: url(https://hime-haruka.github.io/syura_css_svg_import/seotemi/sub-star.png);
+    --bottom: url(https://hime-haruka.github.io/syura_css_svg_import/seotemi/sub.png);
+    --valC: #fff;
+    --valB: 2px solid #d53a76;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box {
+    overflow: visible !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .text_box .msg {
+    font-size: 0 !important;
+    overflow: visible !important;
+}
+
+.chat_box.image.subscribe
+.inner_box .donation_box .text_box .msg {
+    position: static !important;
+}
+
+.chat_box.image.subscribe .inner_box .donation_box .text_box .msg .val {
+    border: var(--valB) !important;
+    background: var(--valC) !important;
+    border-radius: 999vh !important;
+    padding: 2px 10px !important;
+    color: var(--text) !important;
+    font-size: calc(var(--weflab-font-size) - 5px) !important;
+    font-weight: 400 !important;
+    outline: var(--outline);
+    position: absolute !important;
+    bottom: -30px;
+    right: 10px;
+    z-index: 3;
+}
+
+.chat_box.image .inner_box .donation_box .msg_box .msg {
+    font-size: var(--weflab-font-size) !important;
+}
+
+/* =============================================
+    keyframes
+============================================= */
+@keyframes seotemi-popup {
+    0% {
+        opacity: 0;
+        transform: translateY(12px) scale(0.97);
+    }
+    65% {
+        opacity: 1;
+        transform: translateY(-1px) scale(1.008);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes seotemi-star-pop {
+    0% {
+        opacity: 0;
+        transform: scale(0.2);
+    }
+    65% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+    82% {
+        transform: scale(0.96);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes seotemi-star-idle {
+    0%, 100% {
+        scale: 1;
+        filter: brightness(1);
+    }
+    50% {
+        scale: 1.06;
+        filter: brightness(1.1);
+    }
+}
+
+@keyframes seotemi-dots {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes seotemi-badge {
+    0% {
+        opacity: 0;
+        transform: translateY(5px) scale(0.94);
+    }
+    70% {
+        opacity: 1;
+        transform: translateY(-1px) scale(1.025);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.chat_box.animated.fadeIn {
+    animation: seotemi-popup 0.5s cubic-bezier(0.22, 1, 0.36, 1) both !important;
+}
+
+.chat_box .inner_box::before {
+    transform-origin: center center;
+    animation:
+        seotemi-star-pop 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both,
+        seotemi-star-idle 3s ease-in-out 0.8s infinite;
+}
+
+.chat_box .inner_box::after {
+    animation: seotemi-dots 0.35s ease-out 0.18s both;
+    pointer-events: none;
+}
+
+.chat_box.image:not(.subscribe) .donation_box .msg_box .val,
+.chat_box.image.subscribe .donation_box .text_box .msg .val {
+    animation: seotemi-badge 0.4s ease-out 0.25s both;
+}
