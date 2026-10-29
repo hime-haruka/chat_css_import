@@ -331,8 +331,7 @@ p {
 /* =============================================
     subscribe
 ============================================= */
-.chat_box.chat.subscribe,
-.chat_box.chat:nth-child(3n of .chat_box.chat) {
+.chat_box.chat.subscribe {
     --heart: url("data:image/svg+xml,%0A%3Csvg%20xmlns='http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width='60'%20height='60'%20viewBox='-52%20-80%20340%20365'%20fill='none'%3E%3Cdefs%3E%3Cpath%20id='heart-white-shape'%20d='M118.09,203.17l94.68-84.89c32.53-29.17,31.08-81.22-3.88-107.43-8.99-6.74-19.1-10.85-29.79-10.85-26.85,0-50.05,15.63-61.01,38.28C107.13,15.63,83.93,0,57.08,0c-10.69,0-20.8,4.11-29.79,10.85C-7.67,37.06-9.12,89.11,23.41,118.28l94.68,84.89Z'%2F%3E%3CclipPath%20id='heart-white-inside'%20clipPathUnits='userSpaceOnUse'%3E%3Cuse%20href='%23heart-white-shape'%2F%3E%3C%2FclipPath%3E%3C%2Fdefs%3E%3Cstyle%3E%20.heart-white-motion%20%7B%20transform-origin%3A%20118.09px%20101.59px%3B%20animation%3A%20heart-white-drift%203.4s%20ease-in-out%20infinite%3B%20%7D%20%40keyframes%20heart-white-drift%20%7B%200%25,%20100%25%20%7B%20transform%3A%20translate%280px,%200px%29%20rotate%280deg%29%3B%20%7D%2050%25%20%7B%20transform%3A%20translate%285px,%20-6px%29%20rotate%283deg%29%3B%20%7D%20%7D%20%3C%2Fstyle%3E%3Cg%20transform='rotate%2816%20118.09%20101.59%29'%3E%3Cg%20class='heart-white-motion'%3E%3Cuse%20href='%23heart-white-shape'%20fill='%23FFFFFF'%2F%3E%3Cuse%20href='%23heart-white-shape'%20stroke='%23FF9DB5'%20stroke-width='40'%20stroke-linejoin='round'%2F%3E%3Cuse%20href='%23heart-white-shape'%20stroke='%23FF7293'%20stroke-width='40'%20stroke-linejoin='round'%20clip-path='url%28%23heart-white-inside%29'%2F%3E%3Cuse%20href='%23heart-white-shape'%20stroke='%23FFD5E0'%20stroke-width='18'%20stroke-linejoin='round'%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E%0A");
     --boxsh:
         inset 0 0 6px 2px rgba(255, 153, 186, 0.18),
