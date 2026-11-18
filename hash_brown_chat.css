@@ -1,0 +1,165 @@
+@font-face {
+    font-family: 'Cafe24ProSlim';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2511-1@1.0/Cafe24PROSlim-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cafe24ProSlim';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2511-1@1.0/Cafe24PROSlim-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cafe24ProSlim';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2511-1@1.0/Cafe24PROSlim-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+}
+
+[data-id = "슈퍼챗"], [data-id = "치즈"], [data-id = "비트"], [data-id = "별풍선"], [data-id = "젬"], [data-id = "비트"], [data-id = "빔"] {
+    display: none;
+}
+
+.chat_box.image {
+    display: none !important;
+}
+
+@property --weflab-font-size {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: 16px;
+}
+
+/* =============================================
+    general
+============================================= */
+html {
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+}
+
+p {
+    color: var(--text) !important;
+    font-family: 'Cafe24ProSlim', Courier, monospace !important;
+    font-weight: 400 !important;
+    position: relative;
+    margin: 0 !important;
+    line-height: 1.2 !important;
+    z-index: 999;
+    text-shadow: var(--text) !important;
+    letter-spacing: -0.04em !important;
+    text-align: center !important;
+}
+
+.chat_area {
+    -webkit-mask-image: linear-gradient(
+        to top,
+        #000 0%,
+        #000 88%,
+        rgba(0, 0, 0, 0.9) 91%,
+        rgba(0, 0, 0, 0.6) 95%,
+        rgba(0, 0, 0, 0.25) 98%,
+        transparent 100%
+    );
+
+    mask-image: linear-gradient(
+        to top,
+        #000 0%,
+        #000 88%,
+        rgba(0, 0, 0, 0.9) 91%,
+        rgba(0, 0, 0, 0.6) 95%,
+        rgba(0, 0, 0, 0.25) 98%,
+        transparent 100%
+    );
+
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+}
+
+.chat_box {
+    margin: 0 auto !important;
+    margin-bottom: 10px !important;
+}
+
+.chat_box.chat * {
+    box-sizing: border-box !important;
+}
+
+.icon_badge {
+    display: none !important;
+}
+
+.icon_chzzk {
+    display: none !important;
+}
+
+/* =============================================
+    tokens
+============================================= */
+.chat_box.chat:not(.streamer) {
+    --text: #515959;
+    --pad: 45px 62px 41px 93px;
+    --top: url(https://hime-haruka.github.io/syura_css_svg_import/hubble/hash/n/top.png);
+    --middle: url(https://hime-haruka.github.io/syura_css_svg_import/hubble/hash/n/middle.png);
+    --bottom: url(https://hime-haruka.github.io/syura_css_svg_import/hubble/hash/n/bottom.png);
+    --deco: url(https://hime-haruka.github.io/syura_css_svg_import/hubble/hash/n/deco.png);
+    --position: left;
+    --margin: 0 auto 10px 0;
+}
+
+/* =============================================
+    design
+============================================= */
+.chat_box {
+    width: 490px;
+    min-width: 490px;
+    max-width: 490px;
+    margin: var(--margin) !important;
+}
+
+.chat_box .inner_box {
+    position: relative;
+    min-height: 119px;
+    padding: var(--pad);
+    background:
+    var(--top) top center / 490px no-repeat,
+    var(--bottom) bottom center / 490px no-repeat;
+}
+
+.chat_box .inner_box::before {
+    content: "";
+    position: absolute;
+    inset: 65px 0 29px 0;
+    background: var(--middle) center / 490px repeat-y;
+}
+
+.chat_box .inner_box::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--deco) var(--position) 82px center / 359px no-repeat;
+}
+/* =============================================
+    streamer
+============================================= */
+.chat_box.chat.streamer {
+    --text: #443b1f;
+    --pad: 45px 93px 41px 62px;
+    --top: url(https://hime-haruka.github.io/syura_css_svg_import/hubble/hash/s/top.png);
+    --middle: url(https://hime-haruka.github.io/syura_css_svg_import/hubble/hash/s/middle.png);
+    --bottom: url(https://hime-haruka.github.io/syura_css_svg_import/hubble/hash/s/bottom.png);
+    --deco: url(https://hime-haruka.github.io/syura_css_svg_import/hubble/hash/s/deco.png);
+    --position: right;
+    --margin: 0 0 10px auto;
+}
+
+/* =============================================
+    keyframes
+============================================= */

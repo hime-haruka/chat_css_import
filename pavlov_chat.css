@@ -1,0 +1,184 @@
+@font-face {
+    font-family: 'SnByulbyuljeongjik';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.6/snByulByul.woff') format('woff');
+    font-weight: normal;
+    font-display: swap;
+}
+
+[data-id = "슈퍼챗"], [data-id = "치즈"], [data-id = "비트"], [data-id = "별풍선"], [data-id = "젬"], [data-id = "비트"], [data-id = "빔"] {
+    display: none;
+}
+
+.chat_box.image {
+    display: none !important;
+}
+
+@property --weflab-font-size {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: 16px;
+}
+
+/* =============================================
+    general
+============================================= */
+html {
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+}
+
+p {
+    color: var(--text) !important;
+    font-family: 'SnByulbyuljeongjik', Courier, monospace !important;
+    font-weight: 400 !important;
+    position: relative;
+    margin: 0 !important;
+    line-height: 1.2 !important;
+    z-index: 999;
+    text-shadow: var(--text) !important;
+    letter-spacing: -0.04em !important;
+    text-align: center !important;
+}
+
+.chat_area {
+    -webkit-mask-image: linear-gradient(
+        to top,
+        #000 0%,
+        #000 88%,
+        rgba(0, 0, 0, 0.9) 91%,
+        rgba(0, 0, 0, 0.6) 95%,
+        rgba(0, 0, 0, 0.25) 98%,
+        transparent 100%
+    );
+
+    mask-image: linear-gradient(
+        to top,
+        #000 0%,
+        #000 88%,
+        rgba(0, 0, 0, 0.9) 91%,
+        rgba(0, 0, 0, 0.6) 95%,
+        rgba(0, 0, 0, 0.25) 98%,
+        transparent 100%
+    );
+
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+}
+
+.chat_box {
+    margin: 0 auto !important;
+    margin-bottom: 10px !important;
+}
+
+.chat_box.chat * {
+    box-sizing: border-box !important;
+}
+
+.icon_badge {
+    display: none !important;
+}
+
+.icon_chzzk {
+    display: none !important;
+}
+
+/* =============================================
+    tokens
+============================================= */
+:root {
+    --text: #a2947b;
+}
+
+.chat_box.chat:not(.streamer) {
+    --top: url(https://hime-haruka.github.io/syura_css_svg_import/hubble/pavlov/n/top.png);
+    --middle: url(https://hime-haruka.github.io/syura_css_svg_import/hubble/pavlov/n/middle.png);
+    --center: url(https://hime-haruka.github.io/syura_css_svg_import/hubble/pavlov/n/center.png);
+    --bottom: url(https://hime-haruka.github.io/syura_css_svg_import/hubble/pavlov/n/bottom.png);
+}
+
+/* =============================================
+    design
+============================================= */
+.chat_box {
+    position: relative;
+    width: 420px;
+    min-width: 420px;
+    max-width: 420px;
+}
+
+.chat_box .inner_box {
+    --cap-h: 37px;
+    --center-h: 33px;
+
+    position: relative;
+    isolation: isolate;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 107px;
+    padding: 37px 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        var(--top) top center / 100% var(--cap-h) no-repeat,
+        var(--bottom) bottom center / 100% var(--cap-h) no-repeat;
+}
+
+.chat_box .inner_box::before {
+    content: "";
+    position: absolute;
+    top: var(--cap-h);
+    bottom: var(--cap-h);
+    left: 0;
+    right: 0;
+    z-index: 0;
+    pointer-events: none;
+
+    background:
+        var(--middle) center top / 100% 1px repeat-y;
+}
+
+.chat_box .inner_box::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: var(--center-h);
+    transform: translateY(-50%);
+    z-index: 1;
+    pointer-events: none;
+
+    background:
+        var(--center) center center / 100% 100% no-repeat;
+}
+
+.chat_box .inner_box .text {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    min-width: 0;
+    text-align: center;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+/* =============================================
+    streamer
+============================================= */
+.chat_box.chat.streamer {
+    --top: url(https://hime-haruka.github.io/syura_css_svg_import/hubble/pavlov/s/top.png);
+    --middle: url(https://hime-haruka.github.io/syura_css_svg_import/hubble/pavlov/s/middle.png);
+    --center: url(https://hime-haruka.github.io/syura_css_svg_import/hubble/pavlov/s/center.png);
+    --bottom: url(https://hime-haruka.github.io/syura_css_svg_import/hubble/pavlov/s/bottom.png);
+}
+
+/* =============================================
+    keyframes
+============================================= */
